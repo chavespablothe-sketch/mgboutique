@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import WhatsAppButton from "@/components/WhatsAppButton";
 import HeroSection from "@/components/sections/HeroSection";
 import WelcomeSection from "@/components/sections/WelcomeSection";
 import AccommodationsSection from "@/components/sections/AccommodationsSection";
@@ -10,6 +11,7 @@ import GastronomySection from "@/components/sections/GastronomySection";
 import GallerySection from "@/components/sections/GallerySection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import LocationSection from "@/components/sections/LocationSection";
+import CTASection from "@/components/CTASection";
 
 const Index = () => {
   return (
@@ -25,7 +27,9 @@ const Index = () => {
       <GallerySection />
       <TestimonialsSection />
       <LocationSection />
+      <CTASection />
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };
