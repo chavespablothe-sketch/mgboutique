@@ -1,19 +1,27 @@
 import { motion } from "framer-motion";
+import useEmblaCarousel from "embla-carousel-react";
+import { useCallback } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const galleryImages = [
-  { src: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=600&q=80", alt: "Piscina" },
-  { src: "https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?auto=format&fit=crop&w=600&q=80", alt: "Vista aérea" },
-  { src: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=600&q=80", alt: "Suíte" },
-  { src: "https://images.unsplash.com/photo-1571896349842-33c89424de2d?auto=format&fit=crop&w=600&q=80", alt: "Restaurante" },
-  { src: "https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&w=600&q=80", alt: "Spa" },
-  { src: "https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?auto=format&fit=crop&w=600&q=80", alt: "Jardim" },
-  { src: "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=600&q=80", alt: "Chalé" },
-  { src: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80", alt: "Entrada" },
+  { src: "https://www.minhagloria.com.br/lovable-uploads/fa0a1d74-12c1-4134-8d8d-0e688addbccb.png", alt: "Área dos animais da fazenda com lhamas e alpacas" },
+  { src: "https://www.minhagloria.com.br/lovable-uploads/ad12c7f5-022c-4892-91f8-b68993394270.png", alt: "Chalés em meio ao paisagismo tropical" },
+  { src: "https://www.minhagloria.com.br/lovable-uploads/252a23af-2a29-46e8-8e7e-dbd3ce9cf861.png", alt: "Lago natural e área de recreação da fazenda" },
+  { src: "https://www.minhagloria.com.br/lovable-uploads/5de7a725-ff58-4211-b5e2-cf47d5d99ba7.png", alt: "Vista panorâmica da fazenda com formação rochosa" },
+  { src: "https://www.minhagloria.com.br/lovable-uploads/dd9b430b-970f-407a-9a4f-952850e9d8b7.png", alt: "Chalés de madeira em ambiente preservado" },
+  { src: "https://www.minhagloria.com.br/lovable-uploads/7b9a8c26-81a0-4894-9f0f-2a4c11fd34ce.png", alt: "Atividades de quadriciclo na fazenda" },
+  { src: "https://www.minhagloria.com.br/lovable-uploads/b7fedef6-5188-49de-a6f5-ac36f6e262f8.png", alt: "Vista da montanha com flores e lago natural" },
+  { src: "https://www.minhagloria.com.br/lovable-uploads/f7d9ecaa-e043-4c83-8549-89dfb50450a6.png", alt: "Área da piscina com vista para as montanhas" },
 ];
 
 const GallerySection = () => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+
+  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
+  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
+
   return (
-    <section id="galeria" className="py-20 lg:py-32 bg-primary">
+    <section className="py-20 lg:py-32 bg-primary">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -29,27 +37,29 @@ const GallerySection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
-          {galleryImages.map((img, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className={`overflow-hidden rounded-lg ${
-                i === 0 || i === 5 ? "md:col-span-2 md:row-span-2" : ""
-              }`}
-            >
-              <img
-                src={img.src}
-                alt={img.alt}
-                className="w-full h-full object-cover hover:scale-110 transition-transform duration-700 cursor-pointer"
-                style={{ minHeight: i === 0 || i === 5 ? "300px" : "200px" }}
-                loading="lazy"
-              />
-            </motion.div>
-          ))}
+        <div className="relative">
+          <div ref={emblaRef} className="overflow-hidden">
+            <div className="flex gap-4">
+              {galleryImages.map((img, i) => (
+                <div key={i} className="flex-none w-[85%] md:w-[45%] lg:w-[30%]">
+                  <div className="overflow-hidden rounded-lg">
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      className="w-full h-64 md:h-80 object-cover hover:scale-105 transition-transform duration-700"
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+          <button onClick={scrollPrev} className="absolute -left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary text-secondary-foreground hidden md:flex items-center justify-center hover:bg-secondary/80 transition-colors">
+            <ChevronLeft size={20} />
+          </button>
+          <button onClick={scrollNext} className="absolute -right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary text-secondary-foreground hidden md:flex items-center justify-center hover:bg-secondary/80 transition-colors">
+            <ChevronRight size={20} />
+          </button>
         </div>
       </div>
     </section>

@@ -4,40 +4,40 @@ import { Calendar, ArrowRight } from "lucide-react";
 
 const offers = [
   {
-    title: "Páscoa no Campo",
-    period: "17 a 21 de Abril",
-    nights: "4 noites",
-    price: "R$ 3.890",
-    priceNote: "por casal",
-    description: "Celebre a Páscoa em meio à natureza com programação especial, caça aos ovos e jantar temático.",
-    image: "https://images.unsplash.com/photo-1455587734955-081b22074882?auto=format&fit=crop&w=600&q=80",
-    tag: "Especial",
+    title: "Páscoa 2026 no Minha Glória Hotel Boutique",
+    period: "3 a 5 de abril de 2026",
+    price: "R$ 2.268,00",
+    priceNote: "em até 10x de R$ 226,80 sem juros",
+    description: "No feriado de Páscoa 2026, o Hotel Boutique Minha Glória preparou uma programação especial, pensada para quem busca conforto, boa gastronomia e experiências únicas em um ambiente acolhedor.",
+    highlights: ["Welcome drink de Páscoa", "Mimo no quarto com chocolate artesanal", "Jantares especiais com música ao vivo", "Experiências de wellness (yoga, meditação e massagem)"],
+    image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/rv6jyv97zg-1770309523978.webp",
+    tag: "família",
   },
   {
-    title: "Feriado de Tiradentes",
-    period: "18 a 22 de Abril",
-    nights: "4 noites",
-    price: "R$ 3.490",
-    priceNote: "por casal",
-    description: "Aproveite o feriadão com trilhas guiadas, degustação de vinhos e spa day inclusos.",
-    image: "https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=600&q=80",
-    tag: "Popular",
+    title: "Feriado de Tiradentes no Minha Glória Hotel Boutique",
+    period: "17 a 21 de abril de 2026",
+    price: "R$ 2.268,00",
+    priceNote: "em até 10x de R$ 226,80 sem juros",
+    description: "O Glória Hotel Boutique convida você a viver dias de descanso, cultura e experiências cuidadosamente pensadas para adultos e crianças — sempre com o conforto, a elegância e o atendimento personalizado.",
+    highlights: ["Welcome drink para adultos", "Bebida especial para crianças", "Mimo de boas-vindas no quarto", "Café da manhã estendido"],
+    image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/oe8dp4nznk-1770310040271.jpg",
+    tag: "bem-estar",
   },
   {
-    title: "1º de Maio Relaxante",
-    period: "1 a 4 de Maio",
-    nights: "3 noites",
-    price: "R$ 2.990",
-    priceNote: "por casal",
-    description: "Fuja da rotina com um final de semana prolongado de puro descanso e bem-estar.",
-    image: "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&w=600&q=80",
-    tag: "Novo",
+    title: "Feriado de 1º de Maio no Minha Glória Hotel Boutique",
+    period: "1 a 3 de maio de 2026",
+    price: "R$ 2.268,00",
+    priceNote: "em até 10x de R$ 226,80 sem juros",
+    description: "O Glória Hotel Boutique convida você e sua família para viver um feriado tranquilo, acolhedor e cheio de boas memórias. Pensão Completa incluída.",
+    highlights: ["Café da manhã diário", "Almoço diário", "Jantar diário", "Welcome drink na chegada"],
+    image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/xb2vhb4dm2l-1770315436578.jpg",
+    tag: "bem-estar",
   },
 ];
 
 const OffersSection = () => {
   return (
-    <section id="ofertas" className="py-20 lg:py-32 bg-background">
+    <section className="py-20 lg:py-32 bg-background">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -49,7 +49,7 @@ const OffersSection = () => {
             Ofertas Especiais
           </p>
           <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground font-semibold">
-            Pacotes & Experiências
+            Experiências únicas para sua estadia
           </h2>
         </motion.div>
 
@@ -75,17 +75,26 @@ const OffersSection = () => {
                 </span>
               </div>
               <div className="p-6">
-                <h3 className="font-display text-xl font-semibold text-foreground mb-2">{offer.title}</h3>
+                <h3 className="font-display text-lg font-semibold text-foreground mb-2">{offer.title}</h3>
                 <div className="flex items-center gap-2 text-muted-foreground text-sm font-body mb-3">
                   <Calendar size={14} />
-                  {offer.period} · {offer.nights}
+                  {offer.period}
                 </div>
                 <p className="text-muted-foreground font-body text-sm leading-relaxed mb-4">
                   {offer.description}
                 </p>
-                <div className="flex items-end justify-between">
+                <ul className="space-y-1 mb-4">
+                  {offer.highlights.map((h, j) => (
+                    <li key={j} className="text-muted-foreground font-body text-xs flex items-center gap-2">
+                      <span className="w-1 h-1 rounded-full bg-secondary shrink-0" />
+                      {h}
+                    </li>
+                  ))}
+                </ul>
+                <div className="flex items-end justify-between border-t border-border pt-4">
                   <div>
-                    <p className="text-2xl font-display font-semibold text-foreground">{offer.price}</p>
+                    <p className="text-xs text-muted-foreground font-body">a partir de</p>
+                    <p className="text-xl font-display font-semibold text-foreground">{offer.price}</p>
                     <p className="text-muted-foreground text-xs font-body">{offer.priceNote}</p>
                   </div>
                   <Button size="sm" className="bg-primary hover:bg-primary/90 text-primary-foreground font-body text-xs uppercase tracking-wider gap-1">
