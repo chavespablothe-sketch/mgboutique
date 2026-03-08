@@ -9,6 +9,7 @@ import ChalesPage from "./pages/ChalesPage";
 import LazerPage from "./pages/LazerPage";
 import GastronomiaPage from "./pages/GastronomiaPage";
 import PacotesPage from "./pages/PacotesPage";
+import PacoteDetalhePage from "./pages/PacoteDetalhePage";
 import ContatoPage from "./pages/ContatoPage";
 import NotFound from "./pages/NotFound";
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/lazer" element={<LazerPage />} />
           <Route path="/gastronomia" element={<GastronomiaPage />} />
           <Route path="/pacotes" element={<PacotesPage />} />
+          <Route path="/pacotes/:slug" element={<PacoteDetalhePage />} />
           <Route path="/contato" element={<ContatoPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
