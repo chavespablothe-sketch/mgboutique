@@ -1,81 +1,97 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { CalendarDays, Users, Tag } from "lucide-react";
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url('https://www.minhagloria.com.br/images/carousel-new-1.jpg')`,
-        }}
-      >
-        <div className="absolute inset-0 bg-primary/50" />
+      {/* Video/Image Background */}
+      <div className="absolute inset-0">
+        <div
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
+          style={{
+            backgroundImage: `url('https://www.minhagloria.com.br/images/carousel-new-1.jpg')`,
+            animation: 'subtle-zoom 20s ease-in-out infinite alternate',
+          }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/30 to-primary/70" />
       </div>
 
-      <div className="relative z-10 container mx-auto px-4">
+      <div className="relative z-10 container mx-auto px-4 flex flex-col items-center text-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
-          className="max-w-2xl"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1.5, delay: 0.3 }}
+          className="mb-8"
         >
-          <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-white font-semibold mb-6 leading-tight">
-            Seu refúgio
-            <br />
-            exclusivo
-            <br />
-            <span className="italic text-secondary">no campo</span>
-          </h1>
-          <p className="text-white/80 font-body text-lg md:text-xl mb-12 italic">
-            Um hotel boutique onde a natureza encontra o luxo
-            <br />em perfeita harmonia
-          </p>
+          <span className="text-secondary/80 font-body text-xs tracking-[0.5em] uppercase">
+            Hotel Boutique · Bom Jardim, RJ
+          </span>
         </motion.div>
 
-        <motion.div
+        <motion.h1
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
-          className="max-w-5xl bg-white/10 backdrop-blur-md rounded-lg p-4 md:p-6"
+          transition={{ duration: 1.2, delay: 0.6 }}
+          className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-white font-semibold mb-8 leading-[0.9] tracking-tight"
         >
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-3 items-end">
-            <div className="space-y-1 md:col-span-1">
-              <label className="text-white/70 text-xs font-body uppercase tracking-wider flex items-center gap-1">
-                <CalendarDays size={12} /> Check-in / Check-out
-              </label>
-              <Input type="text" placeholder="CHECK-IN / CHECK-OUT" className="bg-white/20 border-white/20 text-white placeholder:text-white/50" />
-            </div>
-            <div className="space-y-1">
-              <label className="text-white/70 text-xs font-body uppercase tracking-wider flex items-center gap-1">
-                <Users size={12} /> Hóspedes
-              </label>
-              <Input type="text" defaultValue="2 adultos" className="bg-white/20 border-white/20 text-white" />
-            </div>
-            <div className="space-y-1">
-              <label className="text-white/70 text-xs font-body uppercase tracking-wider flex items-center gap-1">
-                <Tag size={12} /> Cupom (opcional)
-              </label>
-              <Input placeholder="CUPOM (OPCIONAL)" className="bg-white/20 border-white/20 text-white placeholder:text-white/50" />
-            </div>
-            <Button className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body uppercase tracking-wider h-10 md:col-span-2">
-              Quero reservar
-            </Button>
-          </div>
+          Onde a natureza
+          <br />
+          <span className="italic text-secondary">abraça</span> você
+        </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 1.0 }}
+          className="text-editorial text-white/80 text-xl md:text-2xl lg:text-3xl max-w-3xl mb-12 leading-relaxed"
+        >
+          Em meio à Mata Atlântica, um refúgio exclusivo para famílias 
+          que buscam memórias inesquecíveis, natureza exuberante e 
+          o conforto de um hotel boutique
+        </motion.p>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.4 }}
+          className="flex flex-col sm:flex-row gap-4"
+        >
+          <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body uppercase tracking-[0.2em] gap-3 px-10 py-6 text-sm">
+            <a href="https://wa.me/5522997792023?text=Olá! Gostaria de fazer uma reserva no Minha Glória." target="_blank" rel="noopener noreferrer">
+              Reservar sua estadia <ArrowRight size={16} />
+            </a>
+          </Button>
+          <Button asChild variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10 font-body uppercase tracking-[0.2em] px-10 py-6 text-sm">
+            <Link to="/pacotes">
+              Ver pacotes 2026
+            </Link>
+          </Button>
         </motion.div>
       </div>
 
+      {/* Bottom gradient fade */}
+      <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
+
+      {/* Scroll indicator */}
       <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 2 }}
+        className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10"
+        animate={{ y: [0, 12, 0] }}
+        transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
       >
-        <div className="w-6 h-10 rounded-full border-2 border-white/40 flex items-start justify-center p-1.5">
-          <div className="w-1.5 h-1.5 rounded-full bg-white/60" />
+        <div className="flex flex-col items-center gap-2">
+          <span className="text-white/40 font-body text-[10px] tracking-[0.3em] uppercase">Descubra</span>
+          <div className="w-px h-8 bg-gradient-to-b from-white/40 to-transparent" />
         </div>
       </motion.div>
+
+      <style>{`
+        @keyframes subtle-zoom {
+          from { transform: scale(1.05); }
+          to { transform: scale(1.12); }
+        }
+      `}</style>
     </section>
   );
 };

@@ -1,27 +1,19 @@
 import { motion } from "framer-motion";
-import useEmblaCarousel from "embla-carousel-react";
-import { useCallback } from "react";
-import { ChevronLeft, ChevronRight } from "lucide-react";
 
 const galleryImages = [
-  { src: "https://www.minhagloria.com.br/lovable-uploads/fa0a1d74-12c1-4134-8d8d-0e688addbccb.png", alt: "Área dos animais da fazenda com lhamas e alpacas" },
-  { src: "https://www.minhagloria.com.br/lovable-uploads/ad12c7f5-022c-4892-91f8-b68993394270.png", alt: "Chalés em meio ao paisagismo tropical" },
-  { src: "https://www.minhagloria.com.br/lovable-uploads/252a23af-2a29-46e8-8e7e-dbd3ce9cf861.png", alt: "Lago natural e área de recreação da fazenda" },
-  { src: "https://www.minhagloria.com.br/lovable-uploads/5de7a725-ff58-4211-b5e2-cf47d5d99ba7.png", alt: "Vista panorâmica da fazenda com formação rochosa" },
-  { src: "https://www.minhagloria.com.br/lovable-uploads/dd9b430b-970f-407a-9a4f-952850e9d8b7.png", alt: "Chalés de madeira em ambiente preservado" },
-  { src: "https://www.minhagloria.com.br/lovable-uploads/7b9a8c26-81a0-4894-9f0f-2a4c11fd34ce.png", alt: "Atividades de quadriciclo na fazenda" },
-  { src: "https://www.minhagloria.com.br/lovable-uploads/b7fedef6-5188-49de-a6f5-ac36f6e262f8.png", alt: "Vista da montanha com flores e lago natural" },
-  { src: "https://www.minhagloria.com.br/lovable-uploads/f7d9ecaa-e043-4c83-8549-89dfb50450a6.png", alt: "Área da piscina com vista para as montanhas" },
+  { src: "https://www.minhagloria.com.br/lovable-uploads/fa0a1d74-12c1-4134-8d8d-0e688addbccb.png", alt: "Lhamas e alpacas da fazenda", span: "col-span-6 md:col-span-4 row-span-2" },
+  { src: "https://www.minhagloria.com.br/lovable-uploads/ad12c7f5-022c-4892-91f8-b68993394270.png", alt: "Chalés em meio ao paisagismo tropical", span: "col-span-6 md:col-span-4" },
+  { src: "https://www.minhagloria.com.br/lovable-uploads/252a23af-2a29-46e8-8e7e-dbd3ce9cf861.png", alt: "Lago natural e área de recreação", span: "col-span-6 md:col-span-4" },
+  { src: "https://www.minhagloria.com.br/lovable-uploads/5de7a725-ff58-4211-b5e2-cf47d5d99ba7.png", alt: "Vista panorâmica com formação rochosa", span: "col-span-6 md:col-span-4" },
+  { src: "https://www.minhagloria.com.br/lovable-uploads/7b9a8c26-81a0-4894-9f0f-2a4c11fd34ce.png", alt: "Quadriciclo pela fazenda", span: "col-span-6 md:col-span-4" },
+  { src: "https://www.minhagloria.com.br/lovable-uploads/b7fedef6-5188-49de-a6f5-ac36f6e262f8.png", alt: "Vista da montanha com flores", span: "col-span-12 md:col-span-4 row-span-2" },
+  { src: "https://www.minhagloria.com.br/lovable-uploads/f7d9ecaa-e043-4c83-8549-89dfb50450a6.png", alt: "Piscina com vista para montanhas", span: "col-span-6 md:col-span-4" },
+  { src: "https://www.minhagloria.com.br/lovable-uploads/dd9b430b-970f-407a-9a4f-952850e9d8b7.png", alt: "Chalés de madeira preservados", span: "col-span-6 md:col-span-4" },
 ];
 
 const GallerySection = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
-
-  const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
-  const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
-
   return (
-    <section className="py-20 lg:py-32 bg-primary">
+    <section className="py-24 lg:py-32 bg-primary">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -29,37 +21,32 @@ const GallerySection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-secondary font-body text-sm tracking-[0.3em] uppercase mb-4">
+          <div className="divider-ornament text-secondary font-body text-xs tracking-[0.4em] uppercase mb-8">
             Galeria
-          </p>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-primary-foreground font-semibold">
-            Momentos & Espaços
+          </div>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground font-semibold leading-[1.1]">
+            Fragmentos de um <span className="italic">paraíso</span>
           </h2>
         </motion.div>
 
-        <div className="relative">
-          <div ref={emblaRef} className="overflow-hidden">
-            <div className="flex gap-4">
-              {galleryImages.map((img, i) => (
-                <div key={i} className="flex-none w-[85%] md:w-[45%] lg:w-[30%]">
-                  <div className="overflow-hidden rounded-lg">
-                    <img
-                      src={img.src}
-                      alt={img.alt}
-                      className="w-full h-64 md:h-80 object-cover hover:scale-105 transition-transform duration-700"
-                      loading="lazy"
-                    />
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-          <button onClick={scrollPrev} className="absolute -left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary text-secondary-foreground hidden md:flex items-center justify-center hover:bg-secondary/80 transition-colors">
-            <ChevronLeft size={20} />
-          </button>
-          <button onClick={scrollNext} className="absolute -right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary text-secondary-foreground hidden md:flex items-center justify-center hover:bg-secondary/80 transition-colors">
-            <ChevronRight size={20} />
-          </button>
+        <div className="grid grid-cols-12 gap-3 md:gap-4">
+          {galleryImages.map((img, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.06, duration: 0.6 }}
+              className={`${img.span} overflow-hidden rounded-lg group`}
+            >
+              <img
+                src={img.src}
+                alt={img.alt}
+                className="w-full h-full min-h-[200px] md:min-h-[250px] object-cover group-hover:scale-110 transition-transform duration-1000"
+                loading="lazy"
+              />
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

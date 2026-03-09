@@ -11,31 +11,36 @@ interface CTASectionProps {
 }
 
 const CTASection = ({
-  title = "Reserve sua experiência inesquecível",
-  subtitle = "Fale com nossa equipe e monte o pacote ideal para sua família",
+  title = "Sua próxima memória inesquecível começa aqui",
+  subtitle = "Apenas 20 suítes em meio à Mata Atlântica. Pensão completa, crianças até 6 anos grátis e parcelamento em até 10x sem juros. Fale com nossa equipe e reserve a experiência perfeita para sua família.",
   bgImage = "https://www.minhagloria.com.br/images/carousel-new-2.webp",
   showPhone = true,
 }: CTASectionProps) => (
-  <section className="relative py-24 overflow-hidden">
+  <section className="relative py-32 lg:py-40 overflow-hidden">
     <div className="absolute inset-0 bg-cover bg-center bg-fixed" style={{ backgroundImage: `url('${bgImage}')` }}>
-      <div className="absolute inset-0 bg-primary/80" />
+      <div className="absolute inset-0 bg-primary/85" />
     </div>
-    <div className="relative z-10 container mx-auto px-4 text-center">
-      <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-        <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-primary-foreground font-semibold mb-4">{title}</h2>
-        <p className="text-primary-foreground/70 font-body text-lg mb-10 max-w-xl mx-auto">{subtitle}</p>
+    <div className="relative z-10 container mx-auto px-4 text-center max-w-4xl">
+      <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
+        <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground font-semibold mb-6 leading-[1.1]">{title}</h2>
+        <p className="text-editorial text-primary-foreground/70 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">{subtitle}</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body uppercase tracking-wider gap-2 px-8">
-            <a href="https://wa.me/5522997792023?text=Olá! Gostaria de fazer uma reserva." target="_blank" rel="noopener noreferrer">
+          <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body uppercase tracking-[0.2em] gap-3 px-10 py-6 text-sm">
+            <a href="https://wa.me/5522997792023?text=Olá! Gostaria de fazer uma reserva no Minha Glória Hotel Boutique." target="_blank" rel="noopener noreferrer">
               Reservar agora <ArrowRight size={16} />
             </a>
           </Button>
-          {showPhone && (
-            <a href="tel:+5522997792023" className="flex items-center gap-2 text-secondary font-body text-sm hover:text-secondary/80 transition-colors">
-              <Phone size={16} /> (22) 99779-2023
-            </a>
-          )}
+          <Button asChild variant="outline" size="lg" className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 font-body uppercase tracking-[0.15em] px-8 py-6 text-sm gap-2">
+            <Link to="/pacotes">
+              Ver pacotes 2026
+            </Link>
+          </Button>
         </div>
+        {showPhone && (
+          <a href="tel:+5522997792023" className="inline-flex items-center gap-2 text-secondary/80 hover:text-secondary font-body text-sm mt-8 transition-colors">
+            <Phone size={14} /> (22) 99779-2023
+          </a>
+        )}
       </motion.div>
     </div>
   </section>
