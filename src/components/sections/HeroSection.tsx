@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CalendarDays } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import DateSearchBar from "@/components/DateSearchBar";
 
@@ -15,7 +15,11 @@ const HeroSection = () => {
             animation: 'subtle-zoom 20s ease-in-out infinite alternate',
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/30 to-primary/70" />
+        {/* Refined overlay — darker bottom, golden shimmer */}
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-primary/20 to-primary/80" />
+        {/* Soft golden light leak top-left for premium glow */}
+        <div className="absolute -top-32 -left-32 w-[600px] h-[600px] rounded-full bg-secondary/8 blur-[150px]" />
+        <div className="absolute -bottom-32 -right-32 w-[400px] h-[400px] rounded-full bg-secondary/5 blur-[120px]" />
       </div>
 
       <div className="relative z-10 container mx-auto px-4 flex flex-col items-center text-center">
@@ -23,11 +27,16 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5, delay: 0.3 }}
-          className="mb-6"
+          className="mb-8"
         >
-          <span className="text-secondary/80 font-body text-xs tracking-[0.5em] uppercase">
-            Hotel Boutique · Bom Jardim, RJ
-          </span>
+          {/* Decorative line + tagline */}
+          <div className="flex items-center justify-center gap-4 mb-2">
+            <div className="w-12 h-px bg-gradient-to-r from-transparent to-secondary/60" />
+            <span className="text-secondary/90 font-body text-[10px] tracking-[0.6em] uppercase">
+              Hotel Boutique · Bom Jardim, RJ
+            </span>
+            <div className="w-12 h-px bg-gradient-to-l from-transparent to-secondary/60" />
+          </div>
         </motion.div>
 
         <motion.h1
@@ -38,28 +47,28 @@ const HeroSection = () => {
         >
           Onde a natureza
           <br />
-          <span className="italic text-secondary">abraça</span> você
+          <span className="italic text-secondary drop-shadow-[0_2px_12px_rgba(190,160,90,0.25)]">abraça</span> você
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.0 }}
-          className="text-editorial text-primary-foreground/80 text-xl md:text-2xl lg:text-3xl max-w-3xl mb-10 leading-relaxed"
+          className="text-editorial text-primary-foreground/75 text-xl md:text-2xl lg:text-3xl max-w-3xl mb-12 leading-relaxed"
         >
           Em meio à Mata Atlântica, um refúgio exclusivo para famílias 
           que buscam memórias inesquecíveis
         </motion.p>
 
-        {/* Date Search Bar prominently in hero */}
+        {/* Date Search Bar — clean glass card */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.4 }}
-          className="w-full max-w-3xl bg-primary/80 backdrop-blur-md rounded-2xl p-4 border border-primary-foreground/10 shadow-2xl mb-8"
+          className="w-full max-w-4xl bg-primary/60 backdrop-blur-xl rounded-2xl p-5 border border-secondary/15 shadow-[0_8px_40px_-12px_rgba(0,0,0,0.4)] mb-10"
         >
-          <p className="text-primary-foreground/60 font-body text-xs tracking-[0.3em] uppercase mb-3 text-center">
-            Consulte disponibilidade
+          <p className="text-primary-foreground/50 font-body text-[10px] tracking-[0.4em] uppercase mb-3 text-center">
+            Verifique disponibilidade
           </p>
           <DateSearchBar />
         </motion.div>
@@ -68,9 +77,8 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.6, delay: 1.8 }}
-          className="flex flex-col sm:flex-row gap-3"
         >
-          <Button asChild variant="outline" size="lg" className="border-secondary/40 text-secondary hover:bg-secondary/10 font-body uppercase tracking-[0.15em] px-8 py-5 text-sm rounded-full">
+          <Button asChild variant="outline" size="lg" className="border-secondary/50 text-secondary hover:bg-secondary/10 font-body uppercase tracking-[0.15em] px-8 py-5 text-sm rounded-full backdrop-blur-sm">
             <Link to="/pacotes">
               Ver pacotes 2026 <ArrowRight size={14} className="ml-2" />
             </Link>
@@ -86,8 +94,8 @@ const HeroSection = () => {
         transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
       >
         <div className="flex flex-col items-center gap-2">
-          <span className="text-primary-foreground/40 font-body text-[10px] tracking-[0.3em] uppercase">Descubra</span>
-          <div className="w-px h-8 bg-gradient-to-b from-primary-foreground/40 to-transparent" />
+          <span className="text-primary-foreground/30 font-body text-[10px] tracking-[0.3em] uppercase">Descubra</span>
+          <div className="w-px h-8 bg-gradient-to-b from-secondary/40 to-transparent" />
         </div>
       </motion.div>
 
