@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, CalendarDays } from "lucide-react";
 import { Link } from "react-router-dom";
+import DateSearchBar from "@/components/DateSearchBar";
 
 const HeroSection = () => {
   return (
@@ -22,7 +23,7 @@ const HeroSection = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5, delay: 0.3 }}
-          className="mb-8"
+          className="mb-6"
         >
           <span className="text-secondary/80 font-body text-xs tracking-[0.5em] uppercase">
             Hotel Boutique · Bom Jardim, RJ
@@ -33,7 +34,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.6 }}
-          className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-primary-foreground font-semibold mb-8 leading-[0.9] tracking-tight"
+          className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-primary-foreground font-semibold mb-6 leading-[0.9] tracking-tight"
         >
           Onde a natureza
           <br />
@@ -44,28 +45,34 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.0 }}
-          className="text-editorial text-primary-foreground/80 text-xl md:text-2xl lg:text-3xl max-w-3xl mb-12 leading-relaxed"
+          className="text-editorial text-primary-foreground/80 text-xl md:text-2xl lg:text-3xl max-w-3xl mb-10 leading-relaxed"
         >
           Em meio à Mata Atlântica, um refúgio exclusivo para famílias 
-          que buscam memórias inesquecíveis, natureza exuberante e 
-          o conforto de um hotel boutique
+          que buscam memórias inesquecíveis
         </motion.p>
 
+        {/* Date Search Bar prominently in hero */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.4 }}
-          className="flex flex-col sm:flex-row gap-4"
+          className="w-full max-w-3xl bg-primary/80 backdrop-blur-md rounded-2xl p-4 border border-primary-foreground/10 shadow-2xl mb-8"
         >
-          <Button asChild size="lg" className="bg-cta hover:bg-cta/90 text-cta-foreground font-body uppercase tracking-[0.2em] gap-3 px-10 py-6 text-sm rounded-full shadow-xl">
-            <a href="https://wa.me/5522997792023?text=Olá! Gostaria de fazer uma reserva no Minha Glória." target="_blank" rel="noopener noreferrer">
-              <CalendarDays size={16} />
-              Reservar sua estadia <ArrowRight size={16} />
-            </a>
-          </Button>
-          <Button asChild variant="outline" size="lg" className="border-secondary/60 text-secondary hover:bg-secondary/10 font-body uppercase tracking-[0.2em] px-10 py-6 text-sm rounded-full">
+          <p className="text-primary-foreground/60 font-body text-xs tracking-[0.3em] uppercase mb-3 text-center">
+            Consulte disponibilidade
+          </p>
+          <DateSearchBar />
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.6, delay: 1.8 }}
+          className="flex flex-col sm:flex-row gap-3"
+        >
+          <Button asChild variant="outline" size="lg" className="border-secondary/40 text-secondary hover:bg-secondary/10 font-body uppercase tracking-[0.15em] px-8 py-5 text-sm rounded-full">
             <Link to="/pacotes">
-              Ver pacotes 2026
+              Ver pacotes 2026 <ArrowRight size={14} className="ml-2" />
             </Link>
           </Button>
         </motion.div>

@@ -5,8 +5,9 @@ import HeroSection from "@/components/sections/HeroSection";
 import WelcomeSection from "@/components/sections/WelcomeSection";
 import BoutiqueSection from "@/components/sections/BoutiqueSection";
 import AccommodationsSection from "@/components/sections/AccommodationsSection";
-import OffersSection from "@/components/sections/OffersSection";
+import GastronomySection from "@/components/sections/GastronomySection";
 import ChefSection from "@/components/sections/ChefSection";
+import OffersSection from "@/components/sections/OffersSection";
 import VideoSection from "@/components/sections/VideoSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import CTASection from "@/components/CTASection";
@@ -19,9 +20,9 @@ const Index = () => {
       <WelcomeSection />
       <BoutiqueSection />
       <AccommodationsSection />
+      <GastronomySection />
       <ChefSection />
       <OffersSection />
-      <VideoSection />
       <TestimonialsSection />
       <CTASection />
       <Footer />
