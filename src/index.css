@@ -42,6 +42,8 @@
     --hotel-green: 160 25% 23%;
     --hotel-green-light: 160 20% 35%;
     --hotel-brown: 30 20% 30%;
+    --cta: 145 45% 42%;
+    --cta-foreground: 0 0% 100%;
   }
 
   .dark {

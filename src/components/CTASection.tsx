@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Phone, ArrowRight } from "lucide-react";
+import { Phone, ArrowRight, CalendarDays } from "lucide-react";
 import { Link } from "react-router-dom";
 
 interface CTASectionProps {
@@ -25,12 +25,13 @@ const CTASection = ({
         <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground font-semibold mb-6 leading-[1.1]">{title}</h2>
         <p className="text-editorial text-primary-foreground/70 text-lg md:text-xl mb-12 max-w-2xl mx-auto leading-relaxed">{subtitle}</p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-          <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body uppercase tracking-[0.2em] gap-3 px-10 py-6 text-sm">
+          <Button asChild size="lg" className="bg-cta hover:bg-cta/90 text-cta-foreground font-body uppercase tracking-[0.2em] gap-3 px-10 py-6 text-sm rounded-full shadow-xl">
             <a href="https://wa.me/5522997792023?text=Olá! Gostaria de fazer uma reserva no Minha Glória Hotel Boutique." target="_blank" rel="noopener noreferrer">
+              <CalendarDays size={16} />
               Reservar agora <ArrowRight size={16} />
             </a>
           </Button>
-          <Button asChild variant="outline" size="lg" className="border-primary-foreground/20 text-primary-foreground hover:bg-primary-foreground/10 font-body uppercase tracking-[0.15em] px-8 py-6 text-sm gap-2">
+          <Button asChild variant="outline" size="lg" className="border-secondary/40 text-secondary hover:bg-secondary/10 font-body uppercase tracking-[0.15em] px-8 py-6 text-sm rounded-full gap-2">
             <Link to="/pacotes">
               Ver pacotes 2026
             </Link>

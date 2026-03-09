@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Calendar, ArrowRight, Check, Baby } from "lucide-react";
+import { Calendar, ArrowRight, CalendarDays } from "lucide-react";
 import { Link } from "react-router-dom";
 import packages from "@/data/packages";
 
 const OffersSection = () => {
+  const featured = packages.slice(0, 3);
+
   return (
-    <section className="py-20 lg:py-32 bg-background">
+    <section className="py-24 lg:py-36 bg-background">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -14,77 +16,70 @@ const OffersSection = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <p className="text-secondary font-body text-sm tracking-[0.3em] uppercase mb-4">
-            Ofertas Especiais
-          </p>
-          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-foreground font-semibold mb-4">
-            Pacotes para toda a <span className="italic text-secondary">família</span>
+          <span className="text-secondary font-body text-xs tracking-[0.5em] uppercase mb-4 block">
+            Próximos feriados
+          </span>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground font-semibold mb-6 leading-[1.05]">
+            Pacotes <span className="italic text-secondary">2026</span>
           </h2>
-          <p className="text-muted-foreground font-body max-w-2xl mx-auto">
-            Todos os pacotes incluem pensão completa, atividades recreativas e crianças até 6 anos não pagam.
+          <p className="text-editorial text-muted-foreground text-xl max-w-2xl mx-auto leading-relaxed">
+            Cada feriado, uma experiência única. Pensão completa, recreação e crianças até 6 anos grátis em todos os pacotes.
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {packages.map((pkg, i) => (
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+          {featured.map((pkg, i) => (
             <motion.div
               key={pkg.slug}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.15 }}
-              className="group bg-card rounded-xl overflow-hidden border border-border hover:shadow-xl transition-shadow duration-500"
+              transition={{ delay: i * 0.1 }}
+              className="group bg-card rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-all duration-500 flex flex-col"
             >
-              <div className="relative overflow-hidden">
+              <div className="relative overflow-hidden h-56">
                 <img
                   src={pkg.image}
                   alt={pkg.title}
-                  className="w-full h-56 object-cover group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   loading="lazy"
                 />
-                <span className={`absolute top-4 left-4 ${pkg.tagColor} text-primary-foreground text-xs font-body uppercase tracking-wider px-3 py-1 rounded`}>
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent" />
+                <span className={`absolute top-4 left-4 ${pkg.tagColor} text-primary-foreground text-xs font-body uppercase tracking-wider px-3 py-1.5 rounded-full`}>
                   {pkg.tag}
                 </span>
               </div>
-              <div className="p-6">
-                <h3 className="font-display text-lg font-semibold text-foreground mb-2">{pkg.shortTitle}</h3>
-                <div className="flex items-center gap-2 text-muted-foreground text-sm font-body mb-3">
-                  <Calendar size={14} />
+              <div className="p-6 flex flex-col flex-1">
+                <h3 className="font-display text-xl font-semibold text-foreground mb-2">{pkg.shortTitle}</h3>
+                <div className="flex items-center gap-2 text-muted-foreground text-sm font-body mb-4">
+                  <Calendar size={14} className="text-secondary" />
                   {pkg.period} · {pkg.nights}
                 </div>
-                <p className="text-muted-foreground font-body text-sm leading-relaxed mb-4 line-clamp-3">
+                <p className="text-muted-foreground font-body text-sm leading-relaxed mb-6 flex-1 line-clamp-3">
                   {pkg.description}
                 </p>
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {pkg.highlights.slice(0, 3).map((h, j) => (
-                    <span key={j} className="flex items-center gap-1 text-xs font-body text-foreground bg-muted px-2 py-1 rounded-full">
-                      <Check size={8} className="text-secondary" /> {h}
-                    </span>
-                  ))}
+
+                {/* Price */}
+                <div className="border-t border-border pt-4 mb-5">
+                  <p className="text-xs text-muted-foreground font-body uppercase tracking-wider">a partir de</p>
+                  <p className="text-2xl font-display font-semibold text-foreground">{pkg.price}</p>
+                  <p className="text-secondary text-sm font-body font-semibold">{pkg.priceNote}</p>
                 </div>
-                <div className="flex items-center gap-1 text-xs text-muted-foreground font-body mb-4">
-                  <Baby size={12} className="text-secondary" /> Crianças até 6 anos: grátis
-                </div>
-                <div className="flex items-end justify-between border-t border-border pt-4">
-                  <div>
-                    <p className="text-xs text-muted-foreground font-body">a partir de</p>
-                    <p className="text-2xl font-display font-semibold text-foreground">{pkg.price}</p>
-                    <p className="text-secondary text-xs font-body font-semibold">{pkg.priceNote}</p>
-                  </div>
-                  <Button asChild size="sm" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body text-xs uppercase tracking-wider gap-1">
-                    <Link to={`/pacotes/${pkg.slug}`}>
-                      Ver detalhes <ArrowRight size={12} />
-                    </Link>
-                  </Button>
-                </div>
+
+                <Button asChild size="lg" className="w-full bg-cta hover:bg-cta/90 text-cta-foreground font-body text-sm uppercase tracking-wider gap-2 rounded-full">
+                  <a href={`https://wa.me/5522997792023?text=Olá! Quero reservar o pacote ${pkg.shortTitle}. Qual a disponibilidade?`} target="_blank" rel="noopener noreferrer">
+                    <CalendarDays size={14} />
+                    Reservar agora <ArrowRight size={14} />
+                  </a>
+                </Button>
               </div>
             </motion.div>
           ))}
         </div>
 
-        <div className="text-center mt-12">
-          <Button asChild variant="outline" className="border-border text-foreground hover:bg-muted font-body uppercase tracking-wider">
-            <Link to="/pacotes">Ver todos os pacotes</Link>
+        <div className="text-center">
+          <Button asChild variant="outline" size="lg" className="border-foreground/20 text-foreground hover:bg-muted font-body uppercase tracking-[0.15em] px-8 rounded-full">
+            <Link to="/pacotes">Ver todos os {packages.length} pacotes de 2026</Link>
           </Button>
         </div>
       </div>
