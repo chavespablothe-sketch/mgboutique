@@ -3,14 +3,12 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import HeroSection from "@/components/sections/HeroSection";
 import WelcomeSection from "@/components/sections/WelcomeSection";
+import BoutiqueSection from "@/components/sections/BoutiqueSection";
 import AccommodationsSection from "@/components/sections/AccommodationsSection";
 import OffersSection from "@/components/sections/OffersSection";
-import BenefitsSection from "@/components/sections/BenefitsSection";
-import AmenitiesSection from "@/components/sections/AmenitiesSection";
-import GastronomySection from "@/components/sections/GastronomySection";
-import GallerySection from "@/components/sections/GallerySection";
+import ChefSection from "@/components/sections/ChefSection";
+import VideoSection from "@/components/sections/VideoSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
-import LocationSection from "@/components/sections/LocationSection";
 import CTASection from "@/components/CTASection";
 
 const Index = () => {
@@ -19,14 +17,12 @@ const Index = () => {
       <Header />
       <HeroSection />
       <WelcomeSection />
+      <BoutiqueSection />
       <AccommodationsSection />
+      <ChefSection />
       <OffersSection />
-      <BenefitsSection />
-      <AmenitiesSection />
-      <GastronomySection />
-      <GallerySection />
+      <VideoSection />
       <TestimonialsSection />
-      <LocationSection />
       <CTASection />
       <Footer />
       <WhatsAppButton />

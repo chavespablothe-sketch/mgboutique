@@ -59,6 +59,10 @@ export default {
           "green-light": "hsl(var(--hotel-green-light))",
           brown: "hsl(var(--hotel-brown))",
         },
+        cta: {
+          DEFAULT: "hsl(var(--cta))",
+          foreground: "hsl(var(--cta-foreground))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background, 0 0% 98%))",
           foreground: "hsl(var(--sidebar-foreground, 240 5.3% 26.1%))",

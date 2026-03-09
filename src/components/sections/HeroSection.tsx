@@ -1,12 +1,11 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, CalendarDays } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
-      {/* Video/Image Background */}
       <div className="absolute inset-0">
         <div
           className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
@@ -34,7 +33,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2, delay: 0.6 }}
-          className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-white font-semibold mb-8 leading-[0.9] tracking-tight"
+          className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-9xl text-primary-foreground font-semibold mb-8 leading-[0.9] tracking-tight"
         >
           Onde a natureza
           <br />
@@ -45,7 +44,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1.0 }}
-          className="text-editorial text-white/80 text-xl md:text-2xl lg:text-3xl max-w-3xl mb-12 leading-relaxed"
+          className="text-editorial text-primary-foreground/80 text-xl md:text-2xl lg:text-3xl max-w-3xl mb-12 leading-relaxed"
         >
           Em meio à Mata Atlântica, um refúgio exclusivo para famílias 
           que buscam memórias inesquecíveis, natureza exuberante e 
@@ -58,12 +57,13 @@ const HeroSection = () => {
           transition={{ duration: 0.8, delay: 1.4 }}
           className="flex flex-col sm:flex-row gap-4"
         >
-          <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body uppercase tracking-[0.2em] gap-3 px-10 py-6 text-sm">
+          <Button asChild size="lg" className="bg-cta hover:bg-cta/90 text-cta-foreground font-body uppercase tracking-[0.2em] gap-3 px-10 py-6 text-sm rounded-full shadow-xl">
             <a href="https://wa.me/5522997792023?text=Olá! Gostaria de fazer uma reserva no Minha Glória." target="_blank" rel="noopener noreferrer">
+              <CalendarDays size={16} />
               Reservar sua estadia <ArrowRight size={16} />
             </a>
           </Button>
-          <Button asChild variant="outline" size="lg" className="border-white/30 text-white hover:bg-white/10 font-body uppercase tracking-[0.2em] px-10 py-6 text-sm">
+          <Button asChild variant="outline" size="lg" className="border-secondary/60 text-secondary hover:bg-secondary/10 font-body uppercase tracking-[0.2em] px-10 py-6 text-sm rounded-full">
             <Link to="/pacotes">
               Ver pacotes 2026
             </Link>
@@ -71,18 +71,16 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Bottom gradient fade */}
       <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
 
-      {/* Scroll indicator */}
       <motion.div
         className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10"
         animate={{ y: [0, 12, 0] }}
         transition={{ repeat: Infinity, duration: 2.5, ease: "easeInOut" }}
       >
         <div className="flex flex-col items-center gap-2">
-          <span className="text-white/40 font-body text-[10px] tracking-[0.3em] uppercase">Descubra</span>
-          <div className="w-px h-8 bg-gradient-to-b from-white/40 to-transparent" />
+          <span className="text-primary-foreground/40 font-body text-[10px] tracking-[0.3em] uppercase">Descubra</span>
+          <div className="w-px h-8 bg-gradient-to-b from-primary-foreground/40 to-transparent" />
         </div>
       </motion.div>
 
