@@ -4,24 +4,23 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CTASection from "@/components/CTASection";
 import { motion } from "framer-motion";
-import { Flower2, TreePine, Bike, Dumbbell, Waves, Mountain, Baby, Palette, Dog, Footprints, Music, Gamepad2 } from "lucide-react";
+import { Flower2, TreePine, Bike, Mountain, Waves, Baby, Palette, Dog, Footprints, Music, Gamepad2, Heart } from "lucide-react";
 
 const adultActivities = [
-  { icon: Flower2, title: "Spa & Wellness", description: "Massagens relaxantes, sauna seca, ofurô ao ar livre e tratamentos corporais com produtos naturais da serra.", image: "https://www.minhagloria.com.br/lovable-uploads/f7d9ecaa-e043-4c83-8549-89dfb50450a6.png" },
-  { icon: TreePine, title: "Trilhas Ecológicas", description: "Trilhas guiadas pela Mata Atlântica com observação de aves, cachoeiras e mirantes panorâmicos.", image: "https://www.minhagloria.com.br/lovable-uploads/b7fedef6-5188-49de-a6f5-ac36f6e262f8.png" },
-  { icon: Mountain, title: "Quadriciclo", description: "Aventuras de quadriciclo pelas trilhas da fazenda com paisagens deslumbrantes da serra fluminense.", image: "https://www.minhagloria.com.br/lovable-uploads/7b9a8c26-81a0-4894-9f0f-2a4c11fd34ce.png" },
-  { icon: Waves, title: "Piscina & Lago", description: "Piscina com vista para as montanhas e lago natural para momentos de contemplação e relaxamento.", image: "https://www.minhagloria.com.br/lovable-uploads/252a23af-2a29-46e8-8e7e-dbd3ce9cf861.png" },
-  { icon: Bike, title: "Cavalgadas", description: "Passeios a cavalo pelas trilhas da fazenda, uma experiência única para todas as idades.", image: "https://www.minhagloria.com.br/images/carousel-new-3.webp" },
-  { icon: Dumbbell, title: "Academia", description: "Equipamentos modernos para seu exercício com vista para as montanhas e natureza.", image: "https://www.minhagloria.com.br/lovable-uploads/dd9b430b-970f-407a-9a4f-952850e9d8b7.png" },
+  { icon: Flower2, title: "Spa & Bem-estar", description: "Massagens relaxantes com óleos essenciais da serra, sauna seca, ofurô ao ar livre com vista para as montanhas e tratamentos corporais com produtos naturais. Um convite para desacelerar corpo e mente, respirar fundo e deixar a tensão da cidade se dissolver entre as montanhas.", image: "https://www.minhagloria.com.br/lovable-uploads/f7d9ecaa-e043-4c83-8549-89dfb50450a6.png" },
+  { icon: TreePine, title: "Trilhas pela Mata Atlântica", description: "Trilhas guiadas por especialistas que revelam os segredos da floresta tropical. Observação de aves raras, cachoeiras escondidas e mirantes panorâmicos onde o horizonte se perde entre montanhas. Cada caminhada é uma aula silenciosa de respeito pela natureza.", image: "https://www.minhagloria.com.br/lovable-uploads/b7fedef6-5188-49de-a6f5-ac36f6e262f8.png" },
+  { icon: Mountain, title: "Quadriciclo & Aventura", description: "Adrenalina com paisagem de cinema. Aventuras de quadriciclo pelas trilhas da fazenda, com paradas em mirantes deslumbrantes. Para quem busca emoção sem perder a vista — porque aqui até a aventura tem charme.", image: "https://www.minhagloria.com.br/lovable-uploads/7b9a8c26-81a0-4894-9f0f-2a4c11fd34ce.png" },
+  { icon: Waves, title: "Piscina & Lago Natural", description: "Piscina com vista para as montanhas e um lago natural que reflete o céu da serra. Espreguiçadeiras à sombra das árvores, drinks servidos à beira d'água e aquele momento de contemplação que só a natureza oferece.", image: "https://www.minhagloria.com.br/lovable-uploads/252a23af-2a29-46e8-8e7e-dbd3ce9cf861.png" },
+  { icon: Bike, title: "Cavalgadas", description: "Passeios a cavalo pelas trilhas da fazenda, guiados por profissionais experientes. Uma experiência sensorial completa: o vento no rosto, o som dos cascos na terra e a paisagem da serra fluminense se revelando a cada curva.", image: "https://www.minhagloria.com.br/images/carousel-new-3.webp" },
 ];
 
 const kidsActivities = [
-  { icon: Dog, title: "Fazendinha", description: "Contato direto com animais: lhamas, alpacas, cavalos, galinhas e coelhos." },
-  { icon: Palette, title: "Oficinas Criativas", description: "Oficinas de artes com materiais naturais, pintura e atividades lúdicas." },
-  { icon: Footprints, title: "Trilha Kids", description: "Trilha adaptada para crianças com atividades educativas sobre a natureza." },
-  { icon: Gamepad2, title: "Recreação Monitorada", description: "Equipe de recreação com atividades programadas para todas as idades." },
-  { icon: Music, title: "Música & Histórias", description: "Contação de histórias e música ao ar livre em meio à natureza." },
-  { icon: Baby, title: "Baby Care", description: "Fraldário, berço disponível e cardápio especial para os menores." },
+  { icon: Dog, title: "Fazendinha", description: "Lhamas, alpacas, cavalos, galinhas, coelhos — um mundo inteiro para descobrir. Alimentar os animais pela manhã se torna um ritual que as crianças nunca esquecem." },
+  { icon: Palette, title: "Oficinas Criativas", description: "Artes com materiais naturais, pintura em tela, colagens com folhas e flores. As crianças criam, inventam e levam para casa obras de arte únicas." },
+  { icon: Footprints, title: "Trilha Kids", description: "Trilha adaptada com atividades educativas: identificação de plantas, sons da floresta, pegadas de animais. Aprender brincando em meio à natureza." },
+  { icon: Gamepad2, title: "Recreação Monitorada", description: "Equipe dedicada com programação diária: gincanas, jogos em grupo, brincadeiras tradicionais. Para que os pais relaxem sabendo que os filhos estão se divertindo." },
+  { icon: Music, title: "Música & Histórias", description: "Contação de histórias ao redor da fogueira, músicas com violão e brincadeiras noturnas. Momentos mágicos que viram lembranças da infância." },
+  { icon: Heart, title: "Baby Care", description: "Fraldário completo, berço disponível no chalé, cadeirão no restaurante e cardápio especial para bebês. Cada detalhe pensado para os menores." },
 ];
 
 const LazerPage = () => {
@@ -33,45 +32,60 @@ const LazerPage = () => {
       <div className="pt-20">
         {/* Hero */}
         <section
-          className="relative h-[60vh] flex items-center justify-center bg-cover bg-center"
+          className="relative h-[75vh] flex items-center justify-center bg-cover bg-center"
           style={{ backgroundImage: `url('https://www.minhagloria.com.br/lovable-uploads/7b9a8c26-81a0-4894-9f0f-2a4c11fd34ce.png')` }}
         >
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/40 to-primary/70" />
-          <div className="relative z-10 text-center">
-            <p className="text-secondary font-body text-sm tracking-[0.3em] uppercase mb-4">Experiências</p>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground font-semibold">Lazer & Aventura</h1>
-            <p className="text-primary-foreground/70 font-body mt-4 text-lg">Diversão para todas as idades em meio à Mata Atlântica</p>
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/30 to-primary/80" />
+          <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
+              <span className="text-secondary font-body text-xs tracking-[0.5em] uppercase mb-6 block">Experiências</span>
+              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-primary-foreground font-semibold leading-[0.95] mb-6">
+                Cada dia, uma nova <span className="italic text-secondary">descoberta</span>
+              </h1>
+              <p className="text-editorial text-primary-foreground/70 text-xl md:text-2xl leading-relaxed max-w-2xl mx-auto">
+                Do amanhecer ao anoitecer, experiências que transformam uma estadia em memórias para toda a vida
+              </p>
+            </motion.div>
           </div>
+          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
         </section>
 
         {/* Adult Activities */}
-        <section className="py-20 bg-background">
+        <section className="py-24 lg:py-40 bg-background">
           <div className="container mx-auto px-4">
-            <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="text-center mb-16">
-              <p className="text-secondary font-body text-sm tracking-[0.3em] uppercase mb-4">Para Adultos</p>
-              <h2 className="font-display text-3xl md:text-4xl text-foreground font-semibold">
+            <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl mx-auto text-center mb-24">
+              <div className="divider-ornament text-secondary font-body text-xs tracking-[0.4em] uppercase mb-8">
+                Para Adultos
+              </div>
+              <h2 className="font-display text-4xl md:text-5xl text-foreground font-semibold mb-8 leading-[1.1]">
                 Relaxe, explore, <span className="italic text-secondary">se aventure</span>
               </h2>
+              <p className="text-editorial text-muted-foreground text-xl leading-relaxed">
+                Aqui, você escolhe o ritmo. Pode ser um dia inteiro no spa, uma trilha que 
+                termina em cachoeira ou uma aventura de quadriciclo com paisagem de cinema. 
+                O importante é: não há pressa. Apenas presença.
+              </p>
             </motion.div>
 
-            <div className="space-y-16">
+            <div className="space-y-28">
               {adultActivities.map((item, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 30 }}
+                  initial={{ opacity: 0, y: 40 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center`}
+                  transition={{ duration: 0.8 }}
+                  className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center`}
                 >
-                  <div className={i % 2 !== 0 ? 'lg:order-2' : ''}>
-                    <img src={item.image} alt={item.title} className="w-full h-72 lg:h-96 object-cover rounded-xl shadow-lg" loading="lazy" />
+                  <div className={`overflow-hidden rounded-xl ${i % 2 !== 0 ? 'lg:order-2' : ''}`}>
+                    <img src={item.image} alt={item.title} className="w-full h-[350px] lg:h-[500px] object-cover hover:scale-105 transition-transform duration-1000" loading="lazy" />
                   </div>
                   <div className={i % 2 !== 0 ? 'lg:order-1' : ''}>
-                    <div className="w-14 h-14 mb-5 rounded-full bg-primary/10 flex items-center justify-center">
-                      <item.icon className="text-secondary" size={24} />
+                    <div className="w-16 h-16 mb-6 rounded-full bg-primary/10 flex items-center justify-center">
+                      <item.icon className="text-secondary" size={28} />
                     </div>
-                    <h3 className="font-display text-2xl lg:text-3xl font-semibold text-foreground mb-4">{item.title}</h3>
-                    <p className="text-muted-foreground font-body text-lg leading-relaxed">{item.description}</p>
+                    <h3 className="font-display text-3xl lg:text-4xl font-semibold text-foreground mb-6">{item.title}</h3>
+                    <p className="text-muted-foreground font-body text-lg md:text-xl leading-relaxed">{item.description}</p>
                   </div>
                 </motion.div>
               ))}
@@ -80,19 +94,20 @@ const LazerPage = () => {
         </section>
 
         {/* Kids Section */}
-        <section className="py-20 bg-hotel-cream">
+        <section className="py-24 bg-hotel-cream">
           <div className="container mx-auto px-4">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
-              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-secondary/20 flex items-center justify-center">
-                <Baby className="text-secondary" size={28} />
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-3xl mx-auto text-center mb-20">
+              <div className="w-20 h-20 mx-auto mb-8 rounded-full bg-secondary/20 flex items-center justify-center">
+                <Baby className="text-secondary" size={36} />
               </div>
-              <p className="text-secondary font-body text-sm tracking-[0.3em] uppercase mb-4">Para os Pequenos</p>
-              <h2 className="font-display text-3xl md:text-4xl text-foreground font-semibold mb-4">
-                Um mundo de <span className="italic text-secondary">diversão</span> para as crianças
+              <h2 className="font-display text-4xl md:text-5xl text-foreground font-semibold mb-6 leading-[1.1]">
+                Um mundo de <span className="italic text-secondary">encanto</span> para os pequenos
               </h2>
-              <p className="text-muted-foreground font-body max-w-2xl mx-auto">
-                No Minha Glória, as crianças são hóspedes VIP. Temos atividades pensadas para todas as idades — 
-                e crianças até 6 anos se hospedam gratuitamente!
+              <p className="text-editorial text-muted-foreground text-xl leading-relaxed">
+                No Minha Glória, as crianças não ficam apenas "entretidas" — elas vivem aventuras de verdade. 
+                Aqui, seus filhos descobrem a natureza com os olhos brilhando, fazem amizade com lhamas, 
+                criam obras de arte com folhas e flores, e à noite pedem para ficar "só mais um pouquinho". 
+                Crianças até 6 anos se hospedam gratuitamente.
               </p>
             </motion.div>
 
@@ -103,21 +118,21 @@ const LazerPage = () => {
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="bg-background p-8 rounded-xl border border-border text-center hover:shadow-lg transition-shadow"
+                  transition={{ delay: i * 0.08 }}
+                  className="bg-background p-10 rounded-xl border border-border hover:shadow-xl transition-shadow duration-500"
                 >
-                  <div className="w-14 h-14 mx-auto mb-5 rounded-full bg-secondary/20 flex items-center justify-center">
-                    <item.icon className="text-secondary" size={24} />
+                  <div className="w-16 h-16 mb-6 rounded-full bg-secondary/20 flex items-center justify-center">
+                    <item.icon className="text-secondary" size={28} />
                   </div>
-                  <h3 className="font-display text-lg font-semibold text-foreground mb-3">{item.title}</h3>
-                  <p className="text-muted-foreground font-body text-sm leading-relaxed">{item.description}</p>
+                  <h3 className="font-display text-xl font-semibold text-foreground mb-4">{item.title}</h3>
+                  <p className="text-muted-foreground font-body text-base leading-relaxed">{item.description}</p>
                 </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        {/* Photo Grid */}
+        {/* Photo strip */}
         <section className="py-16 bg-background">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -127,13 +142,18 @@ const LazerPage = () => {
                 "https://www.minhagloria.com.br/lovable-uploads/fa0a1d74-12c1-4134-8d8d-0e688addbccb.png",
                 "https://www.minhagloria.com.br/lovable-uploads/7b9a8c26-81a0-4894-9f0f-2a4c11fd34ce.png",
               ].map((src, i) => (
-                <img key={i} src={src} alt={`Atividade ${i + 1}`} className="rounded-lg w-full h-48 md:h-56 object-cover" loading="lazy" />
+                <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="overflow-hidden rounded-lg">
+                  <img src={src} alt={`Atividade ${i + 1}`} className="w-full h-48 md:h-64 object-cover hover:scale-110 transition-transform duration-1000" loading="lazy" />
+                </motion.div>
               ))}
             </div>
           </div>
         </section>
 
-        <CTASection title="Pronto para a aventura?" subtitle="Reserve agora e viva experiências inesquecíveis com toda a família." />
+        <CTASection 
+          title="Pronto para a aventura?" 
+          subtitle="Reserve agora e viva experiências inesquecíveis com toda a família. Pensão completa, recreação monitorada e crianças até 6 anos grátis." 
+        />
       </div>
       <Footer />
       <WhatsAppButton />
