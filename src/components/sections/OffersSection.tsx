@@ -66,8 +66,8 @@ const OffersSection = () => {
                   <p className="text-secondary text-sm font-body font-semibold">{pkg.priceNote}</p>
                 </div>
 
-                <Button asChild size="lg" className="w-full bg-cta hover:bg-cta/90 text-cta-foreground font-body text-sm uppercase tracking-wider gap-2 rounded-full">
-                  <a href={`https://wa.me/5522997792023?text=Olá! Quero reservar o pacote ${pkg.shortTitle}. Qual a disponibilidade?`} target="_blank" rel="noopener noreferrer">
+              <Button asChild size="lg" className="w-full bg-cta hover:bg-cta/90 text-cta-foreground font-body text-sm uppercase tracking-wider gap-2 rounded-full shadow-lg shadow-cta/20">
+                  <a href="https://book.omnibees.com" target="_blank" rel="noopener noreferrer">
                     <CalendarDays size={14} />
                     Reservar agora <ArrowRight size={14} />
                   </a>
