@@ -13,6 +13,8 @@ const navItems = [
   { label: "Contato", href: "/contato" },
 ];
 
+const OMNIBEES_URL = "https://book.omnibees.com";
+
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
@@ -21,7 +23,6 @@ const Header = () => {
   return (
     <>
       <header className="fixed top-0 left-0 right-0 z-50">
-        {/* Main nav */}
         <div className="bg-primary/95 backdrop-blur-md border-b border-primary-foreground/5">
           <div className="container mx-auto px-4">
             <div className="flex items-center justify-between h-20">
@@ -80,12 +81,16 @@ const Header = () => {
               <div className="hidden lg:flex items-center gap-3">
                 <button
                   onClick={() => setShowSearch(!showSearch)}
-                  className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center text-primary-foreground/70 hover:text-secondary hover:bg-primary-foreground/15 transition-colors"
+                  className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors ${
+                    showSearch
+                      ? "bg-secondary/20 text-secondary"
+                      : "bg-primary-foreground/10 text-primary-foreground/70 hover:text-secondary hover:bg-primary-foreground/15"
+                  }`}
                 >
                   <Search size={16} />
                 </button>
-                <Button asChild size="sm" className="bg-cta hover:bg-cta/90 text-cta-foreground font-body text-[11px] uppercase tracking-[0.15em] gap-2 px-5 py-2.5 rounded-full shadow-lg">
-                  <a href="https://wa.me/5522997792023?text=Olá! Gostaria de verificar disponibilidade no Minha Glória." target="_blank" rel="noopener noreferrer">
+                <Button asChild size="sm" className="bg-cta hover:bg-cta/90 text-cta-foreground font-body text-[11px] uppercase tracking-[0.15em] gap-2 px-5 py-2.5 rounded-full shadow-lg shadow-cta/20">
+                  <a href={OMNIBEES_URL} target="_blank" rel="noopener noreferrer">
                     <CalendarDays size={14} />
                     Reservar
                   </a>
@@ -101,7 +106,7 @@ const Header = () => {
         </div>
 
         {/* Date Search Bar - slides down */}
-        <div className={`bg-primary border-b border-primary-foreground/5 transition-all duration-300 overflow-hidden ${showSearch ? 'max-h-40' : 'max-h-0'}`}>
+        <div className={`bg-primary/98 backdrop-blur-md border-b border-primary-foreground/5 transition-all duration-300 overflow-hidden ${showSearch ? 'max-h-40' : 'max-h-0'}`}>
           <div className="container mx-auto px-4 py-4">
             <DateSearchBar />
           </div>
@@ -130,10 +135,10 @@ const Header = () => {
                 </Link>
               ))}
               <div className="mt-4 pt-4 border-t border-primary-foreground/10">
-                <Button asChild size="lg" className="w-full bg-cta hover:bg-cta/90 text-cta-foreground font-body text-sm uppercase tracking-[0.15em] gap-2 rounded-full">
-                  <a href="https://wa.me/5522997792023?text=Olá! Gostaria de verificar disponibilidade." target="_blank" rel="noopener noreferrer">
+                <Button asChild size="lg" className="w-full bg-cta hover:bg-cta/90 text-cta-foreground font-body text-sm uppercase tracking-[0.15em] gap-2 rounded-full shadow-lg shadow-cta/20">
+                  <a href={OMNIBEES_URL} target="_blank" rel="noopener noreferrer">
                     <CalendarDays size={16} />
-                    Verificar Disponibilidade
+                    Reservar Agora
                   </a>
                 </Button>
               </div>
