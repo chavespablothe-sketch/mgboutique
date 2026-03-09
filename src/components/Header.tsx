@@ -42,13 +42,12 @@ const Header = () => {
             ))}
           </nav>
 
-          <Link to="/" className="flex flex-col items-center">
-            <span className="font-display text-2xl lg:text-3xl text-primary-foreground font-semibold tracking-wide">
-              Minha Glória
-            </span>
-            <span className="text-secondary text-[10px] tracking-[0.3em] uppercase font-body">
-              Hotel Boutique
-            </span>
+          <Link to="/" className="flex items-center gap-3">
+            <img
+              src="/images/logo.png"
+              alt="Minha Glória Hotel Boutique"
+              className="h-14 w-auto object-contain"
+            />
           </Link>
 
           <nav className="hidden lg:flex items-center gap-6">
