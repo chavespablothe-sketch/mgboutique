@@ -7,6 +7,7 @@ import Index from "./pages/Index";
 import SobrePage from "./pages/SobrePage";
 import ChalesPage from "./pages/ChalesPage";
 import LazerPage from "./pages/LazerPage";
+import ExperienciasPage from "./pages/ExperienciasPage";
 import GastronomiaPage from "./pages/GastronomiaPage";
 import PacotesPage from "./pages/PacotesPage";
 import PacoteDetalhePage from "./pages/PacoteDetalhePage";
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/sobre" element={<SobrePage />} />
           <Route path="/chales" element={<ChalesPage />} />
           <Route path="/lazer" element={<LazerPage />} />
+          <Route path="/experiencias" element={<ExperienciasPage />} />
           <Route path="/gastronomia" element={<GastronomiaPage />} />
           <Route path="/pacotes" element={<PacotesPage />} />
           <Route path="/pacotes/:slug" element={<PacoteDetalhePage />} />
