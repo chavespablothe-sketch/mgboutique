@@ -54,9 +54,9 @@ const Header = () => {
               {/* Logo */}
               <Link to="/" className="absolute left-1/2 -translate-x-1/2 flex items-center">
                 <img
-                  src="/images/logo.png"
+                  src="/images/logo-light.png"
                   alt="Minha Glória Hotel Boutique"
-                  className="h-12 w-auto object-contain"
+                  className="h-14 w-auto object-contain"
                 />
               </Link>
 
