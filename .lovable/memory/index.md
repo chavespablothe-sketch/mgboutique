@@ -19,14 +19,19 @@ Updated: now
 - Email: contato@minhagloria.com.br
 - Address: Estrada Rosário km 4,5 - Banquete - Bom Jardim/RJ
 - Location: 18km do centro de Nova Friburgo
+- Instagram: @minhagloriahotel (https://www.instagram.com/minhagloriahotel)
+- Facebook: /minhagloria (https://www.facebook.com/minhagloria)
 
 ## Booking
 - Motor de reservas: Omnibees (URL base: https://book.omnibees.com)
 - TODO: Obter chain/hotel ID real do Omnibees
 - Todos os botões "Reservar" apontam para Omnibees, NÃO WhatsApp
+- TODO: Obter GTM ID real (atualmente GTM-XXXXXXX placeholder)
 
 ## Architecture
 - Multi-page: Home, Sobre, Chalés, Lazer, Gastronomia, Pacotes, Contato
 - Images from minhagloria.com.br original URLs
 - Footer: Google (4.9) + Booking (9.4) review badges
 - DateSearchBar: inclui adultos + crianças
+- BoutiqueSection: accordion style (inspired by Clara Resorts)
+- Gastronomy on home: kept short, links to full page
