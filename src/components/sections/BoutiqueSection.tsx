@@ -1,78 +1,109 @@
 import { motion } from "framer-motion";
-import { Crown, Users, Heart, Leaf } from "lucide-react";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const pillars = [
   {
-    icon: Crown,
+    id: "exclusividade",
     title: "Exclusividade real",
     desc: "Apenas 20 suítes. Sem filas, sem multidões. Cada hóspede é chamado pelo nome e recebe atenção genuína da nossa equipe.",
+    image: "https://www.minhagloria.com.br/images/carousel-new-2.webp",
   },
   {
-    icon: Users,
+    id: "familias",
     title: "Pensado para famílias",
     desc: "Crianças até 6 anos grátis, recreação monitorada, menu kids, berço e cadeirão — tudo incluso. Aqui, família é prioridade.",
+    image: "https://www.minhagloria.com.br/images/carousel-new-6.webp",
   },
   {
-    icon: Heart,
+    id: "experiencias",
     title: "Curadoria de experiências",
     desc: "Cada feriado tem uma programação única: oficinas, cavalgadas, fogueiras, jantares temáticos. Nada é genérico.",
+    image: "https://www.minhagloria.com.br/images/carousel-new-5.webp",
   },
   {
-    icon: Leaf,
+    id: "natureza",
     title: "Natureza preservada",
     desc: "Hectares de Mata Atlântica, trilhas, cachoeiras, lago natural e uma fazendinha com lhamas, alpacas e cavalos.",
+    image: "https://www.minhagloria.com.br/images/carousel-new-3.webp",
   },
 ];
 
 const BoutiqueSection = () => {
   return (
     <section className="py-24 lg:py-36 bg-primary relative overflow-hidden">
-      {/* Subtle pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-secondary blur-[120px]" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 rounded-full bg-secondary blur-[120px]" />
-      </div>
-
       <div className="container mx-auto px-4 relative z-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto text-center mb-20"
-        >
-          <span className="text-secondary font-body text-xs tracking-[0.5em] uppercase mb-6 block">
-            O que nos torna únicos
-          </span>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground font-semibold mb-8 leading-[1.05]">
-            Por que somos um <br className="hidden md:block" />
-            <span className="italic">hotel boutique</span>
-          </h2>
-          <p className="text-editorial text-primary-foreground/60 text-xl md:text-2xl leading-relaxed max-w-3xl mx-auto">
-            Boutique não é apenas um estilo — é uma filosofia. Significa que cada detalhe é intencional, 
-            cada momento é curado e cada hóspede é especial. Não somos um resort de massa. 
-            Somos um refúgio onde qualidade supera quantidade, sempre.
-          </p>
-        </motion.div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-20 items-start">
+          {/* Left — text + accordion */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+          >
+            <span className="text-secondary font-body text-xs tracking-[0.5em] uppercase mb-6 block">
+              O que nos torna únicos
+            </span>
+            <h2 className="font-display text-4xl md:text-5xl text-primary-foreground font-semibold mb-6 leading-[1.05]">
+              Por que somos um <br className="hidden md:block" />
+              <span className="italic">hotel boutique</span>
+            </h2>
+            <p className="text-primary-foreground/60 font-body text-base leading-relaxed mb-10 max-w-lg">
+              Boutique não é apenas um estilo — é uma filosofia. Cada detalhe é intencional, 
+              cada momento é curado e cada hóspede é especial.
+            </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {pillars.map((item, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="flex gap-6 p-8 rounded-2xl bg-primary-foreground/5 border border-primary-foreground/10 hover:border-secondary/30 transition-colors duration-500"
-            >
-              <div className="w-14 h-14 shrink-0 rounded-full bg-secondary/15 flex items-center justify-center">
-                <item.icon className="text-secondary" size={24} />
+            <Accordion type="single" collapsible defaultValue="exclusividade" className="w-full">
+              {pillars.map((item) => (
+                <AccordionItem key={item.id} value={item.id} className="border-primary-foreground/10">
+                  <AccordionTrigger className="text-primary-foreground font-display text-lg font-semibold hover:text-secondary hover:no-underline py-5 [&[data-state=open]]:text-secondary">
+                    {item.title}
+                  </AccordionTrigger>
+                  <AccordionContent className="text-primary-foreground/60 font-body text-base leading-relaxed pb-6">
+                    {item.desc}
+                    {/* Mobile image */}
+                    <div className="lg:hidden mt-4 rounded-xl overflow-hidden">
+                      <img src={item.image} alt={item.title} className="w-full h-48 object-cover" loading="lazy" />
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </motion.div>
+
+          {/* Right — images grid (like Clara Resorts) */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="hidden lg:grid grid-cols-2 gap-4 h-[600px]"
+          >
+            <div className="rounded-2xl overflow-hidden">
+              <img
+                src="https://www.minhagloria.com.br/images/carousel-new-2.webp"
+                alt="Vista aérea Minha Glória"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+            <div className="flex flex-col gap-4">
+              <div className="rounded-2xl overflow-hidden flex-1">
+                <img
+                  src="https://www.minhagloria.com.br/images/carousel-new-3.webp"
+                  alt="Cavalos na fazenda"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
               </div>
-              <div>
-                <h3 className="font-display text-xl font-semibold text-primary-foreground mb-3">{item.title}</h3>
-                <p className="text-primary-foreground/60 font-body text-base leading-relaxed">{item.desc}</p>
+              <div className="rounded-2xl overflow-hidden flex-1">
+                <img
+                  src="https://www.minhagloria.com.br/images/carousel-new-5.webp"
+                  alt="Famílias no lago"
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                />
               </div>
-            </motion.div>
-          ))}
+            </div>
+          </motion.div>
         </div>
 
         {/* Stats */}
