@@ -23,39 +23,38 @@ const AccommodationsSection = () => {
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
 
   return (
-    <section className="py-24 lg:py-40 bg-primary overflow-hidden">
+    <section className="py-20 lg:py-32 bg-primary overflow-hidden">
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end mb-14">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
           >
-            <div className="divider-ornament text-secondary font-body text-xs tracking-[0.4em] uppercase mb-8 justify-start" style={{ '--tw-text-opacity': 1 } as any}>
-              <span className="pr-4">Acomodações</span>
-            </div>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground font-semibold mb-8 leading-[1.1]">
-              Chalés que contam <br className="hidden md:block" />
-              <span className="italic">uma história</span>
+            <span className="text-secondary/70 font-body text-[10px] tracking-[0.5em] uppercase mb-4 block">
+              Acomodações
+            </span>
+            <h2 className="font-display text-3xl md:text-4xl lg:text-5xl text-primary-foreground font-semibold leading-[1.1]">
+              20 suítes exclusivas
+              <br className="hidden md:block" />
+              <span className="italic text-secondary/80"> em meio à mata</span>
             </h2>
           </motion.div>
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            className="flex items-end justify-between gap-6"
           >
-            <p className="text-editorial text-primary-foreground/70 text-lg md:text-xl leading-relaxed mb-8">
-              Cada um dos nossos 20 chalés foi pensado como um refúgio individual — onde madeira, 
-              pedra e vidro se encontram para criar espaços que respiram natureza. De manhã, a luz 
-              filtra pelas árvores e entra pela janela. À noite, a lareira aquece as conversas 
-              e o silêncio da serra embala o sono. Aqui, seu chalé não é apenas onde você dorme. 
-              É onde você vive.
+            <p className="text-primary-foreground/60 font-body text-sm md:text-base leading-relaxed max-w-sm">
+              Madeira, pedra e vidro — chalés que respiram natureza 
+              com o conforto que sua família merece.
             </p>
-            <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body uppercase tracking-[0.15em] gap-3 text-sm">
+            <Button asChild size="sm" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body uppercase tracking-[0.15em] gap-2 text-[10px] rounded-full shrink-0">
               <Link to="/chales">
-                Conheça nossos chalés <ArrowRight size={16} />
+                Ver chalés <ArrowRight size={13} />
               </Link>
             </Button>
           </motion.div>
@@ -63,25 +62,25 @@ const AccommodationsSection = () => {
 
         <div className="relative">
           <div ref={emblaRef} className="overflow-hidden">
-            <div className="flex gap-5">
+            <div className="flex gap-4">
               {chaletImages.map((img, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.05 }}
-                  className="flex-none w-[80%] md:w-[40%] lg:w-[30%]"
+                  transition={{ delay: i * 0.04 }}
+                  className="flex-none w-[75%] md:w-[38%] lg:w-[28%]"
                 >
-                  <div className="overflow-hidden rounded-lg relative group">
+                  <div className="overflow-hidden rounded-lg relative group cursor-pointer">
                     <img
                       src={img.src}
                       alt={img.label}
-                      className="w-full h-72 md:h-80 object-cover group-hover:scale-105 transition-transform duration-1000"
+                      className="w-full h-64 md:h-72 lg:h-80 object-cover group-hover:scale-105 transition-transform duration-700"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/70 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                    <span className="absolute bottom-4 left-4 text-primary-foreground font-body text-sm tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    <span className="absolute bottom-3 left-4 text-primary-foreground font-body text-xs tracking-wider uppercase opacity-0 group-hover:opacity-100 transition-opacity duration-500">
                       {img.label}
                     </span>
                   </div>
@@ -89,11 +88,11 @@ const AccommodationsSection = () => {
               ))}
             </div>
           </div>
-          <button onClick={scrollPrev} className="absolute -left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-secondary text-secondary-foreground hidden md:flex items-center justify-center hover:bg-secondary/80 transition-colors shadow-lg">
-            <ChevronLeft size={22} />
+          <button onClick={scrollPrev} className="absolute -left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary/90 text-secondary-foreground hidden md:flex items-center justify-center hover:bg-secondary transition-colors shadow-lg">
+            <ChevronLeft size={18} />
           </button>
-          <button onClick={scrollNext} className="absolute -right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-secondary text-secondary-foreground hidden md:flex items-center justify-center hover:bg-secondary/80 transition-colors shadow-lg">
-            <ChevronRight size={22} />
+          <button onClick={scrollNext} className="absolute -right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary/90 text-secondary-foreground hidden md:flex items-center justify-center hover:bg-secondary transition-colors shadow-lg">
+            <ChevronRight size={18} />
           </button>
         </div>
       </div>

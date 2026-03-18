@@ -25,13 +25,13 @@ const Header = () => {
       <header className="fixed top-0 left-0 right-0 z-50">
         <div className="bg-primary/95 backdrop-blur-md border-b border-primary-foreground/5">
           <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between h-20">
+            <div className="flex items-center justify-between h-16 lg:h-20">
               {/* Mobile menu toggle */}
               <button
                 className="lg:hidden text-primary-foreground"
                 onClick={() => setIsOpen(!isOpen)}
               >
-                {isOpen ? <X size={24} /> : <Menu size={24} />}
+                {isOpen ? <X size={22} /> : <Menu size={22} />}
               </button>
 
               {/* Left nav */}
@@ -40,7 +40,7 @@ const Header = () => {
                   <Link
                     key={item.href}
                     to={item.href}
-                    className={`text-[11px] tracking-[0.2em] uppercase font-body transition-colors ${
+                    className={`text-[10px] tracking-[0.2em] uppercase font-body transition-colors ${
                       location.pathname === item.href
                         ? "text-secondary font-bold"
                         : "text-primary-foreground/70 hover:text-secondary"
@@ -51,12 +51,12 @@ const Header = () => {
                 ))}
               </nav>
 
-              {/* Logo */}
+              {/* Logo — constrained to not overlap nav */}
               <Link to="/" className="absolute left-1/2 -translate-x-1/2 flex items-center">
                 <img
                   src="/images/logo-light.png"
                   alt="Minha Glória Hotel Boutique"
-                  className="h-14 w-auto object-contain"
+                  className="h-9 lg:h-11 w-auto object-contain"
                 />
               </Link>
 
@@ -66,7 +66,7 @@ const Header = () => {
                   <Link
                     key={item.href}
                     to={item.href}
-                    className={`text-[11px] tracking-[0.2em] uppercase font-body transition-colors ${
+                    className={`text-[10px] tracking-[0.2em] uppercase font-body transition-colors ${
                       location.pathname === item.href
                         ? "text-secondary font-bold"
                         : "text-primary-foreground/70 hover:text-secondary"
@@ -81,17 +81,17 @@ const Header = () => {
               <div className="hidden lg:flex items-center gap-3">
                 <button
                   onClick={() => setShowSearch(!showSearch)}
-                  className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors ${
+                  className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
                     showSearch
                       ? "bg-secondary/20 text-secondary"
                       : "bg-primary-foreground/10 text-primary-foreground/70 hover:text-secondary hover:bg-primary-foreground/15"
                   }`}
                 >
-                  <Search size={16} />
+                  <Search size={14} />
                 </button>
-                <Button asChild size="sm" className="bg-cta hover:bg-cta/90 text-cta-foreground font-body text-[11px] uppercase tracking-[0.15em] gap-2 px-5 py-2.5 rounded-full shadow-lg shadow-cta/20">
+                <Button asChild size="sm" className="bg-cta hover:bg-cta/90 text-cta-foreground font-body text-[10px] uppercase tracking-[0.15em] gap-2 px-4 py-2 rounded-full shadow-lg shadow-cta/20">
                   <a href={OMNIBEES_URL} target="_blank" rel="noopener noreferrer">
-                    <CalendarDays size={14} />
+                    <CalendarDays size={13} />
                     Reservar
                   </a>
                 </Button>
@@ -99,7 +99,7 @@ const Header = () => {
 
               {/* Mobile phone */}
               <a href="tel:+5522997792023" className="lg:hidden text-secondary">
-                <Phone size={20} />
+                <Phone size={18} />
               </a>
             </div>
           </div>
