@@ -14,14 +14,14 @@ const GastronomySection = () => {
           className="max-w-2xl mx-auto text-center"
         >
           <span className="text-secondary font-body text-xs tracking-[0.4em] uppercase mb-4 block">
-            Pensão completa inclusa
+            Gastronomia
           </span>
           <h2 className="font-display text-3xl md:text-4xl text-primary-foreground font-semibold mb-5 leading-[1.1]">
-            Café da manhã, almoço e jantar
+            Pensão completa nos finais de semana
           </h2>
           <p className="text-primary-foreground/70 font-body text-base leading-relaxed mb-8">
-            Todas as refeições estão inclusas nos pacotes — com ingredientes frescos, 
-            receitas regionais e menu kids. Sem preocupações.
+            Café da manhã, almoço e jantar inclusos nos pacotes de fim de semana e feriados — 
+            com ingredientes frescos, receitas regionais e menu kids.
           </p>
           <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body uppercase tracking-[0.15em] gap-3 text-sm">
             <Link to="/gastronomia">

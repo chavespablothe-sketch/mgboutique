@@ -7,7 +7,7 @@ import DateSearchBar from "@/components/DateSearchBar";
 const navItems = [
   { label: "O Hotel", href: "/sobre" },
   { label: "Chalés", href: "/chales" },
-  { label: "Lazer", href: "/lazer" },
+  { label: "Experiências", href: "/experiencias" },
   { label: "Gastronomia", href: "/gastronomia" },
   { label: "Pacotes", href: "/pacotes" },
   { label: "Contato", href: "/contato" },
@@ -35,12 +35,12 @@ const Header = () => {
               </button>
 
               {/* Left nav */}
-              <nav className="hidden lg:flex items-center gap-6">
+              <nav className="hidden lg:flex items-center gap-5 flex-1">
                 {navItems.slice(0, 3).map((item) => (
                   <Link
                     key={item.href}
                     to={item.href}
-                    className={`text-[10px] tracking-[0.2em] uppercase font-body transition-colors ${
+                    className={`text-[10px] tracking-[0.2em] uppercase font-body transition-colors whitespace-nowrap ${
                       location.pathname === item.href
                         ? "text-secondary font-bold"
                         : "text-primary-foreground/70 hover:text-secondary"
@@ -51,22 +51,22 @@ const Header = () => {
                 ))}
               </nav>
 
-              {/* Logo — constrained to not overlap nav */}
-              <Link to="/" className="absolute left-1/2 -translate-x-1/2 flex items-center">
+              {/* Logo — centered, fixed width so it doesn't push nav */}
+              <Link to="/" className="flex items-center justify-center lg:w-32 shrink-0">
                 <img
                   src="/images/logo-light.png"
                   alt="Minha Glória Hotel Boutique"
-                  className="h-9 lg:h-11 w-auto object-contain"
+                  className="h-8 lg:h-10 w-auto object-contain"
                 />
               </Link>
 
               {/* Right nav */}
-              <nav className="hidden lg:flex items-center gap-6">
+              <nav className="hidden lg:flex items-center gap-5 flex-1 justify-end">
                 {navItems.slice(3).map((item) => (
                   <Link
                     key={item.href}
                     to={item.href}
-                    className={`text-[10px] tracking-[0.2em] uppercase font-body transition-colors ${
+                    className={`text-[10px] tracking-[0.2em] uppercase font-body transition-colors whitespace-nowrap ${
                       location.pathname === item.href
                         ? "text-secondary font-bold"
                         : "text-primary-foreground/70 hover:text-secondary"
@@ -78,7 +78,7 @@ const Header = () => {
               </nav>
 
               {/* CTA buttons */}
-              <div className="hidden lg:flex items-center gap-3">
+              <div className="hidden lg:flex items-center gap-3 ml-4">
                 <button
                   onClick={() => setShowSearch(!showSearch)}
                   className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
@@ -142,9 +142,6 @@ const Header = () => {
                   </a>
                 </Button>
               </div>
-              <a href="tel:+5522997792023" className="flex items-center gap-2 text-secondary/80 text-sm font-body py-3 px-4 mt-2">
-                <Phone size={14} /> (22) 99779-2023
-              </a>
             </nav>
           </div>
         )}

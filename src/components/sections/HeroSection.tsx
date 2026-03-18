@@ -81,7 +81,7 @@ const HeroSection = () => {
         `}</style>
       </section>
 
-      {/* Video Section — right after hero */}
+      {/* Video Section */}
       <section className="bg-primary">
         <div className="container mx-auto px-4 lg:px-8 py-12 lg:py-20">
           <motion.div
@@ -104,9 +104,6 @@ const HeroSection = () => {
                 Seu navegador não suporta vídeos HTML5.
               </video>
             </div>
-            <p className="text-center text-primary-foreground/50 font-body text-xs mt-6 tracking-widest uppercase">
-              Minha Glória Hotel Boutique · Bom Jardim, RJ
-            </p>
           </motion.div>
         </div>
       </section>
