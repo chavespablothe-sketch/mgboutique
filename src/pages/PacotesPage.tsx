@@ -234,11 +234,12 @@ const PacotesPage = () => {
                 Não encontrou a data ideal?
               </p>
               <p className="text-muted-foreground font-body text-sm mb-4">
-                Fale com nossa equipe e monte o pacote perfeito para sua família.
+                Monte o pacote perfeito para sua família — reserve diretamente pelo site.
               </p>
               <Button asChild size="sm" className="bg-cta hover:bg-cta/90 text-cta-foreground font-body text-xs uppercase tracking-wider gap-2 rounded-full">
-                <a href="https://wa.me/5522997792023?text=Olá! Gostaria de montar um pacote personalizado." target="_blank" rel="noopener noreferrer">
-                  Falar no WhatsApp
+                <a href="https://book.omnibees.com/hotel/19498" target="_blank" rel="noopener noreferrer">
+                  <CalendarDays size={14} />
+                  Ver disponibilidade
                 </a>
               </Button>
             </motion.div>
