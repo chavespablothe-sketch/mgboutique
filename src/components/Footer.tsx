@@ -86,6 +86,23 @@ const Footer = () => {
                 <p className="text-primary-foreground/50 text-xs font-body">Baseado em avaliações de hóspedes</p>
               </div>
 
+              {/* TripAdvisor Badge */}
+              <div className="bg-primary-foreground/5 rounded-lg p-4 border border-primary-foreground/10">
+                <div className="flex items-center gap-2 mb-2">
+                  <div className="w-5 h-5 rounded-full bg-[#34E0A1] flex items-center justify-center">
+                    <span className="text-white text-[10px] font-bold">T</span>
+                  </div>
+                  <span className="text-primary-foreground text-sm font-body font-semibold">TripAdvisor</span>
+                </div>
+                <div className="flex items-center gap-1 mb-1">
+                  {Array.from({ length: 5 }).map((_, i) => (
+                    <div key={i} className="w-3 h-3 rounded-full bg-[#34E0A1]" />
+                  ))}
+                  <span className="text-primary-foreground text-sm font-body ml-1 font-semibold">5.0</span>
+                </div>
+                <p className="text-primary-foreground/50 text-xs font-body">Excelente no TripAdvisor</p>
+              </div>
+
               {/* Booking.com Badge */}
               <div className="bg-primary-foreground/5 rounded-lg p-4 border border-primary-foreground/10">
                 <div className="flex items-center gap-2 mb-2">
