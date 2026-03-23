@@ -6,14 +6,17 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 
 const chaletImages = [
-  { src: "https://www.minhagloria.com.br/lovable-uploads/d853d202-1c9d-4cd8-8f3b-d89a257c4ee7.png", label: "Chalé Tradicional" },
-  { src: "https://www.minhagloria.com.br/lovable-uploads/2e4a3772-1627-445c-ad0a-bc144dd8a4d5.png", label: "Interior aconchegante" },
+  { src: "/images/chale-delano.jpg", label: "Chalé com banheira" },
+  { src: "/images/chale-marianna.jpg", label: "Chalé aconchegante" },
   { src: "https://www.minhagloria.com.br/lovable-uploads/042a304b-19fc-4d61-a524-f78eac0368a9.png", label: "Chalé Superior" },
   { src: "https://www.minhagloria.com.br/lovable-uploads/a6a3395d-5965-482b-b1a6-543cb7840e0f.png", label: "Vista panorâmica" },
   { src: "https://www.minhagloria.com.br/lovable-uploads/44683466-44b0-4f6e-896a-51a9ae1249fc.png", label: "Chalé Master" },
   { src: "https://www.minhagloria.com.br/lovable-uploads/85379e6d-f1dc-433a-bc75-77c926ac6d9b.png", label: "Detalhes premium" },
   { src: "https://www.minhagloria.com.br/lovable-uploads/28329729-31a6-47f7-b501-4427f2f9c84a.png", label: "Chalé Família" },
-  { src: "https://www.minhagloria.com.br/lovable-uploads/beaeb973-0a83-4d4d-9bc1-a47ccc40cd59.png", label: "Espaço integrado" },
+  { src: "/images/igreja.jpg", label: "Capela" },
+  { src: "/images/barbara-iran.jpg", label: "Aventura em família" },
+  { src: "/images/recreacao-coelho.jpg", label: "Fazendinha" },
+  { src: "/images/recreacao-pintura.jpg", label: "Oficinas criativas" },
 ];
 
 const AccommodationsSection = () => {
@@ -49,7 +52,7 @@ const AccommodationsSection = () => {
             className="flex items-end justify-between gap-6"
           >
             <p className="text-primary-foreground/60 font-body text-sm md:text-base leading-relaxed max-w-sm">
-              Madeira, pedra e vidro — chalés que respiram natureza 
+              Madeira, pedra e vidro — chalés que respiram natureza
               com o conforto que sua família merece.
             </p>
             <Button asChild size="sm" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body uppercase tracking-[0.15em] gap-2 text-[10px] rounded-full shrink-0">
@@ -76,7 +79,7 @@ const AccommodationsSection = () => {
                     <img
                       src={img.src}
                       alt={img.label}
-                      className="w-full h-64 md:h-72 lg:h-80 object-cover group-hover:scale-105 transition-transform duration-700"
+                      className="w-full h-64 md:h-72 lg:h-80 object-cover group-hover:scale-110 group-hover:h-[22rem] transition-all duration-700"
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

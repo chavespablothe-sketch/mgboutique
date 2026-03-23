@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Calendar, ArrowRight, CalendarDays } from "lucide-react";
+import { ArrowRight, Percent } from "lucide-react";
 import { Link } from "react-router-dom";
 import packages from "@/data/packages";
 
@@ -10,6 +9,25 @@ const OffersSection = () => {
   return (
     <section className="py-24 lg:py-36 bg-background">
       <div className="container mx-auto px-4">
+        {/* Consumer Banner */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto mb-16 bg-cta rounded-2xl p-8 md:p-10 text-center"
+        >
+          <div className="inline-flex items-center gap-2 bg-cta-foreground/10 px-4 py-1.5 rounded-full mb-4">
+            <Percent size={14} className="text-cta-foreground" />
+            <span className="text-cta-foreground font-body text-xs font-bold uppercase tracking-wider">Mês do Consumidor</span>
+          </div>
+          <h3 className="font-display text-2xl md:text-3xl text-cta-foreground font-bold mb-2">
+            Até 30% OFF em pacotes selecionados
+          </h3>
+          <p className="text-cta-foreground/80 font-body text-sm">
+            Os valores promocionais já estão aplicados nos pacotes abaixo. Vagas limitadas.
+          </p>
+        </motion.div>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -27,57 +45,49 @@ const OffersSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+        {/* Clean card layout matching TarifasPage */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
           {featured.map((pkg, i) => (
             <motion.div
               key={pkg.slug}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="group bg-card rounded-2xl overflow-hidden border border-border hover:shadow-xl transition-all duration-500 flex flex-col"
             >
-              <div className="relative overflow-hidden h-56">
-                <img
-                  src={pkg.image}
-                  alt={pkg.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent" />
-              </div>
-              <div className="p-6 flex flex-col flex-1">
-                <h3 className="font-display text-xl font-semibold text-foreground mb-2">{pkg.shortTitle}</h3>
-                <div className="flex items-center gap-2 text-muted-foreground text-sm font-body mb-4">
-                  <Calendar size={14} className="text-secondary" />
-                  {pkg.period} · {pkg.nights}
+              <Link to={`/tarifas/${pkg.slug}`} className="group block">
+                <div className="relative overflow-hidden rounded-xl aspect-[4/3] mb-4">
+                  <img
+                    src={pkg.image}
+                    alt={pkg.shortTitle}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    loading="lazy"
+                  />
                 </div>
-                <p className="text-muted-foreground font-body text-sm leading-relaxed mb-6 flex-1 line-clamp-3">
-                  {pkg.description}
-                </p>
-
-                {/* Price */}
-                <div className="border-t border-border pt-4 mb-5">
-                  <p className="text-xs text-muted-foreground font-body uppercase tracking-wider">a partir de</p>
-                  <p className="text-2xl font-display font-semibold text-foreground">{pkg.price}</p>
-                  <p className="text-secondary text-sm font-body font-semibold">{pkg.priceNote}</p>
+                <div className="space-y-2">
+                  <p className="text-secondary font-body text-sm">{pkg.period}</p>
+                  <p className="text-muted-foreground font-body text-sm leading-relaxed line-clamp-2">
+                    {pkg.description.length > 100 ? pkg.description.slice(0, 100) + "…" : pkg.description}
+                  </p>
+                  <p className="font-display text-xl font-semibold text-foreground">
+                    A partir de {pkg.price}
+                  </p>
+                  <span className="inline-flex items-center gap-1.5 text-secondary font-body text-sm font-semibold group-hover:gap-2.5 transition-all border border-secondary/30 rounded-full px-5 py-2 mt-2 hover:bg-secondary/5">
+                    Reservar agora <ArrowRight size={14} />
+                  </span>
                 </div>
-
-              <Button asChild size="lg" className="w-full bg-cta hover:bg-cta/90 text-cta-foreground font-body text-sm uppercase tracking-wider gap-2 rounded-full shadow-lg shadow-cta/20">
-                  <Link to={`/tarifas/${pkg.slug}`}>
-                    <CalendarDays size={14} />
-                    Ver pacote <ArrowRight size={14} />
-                  </Link>
-                </Button>
-              </div>
+              </Link>
             </motion.div>
           ))}
         </div>
 
         <div className="text-center">
-          <Button asChild variant="outline" size="lg" className="border-foreground/20 text-foreground hover:bg-muted font-body uppercase tracking-[0.15em] px-8 rounded-full">
-            <Link to="/pacotes">Ver todos os pacotes de 2026</Link>
-          </Button>
+          <Link
+            to="/tarifas"
+            className="inline-flex items-center gap-2 border border-foreground/20 text-foreground hover:bg-muted font-body uppercase tracking-[0.15em] px-8 py-3 rounded-full text-sm transition-colors"
+          >
+            Ver todos os pacotes de 2026
+          </Link>
         </div>
       </div>
     </section>

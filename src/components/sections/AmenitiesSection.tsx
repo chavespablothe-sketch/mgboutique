@@ -24,7 +24,7 @@ const AmenitiesSection = () => {
     <section className="relative overflow-hidden">
       <div className="absolute inset-0">
         <img
-          src="https://www.minhagloria.com.br/lovable-uploads/f5b7fb42-f922-4170-a409-e216226108dd.png"
+          src="/images/fundo.jpg"
           alt=""
           className="w-full h-full object-cover"
           loading="lazy"

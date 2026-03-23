@@ -11,8 +11,8 @@ const pillars = [
   {
     id: "familias",
     title: "Pensado para famílias",
-    desc: "Crianças até 6 anos grátis, recreação monitorada, menu kids, berço e cadeirão — tudo incluso. Aqui, família é prioridade.",
-    image: "https://www.minhagloria.com.br/images/carousel-new-6.webp",
+    desc: "Recreação monitorada com atividades lúdicas para todas as idades — oficinas de plantio, pintura ao ar livre e muito contato com a natureza. 1 criança até 12 anos se hospeda gratuitamente nos fins de semana. Menu kids, berço e cadeirão inclusos.",
+    image: "/images/recreacao-plantio.jpg",
   },
   {
     id: "experiencias",
@@ -47,7 +47,7 @@ const BoutiqueSection = () => {
               <span className="italic">hotel boutique</span>
             </h2>
             <p className="text-primary-foreground/60 font-body text-base leading-relaxed mb-10 max-w-lg">
-              Boutique não é apenas um estilo — é uma filosofia. Cada detalhe é intencional, 
+              Boutique não é apenas um estilo — é uma filosofia. Cada detalhe é intencional,
               cada momento é curado e cada hóspede é especial.
             </p>
 
@@ -59,7 +59,6 @@ const BoutiqueSection = () => {
                   </AccordionTrigger>
                   <AccordionContent className="text-primary-foreground/60 font-body text-base leading-relaxed pb-6">
                     {item.desc}
-                    {/* Mobile image */}
                     <div className="lg:hidden mt-4 rounded-xl overflow-hidden">
                       <img src={item.image} alt={item.title} className="w-full h-48 object-cover" loading="lazy" />
                     </div>
@@ -69,7 +68,7 @@ const BoutiqueSection = () => {
             </Accordion>
           </motion.div>
 
-          {/* Right — images grid (like Clara Resorts) */}
+          {/* Right — images grid */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -88,8 +87,8 @@ const BoutiqueSection = () => {
             <div className="flex flex-col gap-4">
               <div className="rounded-2xl overflow-hidden flex-1">
                 <img
-                  src="https://www.minhagloria.com.br/images/carousel-new-3.webp"
-                  alt="Cavalos na fazenda"
+                  src="/images/recreacao-plantio.jpg"
+                  alt="Recreação com crianças"
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
@@ -116,7 +115,7 @@ const BoutiqueSection = () => {
           {[
             { value: "20", label: "suítes exclusivas" },
             { value: "4.7", label: "nota no Google" },
-            { value: "9.3", label: "nota no Booking" },
+            { value: "9.3", label: "Fantástico · Booking" },
             { value: "10+", label: "anos de história" },
           ].map((stat, i) => (
             <div key={i} className="text-center">

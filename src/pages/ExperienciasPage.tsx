@@ -10,14 +10,12 @@ import { Link } from "react-router-dom";
 import quadriJeepImg from "@/assets/quadri-jeep.png";
 
 const experiences = [
-  { icon: Bike, title: "Passeio a Cavalo e Charrete", description: "Cavalgadas guiadas pelas trilhas da propriedade, com paradas em mirantes panorâmicos.", image: "https://www.minhagloria.com.br/images/carousel-new-3.webp", audience: "Famílias" },
-  { icon: Mountain, title: "Quadriciclo & Jeep", description: "Adrenalina com paisagem de cinema pelas trilhas da fazenda. Experiências de 30 ou 60 minutos de quadriciclo ou jeep.", image: quadriJeepImg, audience: "Aventura" },
-  { icon: TreePine, title: "Trilhas na Mata Atlântica", description: "Trilhas guiadas com cachoeiras escondidas, mirantes e observação de aves.", image: "https://www.minhagloria.com.br/lovable-uploads/b7fedef6-5188-49de-a6f5-ac36f6e262f8.png", audience: "Todos" },
-  { icon: Waves, title: "Piscina Aquecida", description: "Piscina climatizada com vista para as montanhas e espaço infantil de 60cm.", image: "https://www.minhagloria.com.br/lovable-uploads/f5b7fb42-f922-4170-a409-e216226108dd.png", audience: "Todos" },
-  { icon: Gamepad2, title: "Sala de Jogos", description: "Sinuca, ping-pong, jogos de cartas e TV. Entretenimento para todas as gerações.", image: "https://www.minhagloria.com.br/lovable-uploads/0114d434-8ce2-46f6-8993-fbc616165aa6.png", audience: "Todos" },
+  { title: "Passeio a Cavalo e Charrete", description: "Cavalgadas guiadas pelas trilhas da propriedade, com paradas em mirantes panorâmicos.", image: "/images/cavalo.jpg", audience: "Famílias" },
+  { title: "Quadriciclo & Jeep", description: "Adrenalina com paisagem de cinema pelas trilhas da fazenda. Experiências de 30 ou 60 minutos de quadriciclo ou jeep.", image: quadriJeepImg, audience: "Aventura" },
+  { title: "Trilhas na Mata Atlântica", description: "Trilhas guiadas com cachoeiras escondidas, mirantes e observação de aves.", image: "https://www.minhagloria.com.br/lovable-uploads/b7fedef6-5188-49de-a6f5-ac36f6e262f8.png", audience: "Todos" },
+  { title: "Piscina Aquecida", description: "Piscina climatizada com vista para as montanhas e espaço infantil de 60cm.", image: "https://www.minhagloria.com.br/lovable-uploads/f5b7fb42-f922-4170-a409-e216226108dd.png", audience: "Todos" },
+  { title: "Sala de Jogos", description: "Sinuca, ping-pong, jogos de cartas e TV. Entretenimento para todas as gerações.", image: "https://www.minhagloria.com.br/lovable-uploads/0114d434-8ce2-46f6-8993-fbc616165aa6.png", audience: "Todos" },
 ];
-
-// ... keep existing code for animals, animalImages, kidsFeatures arrays (lines 20-66)
 
 const animals = [
   { name: "Arara Canindé", category: "aves" },
@@ -59,12 +57,10 @@ const animalImages = [
   { src: "https://www.minhagloria.com.br/lovable-uploads/f393e2d3-cdc2-4668-8888-a310d96bbbc9.png", alt: "Jabuti" },
 ];
 
-const kidsFeatures = [
-  { icon: Dog, title: "Fazendinha", description: "Alimentar os animais pela manhã é o momento favorito das crianças. Lhamas, cavalos, coelhos e muito mais." },
-  { icon: Palette, title: "Oficinas Criativas", description: "Artes com materiais naturais, pintura em tela e colagens com folhas da Mata Atlântica." },
-  { icon: Footprints, title: "Trilha Kids", description: "Trilha adaptada com atividades educativas: identificação de plantas, sons da floresta e pegadas de animais." },
-  { icon: Music, title: "Fogueira & Histórias", description: "Contação de histórias ao redor da fogueira, músicas com violão e brincadeiras noturnas sob as estrelas." },
-  { icon: Heart, title: "Baby Care", description: "Fraldário completo, berço no chalé, cadeirão no restaurante e cardápio especial para bebês." },
+const recreationImages = [
+  { src: "/images/recreacao-coelho.jpg", alt: "Crianças com coelho na fazendinha" },
+  { src: "/images/recreacao-plantio.jpg", alt: "Oficina de plantio com crianças" },
+  { src: "/images/recreacao-pintura.jpg", alt: "Oficina de pintura ao ar livre" },
 ];
 
 const services = [
@@ -126,7 +122,7 @@ const ExperienciasPage = () => {
       />
       <Header />
       <div className="pt-20">
-        {/* Hero with zoom */}
+        {/* Hero */}
         <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-zoom-bg"
@@ -147,7 +143,7 @@ const ExperienciasPage = () => {
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
         </section>
 
-        {/* Activities — immersive horizontal scroll cards */}
+        {/* Activities — modern masonry-style layout */}
         <section className="py-24 lg:py-32 bg-background overflow-hidden">
           <div className="container mx-auto px-4">
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-3xl mx-auto text-center mb-16">
@@ -157,29 +153,40 @@ const ExperienciasPage = () => {
               </h2>
             </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 max-w-6xl mx-auto">
-              {experiences.map((exp, i) => (
+            {/* Bento grid layout */}
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 max-w-6xl mx-auto">
+              {/* Large card - Cavalo */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="col-span-2 row-span-2 group relative overflow-hidden rounded-2xl cursor-pointer"
+              >
+                <div className="aspect-square">
+                  <img src={experiences[0].image} alt={experiences[0].title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
+                    <h3 className="font-display text-2xl lg:text-3xl font-semibold text-primary-foreground mb-2 hero-text-shadow">{experiences[0].title}</h3>
+                    <p className="text-primary-foreground/70 font-body text-sm leading-relaxed max-w-xs">{experiences[0].description}</p>
+                  </div>
+                </div>
+              </motion.div>
+              {/* Smaller cards */}
+              {experiences.slice(1).map((exp, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.08, duration: 0.6 }}
-                  className="group relative overflow-hidden"
+                  transition={{ delay: (i + 1) * 0.08 }}
+                  className="group relative overflow-hidden rounded-2xl cursor-pointer"
                 >
                   <div className="aspect-[4/5]">
-                    <img
-                      src={exp.image}
-                      alt={exp.title}
-                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
-                    <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
-                      <h3 className="font-display text-2xl font-semibold text-primary-foreground mb-2 hero-text-shadow">{exp.title}</h3>
-                      <p className="text-primary-foreground/70 font-body text-sm leading-relaxed line-clamp-2 group-hover:line-clamp-none transition-all duration-500">
-                        {exp.description}
-                      </p>
+                    <img src={exp.image} alt={exp.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/30 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-5">
+                      <h3 className="font-display text-lg lg:text-xl font-semibold text-primary-foreground mb-1 hero-text-shadow">{exp.title}</h3>
+                      <p className="text-primary-foreground/60 font-body text-xs leading-relaxed line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">{exp.description}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -188,15 +195,10 @@ const ExperienciasPage = () => {
           </div>
         </section>
 
-        {/* Animals Section — vivid colors */}
+        {/* Animals Section */}
         <section className="py-24 lg:py-32 bg-gradient-to-b from-[hsl(120,30%,18%)] to-[hsl(160,25%,20%)] overflow-hidden">
           <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="max-w-3xl mx-auto text-center mb-16"
-            >
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-3xl mx-auto text-center mb-16">
               <div className="w-20 h-20 mx-auto mb-8 rounded-full bg-[hsl(37,60%,55%)]/20 flex items-center justify-center border border-[hsl(37,60%,55%)]/30">
                 <Bird className="text-[hsl(37,60%,55%)]" size={36} />
               </div>
@@ -204,41 +206,25 @@ const ExperienciasPage = () => {
                 Um mundo de <span className="italic text-[hsl(37,60%,55%)]">encanto</span> animal
               </h2>
               <p className="text-editorial text-primary-foreground/80 text-xl leading-relaxed max-w-2xl mx-auto">
-                Encante-se e viva momentos especiais com mais de 25 espécies de animais. 
-                Araras, tucanos, lhamas, avestruzes, pavões, cavalos e muito mais — 
+                Encante-se e viva momentos especiais com mais de 25 espécies de animais.
+                Araras, tucanos, lhamas, avestruzes, pavões, cavalos e muito mais —
                 experiências únicas para todas as idades.
               </p>
             </motion.div>
 
-            {/* Animal Photos Grid */}
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto mb-16">
               {animalImages.map((img, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
+                <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
                   className={`overflow-hidden rounded-2xl ring-2 ring-[hsl(37,60%,55%)]/20 photo-lift ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
                 >
-                  <img
-                    src={img.src}
-                    alt={img.alt}
-                    className={`w-full object-cover hover:scale-110 transition-transform duration-1000 ${i === 0 ? 'h-[250px] md:h-full' : 'h-[200px] md:h-[250px]'}`}
-                    loading="lazy"
-                  />
+                  <img src={img.src} alt={img.alt} className={`w-full object-cover hover:scale-110 transition-transform duration-1000 ${i === 0 ? 'h-[250px] md:h-full' : 'h-[200px] md:h-[250px]'}`} loading="lazy" />
                 </motion.div>
               ))}
             </div>
 
-            {/* Animal Lists — vivid cards */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="bg-primary-foreground/5 backdrop-blur-sm p-8 rounded-2xl border border-[hsl(37,60%,55%)]/20"
-              >
+              <motion.div initial={{ opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
+                className="bg-primary-foreground/5 backdrop-blur-sm p-8 rounded-2xl border border-[hsl(37,60%,55%)]/20">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-10 h-10 rounded-full bg-[hsl(0,70%,50%)]/15 flex items-center justify-center">
                     <Bird className="text-[hsl(0,70%,60%)]" size={20} />
@@ -247,19 +233,13 @@ const ExperienciasPage = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   {aves.map((animal, i) => (
-                    <span key={i} className="text-primary-foreground/70 font-body text-sm py-1.5 border-b border-primary-foreground/10 last:border-0">
-                      {animal.name}
-                    </span>
+                    <span key={i} className="text-primary-foreground/70 font-body text-sm py-1.5 border-b border-primary-foreground/10 last:border-0">{animal.name}</span>
                   ))}
                 </div>
               </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="bg-primary-foreground/5 backdrop-blur-sm p-8 rounded-2xl border border-[hsl(37,60%,55%)]/20"
-              >
+              <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}
+                className="bg-primary-foreground/5 backdrop-blur-sm p-8 rounded-2xl border border-[hsl(37,60%,55%)]/20">
                 <div className="flex items-center gap-3 mb-6">
                   <div className="w-10 h-10 rounded-full bg-[hsl(37,60%,55%)]/15 flex items-center justify-center">
                     <Dog className="text-[hsl(37,60%,55%)]" size={20} />
@@ -268,20 +248,14 @@ const ExperienciasPage = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-2">
                   {fazenda.map((animal, i) => (
-                    <span key={i} className="text-primary-foreground/70 font-body text-sm py-1.5 border-b border-primary-foreground/10 last:border-0">
-                      {animal.name}
-                    </span>
+                    <span key={i} className="text-primary-foreground/70 font-body text-sm py-1.5 border-b border-primary-foreground/10 last:border-0">{animal.name}</span>
                   ))}
                 </div>
               </motion.div>
             </div>
 
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-center text-primary-foreground/50 font-body text-sm mt-10 max-w-xl mx-auto"
-            >
+            <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+              className="text-center text-primary-foreground/50 font-body text-sm mt-10 max-w-xl mx-auto">
               Cada encontro com os animais é uma oportunidade de aprendizado e encantamento.
             </motion.p>
           </div>
@@ -291,18 +265,8 @@ const ExperienciasPage = () => {
         <section className="py-24 lg:py-32 bg-background">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto mb-24">
-              <motion.div
-                initial={{ opacity: 0, x: -30 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="overflow-hidden rounded-2xl"
-              >
-                <img
-                  src="https://www.minhagloria.com.br/lovable-uploads/04460747-2a8e-4012-a6be-1b1819ad5997.png"
-                  alt="Spa e massagem relaxante ao ar livre"
-                  className="w-full h-[350px] lg:h-[500px] object-cover hover:scale-105 transition-transform duration-1000"
-                  loading="lazy"
-                />
+              <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="overflow-hidden rounded-2xl">
+                <img src="https://www.minhagloria.com.br/lovable-uploads/04460747-2a8e-4012-a6be-1b1819ad5997.png" alt="Spa e massagem relaxante ao ar livre" className="w-full h-[350px] lg:h-[500px] object-cover hover:scale-105 transition-transform duration-1000" loading="lazy" />
               </motion.div>
               <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
                 <div className="w-16 h-16 mb-6 rounded-full bg-primary/10 flex items-center justify-center">
@@ -312,25 +276,20 @@ const ExperienciasPage = () => {
                   Spa & <span className="italic text-secondary">Massagem</span>
                 </h3>
                 <p className="text-muted-foreground font-body text-lg leading-relaxed mb-4">
-                  Nosso spa oferece um santuário de bem-estar onde cada toque é uma sinfonia de renovação. 
+                  Nosso spa oferece um santuário de bem-estar onde cada toque é uma sinfonia de renovação.
                   Ingredientes puros da natureza combinam-se em rituais terapêuticos únicos.
                 </p>
                 <p className="text-muted-foreground font-body text-lg leading-relaxed">
-                  Massagens ao ar livre com vista para as montanhas, sauna seca e tratamentos com óleos 
+                  Massagens ao ar livre com vista para as montanhas, sauna seca e tratamentos com óleos
                   essenciais e produtos naturais da serra.
                 </p>
               </motion.div>
             </div>
 
-            {/* Vintage Cars — using hotel photo */}
+            {/* Vintage Cars */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto">
               <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="lg:order-2 overflow-hidden rounded-2xl">
-                <img
-                  src={quadriJeepImg}
-                  alt="Coleção de carros antigos, quadriciclos e jeep"
-                  className="w-full h-[350px] lg:h-[500px] object-cover hover:scale-105 transition-transform duration-1000"
-                  loading="lazy"
-                />
+                <img src={quadriJeepImg} alt="Coleção de carros antigos, quadriciclos e jeep" className="w-full h-[350px] lg:h-[500px] object-cover hover:scale-105 transition-transform duration-1000" loading="lazy" />
               </motion.div>
               <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="lg:order-1">
                 <div className="w-16 h-16 mb-6 rounded-full bg-primary/10 flex items-center justify-center">
@@ -340,7 +299,7 @@ const ExperienciasPage = () => {
                   Carros Antigos & <span className="italic text-secondary">Relíquias</span>
                 </h3>
                 <p className="text-muted-foreground font-body text-lg leading-relaxed mb-4">
-                  Uma viagem no tempo através de relíquias automobilísticas. Kombis vintage, fuscas icônicos 
+                  Uma viagem no tempo através de relíquias automobilísticas. Kombis vintage, fuscas icônicos
                   e uma motocicleta by side — cenários perfeitos para fotografias memoráveis.
                 </p>
                 <p className="text-muted-foreground font-body text-lg leading-relaxed">
@@ -351,15 +310,10 @@ const ExperienciasPage = () => {
           </div>
         </section>
 
-        {/* Recreation - Weekend */}
-        <section className="py-20 bg-primary">
+        {/* Recreation — immersive photo-driven */}
+        <section className="py-24 lg:py-32 bg-primary overflow-hidden">
           <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-16">
               <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-secondary/20 flex items-center justify-center">
                 <Baby className="text-secondary" size={28} />
               </div>
@@ -370,33 +324,41 @@ const ExperienciasPage = () => {
                 Aos fins de semana e feriados · Com monitores especializados
               </p>
               <p className="text-editorial text-primary-foreground/70 text-xl max-w-2xl mx-auto leading-relaxed">
-                Não é uma recreação qualquer. Aqui, as crianças vivem aventuras de verdade — na terra, 
-                entre animais, sob as árvores, com os pés descalços.
+                Atividades lúdicas para todas as idades em meio à natureza. Oficinas de plantio, pintura ao ar livre, 
+                contato com animais, trilhas educativas e muita diversão — tudo com monitores especializados.
               </p>
             </motion.div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
-              {kidsFeatures.map((item, i) => (
+            {/* Photo gallery of real recreation */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-5xl mx-auto mb-14">
+              {recreationImages.map((img, i) => (
+                <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                  className="group overflow-hidden rounded-2xl ring-1 ring-primary-foreground/10">
+                  <img src={img.src} alt={img.alt} className="w-full h-[280px] object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Kids free + key info */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 max-w-5xl mx-auto mb-10">
+              {[
+                { title: "Fazendinha", desc: "Alimentar os animais pela manhã é o momento favorito. Lhamas, cavalos, coelhos e muito mais." },
+                { title: "Oficinas Criativas", desc: "Artes com materiais naturais, pintura em tela, plantio de suculentas e colagens com folhas da mata." },
+                { title: "Trilha Kids", desc: "Trilha adaptada com atividades educativas: identificação de plantas, sons da floresta e pegadas." },
+                { title: "Fogueira & Histórias", desc: "Contação de histórias ao redor da fogueira, músicas com violão e brincadeiras noturnas." },
+                { title: "Baby Care", desc: "Fraldário completo, berço no chalé, cadeirão no restaurante e cardápio especial para bebês." },
+              ].map((item, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
-                  className="bg-primary-foreground/5 p-8 rounded-xl border border-primary-foreground/10 hover:bg-primary-foreground/10 transition-colors duration-500"
-                >
-                  <div className="w-14 h-14 mb-5 rounded-full bg-secondary/20 flex items-center justify-center">
-                    <item.icon className="text-secondary" size={24} />
-                  </div>
-                  <h3 className="font-display text-xl font-semibold text-primary-foreground mb-3">{item.title}</h3>
-                  <p className="text-primary-foreground/60 font-body text-base leading-relaxed">{item.description}</p>
+                  className="bg-primary-foreground/5 p-6 rounded-xl border border-primary-foreground/10 hover:bg-primary-foreground/10 transition-colors duration-500">
+                  <h3 className="font-display text-lg font-semibold text-primary-foreground mb-2">{item.title}</h3>
+                  <p className="text-primary-foreground/60 font-body text-sm leading-relaxed">{item.desc}</p>
                 </motion.div>
               ))}
               {/* Kids free callout */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.4 }}
-                className="bg-secondary/20 p-8 rounded-xl border border-secondary/30 flex flex-col items-center justify-center text-center"
-              >
-                <span className="text-secondary font-display text-5xl font-semibold mb-3">Free</span>
-                <p className="text-primary-foreground font-body text-base leading-relaxed">
+              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.4 }}
+                className="bg-secondary/20 p-6 rounded-xl border border-secondary/30 flex flex-col items-center justify-center text-center">
+                <span className="text-secondary font-display text-4xl font-semibold mb-2">Free</span>
+                <p className="text-primary-foreground font-body text-sm leading-relaxed">
                   1 criança até 12 anos se hospeda <strong className="text-secondary">gratuitamente</strong> nos fins de semana
                 </p>
               </motion.div>
@@ -407,12 +369,7 @@ const ExperienciasPage = () => {
         {/* Services & Pricing */}
         <section className="py-24 lg:py-32 bg-background">
           <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="max-w-3xl mx-auto text-center mb-16"
-            >
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-3xl mx-auto text-center mb-16">
               <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center">
                 <DollarSign className="text-secondary" size={28} />
               </div>
@@ -426,19 +383,12 @@ const ExperienciasPage = () => {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
               {services.map((service, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className="bg-primary/5 rounded-2xl p-8 border border-primary/10 hover:shadow-lg transition-shadow duration-500"
-                >
+                <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
+                  className="bg-primary/5 rounded-2xl p-8 border border-primary/10 hover:shadow-lg transition-shadow duration-500">
                   <div className="w-14 h-14 mb-5 rounded-full bg-secondary/15 flex items-center justify-center">
                     <service.icon className="text-secondary" size={24} />
                   </div>
                   <h3 className="font-display text-xl font-semibold text-foreground mb-5">{service.title}</h3>
-                  
                   <div className="space-y-3 mb-6">
                     {service.items.map((item, j) => (
                       <div key={j} className="flex items-center justify-between gap-2 py-2 border-b border-primary/10 last:border-0">
@@ -447,7 +397,6 @@ const ExperienciasPage = () => {
                       </div>
                     ))}
                   </div>
-
                   <div className="flex items-center gap-2 text-muted-foreground">
                     <Clock size={14} className="text-secondary" />
                     <span className="font-body text-xs">{service.schedule}</span>
@@ -456,12 +405,8 @@ const ExperienciasPage = () => {
               ))}
             </div>
 
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="text-center text-muted-foreground font-body text-sm mt-10 max-w-xl mx-auto"
-            >
+            <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+              className="text-center text-muted-foreground font-body text-sm mt-10 max-w-xl mx-auto">
               Valores sujeitos a alteração. Consulte a recepção para disponibilidade e agendamento.
             </motion.p>
           </div>
