@@ -103,8 +103,8 @@ const WelcomeSection = () => {
             className="col-span-6 md:col-span-4 overflow-hidden rounded-lg"
           >
             <img
-              src="https://www.minhagloria.com.br/images/carousel-new-3.webp"
-              alt="Cavalos na fazenda"
+              src="/images/igreja.jpg"
+              alt="Igreja do Minha Glória"
               className="w-full h-[200px] md:h-[280px] object-cover hover:scale-105 transition-transform duration-1000"
               loading="lazy"
             />
