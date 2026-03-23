@@ -97,7 +97,7 @@ const BoutiqueSection = () => {
                 <img
                   src="/images/mini-chef.jpg"
                   alt="Mini chef no Minha Glória"
-                  className="w-full h-full object-cover object-top"
+                  className="w-full h-full object-cover object-center"
                   loading="lazy"
                 />
               </div>
