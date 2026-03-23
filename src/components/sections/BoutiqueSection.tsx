@@ -80,7 +80,7 @@ const BoutiqueSection = () => {
               <img
                 src="/images/suite-boutique.jpg"
                 alt="Suíte boutique com toalhas e flores"
-                className="w-full h-full object-cover object-center"
+                className="w-full h-full object-cover object-[50%_70%]"
                 loading="lazy"
               />
             </div>
