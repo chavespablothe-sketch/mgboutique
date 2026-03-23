@@ -51,19 +51,20 @@ const GastronomiaPage = () => {
       <Header />
       <div className="pt-20">
         {/* Hero */}
-        <section
-          className="relative h-[75vh] flex items-center justify-center bg-cover bg-center bg-fixed"
-          style={{ backgroundImage: `url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1920&q=80')` }}
-        >
+        <section className="relative h-[75vh] flex items-center justify-center overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-zoom-bg"
+            style={{ backgroundImage: `url('https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1920&q=80')` }}
+          />
           <div className="absolute inset-0 bg-primary/75" />
           <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
-              <span className="text-secondary font-body text-xs tracking-[0.5em] uppercase mb-6 block">Sabores da Serra</span>
-              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-primary-foreground font-semibold leading-[0.95] mb-6">
-                Da horta à mesa, <span className="italic text-secondary">com alma</span>
+              <span className="text-secondary font-body text-xs tracking-[0.5em] uppercase mb-6 block drop-shadow-lg">Sabores da Serra</span>
+              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-primary-foreground font-semibold leading-[0.95] mb-6 hero-text-shadow drop-shadow-lg">
+                Da horta à mesa, <span className="italic text-secondary drop-shadow-lg">com alma</span>
               </h1>
-              <p className="text-editorial text-primary-foreground/70 text-xl md:text-2xl leading-relaxed max-w-2xl mx-auto">
-                Pensão completa em todos os pacotes: três refeições diárias que celebram 
+              <p className="text-editorial text-primary-foreground/70 text-xl md:text-2xl leading-relaxed max-w-2xl mx-auto hero-text-shadow">
+                Pensão completa nos fins de semana e feriados: três refeições diárias que celebram 
                 os ingredientes da serra com técnica e tradição
               </p>
             </motion.div>

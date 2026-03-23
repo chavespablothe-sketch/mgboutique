@@ -48,16 +48,17 @@ const RegiaoPage = () => {
       <Header />
       <div className="pt-20">
         {/* Hero */}
-        <section
-          className="relative h-[65vh] flex items-center justify-center bg-cover bg-center"
-          style={{ backgroundImage: `url('https://www.minhagloria.com.br/images/carousel-new-2.webp')` }}
-        >
+        <section className="relative h-[65vh] flex items-center justify-center overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-zoom-bg"
+            style={{ backgroundImage: `url('https://www.minhagloria.com.br/images/carousel-new-2.webp')` }}
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/30 to-primary/80" />
           <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
-              <span className="text-secondary font-body text-xs tracking-[0.5em] uppercase mb-6 block">Bom Jardim & Serra Fluminense</span>
-              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-primary-foreground font-semibold leading-[0.95] mb-6">
-                Um destino que encanta <span className="italic text-secondary">por si só</span>
+              <span className="text-secondary font-body text-xs tracking-[0.5em] uppercase mb-6 block drop-shadow-lg">Bom Jardim & Serra Fluminense</span>
+              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-primary-foreground font-semibold leading-[0.95] mb-6 hero-text-shadow drop-shadow-lg">
+                Um destino que encanta <span className="italic text-secondary drop-shadow-lg">por si só</span>
               </h1>
               <p className="text-editorial text-primary-foreground/70 text-xl md:text-2xl leading-relaxed max-w-2xl mx-auto">
                 A 18km de Nova Friburgo, no coração da serra fluminense, o Minha Glória

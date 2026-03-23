@@ -113,3 +113,18 @@ html {
   font-family: 'Cormorant Garamond', serif;
   line-height: 1.6;
 }
+
+/* Hero zoom animation */
+@keyframes subtle-zoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+
+.hero-zoom-bg {
+  animation: subtle-zoom 25s ease-in-out infinite alternate;
+}
+
+/* Hero text shadow for readability */
+.hero-text-shadow {
+  text-shadow: 0 2px 20px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.3);
+}

@@ -70,18 +70,19 @@ const ChalesPage = () => {
       <Header />
       <div className="pt-20">
         {/* Hero */}
-        <section
-          className="relative h-[75vh] flex items-center justify-center bg-cover bg-center"
-          style={{ backgroundImage: `url('https://www.minhagloria.com.br/lovable-uploads/d853d202-1c9d-4cd8-8f3b-d89a257c4ee7.png')` }}
-        >
+        <section className="relative h-[75vh] flex items-center justify-center overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-zoom-bg"
+            style={{ backgroundImage: `url('https://www.minhagloria.com.br/lovable-uploads/d853d202-1c9d-4cd8-8f3b-d89a257c4ee7.png')` }}
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-primary/80 via-primary/40 to-primary/80" />
           <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
-              <span className="text-secondary font-body text-xs tracking-[0.5em] uppercase mb-6 block">Acomodações Exclusivas</span>
-              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-primary-foreground font-semibold leading-[0.95] mb-6">
-                Chalés que contam <span className="italic text-secondary">histórias</span>
+              <span className="text-secondary font-body text-xs tracking-[0.5em] uppercase mb-6 block drop-shadow-lg">Acomodações Exclusivas</span>
+              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-primary-foreground font-semibold leading-[0.95] mb-6 hero-text-shadow drop-shadow-lg">
+                Chalés que contam <span className="italic text-secondary drop-shadow-lg">histórias</span>
               </h1>
-              <p className="text-editorial text-primary-foreground/70 text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed">
+              <p className="text-editorial text-primary-foreground/70 text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed hero-text-shadow">
                 Apenas 20 suítes em meio à Mata Atlântica. Cada uma projetada para que madeira, 
                 pedra e natureza criem o cenário perfeito para suas memórias
               </p>
