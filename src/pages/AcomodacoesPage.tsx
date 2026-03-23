@@ -10,8 +10,6 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import chalets from "@/data/chalets";
 
-const OMNIBEES_URL = "https://book.omnibees.com/hotel/19498";
-
 const AcomodacoesPage = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
@@ -29,18 +27,19 @@ const AcomodacoesPage = () => {
       <Header />
       <div className="pt-20">
         {/* Hero */}
-        <section
-          className="relative h-[70vh] flex items-center justify-center bg-cover bg-center"
-          style={{ backgroundImage: `url('https://www.minhagloria.com.br/lovable-uploads/d853d202-1c9d-4cd8-8f3b-d89a257c4ee7.png')` }}
-        >
+        <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-zoom-bg"
+            style={{ backgroundImage: `url('https://www.minhagloria.com.br/lovable-uploads/d853d202-1c9d-4cd8-8f3b-d89a257c4ee7.png')` }}
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/30 to-primary/80" />
           <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
-              <span className="text-secondary font-body text-xs tracking-[0.5em] uppercase mb-6 block">Acomodações</span>
-              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-primary-foreground font-semibold leading-[0.95] mb-6">
-                Chalés que contam <span className="italic text-secondary">histórias</span>
+              <span className="text-secondary font-body text-xs tracking-[0.5em] uppercase mb-6 block drop-shadow-lg">Acomodações</span>
+              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-primary-foreground font-semibold leading-[0.95] mb-6 hero-text-shadow drop-shadow-lg">
+                Chalés que contam <span className="italic text-secondary drop-shadow-lg">histórias</span>
               </h1>
-              <p className="text-editorial text-primary-foreground/70 text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed">
+              <p className="text-editorial text-primary-foreground/70 text-xl md:text-2xl max-w-2xl mx-auto leading-relaxed hero-text-shadow">
                 Apenas 20 suítes independentes em meio à Mata Atlântica. Cada uma projetada
                 para que madeira, pedra e natureza criem o cenário perfeito para suas memórias.
               </p>
@@ -84,8 +83,8 @@ const AcomodacoesPage = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent" />
                     <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="font-display text-2xl text-primary-foreground font-semibold mb-1">{chalet.name}</h3>
-                      <p className="text-primary-foreground/70 font-body text-sm italic">{chalet.tagline}</p>
+                      <h3 className="font-display text-2xl text-primary-foreground font-semibold mb-1 hero-text-shadow">{chalet.name}</h3>
+                      <p className="text-primary-foreground/70 font-body text-sm italic hero-text-shadow">{chalet.tagline}</p>
                     </div>
                   </Link>
                   <div className="p-6">
@@ -114,7 +113,7 @@ const AcomodacoesPage = () => {
           </div>
         </section>
 
-        {/* Comparison Table */}
+        {/* Comparison Table - without prices */}
         <section className="py-16 bg-hotel-cream">
           <div className="container mx-auto px-4">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-10">
@@ -130,7 +129,6 @@ const AcomodacoesPage = () => {
                     <th className="text-center py-4 px-4 font-display font-semibold text-foreground">Capacidade</th>
                     <th className="text-center py-4 px-4 font-display font-semibold text-foreground">m²</th>
                     <th className="text-center py-4 px-4 font-display font-semibold text-foreground">Destaque</th>
-                    <th className="text-center py-4 px-4 font-display font-semibold text-foreground">A partir de</th>
                     <th className="text-center py-4 px-4"></th>
                   </tr>
                 </thead>
@@ -141,7 +139,6 @@ const AcomodacoesPage = () => {
                       <td className="py-4 px-4 text-center text-muted-foreground">{c.capacity}</td>
                       <td className="py-4 px-4 text-center text-muted-foreground">{c.size}</td>
                       <td className="py-4 px-4 text-center text-secondary font-semibold">{c.highlight}</td>
-                      <td className="py-4 px-4 text-center font-semibold text-foreground">{c.priceFrom}/noite</td>
                       <td className="py-4 px-4 text-center">
                         <Link to={`/acomodacoes/${c.slug}`} className="text-secondary text-xs font-semibold uppercase tracking-wider hover:underline">
                           Ver →
