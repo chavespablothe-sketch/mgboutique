@@ -127,9 +127,8 @@ const ChalePage = () => {
                     animate={{ opacity: 1, y: 0 }}
                     className="bg-card rounded-xl border border-border p-8 shadow-xl"
                   >
-                    <p className="text-muted-foreground font-body text-xs uppercase tracking-wider mb-1">A partir de</p>
-                    <p className="font-display text-4xl font-semibold text-foreground mb-1">{chalet.priceFrom}</p>
-                    <p className="text-muted-foreground font-body text-sm mb-6">por noite · por casal</p>
+                    <p className="font-display text-2xl font-semibold text-foreground mb-1">Consulte valores</p>
+                    <p className="text-muted-foreground font-body text-sm mb-6">Tarifas variam por temporada</p>
 
                     <div className="space-y-3 mb-6 pb-6 border-b border-border">
                       <div className="flex items-center gap-3 text-muted-foreground font-body text-sm">
