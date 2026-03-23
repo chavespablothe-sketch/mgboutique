@@ -4,9 +4,9 @@ import Footer from "@/components/Footer";
 import SEO, { breadcrumbSchema } from "@/components/SEO";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CTASection from "@/components/CTASection";
+import PhotoGallery from "@/components/PhotoGallery";
 import { motion } from "framer-motion";
-import { Heart, Mountain, Leaf, Users, Star, Award, MapPin, Clock, Utensils, Baby, TreePine, Waves } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Heart, MapPin, Clock, Users, Star, Utensils, TreePine, Leaf, Wine, Cake, Award } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const numbers = [
@@ -21,6 +21,25 @@ const pillars = [
   { icon: TreePine, title: "Natureza Intocada", desc: "Cercado pela Mata Atlântica, entre montanhas e cachoeiras, a natureza aqui não é cenário — é protagonista.", image: "https://www.minhagloria.com.br/lovable-uploads/b7fedef6-5188-49de-a6f5-ac36f6e262f8.png" },
   { icon: Utensils, title: "Gastronomia de Alma", desc: "Pães artesanais, ervas da horta orgânica, carnes assadas com técnica e amor. Cada refeição celebra a terra onde estamos.", image: "https://www.minhagloria.com.br/lovable-uploads/252a23af-2a29-46e8-8e7e-dbd3ce9cf861.png" },
   { icon: Users, title: "Feito para Famílias", desc: "1 criança até 12 anos grátis nos fins de semana. Recreação monitorada, fazendinha, trilhas kids e menu infantil.", image: "https://www.minhagloria.com.br/lovable-uploads/fa0a1d74-12c1-4134-8d8d-0e688addbccb.png" },
+];
+
+const galleryImages = [
+  { src: "https://www.minhagloria.com.br/images/carousel-new-4.webp", alt: "Chalés entre a natureza" },
+  { src: "https://www.minhagloria.com.br/images/carousel-new-3.webp", alt: "Cavalos na fazenda" },
+  { src: "https://www.minhagloria.com.br/lovable-uploads/252a23af-2a29-46e8-8e7e-dbd3ce9cf861.png", alt: "Lago natural e área de lazer" },
+  { src: "https://www.minhagloria.com.br/lovable-uploads/fa0a1d74-12c1-4134-8d8d-0e688addbccb.png", alt: "Animais da fazenda" },
+  { src: "https://www.minhagloria.com.br/lovable-uploads/f7d9ecaa-e043-4c83-8549-89dfb50450a6.png", alt: "Piscina com vista para montanhas" },
+  { src: "https://www.minhagloria.com.br/lovable-uploads/b7fedef6-5188-49de-a6f5-ac36f6e262f8.png", alt: "Vista da montanha com flores" },
+  { src: "https://www.minhagloria.com.br/lovable-uploads/7b9a8c26-81a0-4894-9f0f-2a4c11fd34ce.png", alt: "Quadriciclo pela fazenda" },
+  { src: "https://www.minhagloria.com.br/images/carousel-new-1.jpg", alt: "Vista panorâmica da propriedade" },
+  { src: "https://www.minhagloria.com.br/lovable-uploads/d853d202-1c9d-4cd8-8f3b-d89a257c4ee7.png", alt: "Chalé aconchegante" },
+  { src: "https://www.minhagloria.com.br/lovable-uploads/5de7a725-ff58-4211-b5e2-cf47d5d99ba7.png", alt: "Formação rochosa panorâmica" },
+];
+
+const gastroHighlights = [
+  { title: "Horta Orgânica", desc: "Ervas e vegetais frescos colhidos diariamente para cada prato. Da terra à mesa em minutos.", image: "https://www.minhagloria.com.br/lovable-uploads/95376411-f659-4689-bdf3-c03d058f945e.png" },
+  { title: "Confeitaria Artesanal", desc: "Pães, bolos, tortas e doces preparados diariamente com receitas autorais e ingredientes da serra.", image: "https://www.minhagloria.com.br/lovable-uploads/49751c55-56cf-4391-ae38-67b88a636294.png" },
+  { title: "Pensão Completa", desc: "Café, almoço e jantar nos fins de semana e feriados. Ingredientes frescos, receitas regionais e menu kids.", image: "https://www.minhagloria.com.br/lovable-uploads/fdf9bc84-d84a-4376-8178-95e596cf51c4.png" },
 ];
 
 const SobrePage = () => {
@@ -94,9 +113,97 @@ const SobrePage = () => {
                   </p>
                 </div>
               </motion.div>
-              <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
-                <img src="https://www.minhagloria.com.br/images/carousel-new-1.jpg" alt="Vista panorâmica da fazenda" className="w-full h-[500px] object-cover rounded-2xl shadow-2xl" loading="lazy" />
+              <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
+                className="photo-parallax rounded-2xl overflow-hidden photo-glow"
+              >
+                <img src="https://www.minhagloria.com.br/images/carousel-new-1.jpg" alt="Vista panorâmica da fazenda" className="w-full h-[500px] object-cover" loading="lazy" />
               </motion.div>
+            </div>
+          </div>
+        </section>
+
+        {/* ===== DARK GREEN SECTION — Clara style ===== */}
+        <section className="relative py-28 lg:py-40 overflow-hidden bg-primary">
+          {/* Subtle background texture */}
+          <div
+            className="absolute inset-0 bg-cover bg-center opacity-10"
+            style={{ backgroundImage: `url('https://www.minhagloria.com.br/images/carousel-new-4.webp')` }}
+          />
+          <div className="relative z-10 container mx-auto px-4">
+            <div className="max-w-6xl mx-auto">
+              {/* Title */}
+              <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-20">
+                <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground font-semibold leading-[1.05]">
+                  Um refúgio: <span className="italic text-secondary">um propósito.</span>
+                </h2>
+                <p className="text-editorial text-primary-foreground/60 text-xl mt-6 max-w-2xl mx-auto">
+                  Elegância, natureza e hospitalidade genuína em um só destino.
+                </p>
+              </motion.div>
+
+              {/* Overlapping images + text — Clara layout */}
+              <div className="relative">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                  {/* Left image — large, bleeds slightly */}
+                  <motion.div
+                    initial={{ opacity: 0, x: -40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="lg:col-span-5 photo-ken-burns rounded-2xl overflow-hidden"
+                  >
+                    <img
+                      src="https://www.minhagloria.com.br/images/carousel-new-4.webp"
+                      alt="Vista aérea do hotel"
+                      className="w-full h-[350px] lg:h-[550px] object-cover"
+                      loading="lazy"
+                    />
+                  </motion.div>
+
+                  {/* Center image — overlaps, elevated */}
+                  <motion.div
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.15 }}
+                    className="lg:col-span-3 lg:-mx-4 lg:relative lg:z-10"
+                  >
+                    <div className="rounded-2xl overflow-hidden shadow-2xl photo-glow">
+                      <img
+                        src="https://www.minhagloria.com.br/lovable-uploads/d853d202-1c9d-4cd8-8f3b-d89a257c4ee7.png"
+                        alt="Interior do chalé"
+                        className="w-full h-[280px] lg:h-[400px] object-cover"
+                        loading="lazy"
+                      />
+                    </div>
+                  </motion.div>
+
+                  {/* Right — text block */}
+                  <motion.div
+                    initial={{ opacity: 0, x: 40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                    className="lg:col-span-4"
+                  >
+                    <h3 className="font-display text-3xl lg:text-4xl text-primary-foreground font-semibold mb-6 leading-tight">
+                      Minha Glória
+                    </h3>
+                    <p className="text-primary-foreground/70 font-body text-base leading-relaxed mb-6">
+                      <strong className="text-primary-foreground">O Minha Glória oferece uma experiência única de conexão com a natureza e hospitalidade.</strong>
+                    </p>
+                    <p className="text-primary-foreground/60 font-body text-base leading-relaxed mb-8">
+                      Com 165 mil m² de Mata Atlântica preservada e apenas 20 suítes exclusivas, este refúgio é perfeito para famílias e casais que buscam tranquilidade com sofisticação. Aqui, cada momento é dedicado ao seu bem-estar.
+                    </p>
+                    <Link
+                      to="/acomodacoes"
+                      className="inline-flex items-center gap-2 text-secondary font-body text-sm uppercase tracking-widest border border-secondary/40 px-6 py-3 rounded-full hover:bg-secondary/10 transition-colors"
+                    >
+                      Conheça os chalés
+                    </Link>
+                  </motion.div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -117,7 +224,7 @@ const SobrePage = () => {
           </div>
         </section>
 
-        {/* Pillars — alternating image+text like Clara */}
+        {/* Pillars — alternating image+text */}
         <section className="bg-background">
           {pillars.map((pillar, i) => (
             <div key={i} className={`py-20 lg:py-28 ${i % 2 !== 0 ? "bg-hotel-cream" : ""}`}>
@@ -127,7 +234,7 @@ const SobrePage = () => {
                     initial={{ opacity: 0, x: i % 2 === 0 ? -30 : 30 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
-                    className="overflow-hidden rounded-2xl"
+                    className="overflow-hidden rounded-2xl photo-parallax photo-lift"
                     style={{ direction: "ltr" }}
                   >
                     <img src={pillar.image} alt={pillar.title} className="w-full h-[400px] lg:h-[500px] object-cover" loading="lazy" />
@@ -151,25 +258,49 @@ const SobrePage = () => {
           ))}
         </section>
 
-        {/* Photo mosaic */}
-        <section className="py-20 bg-background">
+        {/* ===== GASTRONOMIA — Circular images like Clara ===== */}
+        <section className="py-24 lg:py-32 bg-hotel-cream">
           <div className="container mx-auto px-4">
-            <div className="grid grid-cols-12 gap-3 max-w-6xl mx-auto">
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="col-span-7 overflow-hidden rounded-2xl">
-                <img src="https://www.minhagloria.com.br/images/carousel-new-4.webp" alt="Chalés entre a natureza" className="w-full h-[350px] md:h-[450px] object-cover" loading="lazy" />
-              </motion.div>
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="col-span-5 overflow-hidden rounded-2xl">
-                <img src="https://www.minhagloria.com.br/images/carousel-new-3.webp" alt="Cavalos na fazenda" className="w-full h-[350px] md:h-[450px] object-cover" loading="lazy" />
-              </motion.div>
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.15 }} className="col-span-5 overflow-hidden rounded-2xl">
-                <img src="https://www.minhagloria.com.br/lovable-uploads/252a23af-2a29-46e8-8e7e-dbd3ce9cf861.png" alt="Lago natural" className="w-full h-[300px] object-cover" loading="lazy" />
-              </motion.div>
-              <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="col-span-7 overflow-hidden rounded-2xl">
-                <img src="https://www.minhagloria.com.br/lovable-uploads/fa0a1d74-12c1-4134-8d8d-0e688addbccb.png" alt="Animais da fazenda" className="w-full h-[300px] object-cover" loading="lazy" />
-              </motion.div>
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-3xl mx-auto mb-16">
+              <h2 className="font-display text-4xl md:text-5xl text-foreground font-semibold leading-[1.05]">
+                O que torna nossa gastronomia tão <span className="italic text-secondary">única e especial</span>
+              </h2>
+            </motion.div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 max-w-5xl mx-auto">
+              {gastroHighlights.map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.15 }}
+                  className="text-center"
+                >
+                  <div className="w-52 h-52 mx-auto mb-8 rounded-full overflow-hidden photo-circle-gold">
+                    <img src={item.image} alt={item.title} className="w-full h-full object-cover" loading="lazy" />
+                  </div>
+                  <h3 className="font-display text-2xl font-semibold text-foreground mb-3">{item.title}</h3>
+                  <p className="text-muted-foreground font-body text-base leading-relaxed">{item.desc}</p>
+                </motion.div>
+              ))}
             </div>
+            <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="text-center mt-12">
+              <Link
+                to="/gastronomia"
+                className="inline-flex items-center gap-2 text-secondary font-body text-sm uppercase tracking-widest hover:gap-3 transition-all"
+              >
+                Saiba mais sobre nossa gastronomia →
+              </Link>
+            </motion.div>
           </div>
         </section>
+
+        {/* Photo Gallery — Clara style */}
+        <PhotoGallery
+          images={galleryImages}
+          title="Fragmentos de um paraíso"
+          subtitle="Galeria"
+        />
 
         {/* Practical info strip */}
         <section className="py-16 bg-primary">
