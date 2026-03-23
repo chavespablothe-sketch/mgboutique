@@ -12,6 +12,12 @@ const SobrePage = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Sobre o Hotel | Nossa História e Propósito"
+        description="Conheça a história do Minha Glória Hotel Boutique. 165 mil m² de Mata Atlântica, 20 suítes exclusivas e uma equipe dedicada à hospitalidade genuína em Bom Jardim, RJ."
+        canonical="/sobre"
+        schemas={[breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Sobre", url: "/sobre" }])]}
+      />
       <Header />
       <div className="pt-20">
         {/* Hero */}
