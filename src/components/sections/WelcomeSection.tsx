@@ -100,7 +100,7 @@ const WelcomeSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="col-span-6 md:col-span-4 overflow-hidden rounded-lg"
+            className="col-span-1 md:col-span-4 overflow-hidden rounded-lg"
           >
             <img
               src="/images/igreja.jpg"
