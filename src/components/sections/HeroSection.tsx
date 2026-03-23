@@ -14,7 +14,7 @@ const HeroSection = () => {
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: `url('https://www.minhagloria.com.br/images/carousel-new-1.jpg')`,
+              backgroundImage: `url('/images/hero-aerial.jpg')`,
               animation: 'subtle-zoom 25s ease-in-out infinite alternate',
             }}
           />
@@ -30,9 +30,11 @@ const HeroSection = () => {
               transition={{ duration: 1, delay: 0.4 }}
               className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground font-semibold mb-6 leading-[1.08] tracking-tight"
             >
-              Seu refúgio exclusivo
+              Um hotel boutique com alma,
               <br />
-              <span className="italic text-secondary">no campo</span>
+              <span className="italic text-secondary">cercado de verde,</span>
+              <br />
+              feito pra casais e famílias
             </motion.h1>
 
             <motion.p
@@ -41,8 +43,7 @@ const HeroSection = () => {
               transition={{ duration: 1, delay: 0.8 }}
               className="text-primary-foreground/70 font-body text-base md:text-lg max-w-md mb-10 leading-relaxed"
             >
-              Um hotel boutique onde a natureza encontra o luxo
-              em perfeita harmonia
+              
             </motion.p>
 
             <motion.div
