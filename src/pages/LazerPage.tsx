@@ -102,7 +102,7 @@ const LazerPage = () => {
               </h2>
               <p className="text-editorial text-muted-foreground text-xl leading-relaxed">
                 No Minha Glória, as crianças vivem aventuras de verdade. 
-                Crianças até 6 anos se hospedam gratuitamente.
+                1 criança até 12 anos se hospeda gratuitamente nos fins de semana.
               </p>
             </motion.div>
 
