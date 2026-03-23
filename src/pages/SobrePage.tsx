@@ -140,7 +140,7 @@ const SobrePage = () => {
                 { icon: Mountain, title: "Localização Privilegiada", desc: "Cercado pela Mata Atlântica, entre montanhas e cachoeiras, a apenas 2h30 do Rio de Janeiro. A natureza aqui não é cenário — é protagonista." },
                 { icon: Leaf, title: "Compromisso Sustentável", desc: "Horta orgânica que alimenta nosso restaurante. Preservação ativa da fauna e flora. Práticas responsáveis em toda a operação." },
                 { icon: Users, title: "Família em Primeiro Lugar", desc: "Crianças até 6 anos não pagam. Recreação monitorada, fazendinha, trilhas kids e menu infantil. Aqui, os pequenos são hóspedes VIP." },
-                { icon: Star, title: "Nota 4.9 no Google", desc: "Centenas de avaliações apaixonadas. Reconhecidos pela hospitalidade excepcional. A nota reflete o carinho que colocamos em cada estadia." },
+                { icon: Star, title: "Nota 4.7 no Google", desc: "Centenas de avaliações apaixonadas. Reconhecidos pela hospitalidade excepcional. A nota reflete o carinho que colocamos em cada estadia." },
                 { icon: Award, title: "Boutique de Verdade", desc: "Apenas 20 suítes. Isso não é limitação — é escolha. Poucos hóspedes significam máxima exclusividade e atenção integral." },
               ].map((item, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
@@ -164,7 +164,7 @@ const SobrePage = () => {
               {[
                 { icon: MapPin, label: "Bom Jardim, RJ", sub: "18km de Nova Friburgo" },
                 { icon: Clock, label: "2h30 do Rio", sub: "3h de São Paulo" },
-                { icon: Star, label: "4.9 Google", sub: "9.4 Booking" },
+                { icon: Star, label: "4.7 Google", sub: "9.3 Booking" },
                 { icon: Users, label: "20 suítes", sub: "Exclusividade total" },
               ].map((stat, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}

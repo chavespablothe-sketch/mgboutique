@@ -115,8 +115,8 @@ const BoutiqueSection = () => {
         >
           {[
             { value: "20", label: "suítes exclusivas" },
-            { value: "4.9", label: "nota no Google" },
-            { value: "9.4", label: "nota no Booking" },
+            { value: "4.7", label: "nota no Google" },
+            { value: "9.3", label: "nota no Booking" },
             { value: "10+", label: "anos de história" },
           ].map((stat, i) => (
             <div key={i} className="text-center">

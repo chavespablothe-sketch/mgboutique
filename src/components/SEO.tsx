@@ -98,7 +98,7 @@ export const hotelSchema = {
   },
   aggregateRating: {
     "@type": "AggregateRating",
-    ratingValue: "4.9",
+    ratingValue: "4.7",
     bestRating: "5",
     ratingCount: "320",
   },
