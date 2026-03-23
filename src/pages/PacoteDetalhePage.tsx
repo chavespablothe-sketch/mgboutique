@@ -3,6 +3,7 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
+import SEO, { breadcrumbSchema } from "@/components/SEO";
 import CTASection from "@/components/CTASection";
 import { motion } from "framer-motion";
 import { Calendar, Clock, Check, Baby, ArrowRight, ArrowLeft, Shield, CreditCard, Users } from "lucide-react";
@@ -21,6 +22,27 @@ const PacoteDetalhePage = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title={`${pkg.shortTitle} | Pacotes`}
+        description={`${pkg.description} ${pkg.period}, ${pkg.nights}. A partir de ${pkg.price} por casal.`}
+        canonical={`/tarifas/${pkg.slug}`}
+        ogImage={pkg.image}
+        schemas={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Offer",
+            name: pkg.title,
+            description: pkg.longDescription,
+            price: pkg.price.replace(/[^\d]/g, ""),
+            priceCurrency: "BRL",
+            availability: "https://schema.org/InStock",
+            validFrom: pkg.period,
+            image: pkg.image,
+            seller: { "@type": "Hotel", name: "Minha Glória Hotel Boutique" },
+          },
+          breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Tarifas", url: "/tarifas" }, { name: pkg.shortTitle, url: `/tarifas/${pkg.slug}` }]),
+        ]}
+      />
       <Header />
       <div className="pt-20">
         {/* Hero */}

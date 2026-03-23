@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEO, { breadcrumbSchema } from "@/components/SEO";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CTASection from "@/components/CTASection";
 import { motion } from "framer-motion";
@@ -38,6 +39,15 @@ const GastronomiaPage = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Gastronomia | Pensão Completa com Chef Weder"
+        description="Café artesanal, almoço regional e jantar autoral preparados pelo Chef Weder com ingredientes da serra. Menu kids e pensão completa nos fins de semana."
+        canonical="/gastronomia"
+        schemas={[
+          { "@context": "https://schema.org", "@type": "FoodEstablishment", name: "Restaurante Minha Glória", servesCuisine: "Regional brasileira", chef: { "@type": "Person", name: "Chef Weder" }, parentOrganization: { "@type": "Hotel", name: "Minha Glória Hotel Boutique" } },
+          breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Gastronomia", url: "/gastronomia" }]),
+        ]}
+      />
       <Header />
       <div className="pt-20">
         {/* Hero */}

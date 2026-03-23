@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEO, { breadcrumbSchema } from "@/components/SEO";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CTASection from "@/components/CTASection";
 import { motion } from "framer-motion";
@@ -30,6 +31,15 @@ const ExperienciasPage = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Experiências | Aventura e Bem-estar na Serra"
+        description="Spa, cavalgadas, quadriciclo, fazendinha com lhamas e alpacas, trilhas na Mata Atlântica e piscina aquecida. Diversão para toda a família em Bom Jardim, RJ."
+        canonical="/experiencias"
+        schemas={[
+          { "@context": "https://schema.org", "@type": "TouristAttraction", name: "Experiências no Minha Glória", description: "Atividades de lazer e aventura em 165 mil m² de Mata Atlântica.", isAccessibleForFree: false, touristType: "Famílias com crianças" },
+          breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Experiências", url: "/experiencias" }]),
+        ]}
+      />
       <Header />
       <div className="pt-20">
         {/* Hero */}

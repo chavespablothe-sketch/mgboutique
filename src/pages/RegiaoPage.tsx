@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEO, { breadcrumbSchema } from "@/components/SEO";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CTASection from "@/components/CTASection";
 import { motion } from "framer-motion";
@@ -35,6 +36,15 @@ const RegiaoPage = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="A Região | Bom Jardim e Serra Fluminense"
+        description="A 2h30 do Rio de Janeiro, Bom Jardim é o destino ideal para famílias. Cachoeiras, trilhas, gastronomia serrana e clima ameno o ano todo."
+        canonical="/regiao"
+        schemas={[
+          { "@context": "https://schema.org", "@type": "TouristDestination", name: "Bom Jardim, Serra Fluminense", description: "Destino de ecoturismo a 2h30 do Rio de Janeiro, com cachoeiras, trilhas e gastronomia serrana.", touristType: "Famílias" },
+          breadcrumbSchema([{ name: "Home", url: "/" }, { name: "A Região", url: "/regiao" }]),
+        ]}
+      />
       <Header />
       <div className="pt-20">
         {/* Hero */}

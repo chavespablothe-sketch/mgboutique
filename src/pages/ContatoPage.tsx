@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEO, { faqSchema, breadcrumbSchema } from "@/components/SEO";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import DateSearchBar from "@/components/DateSearchBar";
 import { motion } from "framer-motion";
@@ -33,6 +34,15 @@ const ContatoPage = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Contato e FAQ | Fale Conosco"
+        description="Entre em contato com o Minha Glória Hotel Boutique. WhatsApp, e-mail, telefone e perguntas frequentes sobre reservas, hospedagem, crianças e pets."
+        canonical="/contato"
+        schemas={[
+          faqSchema(faqs.map(f => ({ q: f.q, a: f.a }))),
+          breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Contato", url: "/contato" }]),
+        ]}
+      />
       <Header />
       <div className="pt-20">
         {/* Hero */}

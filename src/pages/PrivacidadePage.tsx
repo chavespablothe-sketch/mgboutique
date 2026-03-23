@@ -1,12 +1,20 @@
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEO from "@/components/SEO";
 
 const PrivacidadePage = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Política de Privacidade"
+        description="Política de privacidade e proteção de dados do Minha Glória Hotel Boutique conforme LGPD."
+        canonical="/privacidade"
+        noindex
+        schemas={[{ "@context": "https://schema.org", "@type": "WebPage", name: "Política de Privacidade", url: "https://www.minhagloria.com.br/privacidade" }]}
+      />
       <Header />
       <div className="pt-20">
         <section className="py-20 bg-background">

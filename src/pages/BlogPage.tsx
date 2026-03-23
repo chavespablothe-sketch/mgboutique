@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEO, { breadcrumbSchema } from "@/components/SEO";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CTASection from "@/components/CTASection";
 import { motion } from "framer-motion";
@@ -57,6 +58,15 @@ const BlogPage = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Blog | Dicas de Viagem e Serra Fluminense"
+        description="Artigos sobre hotéis com animais para crianças, trilhas em Nova Friburgo, gastronomia serrana e dicas para famílias que buscam natureza no RJ."
+        canonical="/blog"
+        schemas={[
+          { "@context": "https://schema.org", "@type": "Blog", name: "Blog Minha Glória", url: "https://www.minhagloria.com.br/blog", publisher: { "@type": "Hotel", name: "Minha Glória Hotel Boutique" } },
+          breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Blog", url: "/blog" }]),
+        ]}
+      />
       <Header />
       <div className="pt-20">
         {/* Hero */}

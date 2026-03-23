@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEO, { hotelSchema, breadcrumbSchema } from "@/components/SEO";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CTASection from "@/components/CTASection";
 import { motion } from "framer-motion";
@@ -16,6 +17,15 @@ const AcomodacoesPage = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Acomodações | Chalés Exclusivos na Serra Fluminense"
+        description="4 categorias de chalés em meio à Mata Atlântica: Tradicional, Superior, Luxo e Chalé Família. De 55m² a 100m², varanda privativa e vista para as montanhas."
+        canonical="/acomodacoes"
+        schemas={[
+          { ...hotelSchema, "@type": "LodgingBusiness", makesOffer: chalets.map(c => ({ "@type": "Offer", name: c.name, description: c.description, priceSpecification: { "@type": "PriceSpecification", price: c.priceFrom.replace(/[^\d]/g, ""), priceCurrency: "BRL" } })) },
+          breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Acomodações", url: "/acomodacoes" }]),
+        ]}
+      />
       <Header />
       <div className="pt-20">
         {/* Hero */}
