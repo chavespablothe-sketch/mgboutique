@@ -30,9 +30,11 @@ const HeroSection = () => {
               transition={{ duration: 1, delay: 0.4 }}
               className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground font-semibold mb-6 leading-[1.08] tracking-tight"
             >
-              Seu refúgio exclusivo
+              Um hotel boutique com alma,
               <br />
-              <span className="italic text-secondary">no campo</span>
+              <span className="italic text-secondary">cercado de verde,</span>
+              <br />
+              feito pra casais e famílias
             </motion.h1>
 
             <motion.p
