@@ -5,7 +5,7 @@ import SEO, { breadcrumbSchema } from "@/components/SEO";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CTASection from "@/components/CTASection";
 import { motion } from "framer-motion";
-import { MapPin, Clock, Car, Sun, Cloud, Snowflake, Leaf, Mountain, Waves, UtensilsCrossed, ShoppingBag, Camera } from "lucide-react";
+import { MapPin, Clock, Car, Mountain, Waves, UtensilsCrossed, ShoppingBag, Camera, Leaf } from "lucide-react";
 
 const distances = [
   { from: "Rio de Janeiro", time: "2h30", km: "170km" },
@@ -24,12 +24,6 @@ const attractions = [
   { icon: Leaf, title: "Reservas ecológicas", desc: "Áreas de preservação ambiental e projetos de ecoturismo." },
 ];
 
-const seasons = [
-  { icon: Sun, season: "Verão (dez–mar)", desc: "Temperaturas agradáveis entre 18°C e 28°C. Ideal para trilhas, piscina e atividades ao ar livre. Chuvas pontuais à tarde." },
-  { icon: Leaf, season: "Outono (abr–jun)", desc: "Clima ameno e seco. Temperaturas entre 12°C e 24°C. Cores douradas na mata, perfeito para caminhadas." },
-  { icon: Snowflake, season: "Inverno (jul–set)", desc: "Frio gostoso: 5°C a 18°C. Noites geladas perfeitas para lareira e fondue. Alta temporada na serra." },
-  { icon: Cloud, season: "Primavera (out–nov)", desc: "Floração da Mata Atlântica. Temperaturas entre 14°C e 26°C. Paisagens vibrantes e menor movimento." },
-];
 
 const RegiaoPage = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
@@ -134,27 +128,6 @@ const RegiaoPage = () => {
           </div>
         </section>
 
-        {/* Best time to visit */}
-        <section className="py-20 bg-background">
-          <div className="container mx-auto px-4">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-              <h2 className="font-display text-3xl md:text-4xl text-foreground font-semibold">
-                Melhor época para <span className="italic text-secondary">visitar</span>
-              </h2>
-            </motion.div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-              {seasons.map((s, i) => (
-                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                  className="p-6 bg-card rounded-xl border border-border text-center"
-                >
-                  <s.icon size={28} className="text-secondary mx-auto mb-4" />
-                  <h3 className="font-display text-base font-semibold text-foreground mb-2">{s.season}</h3>
-                  <p className="text-muted-foreground font-body text-sm leading-relaxed">{s.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* Tips */}
         <section className="py-16 bg-primary">

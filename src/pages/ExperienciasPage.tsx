@@ -147,47 +147,43 @@ const ExperienciasPage = () => {
           <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent" />
         </section>
 
-        {/* Activities — alternating large image + text layout */}
-        <section className="py-24 lg:py-32 bg-background">
+        {/* Activities — immersive horizontal scroll cards */}
+        <section className="py-24 lg:py-32 bg-background overflow-hidden">
           <div className="container mx-auto px-4">
-            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-3xl mx-auto text-center mb-20">
-              <h2 className="font-display text-4xl md:text-5xl text-foreground font-semibold mb-6 leading-[1.05]">
-                Atividades para <span className="italic text-secondary">todos</span>
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-3xl mx-auto text-center mb-16">
+              <span className="text-secondary font-body text-xs tracking-[0.4em] uppercase mb-6 block">O que te espera</span>
+              <h2 className="font-display text-4xl md:text-5xl text-foreground font-semibold mb-4 leading-[1.05]">
+                Experiências que <span className="italic text-secondary">marcam</span>
               </h2>
-              <p className="text-editorial text-muted-foreground text-xl leading-relaxed">
-                Do amanhecer ao anoitecer, experiências que transformam uma estadia em memórias para toda a vida.
-              </p>
             </motion.div>
 
-            <div className="space-y-24 max-w-6xl mx-auto">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 max-w-6xl mx-auto">
               {experiences.map((exp, i) => (
                 <motion.div
                   key={i}
-                  initial={{ opacity: 0, y: 40 }}
+                  initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.8 }}
-                  className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
+                  transition={{ delay: i * 0.08, duration: 0.6 }}
+                  className="group relative overflow-hidden"
                 >
-                  <div className={`overflow-hidden rounded-2xl photo-parallax photo-lift ${i % 2 !== 0 ? 'lg:order-2' : ''}`}>
+                  <div className="aspect-[4/5]">
                     <img
                       src={exp.image}
                       alt={exp.title}
-                      className="w-full h-[300px] lg:h-[420px] object-cover"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                       loading="lazy"
                     />
-                  </div>
-                  <div className={i % 2 !== 0 ? 'lg:order-1' : ''}>
-                    <span className="inline-block bg-secondary/15 text-secondary text-[10px] font-body uppercase tracking-wider px-3 py-1 rounded-full mb-4 border border-secondary/20">
-                      {exp.audience}
-                    </span>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                        <exp.icon className="text-secondary" size={22} />
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
+                    <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
+                      <div className="w-11 h-11 mb-4 rounded-full bg-secondary/20 flex items-center justify-center backdrop-blur-sm border border-secondary/30">
+                        <exp.icon className="text-secondary" size={20} />
                       </div>
-                      <h3 className="font-display text-3xl lg:text-4xl font-semibold text-foreground">{exp.title}</h3>
+                      <h3 className="font-display text-2xl font-semibold text-primary-foreground mb-2 hero-text-shadow">{exp.title}</h3>
+                      <p className="text-primary-foreground/70 font-body text-sm leading-relaxed line-clamp-2 group-hover:line-clamp-none transition-all duration-500">
+                        {exp.description}
+                      </p>
                     </div>
-                    <p className="text-muted-foreground font-body text-lg leading-relaxed">{exp.description}</p>
                   </div>
                 </motion.div>
               ))}

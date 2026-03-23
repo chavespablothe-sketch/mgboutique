@@ -127,16 +127,15 @@ const ChalePage = () => {
                     animate={{ opacity: 1, y: 0 }}
                     className="bg-card rounded-xl border border-border p-8 shadow-xl"
                   >
-                    <p className="text-muted-foreground font-body text-xs uppercase tracking-wider mb-1">A partir de</p>
-                    <p className="font-display text-4xl font-semibold text-foreground mb-1">{chalet.priceFrom}</p>
-                    <p className="text-muted-foreground font-body text-sm mb-6">por noite · por casal</p>
+                    <p className="font-display text-2xl font-semibold text-foreground mb-1">Consulte valores</p>
+                    <p className="text-muted-foreground font-body text-sm mb-6">Tarifas variam por temporada</p>
 
                     <div className="space-y-3 mb-6 pb-6 border-b border-border">
                       <div className="flex items-center gap-3 text-muted-foreground font-body text-sm">
                         <CreditCard size={16} className="text-secondary" /> Parcele em até 10x sem juros
                       </div>
                       <div className="flex items-center gap-3 text-muted-foreground font-body text-sm">
-                        <Baby size={16} className="text-secondary" /> Crianças até 6 anos: grátis
+                        <Baby size={16} className="text-secondary" /> 1 criança até 12 anos grátis nos fins de semana
                       </div>
                       <div className="flex items-center gap-3 text-muted-foreground font-body text-sm">
                         <Shield size={16} className="text-secondary" /> Melhor preço garantido
