@@ -164,7 +164,7 @@ const SobrePage = () => {
               {[
                 { icon: MapPin, label: "Bom Jardim, RJ", sub: "18km de Nova Friburgo" },
                 { icon: Clock, label: "2h30 do Rio", sub: "3h de São Paulo" },
-                { icon: Star, label: "4.9 Google", sub: "9.4 Booking" },
+                { icon: Star, label: "4.7 Google", sub: "9.3 Booking" },
                 { icon: Users, label: "20 suítes", sub: "Exclusividade total" },
               ].map((stat, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}

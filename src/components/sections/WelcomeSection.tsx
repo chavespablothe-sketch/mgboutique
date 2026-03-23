@@ -136,7 +136,7 @@ const WelcomeSection = () => {
           <p className="editorial-quote text-2xl md:text-3xl text-foreground/80 leading-snug">
             "O lugar mais bonito e acolhedor que já conheci."
           </p>
-          <p className="text-secondary font-body text-xs tracking-[0.2em] uppercase mt-4">— Hóspede · Google Reviews · 4.9 ★</p>
+          <p className="text-secondary font-body text-xs tracking-[0.2em] uppercase mt-4">— Hóspede · Google Reviews · 4.7 ★</p>
         </motion.div>
       </div>
     </section>

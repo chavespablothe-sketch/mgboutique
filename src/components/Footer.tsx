@@ -78,20 +78,7 @@ const Footer = () => {
                     </svg>
                     <span className="text-primary-foreground text-xs font-body font-semibold">Google</span>
                   </div>
-                  <span className="text-primary-foreground text-sm font-body font-semibold">4.9 ★</span>
-                </div>
-              </div>
-
-              {/* TripAdvisor */}
-              <div className="bg-primary-foreground/5 rounded-lg p-3 border border-primary-foreground/10">
-                <div className="flex items-center justify-between mb-1">
-                  <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 rounded-full bg-[#34E0A1] flex items-center justify-center">
-                      <span className="text-white text-[8px] font-bold">T</span>
-                    </div>
-                    <span className="text-primary-foreground text-xs font-body font-semibold">TripAdvisor</span>
-                  </div>
-                  <span className="text-primary-foreground text-sm font-body font-semibold">5.0</span>
+                   <span className="text-primary-foreground text-sm font-body font-semibold">4.7 ★</span>
                 </div>
               </div>
 
