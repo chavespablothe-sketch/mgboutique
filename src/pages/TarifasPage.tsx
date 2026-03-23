@@ -94,7 +94,7 @@ const TarifasPage = () => {
             <div className="flex flex-wrap justify-center gap-2 mt-6">
               {[
                 { icon: CreditCard, text: "10x sem juros" },
-                { icon: Baby, text: "Kids free até 6 anos" },
+                { icon: Baby, text: "1 criança até 12 anos grátis" },
                 { icon: Star, text: "Pensão completa" },
               ].map((item, i) => (
                 <span key={i} className="flex items-center gap-1.5 text-primary-foreground/70 font-body text-xs bg-primary-foreground/5 px-3 py-1.5 rounded-full border border-primary-foreground/10">
