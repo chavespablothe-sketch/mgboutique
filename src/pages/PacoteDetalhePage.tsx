@@ -22,6 +22,27 @@ const PacoteDetalhePage = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title={`${pkg.shortTitle} | Pacotes`}
+        description={`${pkg.description} ${pkg.period}, ${pkg.nights}. A partir de ${pkg.price} por casal.`}
+        canonical={`/tarifas/${pkg.slug}`}
+        ogImage={pkg.image}
+        schemas={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Offer",
+            name: pkg.title,
+            description: pkg.longDescription,
+            price: pkg.price.replace(/[^\d]/g, ""),
+            priceCurrency: "BRL",
+            availability: "https://schema.org/InStock",
+            validFrom: pkg.period,
+            image: pkg.image,
+            seller: { "@type": "Hotel", name: "Minha Glória Hotel Boutique" },
+          },
+          breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Tarifas", url: "/tarifas" }, { name: pkg.shortTitle, url: `/tarifas/${pkg.slug}` }]),
+        ]}
+      />
       <Header />
       <div className="pt-20">
         {/* Hero */}

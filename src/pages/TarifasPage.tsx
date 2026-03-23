@@ -48,6 +48,28 @@ const TarifasPage = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Tarifas e Pacotes | Ofertas Especiais"
+        description="Pacotes de fim de semana, feriados e datas especiais no Minha Glória Hotel Boutique. Pensão completa, crianças até 6 anos grátis. Parcele em até 10x."
+        canonical="/tarifas"
+        schemas={[
+          {
+            "@context": "https://schema.org",
+            "@type": "OfferCatalog",
+            name: "Pacotes Minha Glória Hotel Boutique",
+            itemListElement: packages.map(p => ({
+              "@type": "Offer",
+              name: p.title,
+              description: p.description,
+              price: p.price.replace(/[^\d]/g, ""),
+              priceCurrency: "BRL",
+              availability: "https://schema.org/InStock",
+              url: `https://www.minhagloria.com.br/tarifas/${p.slug}`,
+            })),
+          },
+          breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Tarifas", url: "/tarifas" }]),
+        ]}
+      />
       <Header />
       <div className="pt-16 lg:pt-20">
         {/* Promo Banner */}
