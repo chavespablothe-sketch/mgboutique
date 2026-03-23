@@ -34,7 +34,7 @@ const packages: HotelPackage[] = [
     longDescription: "Um refúgio para desacelerar, respirar e aproveitar o melhor do descanso com charme, boa gastronomia e momentos agradáveis — perfeito para casais e famílias que desejam uma pausa da rotina. Para as crianças: recreação monitorada em horários dedicados, oficinas e brincadeiras, e espaço para diversão segura. Para os adultos: sessão de massagem relaxante, ambiente tranquilo e acolhedor, tempo de qualidade sem pressa e oportunidades de descanso e bem-estar. *Essa oferta não é válida para feriados ou datas que já temos outros pacotes em andamento.",
     highlights: ["Recreação monitorada", "Massagem relaxante", "Oficinas e brincadeiras", "Ambiente acolhedor"],
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink na chegada", "Acesso ao spa e piscina", "Recreação infantil", "Wi-Fi gratuito", "Estacionamento privativo"],
-    kidsFeatures: ["Recreação monitorada em horários dedicados", "Oficinas e brincadeiras", "Espaço para diversão segura", "Menu infantil especial", "Crianças até 6 anos: cortesia"],
+    kidsFeatures: ["Recreação monitorada em horários dedicados", "Oficinas e brincadeiras", "Espaço para diversão segura", "Menu infantil especial", "1 criança até 12 anos: grátis nos fins de semana"],
     schedule: [
       { day: "Sexta-feira", items: ["Check-in a partir das 15h", "Welcome drink", "Jantar de boas-vindas"] },
       { day: "Sábado", items: ["Café da manhã estendido", "Atividades ao ar livre", "Almoço", "Recreação infantil / Spa adultos", "Jantar especial"] },
@@ -62,7 +62,7 @@ const packages: HotelPackage[] = [
     longDescription: "A Páscoa no Minha Glória é uma celebração em família. Nossos pequenos hóspedes ganham uma programação especial com caça aos ovos pelos jardins da fazenda, oficina de chocolate artesanal e atividades lúdicas ao ar livre. Para os adultos, momentos de relaxamento no spa, degustação de vinhos e jantares especiais com música ao vivo. Tudo pensado para criar memórias inesquecíveis em meio à natureza da Mata Atlântica.",
     highlights: ["Welcome drink de Páscoa", "Mimo no quarto com chocolate artesanal", "Jantares especiais com música ao vivo", "Experiências de wellness (yoga, meditação e massagem)"],
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink na chegada", "Chocolate artesanal no quarto", "Acesso completo ao spa", "Atividades ao ar livre", "Wi-Fi gratuito", "Estacionamento privativo"],
-    kidsFeatures: ["Caça aos ovos de Páscoa nos jardins", "Oficina de chocolate artesanal", "Recreação monitorada", "Menu infantil especial", "Crianças até 6 anos: cortesia"],
+    kidsFeatures: ["Caça aos ovos de Páscoa nos jardins", "Oficina de chocolate artesanal", "Recreação monitorada", "Menu infantil especial", "1 criança até 12 anos: grátis nos fins de semana"],
     schedule: [
       { day: "Sexta-feira (03/04)", items: ["Check-in a partir das 15h", "Welcome drink de Páscoa", "Mimo de chocolate no quarto", "Jantar de boas-vindas com música ao vivo"] },
       { day: "Sábado (04/04)", items: ["Café da manhã estendido até 11h", "Caça aos ovos para crianças", "Oficina de chocolate", "Almoço especial de Páscoa", "Tarde livre: spa, piscina, trilhas", "Yoga ao pôr-do-sol", "Jantar temático com harmonização de vinhos"] },
@@ -90,7 +90,7 @@ const packages: HotelPackage[] = [
     longDescription: "O feriado de Tiradentes é a oportunidade perfeita para uma imersão prolongada na natureza. São 4 noites de pura tranquilidade, com atividades para todas as idades. Nossa programação foi criada para quem busca desacelerar, aproveitar e compartilhar momentos especiais, seja em casal ou em família. Passeios de quadriciclo, trilhas ecológicas, contato com os animais da fazenda e uma programação cultural especial.",
     highlights: ["Welcome drink para adultos", "Bebida especial para crianças", "Mimo de boas-vindas no quarto", "Café da manhã estendido"],
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink adulto e infantil", "Mimo de boas-vindas", "Atividades diárias programadas", "Passeio de quadriciclo", "Acesso ao spa e piscina", "Wi-Fi gratuito", "Estacionamento privativo"],
-    kidsFeatures: ["Bebida especial de boas-vindas", "Recreação monitorada diária", "Contato com animais da fazenda", "Atividades educativas na natureza", "Menu kids em todas as refeições", "Crianças até 6 anos: cortesia"],
+    kidsFeatures: ["Bebida especial de boas-vindas", "Recreação monitorada diária", "Contato com animais da fazenda", "Atividades educativas na natureza", "Menu kids em todas as refeições", "1 criança até 12 anos: grátis nos fins de semana"],
     schedule: [
       { day: "Quinta-feira (17/04)", items: ["Check-in a partir das 15h", "Welcome drink e bebida kids", "Passeio de reconhecimento da fazenda", "Jantar de boas-vindas"] },
       { day: "Sexta-feira (18/04)", items: ["Café da manhã estendido", "Trilha ecológica guiada", "Almoço regional", "Recreação infantil", "Spa e piscina", "Jantar com música"] },
@@ -120,7 +120,7 @@ const packages: HotelPackage[] = [
     longDescription: "Um feriado prolongado perfeito para recarregar as energias em família. Com pensão completa incluída, você não precisa se preocupar com nada. Café da manhã com produtos frescos da região, almoço com receitas da fazenda e jantar especial. As crianças aproveitam atividades ao ar livre, enquanto os pais relaxam no spa ou exploram as trilhas. Aqui, o luxo está na simplicidade bem cuidada: refeições sem pressa, espaços acolhedores, atendimento próximo e uma programação leve, que respeita o ritmo de adultos e crianças.",
     highlights: ["Café da manhã diário", "Almoço diário", "Jantar diário", "Welcome drink na chegada"],
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink", "Atividades recreativas", "Acesso ao spa e piscina", "Trilhas guiadas", "Wi-Fi gratuito", "Estacionamento privativo"],
-    kidsFeatures: ["Atividades ao ar livre supervisionadas", "Contato com animais da fazenda", "Oficina de artes com materiais naturais", "Menu infantil em todas as refeições", "Crianças até 6 anos: cortesia"],
+    kidsFeatures: ["Atividades ao ar livre supervisionadas", "Contato com animais da fazenda", "Oficina de artes com materiais naturais", "Menu infantil em todas as refeições", "1 criança até 12 anos: grátis nos fins de semana"],
     schedule: [
       { day: "Sexta-feira (01/05)", items: ["Check-in a partir das 15h", "Welcome drink", "Passeio pela fazenda", "Jantar de boas-vindas"] },
       { day: "Sábado (02/05)", items: ["Café da manhã estendido", "Trilha guiada pela Mata Atlântica", "Almoço regional", "Recreação infantil", "Spa e piscina", "Jantar especial"] },
@@ -148,7 +148,7 @@ const packages: HotelPackage[] = [
     longDescription: "O Dia das Mães merece ser inesquecível. Pensando nisso, o Hotel Boutique Minha Glória preparou o Festival das Rainhas — um fim de semana exclusivo com programação completa de experiências, gastronomia e homenagens especiais. Apenas 20 suítes disponíveis. Celebre com chá da tarde, mini spa, oficinas e muitos mimos especiais para as mamães.",
     highlights: ["Welcome drink", "Chá da tarde", "Mini spa", "Oficinas"],
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink", "Chá da tarde especial", "Mini spa para mamães", "Oficinas", "Wi-Fi gratuito", "Estacionamento privativo"],
-    kidsFeatures: ["Oficinas especiais para fazer mimos para a mamãe", "Recreação monitorada", "Menu infantil especial", "Crianças até 6 anos: cortesia"],
+    kidsFeatures: ["Oficinas especiais para fazer mimos para a mamãe", "Recreação monitorada", "Menu infantil especial", "1 criança até 12 anos: grátis nos fins de semana"],
     schedule: [
       { day: "Sexta-feira (08/05)", items: ["Check-in a partir das 15h", "Welcome drink", "Jantar de boas-vindas"] },
       { day: "Sábado (09/05)", items: ["Café da manhã estendido", "Oficinas e atividades", "Almoço especial", "Mini spa para mamães", "Chá da tarde", "Jantar com música ao vivo"] },
@@ -177,7 +177,7 @@ const packages: HotelPackage[] = [
     longDescription: "Existem feriados que pedem mais do que descanso. Pedem silêncio, tempo, aconchego… e presença. No feriado de Corpus Christi, o Minha Glória Hotel Boutique convida você a desacelerar, respirar fundo e viver dias tranquilos em meio à natureza, com conforto, cuidado e afeto em cada detalhe. Aqui, o tempo passa mais devagar. A lareira aquece as conversas. A comida reconforta. E os momentos em família ou a dois ganham mais significado.",
     highlights: ["Gastronomia pensada para acolher", "Ambientes quentes, calmos e intimistas", "Música suave que embala as noites", "Natureza, descanso e conexão"],
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink", "Ambientes com lareira", "Música ao vivo", "Atividades em família", "Wi-Fi gratuito", "Estacionamento privativo"],
-    kidsFeatures: ["Recreação monitorada", "Atividades ao ar livre", "Menu infantil especial", "Crianças até 6 anos: cortesia"],
+    kidsFeatures: ["Recreação monitorada", "Atividades ao ar livre", "Menu infantil especial", "1 criança até 12 anos: grátis nos fins de semana"],
     schedule: [
       { day: "Quinta-feira (04/06)", items: ["Check-in a partir das 15h", "Welcome drink", "Jantar de boas-vindas"] },
       { day: "Sexta-feira (05/06)", items: ["Café da manhã estendido", "Atividades ao ar livre", "Almoço", "Tarde de spa e descanso", "Jantar com música suave"] },
@@ -235,7 +235,7 @@ const packages: HotelPackage[] = [
     longDescription: "Em junho, o frio da serra transforma o Glória Hotel Boutique no cenário ideal para viver o charme das festas juninas com conforto, boa mesa e acolhimento. Durante todos os finais de semana do mês, convidamos você e sua família para uma Programação Junina de Inverno, pensada para unir tradição, gastronomia e tranquilidade, em um ambiente intimista e cuidadosamente preparado. Aqui, o São João é celebrado em versão boutique: sem excessos, no ritmo certo, valorizando o prazer de estar junto. Para famílias que desejam aproveitar o inverno com tranquilidade, casais que buscam charme, boa gastronomia e clima acolhedor, e hóspedes que valorizam hotéis pequenos, atendimento próximo e experiências autênticas.",
     highlights: ["Welcome drink junino na chegada", "Jantar de boas-vindas inspirado na culinária junina", "Café da manhã estendido com itens típicos", "Almoços e jantares reconfortantes de inverno"],
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink junino", "Menu típico junino em versão boutique", "Decoração temática", "Música ao vivo", "Wi-Fi gratuito", "Estacionamento privativo"],
-    kidsFeatures: ["Recreação temática junina", "Brincadeiras típicas de festa junina", "Menu infantil com itens típicos", "Crianças até 6 anos: cortesia"],
+    kidsFeatures: ["Recreação temática junina", "Brincadeiras típicas de festa junina", "Menu infantil com itens típicos", "1 criança até 12 anos: grátis nos fins de semana"],
     schedule: [
       { day: "Sexta-feira", items: ["Check-in a partir das 15h", "Welcome drink junino", "Jantar de boas-vindas com culinária junina"] },
       { day: "Sábado", items: ["Café da manhã estendido com itens típicos", "Atividades ao ar livre", "Almoço", "Brincadeiras juninas para crianças", "Jantar especial com música"] },
@@ -263,7 +263,7 @@ const packages: HotelPackage[] = [
     longDescription: "Julho é alta temporada na serra — frio gostoso, lareira acesa e boa mesa. Nos finais de semana de julho, o Glória Hotel Boutique preparou uma programação especial de inverno, pensada para famílias e casais que buscam conforto, tranquilidade e experiências acolhedoras. Aproveite o melhor do inverno na serra fluminense com gastronomia reconfortante e atividades para todas as idades.",
     highlights: ["Welcome drink de inverno na chegada", "Jantar de boas-vindas com menu reconfortante", "Café da manhã estendido", "Almoços e jantares com pratos quentes de inverno"],
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink de inverno", "Menu especial de inverno", "Lareira acesa", "Atividades em família", "Wi-Fi gratuito", "Estacionamento privativo"],
-    kidsFeatures: ["Recreação monitorada", "Atividades ao ar livre de inverno", "Menu infantil especial", "Crianças até 6 anos: cortesia"],
+    kidsFeatures: ["Recreação monitorada", "Atividades ao ar livre de inverno", "Menu infantil especial", "1 criança até 12 anos: grátis nos fins de semana"],
     schedule: [
       { day: "Sexta-feira", items: ["Check-in a partir das 15h", "Welcome drink de inverno", "Jantar de boas-vindas reconfortante"] },
       { day: "Sábado", items: ["Café da manhã estendido", "Trilhas e atividades ao ar livre", "Almoço com pratos quentes", "Recreação infantil", "Jantar especial com lareira"] },
@@ -291,7 +291,7 @@ const packages: HotelPackage[] = [
     longDescription: "Um fim de semana inteiro dedicado a celebrar os pais com conforto, carinho e experiências memoráveis — equilibrando descanso, gastronomia e momentos especiais em família. No domingo, Dia dos Pais, café da manhã comemorativo, atividade leve em família, almoço especial com menu comemorativo, brinde de homenagem e entrega de lembrança especial para os pais.",
     highlights: ["Drink de boas-vindas para adultos e bebida especial para crianças", "Mimo especial no quarto", "Piscina, áreas de descanso e espaços de convivência", "Chá da tarde especial"],
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink adulto e infantil", "Mimo especial no quarto", "Chá da tarde", "Almoço comemorativo de Dia dos Pais", "Brinde de homenagem", "Lembrança especial para os pais", "Wi-Fi gratuito", "Estacionamento privativo"],
-    kidsFeatures: ["Bebida especial de boas-vindas", "Recreação monitorada", "Oficina para preparar presente para o papai", "Menu infantil especial", "Crianças até 6 anos: cortesia"],
+    kidsFeatures: ["Bebida especial de boas-vindas", "Recreação monitorada", "Oficina para preparar presente para o papai", "Menu infantil especial", "1 criança até 12 anos: grátis nos fins de semana"],
     schedule: [
       { day: "Sexta-feira (07/08)", items: ["Check-in a partir das 15h", "Welcome drink", "Mimo especial no quarto", "Jantar de boas-vindas"] },
       { day: "Sábado (08/08)", items: ["Café da manhã estendido", "Atividades ao ar livre", "Almoço", "Chá da tarde especial", "Recreação infantil", "Jantar com música ao vivo"] },
@@ -319,7 +319,7 @@ const packages: HotelPackage[] = [
     longDescription: "Celebre o feriado da Independência com dias de descanso refinado, gastronomia autoral e experiências cuidadosamente desenhadas para desacelerar — em casal ou em família. Um refúgio com atmosfera elegante, atendimento personalizado e programação equilibrada entre bem-estar, cultura e lazer. Para casais que desejam um feriado elegante e sem pressa, famílias que querem viajar com crianças sem abrir mão de sofisticação, e hóspedes que valorizam conforto, gastronomia e experiências exclusivas.",
     highlights: ["Welcome drink para adultos e bebida especial para crianças", "Mimo de boas-vindas no quarto", "Concierge dedicado durante a estadia", "Café da manhã especial diário, servido sem pressa"],
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink adulto e infantil", "Mimo de boas-vindas", "Concierge dedicado", "Atividades diárias", "Acesso ao spa e piscina", "Wi-Fi gratuito", "Estacionamento privativo"],
-    kidsFeatures: ["Bebida especial de boas-vindas", "Recreação monitorada diária", "Atividades ao ar livre", "Menu infantil especial", "Crianças até 6 anos: cortesia"],
+    kidsFeatures: ["Bebida especial de boas-vindas", "Recreação monitorada diária", "Atividades ao ar livre", "Menu infantil especial", "1 criança até 12 anos: grátis nos fins de semana"],
     schedule: [
       { day: "Sexta-feira (04/09)", items: ["Check-in a partir das 15h", "Welcome drink", "Mimo no quarto", "Jantar de boas-vindas"] },
       { day: "Sábado (05/09)", items: ["Café da manhã especial", "Trilhas e atividades", "Almoço", "Spa e piscina", "Jantar com música ao vivo"] },
@@ -348,7 +348,7 @@ const packages: HotelPackage[] = [
     longDescription: "Um feriado pensado para encantar os pequenos e proporcionar descanso aos adultos. Dias leves, divertidos e afetivos, com programação criativa, gastronômica e lúdica — sem abrir mão do conforto e da elegância que definem a experiência Glória. Celebração especial de Dia das Crianças: uma experiência lúdica e afetiva preparada para surpreender os pequenos e emocionar toda a família. Para famílias que desejam viajar com crianças com conforto e segurança, pais que buscam diversão para os filhos sem abrir mão de tranquilidade, e avós e familiares que querem criar memórias especiais com os pequenos.",
     highlights: ["Welcome drink para adultos", "Bebida especial e surpresa para as crianças", "Mimo infantil no quarto", "Kit diversão de boas-vindas"],
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink adulto e infantil", "Mimo infantil no quarto", "Kit diversão de boas-vindas", "Celebração de Dia das Crianças", "Recreação especial", "Wi-Fi gratuito", "Estacionamento privativo"],
-    kidsFeatures: ["Bebida e surpresa especial de boas-vindas", "Kit diversão no quarto", "Celebração de Dia das Crianças", "Recreação especial diária", "Oficinas criativas", "Menu infantil divertido", "Crianças até 6 anos: cortesia"],
+    kidsFeatures: ["Bebida e surpresa especial de boas-vindas", "Kit diversão no quarto", "Celebração de Dia das Crianças", "Recreação especial diária", "Oficinas criativas", "Menu infantil divertido", "1 criança até 12 anos: grátis nos fins de semana"],
     schedule: [
       { day: "Sexta-feira (09/10)", items: ["Check-in a partir das 15h", "Welcome drink e surpresa kids", "Mimo infantil no quarto", "Jantar de boas-vindas"] },
       { day: "Sábado (10/10)", items: ["Café da manhã", "Oficinas criativas para crianças", "Almoço em família", "Recreação especial", "Jantar temático"] },
@@ -377,7 +377,7 @@ const packages: HotelPackage[] = [
     longDescription: "Um feriado para desacelerar, silenciar o ritmo e cuidar de si. Dias de introspecção leve, bem-estar e experiências sensoriais pensadas para restaurar corpo e mente — com a elegância tranquila e o acolhimento característicos do Glória. Ideal para casais que desejam descanso profundo e reconexão, hóspedes que buscam silêncio, bem-estar e desaceleração, viajantes que preferem experiências intimistas, e famílias que valorizam tranquilidade e conforto.",
     highlights: ["Welcome drink na chegada", "Chá calmante de boas-vindas no quarto", "Mimo especial com proposta relaxante", "Atendimento personalizado durante toda a estadia"],
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink", "Chá calmante no quarto", "Mimo relaxante", "Atendimento personalizado", "Acesso ao spa", "Wi-Fi gratuito", "Estacionamento privativo"],
-    kidsFeatures: ["Recreação monitorada", "Atividades ao ar livre", "Menu infantil especial", "Crianças até 6 anos: cortesia"],
+    kidsFeatures: ["Recreação monitorada", "Atividades ao ar livre", "Menu infantil especial", "1 criança até 12 anos: grátis nos fins de semana"],
     schedule: [
       { day: "Sexta-feira (30/10)", items: ["Check-in a partir das 15h", "Welcome drink", "Chá calmante e mimo no quarto", "Jantar de boas-vindas"] },
       { day: "Sábado (31/10)", items: ["Café da manhã estendido", "Spa e bem-estar", "Almoço", "Tarde de introspecção e descanso", "Jantar com música suave"] },
@@ -406,7 +406,7 @@ const packages: HotelPackage[] = [
     longDescription: "Celebre o Natal em um ambiente acolhedor e elegante, com experiências pensadas para desacelerar, reconectar e criar memórias inesquecíveis — em casal ou em família. Um refúgio com atmosfera festiva, atendimento atencioso e programação equilibrada entre celebração, bem-estar e convivência. Para casais que desejam um Natal tranquilo e elegante, famílias que querem celebrar com conforto e praticidade, e hóspedes que valorizam boa gastronomia e experiências memoráveis.",
     highlights: ["Drink de boas-vindas para adultos e bebida especial para crianças", "Mimo natalino no quarto", "Atendimento personalizado durante a estadia", "Café da manhã especial diário"],
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink adulto e infantil", "Mimo natalino no quarto", "Ceia de Natal especial", "Decoração festiva", "Atividades temáticas de Natal", "Wi-Fi gratuito", "Estacionamento privativo"],
-    kidsFeatures: ["Bebida especial de boas-vindas", "Mimo natalino no quarto", "Atividades temáticas de Natal", "Recreação monitorada", "Menu infantil especial", "Crianças até 6 anos: cortesia"],
+    kidsFeatures: ["Bebida especial de boas-vindas", "Mimo natalino no quarto", "Atividades temáticas de Natal", "Recreação monitorada", "Menu infantil especial", "1 criança até 12 anos: grátis nos fins de semana"],
     schedule: [
       { day: "Quarta-feira (23/12)", items: ["Check-in a partir das 15h", "Welcome drink", "Mimo natalino no quarto", "Jantar de boas-vindas"] },
       { day: "Quinta-feira (24/12)", items: ["Café da manhã especial", "Atividades natalinas", "Almoço", "Tarde de preparação para a noite de Natal", "Ceia de Natal especial"] },
@@ -435,7 +435,7 @@ const packages: HotelPackage[] = [
     longDescription: "Celebre a chegada do novo ano com conforto, alegria e momentos inesquecíveis. Uma experiência pensada para relaxar, brindar a vida e iniciar o próximo ciclo com leveza — em casal ou em família. Um refúgio elegante com atmosfera festiva, atendimento atencioso e programação equilibrada entre celebração, bem-estar e convivência. Para casais que desejam uma virada elegante e tranquila, famílias que querem celebrar juntas com conforto e praticidade, e hóspedes que valorizam boa gastronomia e experiências memoráveis.",
     highlights: ["Drink de boas-vindas para adultos e bebida especial para criança", "Mimo de boas-vindas no quarto", "Atendimento personalizado durante toda a estadia", "Café da manhã especial diário"],
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink adulto e infantil", "Mimo de boas-vindas no quarto", "Ceia de Réveillon exclusiva", "Festa da virada", "Espumante para brinde da meia-noite", "Atividades diárias", "Wi-Fi gratuito", "Estacionamento privativo"],
-    kidsFeatures: ["Bebida especial de boas-vindas", "Mimo no quarto", "Recreação especial de fim de ano", "Atividades temáticas", "Menu infantil especial", "Crianças até 6 anos: cortesia"],
+    kidsFeatures: ["Bebida especial de boas-vindas", "Mimo no quarto", "Recreação especial de fim de ano", "Atividades temáticas", "Menu infantil especial", "1 criança até 12 anos: grátis nos fins de semana"],
     schedule: [
       { day: "Quarta-feira (30/12)", items: ["Check-in a partir das 15h", "Welcome drink", "Mimo no quarto", "Jantar de boas-vindas"] },
       { day: "Quinta-feira (31/12)", items: ["Café da manhã especial", "Atividades de fim de ano", "Almoço", "Preparação para a virada", "Ceia de Réveillon exclusiva", "Festa da virada com espumante"] },

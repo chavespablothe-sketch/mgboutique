@@ -80,7 +80,7 @@ const PacotesPage = () => {
               </h1>
               <p className="text-primary-foreground/60 font-body text-base md:text-lg leading-relaxed max-w-xl mx-auto">
                 {packages.length} pacotes exclusivos — de Páscoa a Réveillon. 
-                Pensão completa nos finais de semana e crianças até 6 anos grátis.
+                Pensão completa nos finais de semana e 1 criança até 12 anos grátis.
               </p>
             </motion.div>
 
@@ -88,7 +88,7 @@ const PacotesPage = () => {
             <div className="flex flex-wrap justify-center gap-2 mt-6">
               {[
                 { icon: CreditCard, text: "10x sem juros" },
-                { icon: Baby, text: "Kids free até 6 anos" },
+                { icon: Baby, text: "1 criança até 12 anos grátis" },
                 { icon: Star, text: "Pensão completa" },
                 { icon: Users, text: "Apenas 20 suítes" },
               ].map((item, i) => (

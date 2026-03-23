@@ -1,12 +1,12 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import SEO, { breadcrumbSchema } from "@/components/SEO";
 import CTASection from "@/components/CTASection";
-import { motion } from "framer-motion";
-import { Calendar, Clock, Check, Baby, ArrowRight, ArrowLeft, Shield, CreditCard, Users } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Calendar, Clock, Check, Baby, ArrowRight, ArrowLeft, Shield, CreditCard, Users, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import packages from "@/data/packages";
 
@@ -15,10 +15,22 @@ const OMNIBEES_URL = "https://book.omnibees.com/hotel/19498";
 const PacoteDetalhePage = () => {
   const { slug } = useParams<{ slug: string }>();
   const pkg = packages.find((p) => p.slug === slug);
+  const [galleryOpen, setGalleryOpen] = useState(false);
+  const [galleryIndex, setGalleryIndex] = useState(0);
 
   useEffect(() => { window.scrollTo(0, 0); }, [slug]);
 
   if (!pkg) return <Navigate to="/tarifas" replace />;
+
+  const allImages = pkg.gallery.length > 0 ? pkg.gallery : [pkg.image];
+
+  const openGallery = (index: number) => {
+    setGalleryIndex(index);
+    setGalleryOpen(true);
+  };
+
+  const nextImage = () => setGalleryIndex((prev) => (prev + 1) % allImages.length);
+  const prevImage = () => setGalleryIndex((prev) => (prev - 1 + allImages.length) % allImages.length);
 
   return (
     <div className="min-h-screen">
@@ -47,9 +59,12 @@ const PacoteDetalhePage = () => {
       <div className="pt-20">
         {/* Hero */}
         <section
-          className="relative h-[65vh] flex items-end bg-cover bg-center"
-          style={{ backgroundImage: `url('${pkg.image}')` }}
+          className="relative h-[65vh] flex items-end overflow-hidden"
         >
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-zoom-bg"
+            style={{ backgroundImage: `url('${pkg.image}')` }}
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/40 to-primary/20" />
           <div className="relative z-10 container mx-auto px-4 pb-14">
             <Link to="/tarifas" className="inline-flex items-center gap-2 text-secondary font-body text-sm mb-5 hover:text-secondary/80 transition-colors">
@@ -58,13 +73,40 @@ const PacoteDetalhePage = () => {
             <span className={`inline-block ${pkg.tagColor} text-primary-foreground text-xs font-body uppercase tracking-wider px-4 py-1.5 rounded-full mb-4`}>
               {pkg.tag}
             </span>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground font-semibold mb-4 leading-[1.05]">{pkg.title}</h1>
-            <div className="flex flex-wrap gap-5 text-primary-foreground/70 font-body text-base">
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground font-semibold mb-4 leading-[1.05] hero-text-shadow">{pkg.title}</h1>
+            <div className="flex flex-wrap gap-5 text-primary-foreground/70 font-body text-base hero-text-shadow">
               <span className="flex items-center gap-2"><Calendar size={16} /> {pkg.period}</span>
               <span className="flex items-center gap-2"><Clock size={16} /> {pkg.nights}</span>
             </div>
           </div>
         </section>
+
+        {/* Photo Gallery Grid */}
+        {allImages.length > 1 && (
+          <section className="py-8 bg-background">
+            <div className="container mx-auto px-4">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
+                {allImages.map((img, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.05 }}
+                    className={`overflow-hidden rounded-xl cursor-pointer group ${i === 0 ? "col-span-2 row-span-2" : ""}`}
+                    onClick={() => openGallery(i)}
+                  >
+                    <img
+                      src={img}
+                      alt={`${pkg.shortTitle} - foto ${i + 1}`}
+                      className={`w-full object-cover group-hover:scale-105 transition-transform duration-700 ${i === 0 ? "h-64 md:h-[400px]" : "h-32 md:h-[195px]"}`}
+                      loading="lazy"
+                    />
+                  </motion.div>
+                ))}
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Main Content */}
         <section className="py-16 bg-background">
@@ -130,14 +172,6 @@ const PacoteDetalhePage = () => {
                     ))}
                   </div>
                 </motion.div>
-
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-                  {pkg.gallery.map((img, i) => (
-                    <div key={i} className="overflow-hidden rounded-xl">
-                      <img src={img} alt={`${pkg.shortTitle} ${i + 1}`} className="w-full h-48 object-cover hover:scale-105 transition-transform duration-700" loading="lazy" />
-                    </div>
-                  ))}
-                </div>
               </div>
 
               {/* Sticky Pricing Card */}
@@ -156,7 +190,7 @@ const PacoteDetalhePage = () => {
                         <CreditCard size={16} className="text-secondary" /> Parcele em até 10x sem juros
                       </div>
                       <div className="flex items-center gap-3 text-muted-foreground font-body text-sm">
-                        <Baby size={16} className="text-secondary" /> Crianças até 6 anos: grátis
+                        <Baby size={16} className="text-secondary" /> 1 criança até 12 anos: grátis nos fins de semana
                       </div>
                       <div className="flex items-center gap-3 text-muted-foreground font-body text-sm">
                         <Shield size={16} className="text-secondary" /> Melhor preço garantido
@@ -186,10 +220,65 @@ const PacoteDetalhePage = () => {
           </div>
         </section>
 
-        <CTASection title="Garanta sua vaga neste pacote" subtitle="Vagas limitadas — apenas 20 suítes. Pensão completa e crianças até 6 anos grátis." showPhone={false} />
+        <CTASection title="Garanta sua vaga neste pacote" subtitle="Vagas limitadas — apenas 20 suítes. Pensão completa e 1 criança até 12 anos grátis nos fins de semana." showPhone={false} />
       </div>
       <Footer />
       <WhatsAppButton />
+
+      {/* Fullscreen Gallery Modal */}
+      <AnimatePresence>
+        {galleryOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center"
+            onClick={() => setGalleryOpen(false)}
+          >
+            <button
+              onClick={(e) => { e.stopPropagation(); setGalleryOpen(false); }}
+              className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-10"
+            >
+              <X size={28} />
+            </button>
+
+            <button
+              onClick={(e) => { e.stopPropagation(); prevImage(); }}
+              className="absolute left-4 md:left-8 text-white/70 hover:text-white transition-colors z-10"
+            >
+              <ChevronLeft size={36} />
+            </button>
+
+            <motion.img
+              key={galleryIndex}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              src={allImages[galleryIndex]}
+              alt={`${pkg.shortTitle} - foto ${galleryIndex + 1}`}
+              className="max-w-[90vw] max-h-[85vh] object-contain rounded-lg"
+              onClick={(e) => e.stopPropagation()}
+            />
+
+            <button
+              onClick={(e) => { e.stopPropagation(); nextImage(); }}
+              className="absolute right-4 md:right-8 text-white/70 hover:text-white transition-colors z-10"
+            >
+              <ChevronRight size={36} />
+            </button>
+
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+              {allImages.map((_, i) => (
+                <button
+                  key={i}
+                  onClick={(e) => { e.stopPropagation(); setGalleryIndex(i); }}
+                  className={`w-2.5 h-2.5 rounded-full transition-all ${i === galleryIndex ? "bg-white scale-125" : "bg-white/40 hover:bg-white/60"}`}
+                />
+              ))}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

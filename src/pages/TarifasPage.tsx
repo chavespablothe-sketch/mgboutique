@@ -52,7 +52,7 @@ const TarifasPage = () => {
     <div className="min-h-screen">
       <SEO
         title="Tarifas e Pacotes | Ofertas Especiais"
-        description="Pacotes de fim de semana, feriados e datas especiais no Minha Glória Hotel Boutique. Pensão completa, crianças até 6 anos grátis. Parcele em até 10x."
+        description="Pacotes de fim de semana, feriados e datas especiais no Minha Glória Hotel Boutique. Pensão completa, 1 criança até 12 anos grátis. Parcele em até 10x."
         canonical="/tarifas"
         schemas={[
           {
@@ -87,14 +87,14 @@ const TarifasPage = () => {
               </h1>
               <p className="text-primary-foreground/60 font-body text-base md:text-lg leading-relaxed max-w-xl mx-auto hero-text-shadow">
                 {packages.length} pacotes exclusivos de Páscoa a Réveillon.
-                Pensão completa nos finais de semana e crianças até 6 anos grátis.
+                Pensão completa nos finais de semana e 1 criança até 12 anos grátis.
               </p>
             </motion.div>
 
             <div className="flex flex-wrap justify-center gap-2 mt-6">
               {[
                 { icon: CreditCard, text: "10x sem juros" },
-                { icon: Baby, text: "Kids free até 6 anos" },
+                { icon: Baby, text: "1 criança até 12 anos grátis" },
                 { icon: Star, text: "Pensão completa" },
               ].map((item, i) => (
                 <span key={i} className="flex items-center gap-1.5 text-primary-foreground/70 font-body text-xs bg-primary-foreground/5 px-3 py-1.5 rounded-full border border-primary-foreground/10">
@@ -153,7 +153,7 @@ const TarifasPage = () => {
                     <div className="space-y-4">
                       {[
                         "Pensão completa nos fins de semana e feriados",
-                        "Crianças até 6 anos: cortesia",
+                        "1 criança até 12 anos: grátis nos fins de semana",
                         "Parcelamento em até 10x sem juros",
                         "Recreação infantil monitorada",
                         "Acesso completo ao spa e lazer",

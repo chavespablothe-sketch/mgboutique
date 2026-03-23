@@ -23,7 +23,7 @@ const OffersSection = () => {
             Pacotes <span className="italic text-secondary">2026</span>
           </h2>
           <p className="text-editorial text-muted-foreground text-xl max-w-2xl mx-auto leading-relaxed">
-            Cada feriado, uma experiência única. Pensão completa, recreação e crianças até 6 anos grátis em todos os pacotes.
+            Cada feriado, uma experiência única. Pensão completa, recreação e 1 criança até 12 anos grátis nos fins de semana.
           </p>
         </motion.div>
 
@@ -67,10 +67,10 @@ const OffersSection = () => {
                 </div>
 
               <Button asChild size="lg" className="w-full bg-cta hover:bg-cta/90 text-cta-foreground font-body text-sm uppercase tracking-wider gap-2 rounded-full shadow-lg shadow-cta/20">
-                  <a href="https://book.omnibees.com" target="_blank" rel="noopener noreferrer">
+                  <Link to={`/tarifas/${pkg.slug}`}>
                     <CalendarDays size={14} />
-                    Reservar agora <ArrowRight size={14} />
-                  </a>
+                    Ver pacote <ArrowRight size={14} />
+                  </Link>
                 </Button>
               </div>
             </motion.div>

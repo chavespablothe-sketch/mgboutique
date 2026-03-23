@@ -19,7 +19,7 @@ const faqs = [
   { cat: "Hospedagem", q: "Qual o horário de check-in e check-out?", a: "Check-in a partir das 15h e check-out até 12h. Late check-out sob consulta e disponibilidade." },
   { cat: "Hospedagem", q: "O que está incluído na diária?", a: "Café da manhã artesanal está sempre incluso. Nos finais de semana e feriados, oferecemos pensão completa (café, almoço e jantar)." },
   { cat: "Hospedagem", q: "Qual o regime de refeições?", a: "Nos pacotes de fim de semana e feriados: pensão completa. Em dias avulsos de semana: café da manhã incluso, almoço e jantar sob consulta." },
-  { cat: "Crianças", q: "A partir de que idade a criança paga?", a: "Crianças até 6 anos se hospedam gratuitamente. Acima de 6 anos, é cobrada tarifa de criança." },
+  { cat: "Crianças", q: "A partir de que idade a criança paga?", a: "1 criança até 12 anos se hospeda gratuitamente nos fins de semana e feriados. Acima de 12 anos ou a partir da segunda criança, é cobrada tarifa adicional." },
   { cat: "Crianças", q: "Tem berço e cadeirão?", a: "Sim! Berço no chalé, cadeirão no restaurante, fraldário e menu kids em todas as refeições." },
   { cat: "Crianças", q: "Existe recreação infantil?", a: "Sim, com equipe dedicada em datas programadas (feriados e pacotes). Gincanas, oficinas e contato com os animais." },
   { cat: "Pets", q: "O hotel aceita animais de estimação?", a: "Sim! Somos pet friendly. Consulte regras de convivência e áreas permitidas." },

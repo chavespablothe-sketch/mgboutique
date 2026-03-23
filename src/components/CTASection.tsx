@@ -14,7 +14,7 @@ interface CTASectionProps {
 
 const CTASection = ({
   title = "Sua próxima memória inesquecível começa aqui",
-  subtitle = "Apenas 20 suítes em meio à Mata Atlântica. Pensão completa, crianças até 6 anos grátis e parcelamento em até 10x sem juros. Fale com nossa equipe e reserve a experiência perfeita para sua família.",
+  subtitle = "Apenas 20 suítes em meio à Mata Atlântica. Pensão completa, 1 criança até 12 anos grátis nos fins de semana e parcelamento em até 10x sem juros. Reserve a experiência perfeita para sua família.",
   bgImage = "https://www.minhagloria.com.br/images/carousel-new-2.webp",
   showPhone = true,
 }: CTASectionProps) => (
