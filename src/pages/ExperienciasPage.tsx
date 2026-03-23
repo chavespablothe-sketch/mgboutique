@@ -127,11 +127,11 @@ const ExperienciasPage = () => {
                   transition={{ duration: 0.8 }}
                   className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
                 >
-                  <div className={`overflow-hidden rounded-2xl ${i % 2 !== 0 ? 'lg:order-2' : ''}`}>
+                  <div className={`overflow-hidden rounded-2xl photo-parallax photo-lift ${i % 2 !== 0 ? 'lg:order-2' : ''}`}>
                     <img
                       src={exp.image}
                       alt={exp.title}
-                      className="w-full h-[300px] lg:h-[420px] object-cover hover:scale-105 transition-transform duration-1000"
+                      className="w-full h-[300px] lg:h-[420px] object-cover"
                       loading="lazy"
                     />
                   </div>
