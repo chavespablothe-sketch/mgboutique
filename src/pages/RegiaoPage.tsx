@@ -24,12 +24,6 @@ const attractions = [
   { icon: Leaf, title: "Reservas ecológicas", desc: "Áreas de preservação ambiental e projetos de ecoturismo." },
 ];
 
-const seasons = [
-  { icon: Sun, season: "Verão (dez–mar)", desc: "Temperaturas agradáveis entre 18°C e 28°C. Ideal para trilhas, piscina e atividades ao ar livre. Chuvas pontuais à tarde." },
-  { icon: Leaf, season: "Outono (abr–jun)", desc: "Clima ameno e seco. Temperaturas entre 12°C e 24°C. Cores douradas na mata, perfeito para caminhadas." },
-  { icon: Snowflake, season: "Inverno (jul–set)", desc: "Frio gostoso: 5°C a 18°C. Noites geladas perfeitas para lareira e fondue. Alta temporada na serra." },
-  { icon: Cloud, season: "Primavera (out–nov)", desc: "Floração da Mata Atlântica. Temperaturas entre 14°C e 26°C. Paisagens vibrantes e menor movimento." },
-];
 
 const RegiaoPage = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
