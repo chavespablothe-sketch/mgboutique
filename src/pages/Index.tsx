@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -6,7 +7,6 @@ import WelcomeSection from "@/components/sections/WelcomeSection";
 import BoutiqueSection from "@/components/sections/BoutiqueSection";
 import AccommodationsSection from "@/components/sections/AccommodationsSection";
 import AmenitiesSection from "@/components/sections/AmenitiesSection";
-import GastronomySection from "@/components/sections/GastronomySection";
 import OffersSection from "@/components/sections/OffersSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import CTASection from "@/components/CTASection";
@@ -20,7 +20,6 @@ const Index = () => {
       <BoutiqueSection />
       <AccommodationsSection />
       <AmenitiesSection />
-      <GastronomySection />
       <OffersSection />
       <TestimonialsSection />
       <CTASection />

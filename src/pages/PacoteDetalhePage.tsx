@@ -5,9 +5,11 @@ import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CTASection from "@/components/CTASection";
 import { motion } from "framer-motion";
-import { Calendar, Clock, Check, Baby, ArrowRight, ArrowLeft, Star, Shield, CreditCard, Users } from "lucide-react";
+import { Calendar, Clock, Check, Baby, ArrowRight, ArrowLeft, Shield, CreditCard, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import packages from "@/data/packages";
+
+const OMNIBEES_URL = "https://book.omnibees.com/hotel/19498";
 
 const PacoteDetalhePage = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -15,7 +17,7 @@ const PacoteDetalhePage = () => {
 
   useEffect(() => { window.scrollTo(0, 0); }, [slug]);
 
-  if (!pkg) return <Navigate to="/pacotes" replace />;
+  if (!pkg) return <Navigate to="/tarifas" replace />;
 
   return (
     <div className="min-h-screen">
@@ -28,8 +30,8 @@ const PacoteDetalhePage = () => {
         >
           <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/40 to-primary/20" />
           <div className="relative z-10 container mx-auto px-4 pb-14">
-            <Link to="/pacotes" className="inline-flex items-center gap-2 text-secondary font-body text-sm mb-5 hover:text-secondary/80 transition-colors">
-              <ArrowLeft size={14} /> Voltar aos pacotes
+            <Link to="/tarifas" className="inline-flex items-center gap-2 text-secondary font-body text-sm mb-5 hover:text-secondary/80 transition-colors">
+              <ArrowLeft size={14} /> Voltar às tarifas
             </Link>
             <span className={`inline-block ${pkg.tagColor} text-primary-foreground text-xs font-body uppercase tracking-wider px-4 py-1.5 rounded-full mb-4`}>
               {pkg.tag}
@@ -46,14 +48,12 @@ const PacoteDetalhePage = () => {
         <section className="py-16 bg-background">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-              {/* Left - Content */}
               <div className="lg:col-span-2 space-y-12">
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
                   <h2 className="font-display text-3xl font-semibold text-foreground mb-5">Sobre o pacote</h2>
                   <p className="text-muted-foreground font-body text-lg leading-relaxed">{pkg.longDescription}</p>
                 </motion.div>
 
-                {/* What's included */}
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
                   <h2 className="font-display text-2xl font-semibold text-foreground mb-6">O que está incluso</h2>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -66,7 +66,6 @@ const PacoteDetalhePage = () => {
                   </div>
                 </motion.div>
 
-                {/* Kids Section */}
                 {pkg.kidsFeatures.length > 0 && (
                   <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}
                     className="bg-hotel-cream rounded-xl p-8 border border-border"
@@ -83,7 +82,7 @@ const PacoteDetalhePage = () => {
                     <div className="space-y-3">
                       {pkg.kidsFeatures.map((feat, i) => (
                         <div key={i} className="flex items-start gap-3">
-                          <Star size={14} className="text-secondary mt-1 shrink-0" />
+                          <Check size={14} className="text-secondary mt-1 shrink-0" />
                           <span className="text-foreground font-body text-sm leading-relaxed">{feat}</span>
                         </div>
                       ))}
@@ -91,7 +90,6 @@ const PacoteDetalhePage = () => {
                   </motion.div>
                 )}
 
-                {/* Schedule */}
                 <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
                   <h2 className="font-display text-2xl font-semibold text-foreground mb-6">Programação</h2>
                   <div className="space-y-6">
@@ -111,7 +109,6 @@ const PacoteDetalhePage = () => {
                   </div>
                 </motion.div>
 
-                {/* Gallery */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                   {pkg.gallery.map((img, i) => (
                     <div key={i} className="overflow-hidden rounded-xl">
@@ -121,12 +118,10 @@ const PacoteDetalhePage = () => {
                 </div>
               </div>
 
-              {/* Right - Sticky Pricing Card */}
+              {/* Sticky Pricing Card */}
               <div className="lg:col-span-1">
                 <div className="sticky top-28 space-y-5">
-                  <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
+                  <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
                     className="bg-card rounded-xl border border-border p-8 shadow-xl"
                   >
                     <p className="text-muted-foreground font-body text-xs uppercase tracking-wider mb-1">A partir de</p>
@@ -142,7 +137,7 @@ const PacoteDetalhePage = () => {
                         <Baby size={16} className="text-secondary" /> Crianças até 6 anos: grátis
                       </div>
                       <div className="flex items-center gap-3 text-muted-foreground font-body text-sm">
-                        <Shield size={16} className="text-secondary" /> Cancelamento flexível
+                        <Shield size={16} className="text-secondary" /> Melhor preço garantido
                       </div>
                       <div className="flex items-center gap-3 text-muted-foreground font-body text-sm">
                         <Users size={16} className="text-secondary" /> Apenas 20 suítes
@@ -150,12 +145,9 @@ const PacoteDetalhePage = () => {
                     </div>
 
                     <Button asChild size="lg" className="w-full bg-cta hover:bg-cta/90 text-cta-foreground font-body uppercase tracking-[0.15em] gap-2 py-5 mb-3 rounded-full shadow-lg">
-                      <a href={`https://wa.me/5522997792023?text=Olá! Tenho interesse no pacote ${pkg.shortTitle}. Gostaria de mais informações e disponibilidade.`} target="_blank" rel="noopener noreferrer">
+                      <a href={OMNIBEES_URL} target="_blank" rel="noopener noreferrer">
                         Reservar agora <ArrowRight size={16} />
                       </a>
-                    </Button>
-                    <Button asChild variant="outline" size="lg" className="w-full border-border text-foreground font-body text-sm py-4 rounded-full">
-                      <a href="tel:+5522997792023">Ligar: (22) 99779-2023</a>
                     </Button>
                   </motion.div>
 
@@ -172,10 +164,7 @@ const PacoteDetalhePage = () => {
           </div>
         </section>
 
-        <CTASection
-          title="Garanta sua vaga neste pacote"
-          subtitle="Vagas limitadas — apenas 20 suítes. Pensão completa e crianças até 6 anos grátis."
-        />
+        <CTASection title="Garanta sua vaga neste pacote" subtitle="Vagas limitadas — apenas 20 suítes. Pensão completa e crianças até 6 anos grátis." showPhone={false} />
       </div>
       <Footer />
       <WhatsAppButton />
