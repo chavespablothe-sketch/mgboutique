@@ -86,8 +86,7 @@ const TarifasPage = () => {
                 Tarifas & <span className="italic text-secondary drop-shadow-lg">Pacotes</span>
               </h1>
               <p className="text-primary-foreground/60 font-body text-base md:text-lg leading-relaxed max-w-xl mx-auto hero-text-shadow">
-                {packages.length} pacotes exclusivos de Páscoa a Réveillon.
-                Pensão completa nos finais de semana e 1 criança até 12 anos grátis.
+                De Páscoa a Réveillon, experiências exclusivas para casais e famílias na serra fluminense.
               </p>
             </motion.div>
 
