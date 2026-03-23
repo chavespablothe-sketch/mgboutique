@@ -52,7 +52,7 @@ const WelcomeSection = () => {
         </div>
 
         {/* Photo mosaic — clean grid */}
-        <div className="grid grid-cols-12 gap-3 lg:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-2 md:gap-3 lg:gap-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
