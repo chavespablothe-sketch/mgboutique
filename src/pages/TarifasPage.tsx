@@ -107,10 +107,10 @@ const TarifasPage = () => {
 
         {/* Mês do Consumidor - Special Highlight */}
         <section className="relative overflow-hidden">
-          <div className="bg-gradient-to-br from-cta via-cta to-primary py-16 lg:py-20">
+          <div className="bg-gradient-to-br from-cta via-cta to-primary py-16 lg:py-24">
             <div className="absolute inset-0 opacity-5">
-              <div className="absolute top-10 left-10 w-64 h-64 rounded-full bg-primary-foreground blur-3xl" />
-              <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-secondary blur-3xl" />
+              <div className="absolute top-10 left-10 w-64 h-64 rounded-full bg-primary-foreground blur-3xl animate-pulse" />
+              <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-secondary blur-3xl animate-pulse" />
             </div>
             <div className="container mx-auto px-4 relative z-10">
               <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
@@ -121,25 +121,38 @@ const TarifasPage = () => {
                   transition={{ duration: 0.8 }}
                 >
                   <div className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-primary-foreground/20">
-                    <Percent size={16} className="text-secondary" />
-                    <span className="text-primary-foreground font-body text-xs font-bold uppercase tracking-wider">Oferta Especial</span>
+                    <Percent size={16} className="text-secondary animate-pulse" />
+                    <span className="text-primary-foreground font-body text-xs font-bold uppercase tracking-wider">Oferta por tempo limitado</span>
                   </div>
                   <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground font-bold leading-[0.95] mb-4">
                     Mês do<br />
                     <span className="italic text-secondary">Consumidor</span>
                   </h2>
-                  <div className="flex items-baseline gap-3 mb-6">
+                  <div className="flex items-baseline gap-3 mb-4">
                     <span className="font-display text-7xl md:text-8xl font-bold text-primary-foreground">30%</span>
                     <span className="font-body text-xl text-primary-foreground/80 uppercase tracking-wider">OFF</span>
                   </div>
-                  <p className="text-primary-foreground/70 font-body text-lg leading-relaxed max-w-md mb-8">
-                    Em pacotes selecionados. Vagas limitadas — apenas 20 suítes disponíveis. Aproveite as melhores tarifas da temporada.
+                  <p className="text-primary-foreground/70 font-body text-lg leading-relaxed max-w-md mb-4">
+                    Em pacotes selecionados. Vagas limitadas — apenas 20 suítes disponíveis.
                   </p>
-                  <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body text-sm uppercase tracking-wider gap-2 rounded-full shadow-xl shadow-secondary/30">
-                    <a href={OMNIBEES_URL} target="_blank" rel="noopener noreferrer">
-                      <CalendarDays size={16} /> Garantir desconto <ArrowRight size={14} />
+                  <p className="text-secondary font-body text-sm font-bold uppercase tracking-wider mb-8">
+                    ⚡ As melhores tarifas da temporada — reserve antes que esgote
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body text-sm uppercase tracking-wider gap-2 rounded-full shadow-xl shadow-secondary/30">
+                      <a href={OMNIBEES_URL} target="_blank" rel="noopener noreferrer">
+                        <CalendarDays size={16} /> Garantir desconto <ArrowRight size={14} />
+                      </a>
+                    </Button>
+                    <a
+                      href="https://wa.me/5522997792023?text=Olá! Quero saber mais sobre o desconto do Mês do Consumidor"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-2 text-primary-foreground/80 font-body text-sm border border-primary-foreground/20 px-6 py-3 rounded-full hover:bg-primary-foreground/5 transition-colors"
+                    >
+                      Falar no WhatsApp
                     </a>
-                  </Button>
+                  </div>
                 </motion.div>
                 <motion.div
                   initial={{ opacity: 0, x: 30 }}
@@ -149,13 +162,15 @@ const TarifasPage = () => {
                   className="relative"
                 >
                   <div className="bg-primary-foreground/10 backdrop-blur-md rounded-2xl p-8 border border-primary-foreground/20">
+                    <h3 className="font-display text-lg text-primary-foreground font-semibold mb-5">O que está incluso:</h3>
                     <div className="space-y-4">
                       {[
                         "Pensão completa nos fins de semana e feriados",
                         "1 criança até 12 anos: grátis nos fins de semana",
                         "Parcelamento em até 10x sem juros",
-                        "Recreação infantil monitorada",
+                        "Recreação infantil monitorada na natureza",
                         "Acesso completo ao spa e lazer",
+                        "Welcome drink na chegada",
                       ].map((item, i) => (
                         <div key={i} className="flex items-center gap-3">
                           <div className="w-6 h-6 rounded-full bg-secondary/20 flex items-center justify-center shrink-0">
