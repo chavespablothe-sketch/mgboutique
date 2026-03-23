@@ -78,8 +78,8 @@ const BoutiqueSection = () => {
           >
             <div className="rounded-2xl overflow-hidden">
               <img
-                src="https://www.minhagloria.com.br/images/carousel-new-2.webp"
-                alt="Vista aérea Minha Glória"
+                src="/images/capela.jpg"
+                alt="Capela do Minha Glória"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
@@ -87,16 +87,16 @@ const BoutiqueSection = () => {
             <div className="flex flex-col gap-4">
               <div className="rounded-2xl overflow-hidden flex-1">
                 <img
-                  src="/images/recreacao-plantio.jpg"
-                  alt="Recreação com crianças"
+                  src="/images/barbara-iran-jeep.jpg"
+                  alt="Família Bárbara e Iran no jeep"
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
               </div>
               <div className="rounded-2xl overflow-hidden flex-1">
                 <img
-                  src="https://www.minhagloria.com.br/images/carousel-new-5.webp"
-                  alt="Famílias no lago"
+                  src="/images/mini-chef.jpg"
+                  alt="Mini chef no Minha Glória"
                   className="w-full h-full object-cover"
                   loading="lazy"
                 />
