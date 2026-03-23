@@ -381,7 +381,7 @@ const TarifasPage = () => {
               </div>
               <div className="p-5 bg-card rounded-xl border border-border">
                 <h3 className="font-display text-base font-semibold text-foreground mb-2">Crianças</h3>
-                <p>Crianças até 6 anos se hospedam gratuitamente. Acima de 6 anos, tarifa de criança.</p>
+                <p>1 criança até 12 anos se hospeda gratuitamente nos fins de semana. Acima de 12 anos ou 2ª criança, tarifa adicional.</p>
               </div>
               <div className="p-5 bg-card rounded-xl border border-border">
                 <h3 className="font-display text-base font-semibold text-foreground mb-2">Pets</h3>
