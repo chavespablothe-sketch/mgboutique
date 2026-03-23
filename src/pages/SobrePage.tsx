@@ -140,7 +140,7 @@ const SobrePage = () => {
                 { icon: Mountain, title: "Localização Privilegiada", desc: "Cercado pela Mata Atlântica, entre montanhas e cachoeiras, a apenas 2h30 do Rio de Janeiro. A natureza aqui não é cenário — é protagonista." },
                 { icon: Leaf, title: "Compromisso Sustentável", desc: "Horta orgânica que alimenta nosso restaurante. Preservação ativa da fauna e flora. Práticas responsáveis em toda a operação." },
                 { icon: Users, title: "Família em Primeiro Lugar", desc: "Crianças até 6 anos não pagam. Recreação monitorada, fazendinha, trilhas kids e menu infantil. Aqui, os pequenos são hóspedes VIP." },
-                { icon: Star, title: "Nota 4.9 no Google", desc: "Centenas de avaliações apaixonadas. Reconhecidos pela hospitalidade excepcional. A nota reflete o carinho que colocamos em cada estadia." },
+                { icon: Star, title: "Nota 4.7 no Google", desc: "Centenas de avaliações apaixonadas. Reconhecidos pela hospitalidade excepcional. A nota reflete o carinho que colocamos em cada estadia." },
                 { icon: Award, title: "Boutique de Verdade", desc: "Apenas 20 suítes. Isso não é limitação — é escolha. Poucos hóspedes significam máxima exclusividade e atenção integral." },
               ].map((item, i) => (
                 <motion.div key={i} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.08 }}
