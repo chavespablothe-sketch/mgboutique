@@ -12,11 +12,8 @@ const HeroSection = () => {
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `url('/images/hero-aerial.jpg')`,
-              animation: 'subtle-zoom 25s ease-in-out infinite alternate',
-            }}
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-zoom-bg"
+            style={{ backgroundImage: `url('/images/hero-aerial.jpg')` }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-primary/15 to-primary/70" />
           <div className="absolute inset-0 bg-gradient-to-r from-primary/50 via-transparent to-transparent" />
@@ -75,12 +72,7 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
-        <style>{`
-          @keyframes subtle-zoom {
-            from { transform: scale(1); }
-            to { transform: scale(1.08); }
-          }
-        `}</style>
+        {/* zoom animation now in index.css */}
       </section>
 
       {/* Video Section */}

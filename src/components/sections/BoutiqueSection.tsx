@@ -40,7 +40,7 @@ const BoutiqueSection = () => {
             viewport={{ once: true }}
           >
             <span className="text-secondary font-body text-xs tracking-[0.5em] uppercase mb-6 block">
-              O que nos torna únicos
+              Hotel Boutique
             </span>
             <h2 className="font-display text-4xl md:text-5xl text-primary-foreground font-semibold mb-6 leading-[1.05]">
               Por que somos um <br className="hidden md:block" />
