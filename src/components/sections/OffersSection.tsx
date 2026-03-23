@@ -23,7 +23,7 @@ const OffersSection = () => {
             Pacotes <span className="italic text-secondary">2026</span>
           </h2>
           <p className="text-editorial text-muted-foreground text-xl max-w-2xl mx-auto leading-relaxed">
-            Cada feriado, uma experiência única. Pensão completa, recreação e 1 criança até 12 anos grátis nos fins de semana.
+            Cada feriado, uma experiência única. Pensão completa, recreação e momentos inesquecíveis.
           </p>
         </motion.div>
 
@@ -45,9 +45,6 @@ const OffersSection = () => {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent" />
-                <span className={`absolute top-4 left-4 ${pkg.tagColor} text-primary-foreground text-xs font-body uppercase tracking-wider px-3 py-1.5 rounded-full`}>
-                  {pkg.tag}
-                </span>
               </div>
               <div className="p-6 flex flex-col flex-1">
                 <h3 className="font-display text-xl font-semibold text-foreground mb-2">{pkg.shortTitle}</h3>
@@ -79,7 +76,7 @@ const OffersSection = () => {
 
         <div className="text-center">
           <Button asChild variant="outline" size="lg" className="border-foreground/20 text-foreground hover:bg-muted font-body uppercase tracking-[0.15em] px-8 rounded-full">
-            <Link to="/pacotes">Ver todos os {packages.length} pacotes de 2026</Link>
+            <Link to="/pacotes">Ver todos os pacotes de 2026</Link>
           </Button>
         </div>
       </div>
