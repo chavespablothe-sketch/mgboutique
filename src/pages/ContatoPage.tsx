@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SEO, { faqSchema, breadcrumbSchema } from "@/components/SEO";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import DateSearchBar from "@/components/DateSearchBar";
 import { motion } from "framer-motion";
