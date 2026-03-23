@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { format } from "date-fns";
 import { ptBR } from "date-fns/locale";
-import { CalendarDays, ArrowRight, Users, Baby } from "lucide-react";
+import { CalendarDays, ArrowRight, Users, Baby, Tag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
@@ -14,9 +14,9 @@ const DateSearchBar = () => {
   const [checkOut, setCheckOut] = useState<Date>();
   const [adults, setAdults] = useState(2);
   const [children, setChildren] = useState(0);
+  const [coupon, setCoupon] = useState("");
 
   const handleSearch = () => {
-    // Build Omnibees URL with params
     const params = new URLSearchParams();
     if (checkIn) params.set("CheckIn", format(checkIn, "ddMMyyyy"));
     if (checkOut) params.set("CheckOut", format(checkOut, "ddMMyyyy"));
@@ -24,14 +24,14 @@ const DateSearchBar = () => {
     params.set("ad", String(adults));
     params.set("ch", String(children));
     params.set("lang", "pt-BR");
+    if (coupon.trim()) params.set("coupon", coupon.trim());
 
-    // TODO: Replace with actual Omnibees hotel/chain ID
     const omnibeeUrl = `${OMNIBEES_BASE}/hotelresults?${params.toString()}`;
     window.open(omnibeeUrl, "_blank");
   };
 
   return (
-    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3">
+    <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 flex-wrap">
       {/* Check-in */}
       <Popover>
         <PopoverTrigger asChild>
