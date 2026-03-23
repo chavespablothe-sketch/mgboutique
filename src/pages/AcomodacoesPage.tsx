@@ -158,7 +158,7 @@ const AcomodacoesPage = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
               {[
                 { icon: Star, text: "Decoração autoral" },
-                { icon: Baby, text: "Kids free até 6 anos" },
+                { icon: Baby, text: "Kid free até 12 anos (fim de semana)" },
                 { icon: CreditCard, text: "10x sem juros" },
                 { icon: Coffee, text: "Pensão completa nos fins de semana" },
               ].map((item, i) => (
@@ -173,7 +173,7 @@ const AcomodacoesPage = () => {
 
         <CTASection
           title="Reserve seu chalé boutique"
-          subtitle="Apenas 20 suítes. Pensão completa nos finais de semana, crianças até 6 anos grátis e parcelamento em 10x sem juros."
+          subtitle="Apenas 20 suítes. Pensão completa nos finais de semana, crianças até 12 anos grátis (fim de semana) e parcelamento em 10x sem juros."
         />
       </div>
       <Footer />
