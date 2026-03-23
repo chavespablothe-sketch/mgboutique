@@ -139,11 +139,13 @@ const ChalesPage = () => {
                   {/* Images */}
                   <div className={`relative ${i % 2 !== 0 ? 'lg:order-2' : ''}`}>
                     <div className="grid grid-cols-5 gap-4">
-                      <div className="col-span-3">
-                        <img src={chalet.images[0]} alt={`${chalet.name} - principal`} className="w-full h-80 lg:h-[450px] object-cover rounded-xl shadow-xl" loading="lazy" />
+                      <div className="col-span-3 photo-parallax rounded-xl overflow-hidden photo-glow">
+                        <img src={chalet.images[0]} alt={`${chalet.name} - principal`} className="w-full h-80 lg:h-[450px] object-cover shadow-xl" loading="lazy" />
                       </div>
                       <div className="col-span-2 flex flex-col gap-4">
-                        <img src={chalet.images[1]} alt={`${chalet.name} - detalhe`} className="w-full h-40 lg:h-52 object-cover rounded-xl shadow-lg" loading="lazy" />
+                        <div className="photo-parallax rounded-xl overflow-hidden">
+                          <img src={chalet.images[1]} alt={`${chalet.name} - detalhe`} className="w-full h-40 lg:h-52 object-cover shadow-lg" loading="lazy" />
+                        </div>
                         <div className="bg-primary rounded-xl p-5 flex flex-col items-center justify-center text-center flex-1 shadow-lg">
                           <Sparkles size={22} className="text-secondary mb-3" />
                           <span className="text-primary-foreground font-display text-base font-semibold leading-snug">{chalet.tagline}</span>

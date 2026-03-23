@@ -32,17 +32,20 @@ const LazerPage = () => {
       <div className="pt-20">
         {/* Hero */}
         <section
-          className="relative h-[75vh] flex items-center justify-center bg-cover bg-center"
-          style={{ backgroundImage: `url('https://www.minhagloria.com.br/lovable-uploads/7b9a8c26-81a0-4894-9f0f-2a4c11fd34ce.png')` }}
+          className="relative h-[75vh] flex items-center justify-center overflow-hidden"
         >
+          <div
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-zoom-bg"
+            style={{ backgroundImage: `url('https://www.minhagloria.com.br/lovable-uploads/7b9a8c26-81a0-4894-9f0f-2a4c11fd34ce.png')` }}
+          />
           <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/30 to-primary/80" />
           <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }}>
-              <span className="text-secondary font-body text-xs tracking-[0.5em] uppercase mb-6 block">Experiências</span>
-              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-primary-foreground font-semibold leading-[0.95] mb-6">
-                Cada dia, uma nova <span className="italic text-secondary">descoberta</span>
+              <span className="text-secondary font-body text-xs tracking-[0.5em] uppercase mb-6 block drop-shadow-lg">Experiências</span>
+              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-primary-foreground font-semibold leading-[0.95] mb-6 hero-text-shadow drop-shadow-lg">
+                Cada dia, uma nova <span className="italic text-secondary drop-shadow-lg">descoberta</span>
               </h1>
-              <p className="text-editorial text-primary-foreground/70 text-xl md:text-2xl leading-relaxed max-w-2xl mx-auto">
+              <p className="text-editorial text-primary-foreground/70 text-xl md:text-2xl leading-relaxed max-w-2xl mx-auto hero-text-shadow">
                 Do amanhecer ao anoitecer, experiências que transformam uma estadia em memórias para toda a vida
               </p>
             </motion.div>
@@ -74,8 +77,8 @@ const LazerPage = () => {
                   transition={{ duration: 0.8 }}
                   className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center`}
                 >
-                  <div className={`overflow-hidden rounded-xl ${i % 2 !== 0 ? 'lg:order-2' : ''}`}>
-                    <img src={item.image} alt={item.title} className="w-full h-[350px] lg:h-[450px] object-cover hover:scale-105 transition-transform duration-1000" loading="lazy" />
+                  <div className={`overflow-hidden rounded-xl photo-parallax photo-lift ${i % 2 !== 0 ? 'lg:order-2' : ''}`}>
+                    <img src={item.image} alt={item.title} className="w-full h-[350px] lg:h-[450px] object-cover" loading="lazy" />
                   </div>
                   <div className={i % 2 !== 0 ? 'lg:order-1' : ''}>
                     <div className="w-14 h-14 mb-5 rounded-full bg-primary/10 flex items-center justify-center">

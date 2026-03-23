@@ -137,8 +137,8 @@ const GastronomiaPage = () => {
                   transition={{ duration: 0.8 }}
                   className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
                 >
-                  <div className={`overflow-hidden rounded-xl ${i % 2 !== 0 ? 'lg:order-2' : ''}`}>
-                    <img src={meal.image} alt={meal.title} className="w-full h-[350px] lg:h-[450px] object-cover hover:scale-105 transition-transform duration-1000" loading="lazy" />
+                  <div className={`overflow-hidden rounded-xl photo-parallax photo-glow ${i % 2 !== 0 ? 'lg:order-2' : ''}`}>
+                    <img src={meal.image} alt={meal.title} className="w-full h-[350px] lg:h-[450px] object-cover" loading="lazy" />
                   </div>
                   <div className={i % 2 !== 0 ? 'lg:order-1' : ''}>
                     <div className="flex items-center gap-3 mb-4">
@@ -182,14 +182,14 @@ const GastronomiaPage = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.05 }}
-                  className={`overflow-hidden rounded-lg group cursor-pointer ${
+                  className={`overflow-hidden rounded-lg group cursor-pointer photo-lift ${
                     i === 0 || i === 5 ? 'md:col-span-2 md:row-span-2' : ''
                   }`}
                 >
                   <img
                     src={img.src}
                     alt={img.alt}
-                    className={`w-full object-cover group-hover:scale-105 transition-transform duration-700 ${
+                    className={`w-full object-cover group-hover:scale-110 transition-transform duration-1000 ${
                       i === 0 || i === 5 ? 'h-64 md:h-full' : 'h-48 md:h-52'
                     }`}
                     loading="lazy"

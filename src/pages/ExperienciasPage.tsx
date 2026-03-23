@@ -127,11 +127,11 @@ const ExperienciasPage = () => {
                   transition={{ duration: 0.8 }}
                   className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
                 >
-                  <div className={`overflow-hidden rounded-2xl ${i % 2 !== 0 ? 'lg:order-2' : ''}`}>
+                  <div className={`overflow-hidden rounded-2xl photo-parallax photo-lift ${i % 2 !== 0 ? 'lg:order-2' : ''}`}>
                     <img
                       src={exp.image}
                       alt={exp.title}
-                      className="w-full h-[300px] lg:h-[420px] object-cover hover:scale-105 transition-transform duration-1000"
+                      className="w-full h-[300px] lg:h-[420px] object-cover"
                       loading="lazy"
                     />
                   </div>
@@ -184,12 +184,12 @@ const ExperienciasPage = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className={`overflow-hidden rounded-2xl ring-2 ring-[hsl(37,60%,55%)]/20 ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
+                  className={`overflow-hidden rounded-2xl ring-2 ring-[hsl(37,60%,55%)]/20 photo-lift ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
                 >
                   <img
                     src={img.src}
                     alt={img.alt}
-                    className={`w-full object-cover hover:scale-105 transition-transform duration-700 ${i === 0 ? 'h-[250px] md:h-full' : 'h-[200px] md:h-[250px]'}`}
+                    className={`w-full object-cover hover:scale-110 transition-transform duration-1000 ${i === 0 ? 'h-[250px] md:h-full' : 'h-[200px] md:h-[250px]'}`}
                     loading="lazy"
                   />
                 </motion.div>
