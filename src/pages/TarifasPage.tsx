@@ -320,31 +320,7 @@ const TarifasPage = () => {
           </div>
         </section>
 
-        {/* What's included */}
-        <section className="py-14 bg-hotel-cream">
-          <div className="container mx-auto px-4 max-w-4xl">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div>
-                <h3 className="font-display text-xl font-semibold text-foreground mb-4 flex items-center gap-2">
-                  <Check size={18} className="text-cta" /> Incluso na diária
-                </h3>
-                <ul className="space-y-2 text-muted-foreground font-body text-sm">
-                  {["Café da manhã artesanal", "Pensão completa (finais de semana, feriados e alta temporada)", "Acesso à piscina e áreas de lazer", "Wi-Fi gratuito", "Estacionamento privativo", "Recreação infantil (datas programadas)", "Crianças até 6 anos: cortesia"].map((item, i) => (
-                    <li key={i} className="flex items-start gap-2"><Check size={12} className="text-cta mt-1 shrink-0" /> {item}</li>
-                  ))}
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-display text-xl font-semibold text-foreground mb-4">Extras (sob consulta)</h3>
-                <ul className="space-y-2 text-muted-foreground font-body text-sm">
-                  {["Spa e massagens", "Passeios de quadriciclo", "Cavalgadas guiadas", "Transfer particular", "Decoração romântica no chalé"].map((item, i) => (
-                    <li key={i} className="flex items-start gap-2"><span className="text-secondary mt-0.5">·</span> {item}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        </section>
+        {/* removed "o que está incluso" section */}
 
         {/* Policies */}
         <section className="py-14 bg-background">

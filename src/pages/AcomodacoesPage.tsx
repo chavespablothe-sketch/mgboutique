@@ -30,7 +30,7 @@ const AcomodacoesPage = () => {
         <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-zoom-bg"
-            style={{ backgroundImage: `url('https://www.minhagloria.com.br/lovable-uploads/d853d202-1c9d-4cd8-8f3b-d89a257c4ee7.png')` }}
+            style={{ backgroundImage: `url('/images/chale-delano.jpg')` }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/30 to-primary/80" />
           <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
