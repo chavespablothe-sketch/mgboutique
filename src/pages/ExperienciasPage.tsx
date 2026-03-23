@@ -184,12 +184,12 @@ const ExperienciasPage = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.1 }}
-                  className={`overflow-hidden rounded-2xl ring-2 ring-[hsl(37,60%,55%)]/20 ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
+                  className={`overflow-hidden rounded-2xl ring-2 ring-[hsl(37,60%,55%)]/20 photo-lift ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
                 >
                   <img
                     src={img.src}
                     alt={img.alt}
-                    className={`w-full object-cover hover:scale-105 transition-transform duration-700 ${i === 0 ? 'h-[250px] md:h-full' : 'h-[200px] md:h-[250px]'}`}
+                    className={`w-full object-cover hover:scale-110 transition-transform duration-1000 ${i === 0 ? 'h-[250px] md:h-full' : 'h-[200px] md:h-[250px]'}`}
                     loading="lazy"
                   />
                 </motion.div>

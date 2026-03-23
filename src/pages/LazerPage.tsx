@@ -45,7 +45,7 @@ const LazerPage = () => {
               <h1 className="font-display text-5xl md:text-6xl lg:text-7xl text-primary-foreground font-semibold leading-[0.95] mb-6 hero-text-shadow drop-shadow-lg">
                 Cada dia, uma nova <span className="italic text-secondary drop-shadow-lg">descoberta</span>
               </h1>
-              <p className="text-editorial text-primary-foreground/70 text-xl md:text-2xl leading-relaxed max-w-2xl mx-auto">
+              <p className="text-editorial text-primary-foreground/70 text-xl md:text-2xl leading-relaxed max-w-2xl mx-auto hero-text-shadow">
                 Do amanhecer ao anoitecer, experiências que transformam uma estadia em memórias para toda a vida
               </p>
             </motion.div>
