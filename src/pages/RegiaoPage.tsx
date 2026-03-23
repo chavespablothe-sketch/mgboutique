@@ -5,7 +5,7 @@ import SEO, { breadcrumbSchema } from "@/components/SEO";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CTASection from "@/components/CTASection";
 import { motion } from "framer-motion";
-import { MapPin, Clock, Car, Sun, Cloud, Snowflake, Leaf, Mountain, Waves, UtensilsCrossed, ShoppingBag, Camera } from "lucide-react";
+import { MapPin, Clock, Car, Mountain, Waves, UtensilsCrossed, ShoppingBag, Camera, Leaf } from "lucide-react";
 
 const distances = [
   { from: "Rio de Janeiro", time: "2h30", km: "170km" },
