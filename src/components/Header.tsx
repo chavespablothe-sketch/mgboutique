@@ -1,19 +1,19 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, Phone, CalendarDays, Search } from "lucide-react";
+import { Menu, X, CalendarDays, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import DateSearchBar from "@/components/DateSearchBar";
 
 const navItems = [
-  { label: "O Hotel", href: "/sobre" },
-  { label: "Chalés", href: "/chales" },
+  { label: "Acomodações", href: "/acomodacoes" },
   { label: "Experiências", href: "/experiencias" },
   { label: "Gastronomia", href: "/gastronomia" },
-  { label: "Pacotes", href: "/pacotes" },
+  { label: "A Região", href: "/regiao" },
+  { label: "Sobre", href: "/sobre" },
   { label: "Contato", href: "/contato" },
 ];
 
-const OMNIBEES_URL = "https://book.omnibees.com";
+const OMNIBEES_URL = "https://book.omnibees.com/hotel/19498";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -35,13 +35,13 @@ const Header = () => {
               </button>
 
               {/* Left nav */}
-              <nav className="hidden lg:flex items-center gap-5 flex-1">
+              <nav className="hidden lg:flex items-center gap-6 flex-1">
                 {navItems.slice(0, 3).map((item) => (
                   <Link
                     key={item.href}
                     to={item.href}
                     className={`text-[10px] tracking-[0.2em] uppercase font-body transition-colors whitespace-nowrap ${
-                      location.pathname === item.href
+                      location.pathname.startsWith(item.href)
                         ? "text-secondary font-bold"
                         : "text-primary-foreground/70 hover:text-secondary"
                     }`}
@@ -51,8 +51,8 @@ const Header = () => {
                 ))}
               </nav>
 
-              {/* Logo — centered, fixed width so it doesn't push nav */}
-              <Link to="/" className="flex items-center justify-center lg:w-32 shrink-0">
+              {/* Logo */}
+              <Link to="/" className="flex items-center justify-center shrink-0 mx-4 lg:mx-8">
                 <img
                   src="/images/logo-light.png"
                   alt="Minha Glória Hotel Boutique"
@@ -61,13 +61,13 @@ const Header = () => {
               </Link>
 
               {/* Right nav */}
-              <nav className="hidden lg:flex items-center gap-5 flex-1 justify-end">
+              <nav className="hidden lg:flex items-center gap-6 flex-1 justify-end">
                 {navItems.slice(3).map((item) => (
                   <Link
                     key={item.href}
                     to={item.href}
                     className={`text-[10px] tracking-[0.2em] uppercase font-body transition-colors whitespace-nowrap ${
-                      location.pathname === item.href
+                      location.pathname.startsWith(item.href)
                         ? "text-secondary font-bold"
                         : "text-primary-foreground/70 hover:text-secondary"
                     }`}
@@ -78,7 +78,7 @@ const Header = () => {
               </nav>
 
               {/* CTA buttons */}
-              <div className="hidden lg:flex items-center gap-3 ml-4">
+              <div className="hidden lg:flex items-center gap-3 ml-6">
                 <button
                   onClick={() => setShowSearch(!showSearch)}
                   className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
@@ -89,18 +89,25 @@ const Header = () => {
                 >
                   <Search size={14} />
                 </button>
-                <Button asChild size="sm" className="bg-cta hover:bg-cta/90 text-cta-foreground font-body text-[10px] uppercase tracking-[0.15em] gap-2 px-4 py-2 rounded-full shadow-lg shadow-cta/20">
+                <Button asChild size="sm" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body text-[10px] uppercase tracking-[0.15em] gap-1.5 px-4 py-2 rounded-full">
+                  <Link to="/tarifas">
+                    <CalendarDays size={12} />
+                    Tarifas
+                  </Link>
+                </Button>
+                <Button asChild size="sm" className="bg-cta hover:bg-cta/90 text-cta-foreground font-body text-[10px] uppercase tracking-[0.15em] gap-1.5 px-4 py-2 rounded-full shadow-lg shadow-cta/20">
                   <a href={OMNIBEES_URL} target="_blank" rel="noopener noreferrer">
-                    <CalendarDays size={13} />
                     Reservar
                   </a>
                 </Button>
               </div>
 
-              {/* Mobile phone */}
-              <a href="tel:+5522997792023" className="lg:hidden text-secondary">
-                <Phone size={18} />
-              </a>
+              {/* Mobile CTA */}
+              <Button asChild size="sm" className="lg:hidden bg-cta hover:bg-cta/90 text-cta-foreground font-body text-[10px] uppercase tracking-wider px-3 py-1.5 rounded-full">
+                <a href={OMNIBEES_URL} target="_blank" rel="noopener noreferrer">
+                  Reservar
+                </a>
+              </Button>
             </div>
           </div>
         </div>
@@ -116,7 +123,6 @@ const Header = () => {
         {isOpen && (
           <div className="lg:hidden bg-primary/98 backdrop-blur-md border-t border-primary-foreground/5">
             <nav className="container mx-auto px-4 py-6 flex flex-col gap-1">
-              {/* Mobile date search */}
               <div className="mb-4 pb-4 border-b border-primary-foreground/10">
                 <DateSearchBar />
               </div>
@@ -126,7 +132,7 @@ const Header = () => {
                   to={item.href}
                   onClick={() => setIsOpen(false)}
                   className={`py-3 px-4 rounded-lg text-sm tracking-[0.2em] uppercase font-body transition-all ${
-                    location.pathname === item.href
+                    location.pathname.startsWith(item.href)
                       ? "text-secondary bg-secondary/10"
                       : "text-primary-foreground/70 hover:text-secondary hover:bg-secondary/5"
                   }`}
@@ -134,8 +140,15 @@ const Header = () => {
                   {item.label}
                 </Link>
               ))}
-              <div className="mt-4 pt-4 border-t border-primary-foreground/10">
-                <Button asChild size="lg" className="w-full bg-cta hover:bg-cta/90 text-cta-foreground font-body text-sm uppercase tracking-[0.15em] gap-2 rounded-full shadow-lg shadow-cta/20">
+              <Link
+                to="/tarifas"
+                onClick={() => setIsOpen(false)}
+                className="py-3 px-4 rounded-lg text-sm tracking-[0.2em] uppercase font-body text-secondary font-bold"
+              >
+                Tarifas e Pacotes
+              </Link>
+              <div className="mt-4 pt-4 border-t border-primary-foreground/10 flex gap-3">
+                <Button asChild size="lg" className="flex-1 bg-cta hover:bg-cta/90 text-cta-foreground font-body text-sm uppercase tracking-[0.15em] gap-2 rounded-full shadow-lg shadow-cta/20">
                   <a href={OMNIBEES_URL} target="_blank" rel="noopener noreferrer">
                     <CalendarDays size={16} />
                     Reservar Agora
