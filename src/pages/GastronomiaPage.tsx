@@ -137,8 +137,8 @@ const GastronomiaPage = () => {
                   transition={{ duration: 0.8 }}
                   className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
                 >
-                  <div className={`overflow-hidden rounded-xl ${i % 2 !== 0 ? 'lg:order-2' : ''}`}>
-                    <img src={meal.image} alt={meal.title} className="w-full h-[350px] lg:h-[450px] object-cover hover:scale-105 transition-transform duration-1000" loading="lazy" />
+                  <div className={`overflow-hidden rounded-xl photo-parallax photo-glow ${i % 2 !== 0 ? 'lg:order-2' : ''}`}>
+                    <img src={meal.image} alt={meal.title} className="w-full h-[350px] lg:h-[450px] object-cover" loading="lazy" />
                   </div>
                   <div className={i % 2 !== 0 ? 'lg:order-1' : ''}>
                     <div className="flex items-center gap-3 mb-4">
