@@ -176,9 +176,6 @@ const ExperienciasPage = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-500" />
                     <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
-                      <div className="w-11 h-11 mb-4 rounded-full bg-secondary/20 flex items-center justify-center backdrop-blur-sm border border-secondary/30">
-                        <exp.icon className="text-secondary" size={20} />
-                      </div>
                       <h3 className="font-display text-2xl font-semibold text-primary-foreground mb-2 hero-text-shadow">{exp.title}</h3>
                       <p className="text-primary-foreground/70 font-body text-sm leading-relaxed line-clamp-2 group-hover:line-clamp-none transition-all duration-500">
                         {exp.description}
