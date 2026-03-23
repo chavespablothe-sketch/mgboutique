@@ -74,8 +74,8 @@ const LazerPage = () => {
                   transition={{ duration: 0.8 }}
                   className={`grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center`}
                 >
-                  <div className={`overflow-hidden rounded-xl ${i % 2 !== 0 ? 'lg:order-2' : ''}`}>
-                    <img src={item.image} alt={item.title} className="w-full h-[350px] lg:h-[450px] object-cover hover:scale-105 transition-transform duration-1000" loading="lazy" />
+                  <div className={`overflow-hidden rounded-xl photo-parallax photo-lift ${i % 2 !== 0 ? 'lg:order-2' : ''}`}>
+                    <img src={item.image} alt={item.title} className="w-full h-[350px] lg:h-[450px] object-cover" loading="lazy" />
                   </div>
                   <div className={i % 2 !== 0 ? 'lg:order-1' : ''}>
                     <div className="w-14 h-14 mb-5 rounded-full bg-primary/10 flex items-center justify-center">
