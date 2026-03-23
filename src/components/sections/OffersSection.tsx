@@ -23,7 +23,7 @@ const OffersSection = () => {
             Pacotes <span className="italic text-secondary">2026</span>
           </h2>
           <p className="text-editorial text-muted-foreground text-xl max-w-2xl mx-auto leading-relaxed">
-            Cada feriado, uma experiência única. Pensão completa, recreação e 1 criança até 12 anos grátis nos fins de semana.
+            Cada feriado, uma experiência única. Pensão completa, recreação e momentos inesquecíveis.
           </p>
         </motion.div>
 
