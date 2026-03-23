@@ -28,11 +28,12 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground font-semibold mb-6 leading-[1.08] tracking-tight"
+              className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground font-semibold mb-6 leading-[1.08] tracking-tight drop-shadow-lg"
+              style={{ textShadow: '0 2px 20px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.3)' }}
             >
               Um hotel boutique com alma,
               <br />
-              <span className="italic text-secondary">cercado de verde,</span>
+              <span className="italic text-secondary drop-shadow-lg">cercado de verde,</span>
               <br />
               feito pra casais e famílias
             </motion.h1>
