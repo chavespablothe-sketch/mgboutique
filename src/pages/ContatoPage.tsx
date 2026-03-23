@@ -34,6 +34,15 @@ const ContatoPage = () => {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="Contato e FAQ | Fale Conosco"
+        description="Entre em contato com o Minha Glória Hotel Boutique. WhatsApp, e-mail, telefone e perguntas frequentes sobre reservas, hospedagem, crianças e pets."
+        canonical="/contato"
+        schemas={[
+          faqSchema(faqs.map(f => ({ q: f.q, a: f.a }))),
+          breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Contato", url: "/contato" }]),
+        ]}
+      />
       <Header />
       <div className="pt-20">
         {/* Hero */}
