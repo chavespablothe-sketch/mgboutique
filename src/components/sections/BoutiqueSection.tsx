@@ -105,25 +105,6 @@ const BoutiqueSection = () => {
           </motion.div>
         </div>
 
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-12 md:gap-20 mt-20 pt-12 border-t border-primary-foreground/10"
-        >
-          {[
-            { value: "20", label: "suítes exclusivas" },
-            { value: "4.7", label: "nota no Google" },
-            { value: "9.3", label: "Fantástico · Booking" },
-            { value: "10+", label: "anos de história" },
-          ].map((stat, i) => (
-            <div key={i} className="text-center">
-              <p className="font-display text-4xl md:text-5xl font-semibold text-secondary mb-2">{stat.value}</p>
-              <p className="text-primary-foreground/50 font-body text-sm tracking-wider uppercase">{stat.label}</p>
-            </div>
-          ))}
-        </motion.div>
       </div>
     </section>
   );
