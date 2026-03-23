@@ -12,14 +12,15 @@ const HeroSection = () => {
       <section className="relative min-h-screen flex items-center overflow-hidden">
         <div className="absolute inset-0">
           <div
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+            className="absolute inset-0 bg-cover bg-no-repeat"
             style={{
               backgroundImage: `url('/images/hero-aerial.jpg')`,
+              backgroundPosition: 'center 60%',
               animation: 'subtle-zoom 25s ease-in-out infinite alternate',
             }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-primary/40 via-primary/15 to-primary/70" />
-          <div className="absolute inset-0 bg-gradient-to-r from-primary/50 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/30 to-primary/80" />
+          <div className="absolute inset-0 bg-gradient-to-r from-primary/60 via-primary/20 to-transparent" />
         </div>
 
         <div className="relative z-10 container mx-auto px-4 lg:px-8 pt-20">
@@ -28,7 +29,7 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.4 }}
-              className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground font-semibold mb-6 leading-[1.08] tracking-tight"
+              className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground font-semibold mb-6 leading-[1.08] tracking-tight drop-shadow-[0_2px_12px_rgba(0,0,0,0.4)]"
             >
               Um hotel boutique com alma,
               <br />
