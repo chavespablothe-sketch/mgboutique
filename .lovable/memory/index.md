@@ -7,31 +7,29 @@ Updated: now
 - Primary (green): 160 25% 23%
 - Secondary (gold): 37 40% 58%
 - Background (cream): 40 20% 97%
-- CTA (green): 145 45% 42%
 
 ## Fonts
 - Display: Playfair Display (serif)
 - Body: Lato (sans-serif)
-- Editorial: Cormorant Garamond (serif)
 
 ## Real Info
 - Phone: (22) 99779-2023
 - Email: contato@minhagloria.com.br
 - Address: Estrada Rosário km 4,5 - Banquete - Bom Jardim/RJ
 - Location: 18km do centro de Nova Friburgo
-- Instagram: @minhagloriahotel (https://www.instagram.com/minhagloriahotel)
-- Facebook: /minhagloria (https://www.facebook.com/minhagloria)
+- Google: 4.7 | Booking: 9.3 (Fantástico) | NO TripAdvisor
 
-## Booking
-- Motor de reservas: Omnibees (URL base: https://book.omnibees.com)
-- TODO: Obter chain/hotel ID real do Omnibees
-- Todos os botões "Reservar" apontam para Omnibees, NÃO WhatsApp
-- TODO: Obter GTM ID real (atualmente GTM-XXXXXXX placeholder)
+## Kids Policy
+- 1 criança até 12 anos grátis nos fins de semana e feriados
+- Acima de 12 anos ou 2ª criança: tarifa adicional
+
+## Meal Policy
+- Seg-Qui: apenas café da manhã
+- Fins de semana, feriados, alta temporada (jan/jul): pensão completa
 
 ## Architecture
-- Multi-page: Home, Sobre, Chalés, Lazer, Gastronomia, Pacotes, Contato
-- Images from minhagloria.com.br original URLs
-- Footer: Google (4.9) + Booking (9.4) review badges
-- DateSearchBar: inclui adultos + crianças
-- BoutiqueSection: accordion style (inspired by Clara Resorts)
-- Gastronomy on home: kept short, links to full page
+- Multi-page: Home, Sobre, Chalés, Lazer, Experiências, Gastronomia, Pacotes/Tarifas, Contato
+- DateSearchBar includes coupon field
+- Home packages link to detail page (not Omnibees directly)
+- Package detail has fullscreen photo gallery
+- Sobre page: Clara Resorts editorial style with alternating pillars
