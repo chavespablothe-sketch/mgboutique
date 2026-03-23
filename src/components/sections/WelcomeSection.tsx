@@ -114,7 +114,7 @@ const WelcomeSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="col-span-12 md:col-span-4 overflow-hidden rounded-lg"
+            className="col-span-1 md:col-span-4 overflow-hidden rounded-lg"
           >
             <img
               src="https://www.minhagloria.com.br/lovable-uploads/252a23af-2a29-46e8-8e7e-dbd3ce9cf861.png"
