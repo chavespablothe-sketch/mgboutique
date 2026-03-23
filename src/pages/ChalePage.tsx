@@ -135,7 +135,7 @@ const ChalePage = () => {
                         <CreditCard size={16} className="text-secondary" /> Parcele em até 10x sem juros
                       </div>
                       <div className="flex items-center gap-3 text-muted-foreground font-body text-sm">
-                        <Baby size={16} className="text-secondary" /> Crianças até 6 anos: grátis
+                        <Baby size={16} className="text-secondary" /> 1 criança até 12 anos grátis nos fins de semana
                       </div>
                       <div className="flex items-center gap-3 text-muted-foreground font-body text-sm">
                         <Shield size={16} className="text-secondary" /> Melhor preço garantido

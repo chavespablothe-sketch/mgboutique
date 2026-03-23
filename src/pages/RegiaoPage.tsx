@@ -134,27 +134,6 @@ const RegiaoPage = () => {
           </div>
         </section>
 
-        {/* Best time to visit */}
-        <section className="py-20 bg-background">
-          <div className="container mx-auto px-4">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-14">
-              <h2 className="font-display text-3xl md:text-4xl text-foreground font-semibold">
-                Melhor época para <span className="italic text-secondary">visitar</span>
-              </h2>
-            </motion.div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-              {seasons.map((s, i) => (
-                <motion.div key={i} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                  className="p-6 bg-card rounded-xl border border-border text-center"
-                >
-                  <s.icon size={28} className="text-secondary mx-auto mb-4" />
-                  <h3 className="font-display text-base font-semibold text-foreground mb-2">{s.season}</h3>
-                  <p className="text-muted-foreground font-body text-sm leading-relaxed">{s.desc}</p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* Tips */}
         <section className="py-16 bg-primary">
