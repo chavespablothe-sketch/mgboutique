@@ -173,7 +173,7 @@ const AcomodacoesPage = () => {
 
         <CTASection
           title="Reserve seu chalé boutique"
-          subtitle="Apenas 20 suítes. Pensão completa nos finais de semana, crianças até 6 anos grátis e parcelamento em 10x sem juros."
+          subtitle="Apenas 20 suítes. Pensão completa nos finais de semana, crianças até 12 anos grátis (fim de semana) e parcelamento em 10x sem juros."
         />
       </div>
       <Footer />
