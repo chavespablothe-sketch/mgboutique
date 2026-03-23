@@ -40,7 +40,7 @@ const Header = () => {
                   <Link
                     key={item.href}
                     to={item.href}
-                    className={`text-[10px] tracking-[0.2em] uppercase font-body transition-colors whitespace-nowrap ${
+                    className={`text-[11px] tracking-[0.15em] uppercase font-nav font-medium transition-colors whitespace-nowrap ${
                       location.pathname.startsWith(item.href)
                         ? "text-secondary font-bold"
                         : "text-primary-foreground/70 hover:text-secondary"
