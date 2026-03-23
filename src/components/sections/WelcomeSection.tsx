@@ -72,7 +72,7 @@ const WelcomeSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="col-span-6 md:col-span-5 overflow-hidden rounded-lg"
+            className="col-span-1 md:col-span-5 overflow-hidden rounded-lg"
           >
             <img
               src="https://www.minhagloria.com.br/images/carousel-new-4.webp"
