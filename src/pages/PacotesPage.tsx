@@ -80,7 +80,7 @@ const PacotesPage = () => {
               </h1>
               <p className="text-primary-foreground/60 font-body text-base md:text-lg leading-relaxed max-w-xl mx-auto">
                 {packages.length} pacotes exclusivos — de Páscoa a Réveillon. 
-                Pensão completa nos finais de semana e crianças até 6 anos grátis.
+                Pensão completa nos finais de semana e 1 criança até 12 anos grátis.
               </p>
             </motion.div>
 
