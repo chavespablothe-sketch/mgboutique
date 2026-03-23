@@ -14,7 +14,7 @@ const HeroSection = () => {
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat"
             style={{
-              backgroundImage: `url('https://www.minhagloria.com.br/images/carousel-new-1.jpg')`,
+              backgroundImage: `url('/images/hero-aerial.jpg')`,
               animation: 'subtle-zoom 25s ease-in-out infinite alternate',
             }}
           />
