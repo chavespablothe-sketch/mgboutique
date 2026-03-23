@@ -75,12 +75,7 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
-        <style>{`
-          @keyframes subtle-zoom {
-            from { transform: scale(1); }
-            to { transform: scale(1.08); }
-          }
-        `}</style>
+        {/* zoom animation now in index.css */}
       </section>
 
       {/* Video Section */}
