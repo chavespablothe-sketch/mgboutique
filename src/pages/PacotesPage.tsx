@@ -179,9 +179,6 @@ const PacotesPage = () => {
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent" />
-                    <span className={`absolute top-4 left-4 ${pkg.tagColor} text-primary-foreground text-[10px] font-body uppercase tracking-wider px-3 py-1.5 rounded-full`}>
-                      {pkg.tag}
-                    </span>
                     <div className="absolute bottom-0 left-0 right-0 p-6">
                       <h3 className="font-display text-2xl md:text-3xl font-semibold text-primary-foreground mb-1">{pkg.shortTitle}</h3>
                       <div className="flex items-center gap-2 text-primary-foreground/80 text-sm font-body">

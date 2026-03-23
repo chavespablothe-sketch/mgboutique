@@ -274,9 +274,6 @@ const TarifasPage = () => {
                   <Link to={`/tarifas/${pkg.slug}`} className="block relative overflow-hidden h-56 md:h-72">
                     <img src={pkg.image} alt={pkg.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent" />
-                    <span className={`absolute top-4 left-4 ${pkg.tagColor} text-primary-foreground text-[10px] font-body uppercase tracking-wider px-3 py-1.5 rounded-full`}>
-                      {pkg.tag}
-                    </span>
                     <div className="absolute bottom-0 left-0 right-0 p-6">
                       <h3 className="font-display text-2xl md:text-3xl font-semibold text-primary-foreground mb-1 hero-text-shadow">{pkg.shortTitle}</h3>
                       <div className="flex items-center gap-2 text-primary-foreground/80 text-sm font-body hero-text-shadow">

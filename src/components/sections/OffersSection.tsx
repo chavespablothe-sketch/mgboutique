@@ -76,7 +76,7 @@ const OffersSection = () => {
 
         <div className="text-center">
           <Button asChild variant="outline" size="lg" className="border-foreground/20 text-foreground hover:bg-muted font-body uppercase tracking-[0.15em] px-8 rounded-full">
-            <Link to="/pacotes">Ver todos os {packages.length} pacotes de 2026</Link>
+            <Link to="/pacotes">Ver todos os pacotes de 2026</Link>
           </Button>
         </div>
       </div>
