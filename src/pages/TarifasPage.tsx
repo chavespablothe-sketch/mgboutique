@@ -52,7 +52,7 @@ const TarifasPage = () => {
     <div className="min-h-screen">
       <SEO
         title="Tarifas e Pacotes | Ofertas Especiais"
-        description="Pacotes de fim de semana, feriados e datas especiais no Minha Glória Hotel Boutique. Pensão completa, crianças até 6 anos grátis. Parcele em até 10x."
+        description="Pacotes de fim de semana, feriados e datas especiais no Minha Glória Hotel Boutique. Pensão completa, 1 criança até 12 anos grátis. Parcele em até 10x."
         canonical="/tarifas"
         schemas={[
           {
