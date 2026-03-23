@@ -5,7 +5,7 @@ import SEO, { breadcrumbSchema } from "@/components/SEO";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CTASection from "@/components/CTASection";
 import { motion } from "framer-motion";
-import { Calendar, ArrowRight, CalendarDays, CreditCard, Baby, Star, Percent, Clock, Check, UtensilsCrossed, Sun, Snowflake } from "lucide-react";
+import { Calendar, ArrowRight, CalendarDays, CreditCard, Baby, Star, Percent, Check, UtensilsCrossed, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import packages from "@/data/packages";
@@ -43,10 +43,14 @@ const TarifasPage = () => {
   }, []);
 
   const availableMonths = useMemo(() => monthOrder.filter(m => packagesByMonth[m]), [packagesByMonth]);
-  const filtered = selectedMonth === "Todos" ? packages : (packagesByMonth[selectedMonth] || []);
 
-  // Find mês do consumidor package
-  const mesConsumidorPkg = packages.find(p => p.slug === "mes-do-consumidor-2026" || p.shortTitle.toLowerCase().includes("consumidor"));
+  // Group filtered packages by month for display
+  const groupedFiltered = useMemo(() => {
+    if (selectedMonth !== "Todos") {
+      return [{ month: selectedMonth, pkgs: packagesByMonth[selectedMonth] || [] }];
+    }
+    return availableMonths.map(m => ({ month: m, pkgs: packagesByMonth[m] || [] }));
+  }, [selectedMonth, packagesByMonth, availableMonths]);
 
   return (
     <div className="min-h-screen">
@@ -105,7 +109,7 @@ const TarifasPage = () => {
           </div>
         </section>
 
-        {/* Mês do Consumidor - Special Highlight */}
+        {/* Mês do Consumidor - Simplified */}
         <section className="relative overflow-hidden">
           <div className="bg-gradient-to-br from-cta via-cta to-primary py-16 lg:py-24">
             <div className="absolute inset-0 opacity-5">
@@ -113,10 +117,10 @@ const TarifasPage = () => {
               <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-secondary blur-3xl animate-pulse" />
             </div>
             <div className="container mx-auto px-4 relative z-10">
-              <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+              <div className="max-w-3xl mx-auto text-center">
                 <motion.div
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.8 }}
                 >
@@ -128,17 +132,17 @@ const TarifasPage = () => {
                     Mês do<br />
                     <span className="italic text-secondary">Consumidor</span>
                   </h2>
-                  <div className="flex items-baseline gap-3 mb-4">
+                  <div className="flex items-baseline justify-center gap-3 mb-4">
                     <span className="font-display text-7xl md:text-8xl font-bold text-primary-foreground">30%</span>
                     <span className="font-body text-xl text-primary-foreground/80 uppercase tracking-wider">OFF</span>
                   </div>
-                  <p className="text-primary-foreground/70 font-body text-lg leading-relaxed max-w-md mb-4">
+                  <p className="text-primary-foreground/70 font-body text-lg leading-relaxed max-w-md mx-auto mb-4">
                     Em pacotes selecionados. Vagas limitadas — apenas 20 suítes disponíveis.
                   </p>
                   <p className="text-secondary font-body text-sm font-bold uppercase tracking-wider mb-8">
                     ⚡ As melhores tarifas da temporada — reserve antes que esgote
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-3">
+                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
                     <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body text-sm uppercase tracking-wider gap-2 rounded-full shadow-xl shadow-secondary/30">
                       <a href={OMNIBEES_URL} target="_blank" rel="noopener noreferrer">
                         <CalendarDays size={16} /> Garantir desconto <ArrowRight size={14} />
@@ -152,34 +156,6 @@ const TarifasPage = () => {
                     >
                       Falar no WhatsApp
                     </a>
-                  </div>
-                </motion.div>
-                <motion.div
-                  initial={{ opacity: 0, x: 30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  className="relative"
-                >
-                  <div className="bg-primary-foreground/10 backdrop-blur-md rounded-2xl p-8 border border-primary-foreground/20">
-                    <h3 className="font-display text-lg text-primary-foreground font-semibold mb-5">O que está incluso:</h3>
-                    <div className="space-y-4">
-                      {[
-                        "Pensão completa nos fins de semana e feriados",
-                        "1 criança até 12 anos: grátis nos fins de semana",
-                        "Parcelamento em até 10x sem juros",
-                        "Recreação infantil monitorada na natureza",
-                        "Acesso completo ao spa e lazer",
-                        "Welcome drink na chegada",
-                      ].map((item, i) => (
-                        <div key={i} className="flex items-center gap-3">
-                          <div className="w-6 h-6 rounded-full bg-secondary/20 flex items-center justify-center shrink-0">
-                            <Check size={12} className="text-secondary" />
-                          </div>
-                          <span className="text-primary-foreground font-body text-sm">{item}</span>
-                        </div>
-                      ))}
-                    </div>
                   </div>
                 </motion.div>
               </div>
@@ -244,7 +220,7 @@ const TarifasPage = () => {
           </div>
         </section>
 
-        {/* Month Filter + Packages */}
+        {/* Month Filter + Packages - Clean layout like reference */}
         <section className="py-14 lg:py-20 bg-background">
           <div className="container mx-auto px-4">
             <div className="text-center mb-10">
@@ -254,7 +230,7 @@ const TarifasPage = () => {
               <p className="text-muted-foreground font-body text-sm">Selecione o mês e encontre a experiência ideal</p>
             </div>
 
-            <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+            <div className="flex flex-wrap items-center justify-center gap-2 mb-14">
               <button
                 onClick={() => setSelectedMonth("Todos")}
                 className={`px-5 py-2 rounded-full text-xs font-body uppercase tracking-wider transition-all ${
@@ -276,50 +252,54 @@ const TarifasPage = () => {
               ))}
             </div>
 
-            <div className="max-w-5xl mx-auto space-y-6">
-              {filtered.map((pkg, i) => (
-                <motion.div
-                  key={pkg.slug}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.03 }}
-                  className="bg-card rounded-xl overflow-hidden border border-border hover:shadow-xl transition-all duration-300 group"
-                >
-                  <Link to={`/tarifas/${pkg.slug}`} className="block relative overflow-hidden h-56 md:h-72">
-                    <img src={pkg.image} alt={pkg.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-6">
-                      <h3 className="font-display text-2xl md:text-3xl font-semibold text-primary-foreground mb-1 hero-text-shadow">{pkg.shortTitle}</h3>
-                      <div className="flex items-center gap-2 text-primary-foreground/80 text-sm font-body hero-text-shadow">
-                        <Calendar size={14} className="text-secondary" />
-                        <span>{pkg.period}</span>
-                        <span className="text-primary-foreground/40">·</span>
-                        <span>{pkg.nights}</span>
-                      </div>
-                    </div>
-                  </Link>
-
-                  <div className="grid grid-cols-1 md:grid-cols-12 gap-0">
-                    <div className="md:col-span-8 p-5 md:p-6">
-                      <p className="text-muted-foreground font-body text-sm leading-relaxed mb-4 line-clamp-2">{pkg.description}</p>
-                      <Link to={`/tarifas/${pkg.slug}`} className="text-secondary font-body text-xs font-semibold inline-flex items-center gap-1 hover:gap-2 transition-all uppercase tracking-wider">
-                        Ver detalhes <ArrowRight size={12} />
-                      </Link>
-                    </div>
-                    <div className="md:col-span-4 p-5 md:p-6 bg-hotel-cream/50 flex flex-col justify-center border-t md:border-t-0 md:border-l border-border">
-                      <p className="text-[9px] text-muted-foreground font-body uppercase tracking-widest mb-0.5">a partir de</p>
-                      <p className="text-2xl font-display font-semibold text-foreground mb-0.5">{pkg.price}</p>
-                      <p className="text-secondary text-xs font-body font-semibold mb-0.5">{pkg.priceNote}</p>
-                      <p className="text-muted-foreground text-[10px] font-body mb-4">por casal · pensão completa</p>
-                      <Button asChild size="sm" className="w-full bg-cta hover:bg-cta/90 text-cta-foreground font-body text-[10px] uppercase tracking-wider gap-1.5 rounded-full shadow-md">
-                        <a href={OMNIBEES_URL} target="_blank" rel="noopener noreferrer">
-                          <CalendarDays size={12} /> Reservar
-                        </a>
-                      </Button>
-                    </div>
+            <div className="max-w-6xl mx-auto space-y-16">
+              {groupedFiltered.map(({ month, pkgs }) => (
+                <div key={month}>
+                  {/* Month header */}
+                  <div className="mb-8">
+                    <h3 className="font-display text-2xl md:text-3xl text-foreground font-semibold">{month}</h3>
+                    <div className="w-full h-px bg-border mt-3" />
                   </div>
-                </motion.div>
+
+                  {/* Cards grid - clean like reference */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {pkgs.map((pkg, i) => (
+                      <motion.div
+                        key={pkg.slug}
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.05 }}
+                      >
+                        <Link to={`/tarifas/${pkg.slug}`} className="group block">
+                          {/* Image */}
+                          <div className="relative overflow-hidden rounded-xl aspect-[4/3] mb-4">
+                            <img
+                              src={pkg.image}
+                              alt={pkg.shortTitle}
+                              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                              loading="lazy"
+                            />
+                          </div>
+
+                          {/* Info */}
+                          <div className="space-y-2">
+                            <p className="text-secondary font-body text-sm">{pkg.period}</p>
+                            <p className="text-muted-foreground font-body text-sm leading-relaxed line-clamp-2">
+                              {pkg.description.length > 100 ? pkg.description.slice(0, 100) + "…" : pkg.description}
+                            </p>
+                            <p className="font-display text-xl font-semibold text-foreground">
+                              A partir de {pkg.price}
+                            </p>
+                            <span className="inline-flex items-center gap-1.5 text-secondary font-body text-sm font-semibold group-hover:gap-2.5 transition-all border border-secondary/30 rounded-full px-5 py-2 mt-2 hover:bg-secondary/5">
+                              Reservar agora <ArrowRight size={14} />
+                            </span>
+                          </div>
+                        </Link>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
 

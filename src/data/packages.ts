@@ -20,6 +20,40 @@ export interface HotelPackage {
   capacity?: string;
 }
 
+// Shared hotel photo pool for gallery expansion
+const hotelPhotos = [
+  "https://www.minhagloria.com.br/lovable-uploads/f7d9ecaa-e043-4c83-8549-89dfb50450a6.png",
+  "https://www.minhagloria.com.br/lovable-uploads/7b9a8c26-81a0-4894-9f0f-2a4c11fd34ce.png",
+  "https://www.minhagloria.com.br/lovable-uploads/252a23af-2a29-46e8-8e7e-dbd3ce9cf861.png",
+  "https://www.minhagloria.com.br/lovable-uploads/fa0a1d74-12c1-4134-8d8d-0e688addbccb.png",
+  "https://www.minhagloria.com.br/lovable-uploads/b7fedef6-5188-49de-a6f5-ac36f6e262f8.png",
+  "https://www.minhagloria.com.br/lovable-uploads/04460747-2a8e-4012-a6be-1b1819ad5997.png",
+  "https://www.minhagloria.com.br/lovable-uploads/fdf9bc84-d84a-4376-8178-95e596cf51c4.png",
+  "https://www.minhagloria.com.br/lovable-uploads/44683466-44b0-4f6e-896a-51a9ae1249fc.png",
+  "https://www.minhagloria.com.br/lovable-uploads/d853d202-1c9d-4cd8-8f3b-d89a257c4ee7.png",
+  "https://www.minhagloria.com.br/lovable-uploads/1819a44a-9ab5-4cd0-ac89-c03d8b6300fa.png",
+  "https://www.minhagloria.com.br/lovable-uploads/42d50881-952f-4914-a048-280e57604a7d.png",
+  "https://www.minhagloria.com.br/lovable-uploads/95376411-f659-4689-bdf3-c03d058f945e.png",
+  "https://www.minhagloria.com.br/lovable-uploads/81f81968-dbba-4ed4-9230-4eb144012d79.png",
+  "https://www.minhagloria.com.br/images/carousel-new-1.jpg",
+  "https://www.minhagloria.com.br/images/carousel-new-2.webp",
+  "https://www.minhagloria.com.br/images/carousel-new-5.webp",
+  "https://www.minhagloria.com.br/lovable-uploads/7ce834f4-9ec1-44bf-9a91-fd90ddfdcbf1.png",
+  "https://www.minhagloria.com.br/lovable-uploads/49751c55-56cf-4391-ae38-67b88a636294.png",
+];
+
+/** Build a 15-photo gallery: keep the package's own images first, then fill from the shared pool without duplicates */
+function buildGallery(own: string[]): string[] {
+  const set = new Set(own);
+  const result = [...own];
+  for (const p of hotelPhotos) {
+    if (result.length >= 15) break;
+    if (!set.has(p)) { result.push(p); set.add(p); }
+  }
+  return result;
+}
+
+
 const packages: HotelPackage[] = [
   {
     slug: "fim-de-semana",
@@ -41,11 +75,11 @@ const packages: HotelPackage[] = [
       { day: "Domingo", items: ["Café da manhã", "Atividades em família", "Check-out até 12h"] },
     ],
     image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/q6x9gulo6xm-1771961324364.webp",
-    gallery: [
+    gallery: buildGallery([
       "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/q6x9gulo6xm-1771961324364.webp",
       "https://www.minhagloria.com.br/lovable-uploads/f7d9ecaa-e043-4c83-8549-89dfb50450a6.png",
       "https://www.minhagloria.com.br/lovable-uploads/7b9a8c26-81a0-4894-9f0f-2a4c11fd34ce.png",
-    ],
+    ]),
     tag: "família",
     tagColor: "bg-secondary",
   },
@@ -69,11 +103,11 @@ const packages: HotelPackage[] = [
       { day: "Domingo (05/04)", items: ["Café da manhã especial de Páscoa", "Atividades ao ar livre em família", "Check-out até 12h", "Brunch de despedida"] },
     ],
     image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/rv6jyv97zg-1770309523978.webp",
-    gallery: [
+    gallery: buildGallery([
       "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/rv6jyv97zg-1770309523978.webp",
       "https://www.minhagloria.com.br/images/carousel-new-1.jpg",
       "https://www.minhagloria.com.br/lovable-uploads/f7d9ecaa-e043-4c83-8549-89dfb50450a6.png",
-    ],
+    ]),
     tag: "família",
     tagColor: "bg-secondary",
   },
@@ -99,11 +133,11 @@ const packages: HotelPackage[] = [
       { day: "Segunda-feira (21/04)", items: ["Café da manhã", "Check-out até 12h"] },
     ],
     image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/oe8dp4nznk-1770310040271.jpg",
-    gallery: [
+    gallery: buildGallery([
       "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/oe8dp4nznk-1770310040271.jpg",
       "https://www.minhagloria.com.br/lovable-uploads/7b9a8c26-81a0-4894-9f0f-2a4c11fd34ce.png",
       "https://www.minhagloria.com.br/lovable-uploads/252a23af-2a29-46e8-8e7e-dbd3ce9cf861.png",
-    ],
+    ]),
     tag: "bem-estar",
     tagColor: "bg-primary",
   },
@@ -127,11 +161,11 @@ const packages: HotelPackage[] = [
       { day: "Domingo (03/05)", items: ["Café da manhã especial", "Atividades em família", "Check-out até 12h"] },
     ],
     image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/xb2vhb4dm2l-1770315436578.jpg",
-    gallery: [
+    gallery: buildGallery([
       "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/xb2vhb4dm2l-1770315436578.jpg",
       "https://www.minhagloria.com.br/lovable-uploads/fa0a1d74-12c1-4134-8d8d-0e688addbccb.png",
       "https://www.minhagloria.com.br/lovable-uploads/b7fedef6-5188-49de-a6f5-ac36f6e262f8.png",
-    ],
+    ]),
     tag: "bem-estar",
     tagColor: "bg-secondary",
   },
@@ -155,11 +189,11 @@ const packages: HotelPackage[] = [
       { day: "Domingo (10/05)", items: ["Café da manhã comemorativo de Dia das Mães", "Almoço especial em homenagem às mães", "Check-out até 15h"] },
     ],
     image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/upz29sh58k-1771960107741.webp",
-    gallery: [
+    gallery: buildGallery([
       "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/upz29sh58k-1771960107741.webp",
       "https://www.minhagloria.com.br/lovable-uploads/f7d9ecaa-e043-4c83-8549-89dfb50450a6.png",
       "https://www.minhagloria.com.br/lovable-uploads/7b9a8c26-81a0-4894-9f0f-2a4c11fd34ce.png",
-    ],
+    ]),
     tag: "família",
     tagColor: "bg-secondary",
     capacity: "Apenas 20 suítes",
@@ -185,11 +219,11 @@ const packages: HotelPackage[] = [
       { day: "Domingo (07/06)", items: ["Café da manhã", "Check-out até 12h"] },
     ],
     image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/h2ejepl5m1d-1770316184149.jpg",
-    gallery: [
+    gallery: buildGallery([
       "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/h2ejepl5m1d-1770316184149.jpg",
       "https://www.minhagloria.com.br/lovable-uploads/fa0a1d74-12c1-4134-8d8d-0e688addbccb.png",
       "https://www.minhagloria.com.br/lovable-uploads/252a23af-2a29-46e8-8e7e-dbd3ce9cf861.png",
-    ],
+    ]),
     tag: "romântico",
     tagColor: "bg-primary",
   },
@@ -213,11 +247,11 @@ const packages: HotelPackage[] = [
       { day: "Domingo (14/06)", items: ["Café da manhã especial de Dia dos Namorados", "Brunch romântico", "Check-out até 15h"] },
     ],
     image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/zx8shub1zpr-1770317797525.webp",
-    gallery: [
+    gallery: buildGallery([
       "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/zx8shub1zpr-1770317797525.webp",
       "https://www.minhagloria.com.br/lovable-uploads/f7d9ecaa-e043-4c83-8549-89dfb50450a6.png",
       "https://www.minhagloria.com.br/lovable-uploads/7b9a8c26-81a0-4894-9f0f-2a4c11fd34ce.png",
-    ],
+    ]),
     tag: "romântico",
     tagColor: "bg-primary",
     capacity: "Até 2 pessoas",
@@ -242,11 +276,11 @@ const packages: HotelPackage[] = [
       { day: "Domingo", items: ["Café da manhã", "Atividades de despedida", "Check-out até 12h"] },
     ],
     image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/p8dj0qouok-1770318030523.webp",
-    gallery: [
+    gallery: buildGallery([
       "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/p8dj0qouok-1770318030523.webp",
       "https://www.minhagloria.com.br/lovable-uploads/252a23af-2a29-46e8-8e7e-dbd3ce9cf861.png",
       "https://www.minhagloria.com.br/lovable-uploads/b7fedef6-5188-49de-a6f5-ac36f6e262f8.png",
-    ],
+    ]),
     tag: "bem-estar",
     tagColor: "bg-secondary",
   },
@@ -270,11 +304,11 @@ const packages: HotelPackage[] = [
       { day: "Domingo", items: ["Café da manhã", "Atividades em família", "Check-out até 12h"] },
     ],
     image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/si5z9hqaroe-1770318172081.webp",
-    gallery: [
+    gallery: buildGallery([
       "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/si5z9hqaroe-1770318172081.webp",
       "https://www.minhagloria.com.br/lovable-uploads/fa0a1d74-12c1-4134-8d8d-0e688addbccb.png",
       "https://www.minhagloria.com.br/lovable-uploads/7b9a8c26-81a0-4894-9f0f-2a4c11fd34ce.png",
-    ],
+    ]),
     tag: "família",
     tagColor: "bg-secondary",
   },
@@ -298,11 +332,11 @@ const packages: HotelPackage[] = [
       { day: "Domingo (09/08)", items: ["Café da manhã comemorativo", "Atividade leve em família", "Almoço Especial de Dia dos Pais", "Brinde de homenagem e lembrança", "Check-out até 15h"] },
     ],
     image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/axr5ia5mtdv-1771961855273.webp",
-    gallery: [
+    gallery: buildGallery([
       "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/axr5ia5mtdv-1771961855273.webp",
       "https://www.minhagloria.com.br/lovable-uploads/f7d9ecaa-e043-4c83-8549-89dfb50450a6.png",
       "https://www.minhagloria.com.br/lovable-uploads/7b9a8c26-81a0-4894-9f0f-2a4c11fd34ce.png",
-    ],
+    ]),
     tag: "família",
     tagColor: "bg-secondary",
   },
@@ -327,11 +361,11 @@ const packages: HotelPackage[] = [
       { day: "Segunda-feira (07/09)", items: ["Café da manhã", "Check-out até 12h"] },
     ],
     image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/cw8phfks3mc-1771958977254.webp",
-    gallery: [
+    gallery: buildGallery([
       "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/cw8phfks3mc-1771958977254.webp",
       "https://www.minhagloria.com.br/lovable-uploads/7b9a8c26-81a0-4894-9f0f-2a4c11fd34ce.png",
       "https://www.minhagloria.com.br/lovable-uploads/252a23af-2a29-46e8-8e7e-dbd3ce9cf861.png",
-    ],
+    ]),
     tag: "romântico",
     tagColor: "bg-primary",
   },
@@ -356,11 +390,11 @@ const packages: HotelPackage[] = [
       { day: "Segunda-feira (12/10)", items: ["Café da manhã", "Atividades finais", "Check-out até 12h"] },
     ],
     image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/33uwsq6qfzf-1771959749328.webp",
-    gallery: [
+    gallery: buildGallery([
       "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/33uwsq6qfzf-1771959749328.webp",
       "https://www.minhagloria.com.br/lovable-uploads/fa0a1d74-12c1-4134-8d8d-0e688addbccb.png",
       "https://www.minhagloria.com.br/lovable-uploads/b7fedef6-5188-49de-a6f5-ac36f6e262f8.png",
-    ],
+    ]),
     tag: "família",
     tagColor: "bg-secondary",
   },
@@ -385,11 +419,11 @@ const packages: HotelPackage[] = [
       { day: "Segunda-feira (02/11)", items: ["Café da manhã", "Check-out até 12h"] },
     ],
     image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/7p39pd1aez-1771958532834.webp",
-    gallery: [
+    gallery: buildGallery([
       "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/7p39pd1aez-1771958532834.webp",
       "https://www.minhagloria.com.br/lovable-uploads/f7d9ecaa-e043-4c83-8549-89dfb50450a6.png",
       "https://www.minhagloria.com.br/lovable-uploads/7b9a8c26-81a0-4894-9f0f-2a4c11fd34ce.png",
-    ],
+    ]),
     tag: "romântico",
     tagColor: "bg-primary",
   },
@@ -414,11 +448,11 @@ const packages: HotelPackage[] = [
       { day: "Sábado (26/12)", items: ["Café da manhã", "Check-out até 12h"] },
     ],
     image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/uouzsfgx018-1771960735537.png",
-    gallery: [
+    gallery: buildGallery([
       "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/uouzsfgx018-1771960735537.png",
       "https://www.minhagloria.com.br/lovable-uploads/252a23af-2a29-46e8-8e7e-dbd3ce9cf861.png",
       "https://www.minhagloria.com.br/lovable-uploads/b7fedef6-5188-49de-a6f5-ac36f6e262f8.png",
-    ],
+    ]),
     tag: "família",
     tagColor: "bg-secondary",
   },
@@ -444,11 +478,11 @@ const packages: HotelPackage[] = [
       { day: "Domingo (03/01)", items: ["Café da manhã", "Check-out até 12h"] },
     ],
     image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/l969uz91cc8-1771961026765.webp",
-    gallery: [
+    gallery: buildGallery([
       "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/l969uz91cc8-1771961026765.webp",
       "https://www.minhagloria.com.br/lovable-uploads/f7d9ecaa-e043-4c83-8549-89dfb50450a6.png",
       "https://www.minhagloria.com.br/lovable-uploads/252a23af-2a29-46e8-8e7e-dbd3ce9cf861.png",
-    ],
+    ]),
     tag: "família",
     tagColor: "bg-secondary",
   },

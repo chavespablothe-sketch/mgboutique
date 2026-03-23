@@ -1,102 +1,115 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-
-const cards = [
-  {
-    title: "Spa & Bem-estar",
-    image: "https://www.minhagloria.com.br/lovable-uploads/04460747-2a8e-4012-a6be-1b1819ad5997.png",
-    link: "/experiencias",
-  },
-  {
-    title: "Trilhas & Passeios",
-    image: "https://www.minhagloria.com.br/lovable-uploads/b7fedef6-5188-49de-a6f5-ac36f6e262f8.png",
-    link: "/experiencias",
-  },
-  {
-    title: "Gastronomia",
-    image: "https://www.minhagloria.com.br/lovable-uploads/fdf9bc84-d84a-4376-8178-95e596cf51c4.png",
-    link: "/gastronomia",
-  },
-];
+import { Leaf, UtensilsCrossed, Sparkles } from "lucide-react";
 
 const AmenitiesSection = () => {
   return (
-    <section className="relative overflow-hidden">
-      {/* Full-width background — hotel's own panoramic shot */}
-      <div className="absolute inset-0">
-        <img
-          src="https://www.minhagloria.com.br/lovable-uploads/f5b7fb42-f922-4170-a409-e216226108dd.png"
-          alt=""
-          className="w-full h-full object-cover"
-          loading="lazy"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/50 to-primary/80" />
-      </div>
-
-      <div className="relative z-10 container mx-auto px-4 py-28 lg:py-40">
-        {/* Title */}
+    <section className="py-24 lg:py-36 bg-background">
+      <div className="container mx-auto px-4">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center mb-4"
+          className="text-center mb-20"
         >
-          <h2 className="font-display text-5xl md:text-6xl lg:text-7xl text-primary-foreground font-semibold leading-[1.05] hero-text-shadow italic">
-            Para descobrir
+          <span className="text-secondary font-body text-xs tracking-[0.4em] uppercase mb-4 block">
+            Experiências que marcam
+          </span>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground font-semibold leading-[1.05]">
+            Para <span className="italic text-secondary">descobrir</span>
           </h2>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="flex justify-center mb-5"
-        >
-          <div className="w-12 h-0.5 bg-secondary" />
-        </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ delay: 0.1 }}
-          className="text-primary-foreground/90 font-body text-lg md:text-xl text-center max-w-lg mx-auto mb-20 hero-text-shadow"
-        >
-          Momentos e experiências com a assinatura Minha Glória.
-        </motion.p>
-
-        {/* Cards — elevated, staggered */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-8 max-w-5xl mx-auto">
-          {cards.map((card, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 + i * 0.12, duration: 0.7 }}
-              className={`${i === 1 ? "md:mt-10" : ""}`}
-            >
-              <Link to={card.link} className="group block">
-                <div className="relative overflow-hidden rounded-2xl shadow-2xl aspect-[3/4] ring-1 ring-white/10">
-                  <img
-                    src={card.image}
-                    alt={card.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/90 via-primary/30 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-7 text-center">
-                    <h3 className="font-display text-xl md:text-2xl text-primary-foreground font-semibold mb-3 hero-text-shadow">
-                      {card.title}
-                    </h3>
-                    <span className="inline-block text-secondary text-sm font-body uppercase tracking-widest opacity-0 group-hover:opacity-100 translate-y-2 group-hover:translate-y-0 transition-all duration-300">
-                      Explorar →
-                    </span>
+        {/* Bento-style grid */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 lg:gap-5 max-w-6xl mx-auto">
+          {/* Spa - large left */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="md:col-span-7 md:row-span-2"
+          >
+            <Link to="/experiencias" className="group block relative overflow-hidden rounded-2xl h-[420px] md:h-full">
+              <img
+                src="https://www.minhagloria.com.br/lovable-uploads/04460747-2a8e-4012-a6be-1b1819ad5997.png"
+                alt="Spa e Bem-estar"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-8">
+                <div className="flex items-center gap-3 mb-3">
+                  <div className="w-10 h-10 rounded-full bg-secondary/20 backdrop-blur-sm flex items-center justify-center">
+                    <Sparkles size={18} className="text-secondary" />
                   </div>
+                  <span className="text-secondary/80 font-body text-xs uppercase tracking-widest">Bem-estar</span>
                 </div>
-              </Link>
-            </motion.div>
-          ))}
+                <h3 className="font-display text-3xl md:text-4xl text-primary-foreground font-semibold hero-text-shadow">
+                  Spa & Massagem
+                </h3>
+                <p className="text-primary-foreground/70 font-body text-sm mt-2 max-w-sm">
+                  Momentos de relaxamento profundo com tratamentos exclusivos em meio à natureza.
+                </p>
+              </div>
+            </Link>
+          </motion.div>
+
+          {/* Trilhas - top right */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.1, duration: 0.7 }}
+            className="md:col-span-5"
+          >
+            <Link to="/experiencias" className="group block relative overflow-hidden rounded-2xl h-[240px] md:h-[280px]">
+              <img
+                src="https://www.minhagloria.com.br/lovable-uploads/b7fedef6-5188-49de-a6f5-ac36f6e262f8.png"
+                alt="Trilhas e passeios"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <div className="flex items-center gap-2 mb-2">
+                  <Leaf size={16} className="text-secondary" />
+                  <span className="text-secondary/80 font-body text-[10px] uppercase tracking-widest">Aventura</span>
+                </div>
+                <h3 className="font-display text-2xl text-primary-foreground font-semibold hero-text-shadow">
+                  Trilhas & Passeios
+                </h3>
+              </div>
+            </Link>
+          </motion.div>
+
+          {/* Gastronomia - bottom right */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2, duration: 0.7 }}
+            className="md:col-span-5"
+          >
+            <Link to="/gastronomia" className="group block relative overflow-hidden rounded-2xl h-[240px] md:h-[280px]">
+              <img
+                src="https://www.minhagloria.com.br/lovable-uploads/fdf9bc84-d84a-4376-8178-95e596cf51c4.png"
+                alt="Gastronomia do Chef"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent" />
+              <div className="absolute bottom-0 left-0 right-0 p-6">
+                <div className="flex items-center gap-2 mb-2">
+                  <UtensilsCrossed size={16} className="text-secondary" />
+                  <span className="text-secondary/80 font-body text-[10px] uppercase tracking-widest">Sabores</span>
+                </div>
+                <h3 className="font-display text-2xl text-primary-foreground font-semibold hero-text-shadow">
+                  Gastronomia
+                </h3>
+              </div>
+            </Link>
+          </motion.div>
         </div>
       </div>
     </section>

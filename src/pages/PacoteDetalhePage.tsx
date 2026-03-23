@@ -85,20 +85,20 @@ const PacoteDetalhePage = () => {
         {allImages.length > 1 && (
           <section className="py-8 bg-background">
             <div className="container mx-auto px-4">
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-3">
-                {allImages.map((img, i) => (
+              <div className="grid grid-cols-3 md:grid-cols-5 gap-2 md:gap-3">
+                {allImages.slice(0, 15).map((img, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.05 }}
+                    transition={{ delay: i * 0.03 }}
                     className={`overflow-hidden rounded-xl cursor-pointer group ${i === 0 ? "col-span-2 row-span-2" : ""}`}
                     onClick={() => openGallery(i)}
                   >
                     <img
                       src={img}
                       alt={`${pkg.shortTitle} - foto ${i + 1}`}
-                      className={`w-full object-cover group-hover:scale-105 transition-transform duration-700 ${i === 0 ? "h-64 md:h-[400px]" : "h-32 md:h-[195px]"}`}
+                      className={`w-full object-cover group-hover:scale-105 transition-transform duration-700 ${i === 0 ? "h-48 md:h-[340px]" : "h-28 md:h-[165px]"}`}
                       loading="lazy"
                     />
                   </motion.div>
