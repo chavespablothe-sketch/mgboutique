@@ -63,7 +63,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 1.4 }}
-          className="absolute bottom-0 left-0 right-0 z-20"
+          className="absolute bottom-0 left-0 right-0 z-20 hidden lg:block"
         >
           <div className="container mx-auto px-4 lg:px-8">
             <div className="bg-primary/80 backdrop-blur-xl rounded-t-2xl p-5 border-t border-x border-secondary/10 shadow-[0_-8px_40px_-12px_rgba(0,0,0,0.3)]">

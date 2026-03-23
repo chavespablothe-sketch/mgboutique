@@ -52,18 +52,18 @@ const WelcomeSection = () => {
         </div>
 
         {/* Photo mosaic — clean grid */}
-        <div className="grid grid-cols-12 gap-3 lg:gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-12 gap-2 md:gap-3 lg:gap-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="col-span-12 md:col-span-7 overflow-hidden rounded-lg"
+            className="col-span-2 md:col-span-7 overflow-hidden rounded-lg"
           >
             <img
               src="https://www.minhagloria.com.br/images/carousel-new-2.webp"
               alt="Vista aérea do Minha Glória Hotel Boutique"
-              className="w-full h-[250px] md:h-[400px] object-cover hover:scale-105 transition-transform duration-1000"
+              className="w-full h-[200px] md:h-[400px] object-cover hover:scale-105 transition-transform duration-1000"
               loading="lazy"
             />
           </motion.div>
@@ -72,7 +72,7 @@ const WelcomeSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
-            className="col-span-6 md:col-span-5 overflow-hidden rounded-lg"
+            className="col-span-1 md:col-span-5 overflow-hidden rounded-lg"
           >
             <img
               src="https://www.minhagloria.com.br/images/carousel-new-4.webp"
@@ -86,7 +86,7 @@ const WelcomeSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="col-span-6 md:col-span-4 overflow-hidden rounded-lg"
+            className="col-span-1 md:col-span-4 overflow-hidden rounded-lg"
           >
             <img
               src="https://www.minhagloria.com.br/lovable-uploads/fa0a1d74-12c1-4134-8d8d-0e688addbccb.png"
@@ -100,7 +100,7 @@ const WelcomeSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="col-span-6 md:col-span-4 overflow-hidden rounded-lg"
+            className="col-span-1 md:col-span-4 overflow-hidden rounded-lg"
           >
             <img
               src="/images/igreja.jpg"
@@ -114,7 +114,7 @@ const WelcomeSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="col-span-12 md:col-span-4 overflow-hidden rounded-lg"
+            className="col-span-1 md:col-span-4 overflow-hidden rounded-lg"
           >
             <img
               src="https://www.minhagloria.com.br/lovable-uploads/252a23af-2a29-46e8-8e7e-dbd3ce9cf861.png"

@@ -123,9 +123,6 @@ const Header = () => {
         {isOpen && (
           <div className="lg:hidden bg-primary/98 backdrop-blur-md border-t border-primary-foreground/5">
             <nav className="container mx-auto px-4 py-6 flex flex-col gap-1">
-              <div className="mb-4 pb-4 border-b border-primary-foreground/10">
-                <DateSearchBar />
-              </div>
               {navItems.map((item) => (
                 <Link
                   key={item.href}
