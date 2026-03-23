@@ -76,11 +76,11 @@ const BoutiqueSection = () => {
             transition={{ delay: 0.2 }}
             className="hidden lg:grid grid-cols-2 gap-4 h-[600px]"
           >
-            <div className="rounded-2xl overflow-hidden">
+            <div className="rounded-2xl overflow-hidden row-span-2">
               <img
-                src="/images/capela.jpg"
-                alt="Capela do Minha Glória"
-                className="w-full h-full object-cover"
+                src="/images/suite-boutique.jpg"
+                alt="Suíte boutique com toalhas e flores"
+                className="w-full h-full object-cover object-center"
                 loading="lazy"
               />
             </div>
