@@ -45,9 +45,6 @@ const OffersSection = () => {
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-primary/60 via-transparent to-transparent" />
-                <span className={`absolute top-4 left-4 ${pkg.tagColor} text-primary-foreground text-xs font-body uppercase tracking-wider px-3 py-1.5 rounded-full`}>
-                  {pkg.tag}
-                </span>
               </div>
               <div className="p-6 flex flex-col flex-1">
                 <h3 className="font-display text-xl font-semibold text-foreground mb-2">{pkg.shortTitle}</h3>
