@@ -43,8 +43,7 @@ const HeroSection = () => {
               transition={{ duration: 1, delay: 0.8 }}
               className="text-primary-foreground/70 font-body text-base md:text-lg max-w-md mb-10 leading-relaxed"
             >
-              Um hotel boutique onde a natureza encontra o luxo
-              em perfeita harmonia
+              
             </motion.p>
 
             <motion.div
