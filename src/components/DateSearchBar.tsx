@@ -114,6 +114,18 @@ const DateSearchBar = () => {
         </select>
       </div>
 
+      {/* Coupon */}
+      <div className="flex items-center gap-2 bg-primary-foreground/8 rounded-xl px-4 py-3 font-body text-sm border border-primary-foreground/5">
+        <Tag size={15} className="text-secondary shrink-0" />
+        <input
+          type="text"
+          value={coupon}
+          onChange={(e) => setCoupon(e.target.value)}
+          placeholder="Cupom de desconto"
+          className="bg-transparent text-primary-foreground outline-none placeholder:text-primary-foreground/40 text-sm w-32"
+        />
+      </div>
+
       {/* Search CTA */}
       <Button
         onClick={handleSearch}

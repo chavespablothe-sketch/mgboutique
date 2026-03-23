@@ -153,7 +153,7 @@ const TarifasPage = () => {
                     <div className="space-y-4">
                       {[
                         "Pensão completa nos fins de semana e feriados",
-                        "Crianças até 6 anos: cortesia",
+                        "1 criança até 12 anos: grátis nos fins de semana",
                         "Parcelamento em até 10x sem juros",
                         "Recreação infantil monitorada",
                         "Acesso completo ao spa e lazer",

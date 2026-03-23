@@ -67,10 +67,10 @@ const OffersSection = () => {
                 </div>
 
               <Button asChild size="lg" className="w-full bg-cta hover:bg-cta/90 text-cta-foreground font-body text-sm uppercase tracking-wider gap-2 rounded-full shadow-lg shadow-cta/20">
-                  <a href="https://book.omnibees.com" target="_blank" rel="noopener noreferrer">
+                  <Link to={`/tarifas/${pkg.slug}`}>
                     <CalendarDays size={14} />
-                    Reservar agora <ArrowRight size={14} />
-                  </a>
+                    Ver pacote <ArrowRight size={14} />
+                  </Link>
                 </Button>
               </div>
             </motion.div>

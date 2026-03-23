@@ -129,7 +129,7 @@ const LazerPage = () => {
 
         <CTASection 
           title="Pronto para a aventura?" 
-          subtitle="Reserve agora e viva experiências inesquecíveis com toda a família. Pensão completa e crianças até 6 anos grátis." 
+          subtitle="Reserve agora e viva experiências inesquecíveis com toda a família. Pensão completa e 1 criança até 12 anos grátis nos fins de semana." 
         />
       </div>
       <Footer />

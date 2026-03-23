@@ -5,7 +5,7 @@ const highlights = [
   { icon: TreePine, label: "Mata Atlântica preservada" },
   { icon: Users, label: "Apenas 20 suítes" },
   { icon: Utensils, label: "Pensão completa" },
-  { icon: Heart, label: "Kids free até 6 anos" },
+  { icon: Heart, label: "1 criança até 12 anos grátis" },
 ];
 
 const WelcomeSection = () => {
