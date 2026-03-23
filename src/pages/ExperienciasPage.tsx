@@ -5,17 +5,19 @@ import SEO, { breadcrumbSchema } from "@/components/SEO";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CTASection from "@/components/CTASection";
 import { motion } from "framer-motion";
-import { Flower2, TreePine, Mountain, Waves, Bike, Dog, Palette, Footprints, Music, Gamepad2, Heart, Baby, Bird, Sparkles, Car, Dumbbell } from "lucide-react";
+import { TreePine, Mountain, Waves, Bike, Dog, Palette, Footprints, Music, Gamepad2, Heart, Baby, Bird, Sparkles, Car, Clock, DollarSign } from "lucide-react";
 import { Link } from "react-router-dom";
+import quadriJeepImg from "@/assets/quadri-jeep.png";
 
 const experiences = [
-  { icon: Flower2, title: "Spa & Bem-estar", description: "Massagens relaxantes ao ar livre, sauna seca e tratamentos corporais com produtos naturais da serra.", image: "https://www.minhagloria.com.br/lovable-uploads/04460747-2a8e-4012-a6be-1b1819ad5997.png", audience: "Casais" },
   { icon: Bike, title: "Passeio a Cavalo e Charrete", description: "Cavalgadas guiadas pelas trilhas da propriedade, com paradas em mirantes panorâmicos.", image: "https://www.minhagloria.com.br/images/carousel-new-3.webp", audience: "Famílias" },
-  { icon: Mountain, title: "Quadriciclo", description: "Adrenalina com paisagem de cinema pelas trilhas da fazenda. Experiências de 30 ou 60 minutos.", image: "https://www.minhagloria.com.br/lovable-uploads/57dfbded-962a-4f7c-ba13-7710e31700e4.png", audience: "Aventura" },
+  { icon: Mountain, title: "Quadriciclo & Jeep", description: "Adrenalina com paisagem de cinema pelas trilhas da fazenda. Experiências de 30 ou 60 minutos de quadriciclo ou jeep.", image: quadriJeepImg, audience: "Aventura" },
   { icon: TreePine, title: "Trilhas na Mata Atlântica", description: "Trilhas guiadas com cachoeiras escondidas, mirantes e observação de aves.", image: "https://www.minhagloria.com.br/lovable-uploads/b7fedef6-5188-49de-a6f5-ac36f6e262f8.png", audience: "Todos" },
   { icon: Waves, title: "Piscina Aquecida", description: "Piscina climatizada com vista para as montanhas e espaço infantil de 60cm.", image: "https://www.minhagloria.com.br/lovable-uploads/f5b7fb42-f922-4170-a409-e216226108dd.png", audience: "Todos" },
   { icon: Gamepad2, title: "Sala de Jogos", description: "Sinuca, ping-pong, jogos de cartas e TV. Entretenimento para todas as gerações.", image: "https://www.minhagloria.com.br/lovable-uploads/0114d434-8ce2-46f6-8993-fbc616165aa6.png", audience: "Todos" },
 ];
+
+// ... keep existing code for animals, animalImages, kidsFeatures arrays (lines 20-66)
 
 const animals = [
   { name: "Arara Canindé", category: "aves" },
@@ -63,6 +65,46 @@ const kidsFeatures = [
   { icon: Footprints, title: "Trilha Kids", description: "Trilha adaptada com atividades educativas: identificação de plantas, sons da floresta e pegadas de animais." },
   { icon: Music, title: "Fogueira & Histórias", description: "Contação de histórias ao redor da fogueira, músicas com violão e brincadeiras noturnas sob as estrelas." },
   { icon: Heart, title: "Baby Care", description: "Fraldário completo, berço no chalé, cadeirão no restaurante e cardápio especial para bebês." },
+];
+
+const services = [
+  {
+    icon: Mountain,
+    title: "Quadriciclo",
+    items: [
+      { label: "30 min", price: "R$ 100" },
+      { label: "1 hora", price: "R$ 150" },
+      { label: "Garupa", price: "+ R$ 75" },
+    ],
+    schedule: "9h30 às 11h | 13h às 16h",
+  },
+  {
+    icon: Car,
+    title: "Passeio de Jeep",
+    items: [
+      { label: "30 min", price: "R$ 100" },
+      { label: "1 hora (até 3 pessoas)", price: "R$ 150" },
+    ],
+    schedule: "9h30 às 11h | 13h às 16h",
+  },
+  {
+    icon: Sparkles,
+    title: "Massagem",
+    items: [
+      { label: "30 min", price: "R$ 100" },
+      { label: "1 hora", price: "R$ 200" },
+    ],
+    schedule: "Verificar na recepção",
+  },
+  {
+    icon: Bike,
+    title: "Cavalo & Charrete",
+    items: [
+      { label: "Cavalo – 30 min (por pessoa)", price: "R$ 35" },
+      { label: "Charrete – 10 min (até 4 pessoas)", price: "R$ 38" },
+    ],
+    schedule: "9h30 às 11h",
+  },
 ];
 
 const ExperienciasPage = () => {
@@ -252,7 +294,7 @@ const ExperienciasPage = () => {
           </div>
         </section>
 
-        {/* Spa & Wellness + Vintage Cars */}
+        {/* Spa & Wellness */}
         <section className="py-24 lg:py-32 bg-background">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto mb-24">
@@ -291,8 +333,8 @@ const ExperienciasPage = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto">
               <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="lg:order-2 overflow-hidden rounded-2xl">
                 <img
-                  src="https://www.minhagloria.com.br/images/carousel-new-5.webp"
-                  alt="Coleção de carros antigos e relíquias"
+                  src={quadriJeepImg}
+                  alt="Coleção de carros antigos, quadriciclos e jeep"
                   className="w-full h-[350px] lg:h-[500px] object-cover hover:scale-105 transition-transform duration-1000"
                   loading="lazy"
                 />
@@ -366,6 +408,69 @@ const ExperienciasPage = () => {
                 </p>
               </motion.div>
             </div>
+          </div>
+        </section>
+
+        {/* Services & Pricing */}
+        <section className="py-24 lg:py-32 bg-background">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="max-w-3xl mx-auto text-center mb-16"
+            >
+              <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-primary/10 flex items-center justify-center">
+                <DollarSign className="text-secondary" size={28} />
+              </div>
+              <h2 className="font-display text-4xl md:text-5xl text-foreground font-semibold mb-6 leading-[1.05]">
+                Serviços & <span className="italic text-secondary">Passeios</span>
+              </h2>
+              <p className="text-editorial text-muted-foreground text-lg leading-relaxed">
+                Valores e horários dos passeios e serviços disponíveis durante sua estadia.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+              {services.map((service, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="bg-primary/5 rounded-2xl p-8 border border-primary/10 hover:shadow-lg transition-shadow duration-500"
+                >
+                  <div className="w-14 h-14 mb-5 rounded-full bg-secondary/15 flex items-center justify-center">
+                    <service.icon className="text-secondary" size={24} />
+                  </div>
+                  <h3 className="font-display text-xl font-semibold text-foreground mb-5">{service.title}</h3>
+                  
+                  <div className="space-y-3 mb-6">
+                    {service.items.map((item, j) => (
+                      <div key={j} className="flex items-center justify-between gap-2 py-2 border-b border-primary/10 last:border-0">
+                        <span className="text-muted-foreground font-body text-sm">{item.label}</span>
+                        <span className="text-foreground font-body text-sm font-semibold whitespace-nowrap">{item.price}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="flex items-center gap-2 text-muted-foreground">
+                    <Clock size={14} className="text-secondary" />
+                    <span className="font-body text-xs">{service.schedule}</span>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="text-center text-muted-foreground font-body text-sm mt-10 max-w-xl mx-auto"
+            >
+              Valores sujeitos a alteração. Consulte a recepção para disponibilidade e agendamento.
+            </motion.p>
           </div>
         </section>
 
