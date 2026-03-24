@@ -91,15 +91,7 @@ const AcomodacoesPage = () => {
                     <p className="text-muted-foreground font-body text-base leading-relaxed mb-5">
                       {chalet.description}
                     </p>
-                    <div className="flex flex-wrap gap-4 text-muted-foreground text-sm font-body mb-5 pb-5 border-b border-border">
-                      <span className="flex items-center gap-1.5"><Users size={14} className="text-secondary" /> {chalet.capacity}</span>
-                      <span className="flex items-center gap-1.5"><Maximize size={14} className="text-secondary" /> {chalet.size}</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <p className="text-xs text-muted-foreground font-body uppercase tracking-wider">a partir de</p>
-                        <p className="text-xl font-display font-semibold text-foreground">{chalet.priceFrom}<span className="text-sm font-body text-muted-foreground">/noite</span></p>
-                      </div>
+                    <div className="flex items-center justify-end">
                       <Button asChild size="sm" className="bg-cta hover:bg-cta/90 text-cta-foreground font-body text-xs uppercase tracking-wider gap-1.5 rounded-full">
                         <Link to={`/acomodacoes/${chalet.slug}`}>
                           Ver detalhes <ArrowRight size={12} />
