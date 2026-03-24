@@ -25,7 +25,7 @@ const Header = () => {
       <header className="fixed top-0 left-0 right-0 z-50">
         <div className="bg-primary/95 backdrop-blur-md border-b border-primary-foreground/5">
           <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between h-16 lg:h-20">
+            <div className="flex items-center justify-between h-18 lg:h-24">
               {/* Mobile menu toggle */}
               <button
                 className="lg:hidden text-primary-foreground"
