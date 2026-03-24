@@ -20,7 +20,7 @@ const pillars = [
     id: "experiencias",
     title: "Curadoria de experiências",
     desc: "Cada feriado tem uma programação única: oficinas, cavalgadas, fogueiras, jantares temáticos. Nada é genérico.",
-    image: "https://www.minhagloria.com.br/images/carousel-new-5.webp",
+    image: "/images/chale-chandon.jpg",
   },
   {
     id: "natureza",
