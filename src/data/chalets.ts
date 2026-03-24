@@ -111,6 +111,7 @@ const chalets: Chalet[] = [
       areaExterna: ["Varanda privativa", "Vista para o jardim e fazendinha", "Área de convivência"],
     },
     images: [
+      "/images/chale-familia-exterior.png",
       "https://www.minhagloria.com.br/lovable-uploads/28329729-31a6-47f7-b501-4427f2f9c84a.png",
       "https://www.minhagloria.com.br/lovable-uploads/beaeb973-0a83-4d4d-9bc1-a47ccc40cd59.png",
     ],
