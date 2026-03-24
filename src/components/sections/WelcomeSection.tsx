@@ -117,8 +117,8 @@ const WelcomeSection = () => {
             className="col-span-1 md:col-span-4 overflow-hidden rounded-lg"
           >
             <img
-              src="https://www.minhagloria.com.br/lovable-uploads/252a23af-2a29-46e8-8e7e-dbd3ce9cf861.png"
-              alt="Lago natural da fazenda"
+              src="/images/hotel-fazenda-minha-gloria-2.jpg"
+              alt="Cama com toalhas bordadas e flores no Minha Glória"
               className="w-full h-[200px] md:h-[280px] object-cover hover:scale-105 transition-transform duration-1000"
               loading="lazy"
             />
