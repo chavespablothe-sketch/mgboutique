@@ -152,7 +152,7 @@ const SobrePage = () => {
                     className="lg:col-span-5 photo-ken-burns rounded-2xl overflow-hidden"
                   >
                     <img
-                      src="https://www.minhagloria.com.br/images/carousel-new-4.webp"
+                      src="/images/vista-hotel.jpg"
                       alt="Vista aérea do hotel"
                       className="w-full h-[350px] lg:h-[550px] object-cover"
                       loading="lazy"
