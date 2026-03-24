@@ -39,11 +39,6 @@ const CTASection = ({
             </Link>
           </Button>
         </div>
-        {showPhone && (
-          <a href="tel:+5522997792023" className="inline-flex items-center gap-2 text-secondary/80 hover:text-secondary font-body text-sm mt-8 transition-colors">
-            <Phone size={14} /> (22) 99779-2023
-          </a>
-        )}
       </motion.div>
     </div>
   </section>
