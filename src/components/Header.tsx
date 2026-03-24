@@ -40,10 +40,10 @@ const Header = () => {
                   <Link
                     key={item.href}
                     to={item.href}
-                    className={`text-[11px] tracking-[0.15em] uppercase font-nav font-medium transition-colors whitespace-nowrap ${
+                    className={`text-[13px] tracking-[0.18em] uppercase font-nav font-medium transition-colors whitespace-nowrap ${
                       location.pathname.startsWith(item.href)
                         ? "text-secondary font-bold"
-                        : "text-primary-foreground/70 hover:text-secondary"
+                        : "text-primary-foreground/80 hover:text-secondary"
                     }`}
                   >
                     {item.label}
@@ -52,11 +52,11 @@ const Header = () => {
               </nav>
 
               {/* Logo */}
-              <Link to="/" className="flex items-center justify-center shrink-0 mx-4 lg:mx-8">
+              <Link to="/" className="flex items-center justify-center shrink-0 mx-6 lg:mx-10">
                 <img
                   src="/images/logo-light.png"
                   alt="Minha Glória Hotel Boutique"
-                  className="h-8 lg:h-10 w-auto object-contain"
+                  className="h-10 lg:h-14 w-auto object-contain"
                 />
               </Link>
 
@@ -66,10 +66,10 @@ const Header = () => {
                   <Link
                     key={item.href}
                     to={item.href}
-                    className={`text-[11px] tracking-[0.15em] uppercase font-nav font-medium transition-colors whitespace-nowrap ${
+                    className={`text-[13px] tracking-[0.18em] uppercase font-nav font-medium transition-colors whitespace-nowrap ${
                       location.pathname.startsWith(item.href)
                         ? "text-secondary font-bold"
-                        : "text-primary-foreground/70 hover:text-secondary"
+                        : "text-primary-foreground/80 hover:text-secondary"
                     }`}
                   >
                     {item.label}
