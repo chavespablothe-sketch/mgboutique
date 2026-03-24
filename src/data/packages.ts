@@ -175,6 +175,8 @@ const packages: HotelPackage[] = [
     ]),
     tag: "bem-estar",
     tagColor: "bg-secondary",
+    checkIn: "01052026",
+    checkOut: "03052026",
   },
   {
     slug: "dia-das-maes-2026",
