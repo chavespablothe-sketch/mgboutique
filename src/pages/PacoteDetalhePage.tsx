@@ -35,7 +35,7 @@ const PacoteDetalhePage = () => {
     <div className="min-h-screen">
       <SEO
         title={`${pkg.shortTitle} | Pacotes`}
-        description={`${pkg.description} ${pkg.period}, ${pkg.nights}. A partir de ${pkg.price} por casal.`}
+        description={`${pkg.description} ${pkg.period}, ${pkg.nights}. Consulte tarifas especiais.`}
         canonical={`/tarifas/${pkg.slug}`}
         ogImage={pkg.image}
         schemas={[
@@ -44,8 +44,6 @@ const PacoteDetalhePage = () => {
             "@type": "Offer",
             name: pkg.title,
             description: pkg.longDescription,
-            price: pkg.price.replace(/[^\d]/g, ""),
-            priceCurrency: "BRL",
             availability: "https://schema.org/InStock",
             validFrom: pkg.period,
             image: pkg.image,
@@ -179,10 +177,9 @@ const PacoteDetalhePage = () => {
                   <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
                     className="bg-card rounded-xl border border-border p-8 shadow-xl"
                   >
-                    <p className="text-muted-foreground font-body text-xs uppercase tracking-wider mb-1">A partir de</p>
-                    <p className="font-display text-4xl font-semibold text-foreground mb-1">{pkg.price}</p>
-                    <p className="text-muted-foreground font-body text-sm mb-1">por casal · {pkg.nights}</p>
-                    <p className="text-secondary font-body text-sm font-semibold mb-6">{pkg.priceNote}</p>
+                    <p className="font-display text-2xl font-semibold text-foreground mb-1">Tarifas Especiais</p>
+                    <p className="text-muted-foreground font-body text-sm mb-1">{pkg.nights} · por casal</p>
+                    <p className="text-secondary font-body text-sm font-semibold mb-6">Consulte valores ao reservar</p>
 
                     <div className="space-y-3 mb-6 pb-6 border-b border-border">
                       <div className="flex items-center gap-3 text-muted-foreground font-body text-sm">
