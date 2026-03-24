@@ -389,6 +389,8 @@ const packages: HotelPackage[] = [
     ]),
     tag: "romântico",
     tagColor: "bg-primary",
+    checkIn: "04092026",
+    checkOut: "07092026",
   },
   {
     slug: "dia-das-criancas-2026",
