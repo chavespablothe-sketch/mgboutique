@@ -328,6 +328,8 @@ const packages: HotelPackage[] = [
     ]),
     tag: "família",
     tagColor: "bg-secondary",
+    checkIn: "03072026",
+    checkOut: "05072026",
   },
   {
     slug: "dia-dos-pais-2026",
