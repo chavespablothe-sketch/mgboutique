@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO, { breadcrumbSchema } from "@/components/SEO";
 import CTASection from "@/components/CTASection";
-import PhotoGallery from "@/components/PhotoGallery";
+
 import { motion } from "framer-motion";
 import { Heart, MapPin, Clock, Users, Star, Utensils, TreePine, Leaf, Wine, Cake, Award } from "lucide-react";
 import { Link } from "react-router-dom";
