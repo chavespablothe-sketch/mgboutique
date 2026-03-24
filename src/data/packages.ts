@@ -84,6 +84,7 @@ const packages: HotelPackage[] = [
     ]),
     tag: "família",
     tagColor: "bg-secondary",
+    // No specific dates — generic weekend package
   },
   {
     slug: "pascoa-2026",
