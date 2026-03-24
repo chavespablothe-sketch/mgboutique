@@ -1,11 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO, { breadcrumbSchema } from "@/components/SEO";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CTASection from "@/components/CTASection";
-import { motion } from "framer-motion";
-import { TreePine, Mountain, Waves, Bike, Dog, Palette, Footprints, Music, Gamepad2, Heart, Baby, Bird, Sparkles, Car, Clock, DollarSign } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { TreePine, Mountain, Waves, Bike, Dog, Palette, Footprints, Music, Gamepad2, Heart, Baby, Bird, Sparkles, Car, Clock, DollarSign, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import quadriJeepImg from "@/assets/quadri-jeep.png";
 
@@ -104,6 +104,7 @@ const services = [
 ];
 
 const ExperienciasPage = () => {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   const aves = animals.filter(a => a.category === "aves");
@@ -215,7 +216,8 @@ const ExperienciasPage = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto mb-16">
               {animalImages.map((img, i) => (
                 <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                  className={`overflow-hidden rounded-2xl ring-2 ring-[hsl(37,60%,55%)]/20 photo-lift ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
+                  className={`overflow-hidden rounded-2xl ring-2 ring-[hsl(37,60%,55%)]/20 photo-lift cursor-pointer ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
+                  onClick={() => setLightboxIndex(i)}
                 >
                   <img src={img.src} alt={img.alt} className={`w-full object-cover hover:scale-110 transition-transform duration-1000 ${i === 0 ? 'h-[250px] md:h-full' : 'h-[200px] md:h-[250px]'}`} loading="lazy" />
                 </motion.div>
@@ -260,6 +262,51 @@ const ExperienciasPage = () => {
             </motion.p>
           </div>
         </section>
+
+        {/* Animal Lightbox */}
+        <AnimatePresence>
+          {lightboxIndex !== null && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+              onClick={() => setLightboxIndex(null)}
+            >
+              <button className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-10" onClick={() => setLightboxIndex(null)}>
+                <X size={32} />
+              </button>
+              <button
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-colors z-10"
+                onClick={(e) => { e.stopPropagation(); setLightboxIndex(lightboxIndex === 0 ? animalImages.length - 1 : lightboxIndex - 1); }}
+              >
+                <ChevronLeft size={24} className="text-white" />
+              </button>
+              <button
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-colors z-10"
+                onClick={(e) => { e.stopPropagation(); setLightboxIndex(lightboxIndex === animalImages.length - 1 ? 0 : lightboxIndex + 1); }}
+              >
+                <ChevronRight size={24} className="text-white" />
+              </button>
+              <motion.div
+                key={lightboxIndex}
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                className="relative max-w-[90vw] max-h-[85vh]"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <img
+                  src={animalImages[lightboxIndex].src}
+                  alt={animalImages[lightboxIndex].alt}
+                  className="max-w-[90vw] max-h-[85vh] object-contain rounded-lg"
+                />
+                <p className="text-white/80 font-body text-sm text-center mt-3">{animalImages[lightboxIndex].alt}</p>
+                <p className="text-white/50 font-body text-xs text-center mt-1">{lightboxIndex + 1} / {animalImages.length}</p>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Spa & Wellness */}
         <section className="py-24 lg:py-32 bg-background">
