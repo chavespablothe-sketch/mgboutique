@@ -31,8 +31,8 @@ const pillars = [
 ];
 
 const gridImages = [
-  { src: "/images/tucano.jpg", alt: "Hóspede com tucano no Minha Glória" },
   { src: "/images/barbara-iran-jeep.jpg", alt: "Família Bárbara e Iran no jeep" },
+  { src: "/images/tucano.jpg", alt: "Hóspede com tucano no Minha Glória" },
   { src: "/images/mini-chef.jpg", alt: "Mini chef no Minha Glória" },
 ];
 
