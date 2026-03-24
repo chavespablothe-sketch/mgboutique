@@ -19,7 +19,7 @@ const meals = [
     title: "Almoço Regional",
     time: "12h30 às 14h30",
     description: "A mesa é uma celebração da serra fluminense. Menu sazonal com ingredientes orgânicos da nossa horta, colhidos minutos antes de chegar ao prato. Carnes assadas lentamente, massas frescas, saladas vibrantes e sobremesas que encerram a refeição como um suspiro.",
-    image: "/images/gastro-prato-chef.jpg",
+    image: "/images/gastro-almoco-buffet.jpg",
   },
   {
     icon: Wine,
