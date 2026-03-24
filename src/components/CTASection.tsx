@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Phone, ArrowRight, CalendarDays } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const OMNIBEES_URL = "https://book.omnibees.com";
+import { OMNIBEES_URL } from "@/lib/omnibees";
 
 interface CTASectionProps {
   title?: string;

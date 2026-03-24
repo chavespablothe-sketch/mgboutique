@@ -232,7 +232,7 @@ const PacotesPage = () => {
                 Monte o pacote perfeito para sua família — reserve diretamente pelo site.
               </p>
               <Button asChild size="sm" className="bg-cta hover:bg-cta/90 text-cta-foreground font-body text-xs uppercase tracking-wider gap-2 rounded-full">
-                <a href="https://book.omnibees.com/hotel/19498" target="_blank" rel="noopener noreferrer">
+                <a href="https://book.omnibees.com/hotelresults?q=21954&NRooms=1&ad=2&ch=0" target="_blank" rel="noopener noreferrer">
                   <CalendarDays size={14} />
                   Ver disponibilidade
                 </a>

@@ -18,6 +18,8 @@ export interface HotelPackage {
   tag: string;
   tagColor: string;
   capacity?: string;
+  checkIn?: string;  // ddMMyyyy for Omnibees
+  checkOut?: string; // ddMMyyyy for Omnibees
 }
 
 // Shared hotel photo pool for gallery expansion
@@ -82,6 +84,7 @@ const packages: HotelPackage[] = [
     ]),
     tag: "família",
     tagColor: "bg-secondary",
+    // No specific dates — generic weekend package
   },
   {
     slug: "pascoa-2026",
@@ -110,6 +113,8 @@ const packages: HotelPackage[] = [
     ]),
     tag: "família",
     tagColor: "bg-secondary",
+    checkIn: "03042026",
+    checkOut: "05042026",
   },
   {
     slug: "tiradentes-2026",
@@ -140,6 +145,8 @@ const packages: HotelPackage[] = [
     ]),
     tag: "bem-estar",
     tagColor: "bg-primary",
+    checkIn: "17042026",
+    checkOut: "21042026",
   },
   {
     slug: "primeiro-de-maio-2026",
@@ -168,6 +175,8 @@ const packages: HotelPackage[] = [
     ]),
     tag: "bem-estar",
     tagColor: "bg-secondary",
+    checkIn: "01052026",
+    checkOut: "03052026",
   },
   {
     slug: "dia-das-maes-2026",
@@ -197,6 +206,8 @@ const packages: HotelPackage[] = [
     tag: "família",
     tagColor: "bg-secondary",
     capacity: "Apenas 20 suítes",
+    checkIn: "08052026",
+    checkOut: "10052026",
   },
   {
     slug: "corpus-christi-2026",
@@ -226,6 +237,8 @@ const packages: HotelPackage[] = [
     ]),
     tag: "romântico",
     tagColor: "bg-primary",
+    checkIn: "04062026",
+    checkOut: "07062026",
   },
   {
     slug: "dia-dos-namorados-2026",
@@ -255,6 +268,8 @@ const packages: HotelPackage[] = [
     tag: "romântico",
     tagColor: "bg-primary",
     capacity: "Até 2 pessoas",
+    checkIn: "12062026",
+    checkOut: "14062026",
   },
   {
     slug: "arraia-inverno-2026",
@@ -283,6 +298,8 @@ const packages: HotelPackage[] = [
     ]),
     tag: "bem-estar",
     tagColor: "bg-secondary",
+    checkIn: "19062026",
+    checkOut: "21062026",
   },
   {
     slug: "julho-inverno-2026",
@@ -311,6 +328,8 @@ const packages: HotelPackage[] = [
     ]),
     tag: "família",
     tagColor: "bg-secondary",
+    checkIn: "03072026",
+    checkOut: "05072026",
   },
   {
     slug: "dia-dos-pais-2026",
@@ -339,6 +358,8 @@ const packages: HotelPackage[] = [
     ]),
     tag: "família",
     tagColor: "bg-secondary",
+    checkIn: "07082026",
+    checkOut: "09082026",
   },
   {
     slug: "sete-de-setembro-2026",
@@ -368,6 +389,8 @@ const packages: HotelPackage[] = [
     ]),
     tag: "romântico",
     tagColor: "bg-primary",
+    checkIn: "04092026",
+    checkOut: "07092026",
   },
   {
     slug: "dia-das-criancas-2026",
@@ -397,6 +420,8 @@ const packages: HotelPackage[] = [
     ]),
     tag: "família",
     tagColor: "bg-secondary",
+    checkIn: "09102026",
+    checkOut: "12102026",
   },
   {
     slug: "finados-2026",
@@ -426,6 +451,8 @@ const packages: HotelPackage[] = [
     ]),
     tag: "romântico",
     tagColor: "bg-primary",
+    checkIn: "30102026",
+    checkOut: "02112026",
   },
   {
     slug: "natal-2026",
@@ -455,6 +482,8 @@ const packages: HotelPackage[] = [
     ]),
     tag: "família",
     tagColor: "bg-secondary",
+    checkIn: "23122026",
+    checkOut: "26122026",
   },
   {
     slug: "reveillon-2026",
@@ -485,6 +514,8 @@ const packages: HotelPackage[] = [
     ]),
     tag: "família",
     tagColor: "bg-secondary",
+    checkIn: "30122026",
+    checkOut: "03012027",
   },
 ];
 

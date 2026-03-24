@@ -13,7 +13,7 @@ const navItems = [
   { label: "Contato", href: "/contato" },
 ];
 
-const OMNIBEES_URL = "https://book.omnibees.com/hotel/19498";
+import { OMNIBEES_URL } from "@/lib/omnibees";
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false);
