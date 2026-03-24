@@ -16,10 +16,10 @@ const numbers = [
 ];
 
 const pillars = [
-  { icon: Heart, title: "Hospitalidade Genuína", desc: "Cada hóspede é chamado pelo nome. Nossa equipe cuida de cada detalhe com carinho real, do check-in ao check-out.", image: "https://www.minhagloria.com.br/lovable-uploads/f7d9ecaa-e043-4c83-8549-89dfb50450a6.png" },
+  { icon: Heart, title: "Hospitalidade Genuína", desc: "Cada hóspede é chamado pelo nome. Nossa equipe cuida de cada detalhe com carinho real, do check-in ao check-out.", image: "/images/hospitalidade.jpg" },
   { icon: TreePine, title: "Natureza Intocada", desc: "Cercado pela Mata Atlântica, entre montanhas e cachoeiras, a natureza aqui não é cenário — é protagonista.", image: "https://www.minhagloria.com.br/lovable-uploads/b7fedef6-5188-49de-a6f5-ac36f6e262f8.png" },
-  { icon: Utensils, title: "Gastronomia de Alma", desc: "Pães artesanais, ervas da horta orgânica, carnes assadas com técnica e amor. Cada refeição celebra a terra onde estamos.", image: "https://www.minhagloria.com.br/lovable-uploads/252a23af-2a29-46e8-8e7e-dbd3ce9cf861.png" },
-  { icon: Users, title: "Feito para Famílias", desc: "1 criança até 12 anos grátis nos fins de semana. Recreação monitorada, fazendinha, trilhas kids e menu infantil.", image: "https://www.minhagloria.com.br/lovable-uploads/fa0a1d74-12c1-4134-8d8d-0e688addbccb.png" },
+  { icon: Utensils, title: "Gastronomia de Alma", desc: "Pães artesanais, ervas da horta orgânica, carnes assadas com técnica e amor. Cada refeição celebra a terra onde estamos.", image: "/images/animais-fazenda.jpg" },
+  { icon: Users, title: "Feito para Famílias", desc: "1 criança até 12 anos grátis nos fins de semana. Recreação monitorada, fazendinha, trilhas kids e menu infantil.", image: "/images/familia.jpg" },
 ];
 
 const galleryImages = [
