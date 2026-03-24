@@ -514,6 +514,8 @@ const packages: HotelPackage[] = [
     ]),
     tag: "família",
     tagColor: "bg-secondary",
+    checkIn: "30122026",
+    checkOut: "03012027",
   },
 ];
 
