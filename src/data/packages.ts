@@ -451,6 +451,8 @@ const packages: HotelPackage[] = [
     ]),
     tag: "romântico",
     tagColor: "bg-primary",
+    checkIn: "30102026",
+    checkOut: "02112026",
   },
   {
     slug: "natal-2026",
