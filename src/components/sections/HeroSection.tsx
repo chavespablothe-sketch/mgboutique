@@ -92,7 +92,7 @@ const HeroSection = () => {
                 loop
                 playsInline
                 className="w-full aspect-video object-cover"
-                poster="https://www.minhagloria.com.br/images/carousel-new-2.webp"
+                poster="/images/welcome-aerial.webp"
               >
                 <source src={VIDEO_URL} type="video/mp4" />
                 Seu navegador não suporta vídeos HTML5.

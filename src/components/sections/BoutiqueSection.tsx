@@ -8,7 +8,7 @@ const pillars = [
     id: "exclusividade",
     title: "Exclusividade real",
     desc: "Apenas 20 suítes. Sem filas, sem multidões. Cada hóspede é chamado pelo nome e recebe atenção genuína da nossa equipe.",
-    image: "https://www.minhagloria.com.br/images/carousel-new-2.webp",
+    image: "/images/welcome-aerial.webp",
   },
   {
     id: "familias",
@@ -20,13 +20,13 @@ const pillars = [
     id: "experiencias",
     title: "Curadoria de experiências",
     desc: "Cada feriado tem uma programação única: oficinas, cavalgadas, fogueiras, jantares temáticos. Nada é genérico.",
-    image: "https://www.minhagloria.com.br/images/carousel-new-5.webp",
+    image: "/images/chale-chandon.jpg",
   },
   {
     id: "natureza",
     title: "Natureza preservada",
     desc: "Hectares de Mata Atlântica, trilhas, cachoeiras, lago natural e uma fazendinha com lhamas, alpacas e cavalos.",
-    image: "https://www.minhagloria.com.br/images/carousel-new-3.webp",
+    image: "/images/vista-hotel.jpg",
   },
 ];
 
