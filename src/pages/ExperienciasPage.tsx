@@ -263,6 +263,51 @@ const ExperienciasPage = () => {
           </div>
         </section>
 
+        {/* Animal Lightbox */}
+        <AnimatePresence>
+          {lightboxIndex !== null && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+              onClick={() => setLightboxIndex(null)}
+            >
+              <button className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors z-10" onClick={() => setLightboxIndex(null)}>
+                <X size={32} />
+              </button>
+              <button
+                className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-colors z-10"
+                onClick={(e) => { e.stopPropagation(); setLightboxIndex(lightboxIndex === 0 ? animalImages.length - 1 : lightboxIndex - 1); }}
+              >
+                <ChevronLeft size={24} className="text-white" />
+              </button>
+              <button
+                className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center hover:bg-white/40 transition-colors z-10"
+                onClick={(e) => { e.stopPropagation(); setLightboxIndex(lightboxIndex === animalImages.length - 1 ? 0 : lightboxIndex + 1); }}
+              >
+                <ChevronRight size={24} className="text-white" />
+              </button>
+              <motion.div
+                key={lightboxIndex}
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                className="relative max-w-[90vw] max-h-[85vh]"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <img
+                  src={animalImages[lightboxIndex].src}
+                  alt={animalImages[lightboxIndex].alt}
+                  className="max-w-[90vw] max-h-[85vh] object-contain rounded-lg"
+                />
+                <p className="text-white/80 font-body text-sm text-center mt-3">{animalImages[lightboxIndex].alt}</p>
+                <p className="text-white/50 font-body text-xs text-center mt-1">{lightboxIndex + 1} / {animalImages.length}</p>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+
         {/* Spa & Wellness */}
         <section className="py-24 lg:py-32 bg-background">
           <div className="container mx-auto px-4">
