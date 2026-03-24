@@ -1,16 +1,18 @@
 
 
-# Melhorar legibilidade do texto na Hero Section
+## Substituir 3 fotos quebradas na seção Bem-vindos
 
-O texto está sobre uma foto aérea verde — precisa de mais contraste sem mexer na foto.
+A seção WelcomeSection tem 5 imagens no mosaico. As 3 primeiras usam URLs do domínio antigo (`minhagloria.com.br`) que não carregam mais. As 2 últimas usam paths locais (`/images/...`) que ainda funcionam.
 
-## Mudanças
+### Plano
 
-1. **Text shadow no h1**: Adicionar `text-shadow` para destacar o texto do fundo (sombra suave escura)
-2. **Text shadow no botão**: Leve sombra para legibilidade
-3. **Aumentar opacidade do texto**: `text-primary-foreground` já é branco, mas garantir que o subtítulo (se houver) também tenha boa visibilidade
+1. Copiar as 3 fotos enviadas para `public/images/`:
+   - `640carrossel-5.webp` → `public/images/welcome-aerial.webp` (vista aérea)
+   - `640almoco-mg-25.webp` → `public/images/welcome-horse.webp` (cavalo com pedra)
+   - `640brunch-1.webp` → `public/images/welcome-brunch.webp` (brunch Chandon)
 
-### Detalhes técnicos
-- Adicionar `style={{ textShadow: '0 2px 20px rgba(0,0,0,0.5), 0 1px 4px rgba(0,0,0,0.3)' }}` no `<motion.h1>`
-- Opcionalmente adicionar um `drop-shadow` via classe Tailwind (`drop-shadow-lg`) como reforço
+2. Atualizar `WelcomeSection.tsx` — substituir as 3 URLs quebradas pelos novos paths locais:
+   - Imagem 1: `minhagloria.com.br/images/carousel-new-2.webp` → `/images/welcome-aerial.webp`
+   - Imagem 2: `minhagloria.com.br/images/carousel-new-4.webp` → `/images/welcome-horse.webp`
+   - Imagem 3: `minhagloria.com.br/lovable-uploads/...` → `/images/welcome-brunch.webp`
 
