@@ -141,23 +141,8 @@ const GastronomiaPage = () => {
                     <img src={meal.image} alt={meal.title} className="w-full h-[350px] lg:h-[450px] object-cover" loading="lazy" />
                   </div>
                   <div className={i % 2 !== 0 ? 'lg:order-1' : ''}>
-                    <div className="flex items-center gap-3 mb-4">
-                      <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-                        <meal.icon className="text-secondary" size={22} />
-                      </div>
-                      <span className="text-muted-foreground font-body text-sm flex items-center gap-2">
-                        <Clock size={14} /> {meal.time}
-                      </span>
-                    </div>
                     <h3 className="font-display text-3xl lg:text-4xl font-semibold text-foreground mb-5">{meal.title}</h3>
-                    <p className="text-muted-foreground font-body text-lg leading-relaxed mb-6">{meal.description}</p>
-                    <div className="bg-hotel-cream rounded-xl p-5 flex items-start gap-3">
-                      <Baby size={20} className="text-secondary mt-0.5 shrink-0" />
-                      <div>
-                        <p className="font-body text-sm font-semibold text-foreground mb-1">Para os pequenos</p>
-                        <p className="text-muted-foreground font-body text-sm leading-relaxed">{meal.kids}</p>
-                      </div>
-                    </div>
+                    <p className="text-muted-foreground font-body text-lg leading-relaxed">{meal.description}</p>
                   </div>
                 </motion.div>
               ))}

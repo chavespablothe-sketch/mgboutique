@@ -42,12 +42,12 @@ const hotelPhotos = [
   "https://www.minhagloria.com.br/lovable-uploads/49751c55-56cf-4391-ae38-67b88a636294.png",
 ];
 
-/** Build a 15-photo gallery: keep the package's own images first, then fill from the shared pool without duplicates */
+/** Build a 10-photo gallery: keep the package's own images first, then fill from the shared pool without duplicates */
 function buildGallery(own: string[]): string[] {
   const set = new Set(own);
   const result = [...own];
   for (const p of hotelPhotos) {
-    if (result.length >= 15) break;
+    if (result.length >= 10) break;
     if (!set.has(p)) { result.push(p); set.add(p); }
   }
   return result;

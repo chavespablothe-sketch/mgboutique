@@ -86,7 +86,7 @@ const PacoteDetalhePage = () => {
           <section className="py-8 bg-background">
             <div className="container mx-auto px-4">
               <div className="grid grid-cols-3 md:grid-cols-5 gap-2 md:gap-3">
-                {allImages.slice(0, 15).map((img, i) => (
+                {allImages.slice(0, 10).map((img, i) => (
                   <motion.div
                     key={i}
                     initial={{ opacity: 0, y: 10 }}
