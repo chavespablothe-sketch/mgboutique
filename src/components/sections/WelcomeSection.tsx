@@ -89,7 +89,7 @@ const WelcomeSection = () => {
             className="col-span-1 md:col-span-4 overflow-hidden rounded-lg"
           >
             <img
-              src="https://www.minhagloria.com.br/lovable-uploads/fa0a1d74-12c1-4134-8d8d-0e688addbccb.png"
+              src="/images/welcome-brunch.webp"
               alt="Animais da fazenda"
               className="w-full h-[200px] md:h-[280px] object-cover hover:scale-105 transition-transform duration-1000"
               loading="lazy"
