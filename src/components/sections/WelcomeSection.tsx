@@ -61,7 +61,7 @@ const WelcomeSection = () => {
             className="col-span-2 md:col-span-7 overflow-hidden rounded-lg"
           >
             <img
-              src="https://www.minhagloria.com.br/images/carousel-new-2.webp"
+              src="/images/welcome-aerial.webp"
               alt="Vista aérea do Minha Glória Hotel Boutique"
               className="w-full h-[200px] md:h-[400px] object-cover hover:scale-105 transition-transform duration-1000"
               loading="lazy"
