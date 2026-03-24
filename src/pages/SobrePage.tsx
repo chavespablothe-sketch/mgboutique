@@ -169,7 +169,7 @@ const SobrePage = () => {
                   >
                     <div className="rounded-2xl overflow-hidden shadow-2xl photo-glow">
                       <img
-                        src="https://www.minhagloria.com.br/lovable-uploads/d853d202-1c9d-4cd8-8f3b-d89a257c4ee7.png"
+                        src="https://www.minhagloria.com.br/lovable-uploads/5de7a725-ff58-4211-b5e2-cf47d5d99ba7.png"
                         alt="Interior do chalé"
                         className="w-full h-[280px] lg:h-[400px] object-cover"
                         loading="lazy"
