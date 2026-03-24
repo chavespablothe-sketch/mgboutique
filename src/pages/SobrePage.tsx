@@ -17,16 +17,16 @@ const numbers = [
 
 const pillars = [
   { icon: Heart, title: "Hospitalidade Genuína", desc: "Cada hóspede é chamado pelo nome. Nossa equipe cuida de cada detalhe com carinho real, do check-in ao check-out.", image: "/images/hospitalidade.jpg" },
-  { icon: TreePine, title: "Natureza Intocada", desc: "Cercado pela Mata Atlântica, entre montanhas e cachoeiras, a natureza aqui não é cenário — é protagonista.", image: "https://www.minhagloria.com.br/lovable-uploads/b7fedef6-5188-49de-a6f5-ac36f6e262f8.png" },
+  { icon: TreePine, title: "Natureza Intocada", desc: "Cercado pela Mata Atlântica, entre montanhas e cachoeiras, a natureza aqui não é cenário — é protagonista.", image: "/images/sobre-vista-pedra.jpg" },
   { icon: Utensils, title: "Gastronomia de Alma", desc: "Pães artesanais, doces finos, sobremesas com frutas frescas, ervas da horta orgânica e carnes assadas com técnica e amor. Cada refeição celebra a terra onde estamos.", image: "/images/gastronomia-doces.jpg" },
   { icon: Users, title: "Feito para Famílias", desc: "1 criança até 12 anos grátis nos fins de semana. Recreação monitorada, fazendinha, trilhas kids e menu infantil.", image: "/images/familia.jpg" },
 ];
 
 
 const gastroHighlights = [
-  { title: "Horta Orgânica", desc: "Ervas e vegetais frescos colhidos diariamente para cada prato. Da terra à mesa em minutos.", image: "https://www.minhagloria.com.br/lovable-uploads/95376411-f659-4689-bdf3-c03d058f945e.png" },
-  { title: "Confeitaria Artesanal", desc: "Pães, bolos, tortas e doces preparados diariamente com receitas autorais e ingredientes da serra.", image: "https://www.minhagloria.com.br/lovable-uploads/49751c55-56cf-4391-ae38-67b88a636294.png" },
-  { title: "Pensão Completa", desc: "Café, almoço e jantar nos fins de semana e feriados. Ingredientes frescos, receitas regionais e menu kids.", image: "https://www.minhagloria.com.br/lovable-uploads/fdf9bc84-d84a-4376-8178-95e596cf51c4.png" },
+  { title: "Horta Orgânica", desc: "Ervas e vegetais frescos colhidos diariamente para cada prato. Da terra à mesa em minutos.", image: "/images/amenities-gastronomia.jpg" },
+  { title: "Confeitaria Artesanal", desc: "Pães, bolos, tortas e doces preparados diariamente com receitas autorais e ingredientes da serra.", image: "/images/welcome-brunch.webp" },
+  { title: "Pensão Completa", desc: "Café, almoço e jantar nos fins de semana e feriados. Ingredientes frescos, receitas regionais e menu kids.", image: "/images/amenities-gastronomia.jpg" },
 ];
 
 const SobrePage = () => {
@@ -46,7 +46,7 @@ const SobrePage = () => {
         <section className="relative h-[85vh] flex items-center justify-center overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-zoom-bg"
-            style={{ backgroundImage: `url('https://www.minhagloria.com.br/images/carousel-new-2.webp')` }}
+            style={{ backgroundImage: `url('/images/welcome-aerial.webp')` }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-primary/60 via-primary/30 to-primary/80" />
           <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
@@ -114,7 +114,7 @@ const SobrePage = () => {
           {/* Subtle background texture */}
           <div
             className="absolute inset-0 bg-cover bg-center opacity-10"
-            style={{ backgroundImage: `url('https://www.minhagloria.com.br/images/carousel-new-4.webp')` }}
+            style={{ backgroundImage: `url('/images/lazer-piscina.webp')` }}
           />
           <div className="relative z-10 container mx-auto px-4">
             <div className="max-w-6xl mx-auto">
@@ -199,7 +199,7 @@ const SobrePage = () => {
         <section className="relative py-24 lg:py-32 overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-center bg-fixed"
-            style={{ backgroundImage: `url('https://www.minhagloria.com.br/images/carousel-new-4.webp')` }}
+            style={{ backgroundImage: `url('/images/lazer-piscina.webp')` }}
           />
           <div className="absolute inset-0 bg-primary/85" />
           <div className="relative z-10 container mx-auto px-4 text-center max-w-3xl">
