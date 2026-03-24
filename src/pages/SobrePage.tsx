@@ -24,8 +24,7 @@ const pillars = [
 
 
 const gastroHighlights = [
-  { title: "Horta Orgânica", desc: "Ervas e vegetais frescos colhidos diariamente para cada prato. Da terra à mesa em minutos.", image: "/images/amenities-gastronomia.jpg" },
-  { title: "Confeitaria Artesanal", desc: "Pães, bolos, tortas e doces preparados diariamente com receitas autorais e ingredientes da serra.", image: "/images/welcome-brunch.webp" },
+  { title: "Drinks & Bar", desc: "Coquetéis autorais, drinks clássicos e carta de vinhos selecionados. O bar é o ponto de encontro perfeito para brindar o pôr do sol na serra.", image: "/images/welcome-brunch.webp" },
   { title: "Pensão Completa", desc: "Café, almoço e jantar nos fins de semana e feriados. Ingredientes frescos, receitas regionais e menu kids.", image: "/images/amenities-gastronomia.jpg" },
 ];
 
