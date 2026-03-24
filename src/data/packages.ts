@@ -67,7 +67,7 @@ const packages: HotelPackage[] = [
     description: "Um refúgio para desacelerar, respirar e aproveitar o melhor do descanso com charme, boa gastronomia e momentos agradáveis — perfeito para casais e famílias que desejam uma pausa da rotina.",
     longDescription: "Um refúgio para desacelerar, respirar e aproveitar o melhor do descanso com charme, boa gastronomia e momentos agradáveis — perfeito para casais e famílias que desejam uma pausa da rotina. Para as crianças: recreação monitorada em horários dedicados, oficinas e brincadeiras, e espaço para diversão segura. Para os adultos: sessão de massagem relaxante, ambiente tranquilo e acolhedor, tempo de qualidade sem pressa e oportunidades de descanso e bem-estar. *Essa oferta não é válida para feriados ou datas que já temos outros pacotes em andamento.",
     highlights: ["Recreação monitorada", "Massagem relaxante", "Oficinas e brincadeiras", "Ambiente acolhedor"],
-    included: ["Pensão completa (café, almoço e jantar)", "Welcome drink na chegada", "Acesso ao spa e piscina", "Recreação infantil", "Wi-Fi gratuito", "Estacionamento privativo"],
+    included: ["Pensão completa (café, almoço e jantar)", "Welcome drink na chegada", "Acesso à piscina", "Recreação infantil", "Wi-Fi gratuito", "Estacionamento privativo"],
     kidsFeatures: ["Recreação monitorada em horários dedicados", "Oficinas e brincadeiras", "Espaço para diversão segura", "Menu infantil especial", "1 criança até 12 anos: grátis nos fins de semana"],
     schedule: [
       { day: "Sexta-feira", items: ["Check-in a partir das 15h", "Welcome drink", "Jantar de boas-vindas"] },
