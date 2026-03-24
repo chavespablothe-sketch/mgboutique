@@ -75,7 +75,7 @@ const WelcomeSection = () => {
             className="col-span-1 md:col-span-5 overflow-hidden rounded-lg"
           >
             <img
-              src="https://www.minhagloria.com.br/images/carousel-new-4.webp"
+              src="/images/welcome-horse.webp"
               alt="Chalés em meio à natureza"
               className="w-full h-[200px] md:h-[400px] object-cover hover:scale-105 transition-transform duration-1000"
               loading="lazy"
