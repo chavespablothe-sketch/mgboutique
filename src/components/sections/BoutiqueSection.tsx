@@ -8,7 +8,7 @@ const pillars = [
     id: "exclusividade",
     title: "Exclusividade real",
     desc: "Apenas 20 suítes. Sem filas, sem multidões. Cada hóspede é chamado pelo nome e recebe atenção genuína da nossa equipe.",
-    image: "https://www.minhagloria.com.br/images/carousel-new-2.webp",
+    image: "/images/welcome-aerial.webp",
   },
   {
     id: "familias",
