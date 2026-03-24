@@ -410,7 +410,7 @@ const packages: HotelPackage[] = [
     description: "Um feriado para desacelerar, silenciar o ritmo e cuidar de si. Dias de introspecção leve, bem-estar e experiências sensoriais pensadas para restaurar corpo e mente.",
     longDescription: "Um feriado para desacelerar, silenciar o ritmo e cuidar de si. Dias de introspecção leve, bem-estar e experiências sensoriais pensadas para restaurar corpo e mente — com a elegância tranquila e o acolhimento característicos do Glória. Ideal para casais que desejam descanso profundo e reconexão, hóspedes que buscam silêncio, bem-estar e desaceleração, viajantes que preferem experiências intimistas, e famílias que valorizam tranquilidade e conforto.",
     highlights: ["Welcome drink na chegada", "Chá calmante de boas-vindas no quarto", "Mimo especial com proposta relaxante", "Atendimento personalizado durante toda a estadia"],
-    included: ["Pensão completa (café, almoço e jantar)", "Welcome drink", "Chá calmante no quarto", "Mimo relaxante", "Atendimento personalizado", "Acesso ao spa", "Wi-Fi gratuito", "Estacionamento privativo"],
+    included: ["Pensão completa (café, almoço e jantar)", "Welcome drink", "Chá calmante no quarto", "Mimo relaxante", "Atendimento personalizado", "Wi-Fi gratuito", "Estacionamento privativo"],
     kidsFeatures: ["Recreação monitorada", "Atividades ao ar livre", "Menu infantil especial", "1 criança até 12 anos: grátis nos fins de semana"],
     schedule: [
       { day: "Sexta-feira (30/10)", items: ["Check-in a partir das 15h", "Welcome drink", "Chá calmante e mimo no quarto", "Jantar de boas-vindas"] },
