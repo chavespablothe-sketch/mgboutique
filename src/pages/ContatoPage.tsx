@@ -186,7 +186,7 @@ const ContatoPage = () => {
                 </div>
                 <div className="rounded-xl overflow-hidden h-[280px]">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.0!2d-42.43!3d-22.15!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zQm9tIEphcmRpbQ!5e0!3m2!1spt-BR!2sbr!4v1"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.5!2d-42.4969675!3d-22.1603666!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x97f6e5d8a7a979%3A0x987525f07fb83b25!2sHotel+Fazenda+Minha+Gl%C3%B3ria!5e0!3m2!1spt-BR!2sbr!4v1"
                     width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Localização"
                   />
                 </div>
