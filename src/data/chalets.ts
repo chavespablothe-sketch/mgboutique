@@ -41,6 +41,9 @@ const chalets: Chalet[] = [
     images: [
       "https://www.minhagloria.com.br/lovable-uploads/d853d202-1c9d-4cd8-8f3b-d89a257c4ee7.png",
       "https://www.minhagloria.com.br/lovable-uploads/2e4a3772-1627-445c-ad0a-bc144dd8a4d5.png",
+      "https://www.minhagloria.com.br/lovable-uploads/ad12c7f5-022c-4892-91f8-b68993394270.png",
+      "https://www.minhagloria.com.br/images/carousel-new-4.webp",
+      "https://www.minhagloria.com.br/lovable-uploads/dd9b430b-970f-407a-9a4f-952850e9d8b7.png",
     ],
     highlight: "Vista para o jardim",
     idealFor: "Casais e famílias pequenas",
@@ -65,6 +68,9 @@ const chalets: Chalet[] = [
     images: [
       "https://www.minhagloria.com.br/lovable-uploads/042a304b-19fc-4d61-a524-f78eac0368a9.png",
       "https://www.minhagloria.com.br/lovable-uploads/a6a3395d-5965-482b-b1a6-543cb7840e0f.png",
+      "https://www.minhagloria.com.br/lovable-uploads/5de7a725-ff58-4211-b5e2-cf47d5d99ba7.png",
+      "https://www.minhagloria.com.br/images/carousel-new-1.jpg",
+      "https://www.minhagloria.com.br/lovable-uploads/b7fedef6-5188-49de-a6f5-ac36f6e262f8.png",
     ],
     highlight: "Vista panorâmica",
     idealFor: "Casais em busca de conforto",
@@ -89,6 +95,9 @@ const chalets: Chalet[] = [
     images: [
       "https://www.minhagloria.com.br/lovable-uploads/44683466-44b0-4f6e-896a-51a9ae1249fc.png",
       "https://www.minhagloria.com.br/lovable-uploads/85379e6d-f1dc-433a-bc75-77c926ac6d9b.png",
+      "https://www.minhagloria.com.br/lovable-uploads/f7d9ecaa-e043-4c83-8549-89dfb50450a6.png",
+      "https://www.minhagloria.com.br/images/carousel-new-2.webp",
+      "https://www.minhagloria.com.br/lovable-uploads/252a23af-2a29-46e8-8e7e-dbd3ce9cf861.png",
     ],
     highlight: "Hidromassagem + Lareira",
     idealFor: "Casais em momentos especiais",
@@ -111,9 +120,12 @@ const chalets: Chalet[] = [
       areaExterna: ["Varanda privativa", "Vista para o jardim e fazendinha", "Área de convivência"],
     },
     images: [
-      "/images/chale-familia-exterior.png",
       "https://www.minhagloria.com.br/lovable-uploads/28329729-31a6-47f7-b501-4427f2f9c84a.png",
       "https://www.minhagloria.com.br/lovable-uploads/beaeb973-0a83-4d4d-9bc1-a47ccc40cd59.png",
+      "https://www.minhagloria.com.br/lovable-uploads/fa0a1d74-12c1-4134-8d8d-0e688addbccb.png",
+      "https://www.minhagloria.com.br/images/carousel-new-5.webp",
+      "https://www.minhagloria.com.br/images/carousel-new-6.webp",
+      "https://www.minhagloria.com.br/lovable-uploads/7b9a8c26-81a0-4894-9f0f-2a4c11fd34ce.png",
     ],
     highlight: "Perfeito para famílias",
     idealFor: "Famílias com crianças",

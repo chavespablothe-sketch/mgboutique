@@ -47,10 +47,25 @@ const ChalePage = () => {
       <div className="pt-20">
         {/* Gallery Hero */}
         <section className="relative">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-1 h-[50vh] md:h-[70vh]">
-            {chalet.images.map((img, i) => (
-              <div key={i} className="relative overflow-hidden">
-                <img src={img} alt={`${chalet.name} ${i + 1}`} className="w-full h-full object-cover" />
+          <div className={`grid gap-1 h-[50vh] md:h-[70vh] ${
+            chalet.images.length >= 5
+              ? "grid-cols-2 md:grid-cols-4 md:grid-rows-2"
+              : chalet.images.length >= 3
+              ? "grid-cols-2 md:grid-cols-3"
+              : "grid-cols-1 md:grid-cols-2"
+          }`}>
+            {chalet.images.slice(0, 5).map((img, i) => (
+              <div
+                key={i}
+                className={`relative overflow-hidden ${
+                  i === 0 && chalet.images.length >= 5
+                    ? "col-span-2 row-span-2"
+                    : i === 0 && chalet.images.length >= 3
+                    ? "row-span-2 md:row-span-1 md:col-span-2"
+                    : ""
+                }`}
+              >
+                <img src={img} alt={`${chalet.name} - foto ${i + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
               </div>
             ))}
           </div>
