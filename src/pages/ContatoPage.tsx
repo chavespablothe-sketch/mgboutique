@@ -104,7 +104,7 @@ const ContatoPage = () => {
                   ))}
                 </div>
                 <div className="flex gap-3 mb-8">
-                  <a href="https://www.instagram.com/minhagloriahotel" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-secondary hover:bg-primary/20 transition-colors">
+                  <a href="https://www.instagram.com/minhagloria/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-secondary hover:bg-primary/20 transition-colors">
                     <Instagram size={18} />
                   </a>
                   <a href="https://www.facebook.com/minhagloria" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-secondary hover:bg-primary/20 transition-colors">
