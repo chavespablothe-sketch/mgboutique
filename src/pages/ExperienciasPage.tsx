@@ -11,9 +11,7 @@ import quadriJeepImg from "@/assets/quadri-jeep.png";
 const experiences = [
   { title: "Passeio a Cavalo e Charrete", description: "Cavalgadas guiadas pelas trilhas da propriedade, com paradas em mirantes panorâmicos.", image: "/images/cavalo.jpg", audience: "Famílias" },
   { title: "Quadriciclo & Jeep", description: "Adrenalina com paisagem de cinema pelas trilhas da fazenda. Experiências de 30 ou 60 minutos de quadriciclo ou jeep.", image: quadriJeepImg, audience: "Aventura" },
-  { title: "Trilhas na Mata Atlântica", description: "Trilhas guiadas com cachoeiras escondidas, mirantes e observação de aves.", image: "https://www.minhagloria.com.br/lovable-uploads/b7fedef6-5188-49de-a6f5-ac36f6e262f8.png", audience: "Todos" },
-  { title: "Piscina Aquecida", description: "Piscina climatizada com vista para as montanhas e espaço infantil de 60cm.", image: "https://www.minhagloria.com.br/lovable-uploads/f5b7fb42-f922-4170-a409-e216226108dd.png", audience: "Todos" },
-  { title: "Sala de Jogos", description: "Sinuca, ping-pong, jogos de cartas e TV. Entretenimento para todas as gerações.", image: "https://www.minhagloria.com.br/lovable-uploads/0114d434-8ce2-46f6-8993-fbc616165aa6.png", audience: "Todos" },
+  { title: "Piscina Aquecida", description: "Piscina climatizada com vista para a Pedra do Rosário, espreguiçadeiras e espaço infantil de 60cm.", image: "/images/piscina-pedra.webp", audience: "Todos" },
 ];
 
 const animals = [
