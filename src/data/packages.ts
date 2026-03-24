@@ -153,7 +153,7 @@ const packages: HotelPackage[] = [
     description: "O Glória Hotel Boutique convida você e sua família para viver um feriado tranquilo, acolhedor e cheio de boas memórias. O luxo está na simplicidade bem cuidada: refeições sem pressa, espaços acolhedores e atendimento próximo.",
     longDescription: "Um feriado prolongado perfeito para recarregar as energias em família. Com pensão completa incluída, você não precisa se preocupar com nada. Café da manhã com produtos frescos da região, almoço com receitas da fazenda e jantar especial. As crianças aproveitam atividades ao ar livre, enquanto os pais relaxam no spa ou exploram as trilhas. Aqui, o luxo está na simplicidade bem cuidada: refeições sem pressa, espaços acolhedores, atendimento próximo e uma programação leve, que respeita o ritmo de adultos e crianças.",
     highlights: ["Café da manhã diário", "Almoço diário", "Jantar diário", "Welcome drink na chegada"],
-    included: ["Pensão completa (café, almoço e jantar)", "Welcome drink", "Atividades recreativas", "Acesso ao spa e piscina", "Trilhas guiadas", "Wi-Fi gratuito", "Estacionamento privativo"],
+    included: ["Pensão completa (café, almoço e jantar)", "Welcome drink", "Atividades recreativas", "Acesso à piscina", "Trilhas guiadas", "Wi-Fi gratuito", "Estacionamento privativo"],
     kidsFeatures: ["Atividades ao ar livre supervisionadas", "Contato com animais da fazenda", "Oficina de artes com materiais naturais", "Menu infantil em todas as refeições", "1 criança até 12 anos: grátis nos fins de semana"],
     schedule: [
       { day: "Sexta-feira (01/05)", items: ["Check-in a partir das 15h", "Welcome drink", "Passeio pela fazenda", "Jantar de boas-vindas"] },
