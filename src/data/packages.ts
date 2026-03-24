@@ -420,6 +420,8 @@ const packages: HotelPackage[] = [
     ]),
     tag: "família",
     tagColor: "bg-secondary",
+    checkIn: "09102026",
+    checkOut: "12102026",
   },
   {
     slug: "finados-2026",
