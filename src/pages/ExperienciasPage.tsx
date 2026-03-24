@@ -104,6 +104,7 @@ const services = [
 ];
 
 const ExperienciasPage = () => {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
   const aves = animals.filter(a => a.category === "aves");
