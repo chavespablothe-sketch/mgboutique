@@ -298,6 +298,8 @@ const packages: HotelPackage[] = [
     ]),
     tag: "bem-estar",
     tagColor: "bg-secondary",
+    checkIn: "19062026",
+    checkOut: "21062026",
   },
   {
     slug: "julho-inverno-2026",
