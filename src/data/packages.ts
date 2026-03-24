@@ -71,7 +71,7 @@ const packages: HotelPackage[] = [
     kidsFeatures: ["Recreação monitorada em horários dedicados", "Oficinas e brincadeiras", "Espaço para diversão segura", "Menu infantil especial", "1 criança até 12 anos: grátis nos fins de semana"],
     schedule: [
       { day: "Sexta-feira", items: ["Check-in a partir das 15h", "Welcome drink", "Jantar de boas-vindas"] },
-      { day: "Sábado", items: ["Café da manhã estendido", "Atividades ao ar livre", "Almoço", "Recreação infantil / Spa adultos", "Jantar especial"] },
+      { day: "Sábado", items: ["Café da manhã estendido", "Atividades ao ar livre", "Almoço", "Recreação infantil", "Jantar especial"] },
       { day: "Domingo", items: ["Café da manhã", "Atividades em família", "Check-out até 12h"] },
     ],
     image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/q6x9gulo6xm-1771961324364.webp",
