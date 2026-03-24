@@ -123,7 +123,7 @@ const BlogPage = () => {
             <div className="text-center mt-12">
               <p className="text-muted-foreground font-body text-base">
                 Novos artigos em breve. Siga-nos no{" "}
-                <a href="https://www.instagram.com/minhagloriahotel" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline">
+                <a href="https://www.instagram.com/minhagloria/" target="_blank" rel="noopener noreferrer" className="text-secondary hover:underline">
                   Instagram
                 </a>{" "}
                 para novidades.
