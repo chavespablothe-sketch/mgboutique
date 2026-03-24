@@ -185,7 +185,7 @@ const packages: HotelPackage[] = [
     kidsFeatures: ["Oficinas especiais para fazer mimos para a mamãe", "Recreação monitorada", "Menu infantil especial", "1 criança até 12 anos: grátis nos fins de semana"],
     schedule: [
       { day: "Sexta-feira (08/05)", items: ["Check-in a partir das 15h", "Welcome drink", "Jantar de boas-vindas"] },
-      { day: "Sábado (09/05)", items: ["Café da manhã estendido", "Oficinas e atividades", "Almoço especial", "Mini spa para mamães", "Chá da tarde", "Jantar com música ao vivo"] },
+      { day: "Sábado (09/05)", items: ["Café da manhã estendido", "Oficinas e atividades", "Almoço especial", "Chá da tarde", "Jantar com música ao vivo"] },
       { day: "Domingo (10/05)", items: ["Café da manhã comemorativo de Dia das Mães", "Almoço especial em homenagem às mães", "Check-out até 15h"] },
     ],
     image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/upz29sh58k-1771960107741.webp",
