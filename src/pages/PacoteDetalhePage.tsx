@@ -45,7 +45,6 @@ const PacoteDetalhePage = () => {
             name: pkg.title,
             description: pkg.longDescription,
             availability: "https://schema.org/InStock",
-            availability: "https://schema.org/InStock",
             validFrom: pkg.period,
             image: pkg.image,
             seller: { "@type": "Hotel", name: "Minha Glória Hotel Boutique" },
