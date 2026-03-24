@@ -196,9 +196,9 @@ const ContatoPage = () => {
                 <div className="bg-card rounded-xl border border-border p-8">
                   {sent ? (
                     <div className="text-center py-12">
-                      <CheckCircle size={48} className="text-secondary mx-auto mb-4" />
-                      <h3 className="font-display text-2xl font-semibold text-foreground mb-2">Mensagem enviada!</h3>
-                      <p className="text-muted-foreground font-body text-sm mb-6">Respondemos em até 24h. Fique de olho no seu e-mail.</p>
+                      <span className="text-6xl mb-4 block">😊</span>
+                      <h3 className="font-display text-2xl font-semibold text-foreground mb-2">Obrigado pelo contato!</h3>
+                      <p className="text-muted-foreground font-body text-sm mb-6">Ficamos felizes com sua mensagem! Respondemos em até 24h. 💚</p>
                       <Button onClick={() => setSent(false)} variant="outline" className="font-body text-sm rounded-full">
                         Enviar outra mensagem
                       </Button>
