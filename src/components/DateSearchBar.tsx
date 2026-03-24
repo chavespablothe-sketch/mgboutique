@@ -6,8 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
-
-const OMNIBEES_BASE = "https://book.omnibees.com";
+import { buildOmnibeesUrl } from "@/lib/omnibees";
 
 const DateSearchBar = () => {
   const [checkIn, setCheckIn] = useState<Date>();
@@ -17,17 +16,14 @@ const DateSearchBar = () => {
   const [coupon, setCoupon] = useState("");
 
   const handleSearch = () => {
-    const params = new URLSearchParams();
-    if (checkIn) params.set("CheckIn", format(checkIn, "ddMMyyyy"));
-    if (checkOut) params.set("CheckOut", format(checkOut, "ddMMyyyy"));
-    params.set("NRooms", "1");
-    params.set("ad", String(adults));
-    params.set("ch", String(children));
-    params.set("lang", "pt-BR");
-    if (coupon.trim()) params.set("coupon", coupon.trim());
-
-    const omnibeeUrl = `${OMNIBEES_BASE}/hotelresults?${params.toString()}`;
-    window.open(omnibeeUrl, "_blank");
+    const url = buildOmnibeesUrl({
+      checkIn: checkIn ? format(checkIn, "ddMMyyyy") : undefined,
+      checkOut: checkOut ? format(checkOut, "ddMMyyyy") : undefined,
+      adults,
+      children,
+      coupon: coupon.trim() || undefined,
+    });
+    window.open(url, "_blank");
   };
 
   return (
