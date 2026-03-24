@@ -15,6 +15,11 @@ const adultActivities = [
 
 const animalImages = [
   { src: "/images/lazer-lhamas.jpg", alt: "Lhamas na fazenda" },
+  { src: "/images/lhama-branca.jpg", alt: "Lhama branca" },
+  { src: "/images/faisao.jpg", alt: "Faisão colorido" },
+  { src: "/images/porquinho.jpg", alt: "Porquinho da fazenda" },
+  { src: "/images/cabra-marrom.jpg", alt: "Cabra marrom" },
+  { src: "/images/cabra-preta.jpg", alt: "Cabra preta" },
   { src: "/images/lazer-arara.jpg", alt: "Arara azul e amarela" },
   { src: "/images/lazer-cisne.jpg", alt: "Criança observando cisne no lago" },
   { src: "/images/lazer-periquitos.jpg", alt: "Periquitos verdes" },
