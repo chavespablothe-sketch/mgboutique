@@ -99,7 +99,7 @@ const packages: HotelPackage[] = [
     kidsFeatures: ["Caça aos ovos de Páscoa nos jardins", "Oficina de chocolate artesanal", "Recreação monitorada", "Menu infantil especial", "1 criança até 12 anos: grátis nos fins de semana"],
     schedule: [
       { day: "Sexta-feira (03/04)", items: ["Check-in a partir das 15h", "Welcome drink de Páscoa", "Mimo de chocolate no quarto", "Jantar de boas-vindas com música ao vivo"] },
-      { day: "Sábado (04/04)", items: ["Café da manhã estendido até 11h", "Caça aos ovos para crianças", "Oficina de chocolate", "Almoço especial de Páscoa", "Tarde livre: spa, piscina, trilhas", "Yoga ao pôr-do-sol", "Jantar temático com harmonização de vinhos"] },
+      { day: "Sábado (04/04)", items: ["Café da manhã estendido até 11h", "Caça aos ovos para crianças", "Oficina de chocolate", "Almoço especial de Páscoa", "Tarde livre: piscina, trilhas", "Yoga ao pôr-do-sol", "Jantar temático com harmonização de vinhos"] },
       { day: "Domingo (05/04)", items: ["Café da manhã especial de Páscoa", "Atividades ao ar livre em família", "Check-out até 12h", "Brunch de despedida"] },
     ],
     image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/rv6jyv97zg-1770309523978.webp",
