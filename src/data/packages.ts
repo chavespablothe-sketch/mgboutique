@@ -113,6 +113,8 @@ const packages: HotelPackage[] = [
     ]),
     tag: "família",
     tagColor: "bg-secondary",
+    checkIn: "03042026",
+    checkOut: "05042026",
   },
   {
     slug: "tiradentes-2026",
