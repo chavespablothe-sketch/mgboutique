@@ -237,6 +237,8 @@ const packages: HotelPackage[] = [
     ]),
     tag: "romântico",
     tagColor: "bg-primary",
+    checkIn: "04062026",
+    checkOut: "07062026",
   },
   {
     slug: "dia-dos-namorados-2026",
