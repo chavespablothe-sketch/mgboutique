@@ -206,6 +206,8 @@ const packages: HotelPackage[] = [
     tag: "família",
     tagColor: "bg-secondary",
     capacity: "Apenas 20 suítes",
+    checkIn: "08052026",
+    checkOut: "10052026",
   },
   {
     slug: "corpus-christi-2026",
