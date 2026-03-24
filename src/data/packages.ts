@@ -145,6 +145,8 @@ const packages: HotelPackage[] = [
     ]),
     tag: "bem-estar",
     tagColor: "bg-primary",
+    checkIn: "17042026",
+    checkOut: "21042026",
   },
   {
     slug: "primeiro-de-maio-2026",
