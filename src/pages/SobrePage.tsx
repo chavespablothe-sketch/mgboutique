@@ -115,7 +115,7 @@ const SobrePage = () => {
               <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}
                 className="photo-parallax rounded-2xl overflow-hidden photo-glow"
               >
-                <img src="https://www.minhagloria.com.br/images/carousel-new-1.jpg" alt="Vista panorâmica da fazenda" className="w-full h-[500px] object-cover" loading="lazy" />
+                <img src="/images/sobre-vista-pedra.jpg" alt="Vista panorâmica da fazenda com Pedra do Cônego" className="w-full h-[500px] object-cover" loading="lazy" />
               </motion.div>
             </div>
           </div>
