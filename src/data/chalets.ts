@@ -120,9 +120,12 @@ const chalets: Chalet[] = [
       areaExterna: ["Varanda privativa", "Vista para o jardim e fazendinha", "Área de convivência"],
     },
     images: [
-      "/images/chale-familia-exterior.png",
       "https://www.minhagloria.com.br/lovable-uploads/28329729-31a6-47f7-b501-4427f2f9c84a.png",
       "https://www.minhagloria.com.br/lovable-uploads/beaeb973-0a83-4d4d-9bc1-a47ccc40cd59.png",
+      "https://www.minhagloria.com.br/lovable-uploads/fa0a1d74-12c1-4134-8d8d-0e688addbccb.png",
+      "https://www.minhagloria.com.br/images/carousel-new-5.webp",
+      "https://www.minhagloria.com.br/images/carousel-new-6.webp",
+      "https://www.minhagloria.com.br/lovable-uploads/7b9a8c26-81a0-4894-9f0f-2a4c11fd34ce.png",
     ],
     highlight: "Perfeito para famílias",
     idealFor: "Famílias com crianças",
