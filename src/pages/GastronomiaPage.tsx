@@ -12,36 +12,33 @@ const meals = [
     title: "Café da Manhã",
     time: "7h às 10h30 · estendido nos feriados",
     description: "Um despertar que merece ser saboreado. Buffet completo com pães artesanais saindo do forno — bolos caseiros, frutas frescas, geleias de produtores da serra, queijos regionais, ovos preparados ao seu gosto e café coado de grãos selecionados. Cada mesa tem vista para as montanhas.",
-    kids: "Cantinho kids com achocolatado, sucos naturais, panquecas com frutas e iogurte com granola.",
-    image: "https://www.minhagloria.com.br/lovable-uploads/1819a44a-9ab5-4cd0-ac89-c03d8b6300fa.png",
+    image: "/images/gastro-bolos.jpg",
   },
   {
     icon: UtensilsCrossed,
     title: "Almoço Regional",
     time: "12h30 às 14h30",
     description: "A mesa é uma celebração da serra fluminense. Menu sazonal com ingredientes orgânicos da nossa horta, colhidos minutos antes de chegar ao prato. Carnes assadas lentamente, massas frescas, saladas vibrantes e sobremesas que encerram a refeição como um suspiro.",
-    kids: "Menu kids pensado por nutricionista: opções balanceadas, saborosas e com apresentação divertida.",
-    image: "https://www.minhagloria.com.br/lovable-uploads/fdf9bc84-d84a-4376-8178-95e596cf51c4.png",
+    image: "/images/gastro-prato-chef.jpg",
   },
   {
     icon: Wine,
     title: "Jantar Especial",
     time: "19h30 às 21h30",
     description: "Jantar em três tempos: entrada, prato principal e sobremesa, com harmonização sugerida. Nos feriados, jantares temáticos com música ao vivo — fondue, massas, churrascos especiais. Cada noite é uma experiência diferente.",
-    kids: "Jantar kids servido às 18h30 com cardápio dedicado. Para que os pais aproveitem o jantar sem pressa.",
-    image: "https://www.minhagloria.com.br/lovable-uploads/42d50881-952f-4914-a048-280e57604a7d.png",
+    image: "/images/amenities-gastronomia.jpg",
   },
 ];
 
-const galleryImages = [
-  { src: "https://www.minhagloria.com.br/lovable-uploads/95376411-f659-4689-bdf3-c03d058f945e.png", alt: "Chef finalizando prato com ervas frescas" },
-  { src: "https://www.minhagloria.com.br/lovable-uploads/7ce834f4-9ec1-44bf-9a91-fd90ddfdcbf1.png", alt: "Buffet de café da manhã" },
-  { src: "https://www.minhagloria.com.br/lovable-uploads/7e30f183-249e-4e1a-b65e-1b8c4b669504.png", alt: "Mesa de queijos e embutidos artesanais" },
-  { src: "https://www.minhagloria.com.br/lovable-uploads/49751c55-56cf-4391-ae38-67b88a636294.png", alt: "Doces caseiros e bolos especiais" },
-  { src: "https://www.minhagloria.com.br/lovable-uploads/3b329946-c0d3-4ffa-862a-7882d6c06deb.png", alt: "Massa artesanal com ervas" },
-  { src: "https://www.minhagloria.com.br/lovable-uploads/5e654f8b-3a57-40a5-80fa-2a5c82834924.png", alt: "Buffet completo com produtos locais" },
-  { src: "https://www.minhagloria.com.br/lovable-uploads/0e304f8a-8595-4013-bf27-488eb4a255a4.png", alt: "Buffet da fazenda com queijos" },
-  { src: "https://www.minhagloria.com.br/lovable-uploads/4de64a76-2e5c-43c0-b43c-eeb452d42100.png", alt: "Mesa de sobremesas artesanais" },
+const allPhotos = [
+  { src: "/images/gastro-prato-chef.jpg", alt: "Chef finalizando prato com ervas frescas" },
+  { src: "/images/gastro-sobremesas.jpg", alt: "Sobremesas artesanais com frutas" },
+  { src: "/images/gastro-geleia.jpg", alt: "Geleia artesanal da fazenda" },
+  { src: "/images/gastro-bolos.jpg", alt: "Bolos caseiros do café da manhã" },
+  { src: "/images/amenities-gastronomia.jpg", alt: "Gastronomia do hotel" },
+  { src: "/images/gastronomia-doces.jpg", alt: "Doces e sobremesas artesanais" },
+  { src: "/images/mini-chef.jpg", alt: "Oficina mini chef" },
+  { src: "/images/welcome-brunch.webp", alt: "Brunch especial" },
 ];
 
 const GastronomiaPage = () => {
@@ -60,11 +57,11 @@ const GastronomiaPage = () => {
       />
       <Header />
       <div className="pt-20">
-        {/* Hero - full bleed with real photo */}
+        {/* Hero */}
         <section className="relative h-[75vh] flex items-center justify-center overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-zoom-bg"
-            style={{ backgroundImage: `url('https://www.minhagloria.com.br/lovable-uploads/81f81968-dbba-4ed4-9230-4eb144012d79.png')` }}
+            style={{ backgroundImage: `url('/images/gastro-prato-chef.jpg')` }}
           />
           <div className="absolute inset-0 bg-primary/65" />
           <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
@@ -123,7 +120,7 @@ const GastronomiaPage = () => {
           </div>
         </section>
 
-        {/* Meals - alternating layout with real photos */}
+        {/* Meals */}
         <section className="py-16 bg-background">
           <div className="container mx-auto px-4">
             <div className="space-y-24 max-w-6xl mx-auto">
@@ -149,24 +146,24 @@ const GastronomiaPage = () => {
           </div>
         </section>
 
-        {/* Gallery mosaic with real photos */}
+        {/* Photos grid */}
         <section className="py-20 bg-primary">
           <div className="container mx-auto px-4">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center mb-12">
-              <span className="text-secondary/70 font-body text-[10px] tracking-[0.5em] uppercase mb-3 block">Galeria</span>
+              <span className="text-secondary/70 font-body text-[10px] tracking-[0.5em] uppercase mb-3 block">Nossos Sabores</span>
               <h2 className="font-display text-3xl md:text-4xl text-primary-foreground font-semibold">
                 Sabores em <span className="italic text-secondary">imagens</span>
               </h2>
             </motion.div>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-6xl mx-auto">
-              {galleryImages.map((img, i) => (
+              {allPhotos.map((img, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, scale: 0.95 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: i * 0.05 }}
-                  className={`overflow-hidden rounded-lg group cursor-pointer photo-lift ${
+                  className={`overflow-hidden rounded-lg group ${
                     i === 0 || i === 5 ? 'md:col-span-2 md:row-span-2' : ''
                   }`}
                 >
@@ -228,7 +225,7 @@ const GastronomiaPage = () => {
         <CTASection 
           title="Sabores que encantam toda a família" 
           subtitle="Reserve sua estadia com pensão completa e descubra o melhor da gastronomia da serra fluminense." 
-          bgImage="https://www.minhagloria.com.br/lovable-uploads/0e304f8a-8595-4013-bf27-488eb4a255a4.png" 
+          bgImage="/images/gastro-prato-chef.jpg" 
         />
       </div>
       <Footer />
