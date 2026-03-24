@@ -123,7 +123,7 @@ const packages: HotelPackage[] = [
     description: "O Glória Hotel Boutique convida você a viver dias de descanso, cultura e experiências cuidadosamente pensadas para adultos e crianças — sempre com o conforto, a elegância e o atendimento personalizado.",
     longDescription: "O feriado de Tiradentes é a oportunidade perfeita para uma imersão prolongada na natureza. São 4 noites de pura tranquilidade, com atividades para todas as idades. Nossa programação foi criada para quem busca desacelerar, aproveitar e compartilhar momentos especiais, seja em casal ou em família. Passeios de quadriciclo, trilhas ecológicas, contato com os animais da fazenda e uma programação cultural especial.",
     highlights: ["Welcome drink para adultos", "Bebida especial para crianças", "Mimo de boas-vindas no quarto", "Café da manhã estendido"],
-    included: ["Pensão completa (café, almoço e jantar)", "Welcome drink adulto e infantil", "Mimo de boas-vindas", "Atividades diárias programadas", "Passeio de quadriciclo", "Acesso ao spa e piscina", "Wi-Fi gratuito", "Estacionamento privativo"],
+    included: ["Pensão completa (café, almoço e jantar)", "Welcome drink adulto e infantil", "Mimo de boas-vindas", "Atividades diárias programadas", "Passeio de quadriciclo", "Acesso à piscina", "Wi-Fi gratuito", "Estacionamento privativo"],
     kidsFeatures: ["Bebida especial de boas-vindas", "Recreação monitorada diária", "Contato com animais da fazenda", "Atividades educativas na natureza", "Menu kids em todas as refeições", "1 criança até 12 anos: grátis nos fins de semana"],
     schedule: [
       { day: "Quinta-feira (17/04)", items: ["Check-in a partir das 15h", "Welcome drink e bebida kids", "Passeio de reconhecimento da fazenda", "Jantar de boas-vindas"] },
