@@ -189,24 +189,16 @@ const PacotesPage = () => {
                     </div>
                   </Link>
 
-                  {/* Content + Price */}
-                  <div className="grid grid-cols-1 md:grid-cols-12 gap-0">
-                    <div className="md:col-span-8 p-5 md:p-6">
-                      <p className="text-muted-foreground font-body text-sm leading-relaxed mb-4 line-clamp-2">
-                        {pkg.description}
-                      </p>
+                  {/* Content */}
+                  <div className="p-5 md:p-6 flex flex-col sm:flex-row sm:items-center gap-4">
+                    <p className="text-muted-foreground font-body text-sm leading-relaxed flex-1 line-clamp-2">
+                      {pkg.description}
+                    </p>
+                    <div className="flex items-center gap-3 shrink-0">
                       <Link to={`/pacotes/${pkg.slug}`} className="text-secondary font-body text-xs font-semibold inline-flex items-center gap-1 hover:gap-2 transition-all uppercase tracking-wider">
                         Ver detalhes <ArrowRight size={12} />
                       </Link>
-                    </div>
-
-                    <div className="md:col-span-4 p-5 md:p-6 bg-hotel-cream/50 flex flex-col justify-center border-t md:border-t-0 md:border-l border-border">
-                      <p className="text-[9px] text-muted-foreground font-body uppercase tracking-widest mb-0.5">a partir de</p>
-                      <p className="text-2xl font-display font-semibold text-foreground mb-0.5">{pkg.price}</p>
-                      <p className="text-secondary text-xs font-body font-semibold mb-0.5">{pkg.priceNote}</p>
-                      <p className="text-muted-foreground text-[10px] font-body mb-4">por casal · pensão completa</p>
-
-                      <Button asChild size="sm" className="w-full bg-cta hover:bg-cta/90 text-cta-foreground font-body text-[10px] uppercase tracking-wider gap-1.5 rounded-full shadow-md">
+                      <Button asChild size="sm" className="bg-cta hover:bg-cta/90 text-cta-foreground font-body text-[10px] uppercase tracking-wider gap-1.5 rounded-full shadow-md">
                         <Link to={`/pacotes/${pkg.slug}`}>
                           <CalendarDays size={12} />
                           Reservar
