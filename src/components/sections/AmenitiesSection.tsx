@@ -4,17 +4,17 @@ import { Link } from "react-router-dom";
 const cards = [
   {
     title: "Spa & Bem-estar",
-    image: "https://www.minhagloria.com.br/lovable-uploads/04460747-2a8e-4012-a6be-1b1819ad5997.png",
+    image: "/images/amenities-spa.jpg",
     link: "/experiencias",
   },
   {
     title: "Trilhas & Passeios",
-    image: "https://www.minhagloria.com.br/lovable-uploads/b7fedef6-5188-49de-a6f5-ac36f6e262f8.png",
+    image: "/images/amenities-trilhas.png",
     link: "/experiencias",
   },
   {
     title: "Gastronomia",
-    image: "https://www.minhagloria.com.br/lovable-uploads/fdf9bc84-d84a-4376-8178-95e596cf51c4.png",
+    image: "/images/amenities-gastronomia.jpg",
     link: "/gastronomia",
   },
 ];
