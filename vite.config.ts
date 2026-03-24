@@ -20,6 +20,7 @@ export default defineConfig(({ mode }) => ({
     dedupe: ["react", "react-dom", "react/jsx-runtime"],
   },
   optimizeDeps: {
-    include: ["react", "react-dom", "react/jsx-runtime", "@tanstack/react-query", "framer-motion"],
+    include: ["react", "react-dom", "react/jsx-runtime", "@tanstack/react-query", "framer-motion", "@supabase/supabase-js"],
+    force: true,
   },
 }));
