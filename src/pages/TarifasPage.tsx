@@ -66,8 +66,6 @@ const TarifasPage = () => {
               "@type": "Offer",
               name: p.title,
               description: p.description,
-              price: p.price.replace(/[^\d]/g, ""),
-              priceCurrency: "BRL",
               availability: "https://schema.org/InStock",
               url: `https://www.minhagloria.com.br/tarifas/${p.slug}`,
             })),
