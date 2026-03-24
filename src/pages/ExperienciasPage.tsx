@@ -125,7 +125,7 @@ const ExperienciasPage = () => {
         <section className="relative h-[70vh] flex items-center justify-center overflow-hidden">
           <div
             className="absolute inset-0 bg-cover bg-center bg-no-repeat hero-zoom-bg"
-            style={{ backgroundImage: `url('https://www.minhagloria.com.br/lovable-uploads/7b9a8c26-81a0-4894-9f0f-2a4c11fd34ce.png')` }}
+            style={{ backgroundImage: `url('/images/vista-hotel.jpg')` }}
           />
           <div className="absolute inset-0 bg-gradient-to-b from-primary/70 via-primary/30 to-primary/80" />
           <div className="relative z-10 text-center max-w-4xl mx-auto px-4">
