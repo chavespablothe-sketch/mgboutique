@@ -169,8 +169,8 @@ const SobrePage = () => {
                   >
                     <div className="rounded-2xl overflow-hidden shadow-2xl photo-glow">
                       <img
-                        src="https://www.minhagloria.com.br/lovable-uploads/5de7a725-ff58-4211-b5e2-cf47d5d99ba7.png"
-                        alt="Interior do chalé"
+                        src="/images/sobre-casa-historica.jpg"
+                        alt="Casa histórica da fazenda"
                         className="w-full h-[280px] lg:h-[400px] object-cover"
                         loading="lazy"
                       />
