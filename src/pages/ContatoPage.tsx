@@ -1,14 +1,15 @@
-import { useEffect } from "react";
+import { useEffect, useState, useRef } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO, { faqSchema, breadcrumbSchema } from "@/components/SEO";
-import DateSearchBar from "@/components/DateSearchBar";
 import { motion } from "framer-motion";
-import { Phone, Mail, MapPin, Clock, MessageCircle, Instagram, Facebook, Navigation, Baby, ChevronDown } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, MessageCircle, Instagram, Facebook, Navigation, ChevronDown, Send, CheckCircle, AlertCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
 
 const faqs = [
   { cat: "Reservas", q: "Como faço para reservar?", a: "Você pode reservar diretamente pelo nosso site através do motor de reservas Omnibees, ou entrar em contato pelo WhatsApp." },
@@ -28,8 +29,80 @@ const faqs = [
   { cat: "Estrutura", q: "A piscina é aquecida?", a: "A piscina é climatizada, mantendo temperatura agradável mesmo nos meses mais frios." },
 ];
 
+// Phone mask: (XX) XXXXX-XXXX
+function maskPhone(value: string): string {
+  const digits = value.replace(/\D/g, "").slice(0, 11);
+  if (digits.length <= 2) return digits.length ? `(${digits}` : "";
+  if (digits.length <= 7) return `(${digits.slice(0, 2)}) ${digits.slice(2)}`;
+  return `(${digits.slice(0, 2)}) ${digits.slice(2, 7)}-${digits.slice(7)}`;
+}
+
+// Simple math captcha
+function generateCaptcha() {
+  const a = Math.floor(Math.random() * 10) + 1;
+  const b = Math.floor(Math.random() * 10) + 1;
+  return { question: `${a} + ${b} = ?`, answer: a + b };
+}
+
 const ContatoPage = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [dates, setDates] = useState("");
+  const [message, setMessage] = useState("");
+  const [honeypot, setHoneypot] = useState("");
+  const [captcha, setCaptcha] = useState(() => generateCaptcha());
+  const [captchaInput, setCaptchaInput] = useState("");
+  const [sending, setSending] = useState(false);
+  const [sent, setSent] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const validate = () => {
+    const errs: Record<string, string> = {};
+    if (!name.trim()) errs.name = "Nome é obrigatório";
+    if (!email.trim()) errs.email = "E-mail é obrigatório";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) errs.email = "E-mail inválido";
+    if (!message.trim()) errs.message = "Mensagem é obrigatória";
+    if (phone && phone.replace(/\D/g, "").length < 10) errs.phone = "Telefone incompleto";
+    if (!captchaInput.trim()) errs.captcha = "Resolva o desafio";
+    else if (parseInt(captchaInput) !== captcha.answer) errs.captcha = "Resposta incorreta";
+    setErrors(errs);
+    return Object.keys(errs).length === 0;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!validate()) return;
+
+    // Honeypot check — bots fill hidden fields
+    if (honeypot) return;
+
+    setSending(true);
+    try {
+      const { error } = await supabase.from("contact_messages").insert({
+        name: name.trim(),
+        email: email.trim(),
+        phone: phone.trim() || null,
+        dates_interest: dates.trim() || null,
+        message: message.trim(),
+      });
+
+      if (error) throw error;
+
+      setSent(true);
+      toast.success("Mensagem enviada com sucesso!");
+      setName(""); setEmail(""); setPhone(""); setDates(""); setMessage("");
+      setCaptchaInput("");
+      setCaptcha(generateCaptcha());
+    } catch {
+      toast.error("Erro ao enviar. Tente novamente ou use o WhatsApp.");
+    } finally {
+      setSending(false);
+    }
+  };
 
   return (
     <div className="min-h-screen">
@@ -104,7 +177,7 @@ const ContatoPage = () => {
                   ))}
                 </div>
                 <div className="flex gap-3 mb-8">
-                  <a href="https://www.instagram.com/minhagloriahotel" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-secondary hover:bg-primary/20 transition-colors">
+                  <a href="https://www.instagram.com/minhagloria/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-secondary hover:bg-primary/20 transition-colors">
                     <Instagram size={18} />
                   </a>
                   <a href="https://www.facebook.com/minhagloria" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-secondary hover:bg-primary/20 transition-colors">
@@ -121,20 +194,115 @@ const ContatoPage = () => {
 
               <motion.div initial={{ opacity: 0, x: 20 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
                 <div className="bg-card rounded-xl border border-border p-8">
-                  <h3 className="font-display text-2xl font-semibold text-foreground mb-2">Envie uma mensagem</h3>
-                  <p className="text-muted-foreground font-body text-sm mb-6">Respondemos em até 24h.</p>
-                  <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                    <div className="grid grid-cols-2 gap-3">
-                      <Input placeholder="Seu nome" className="font-body" />
-                      <Input type="email" placeholder="Seu e-mail" className="font-body" />
+                  {sent ? (
+                    <div className="text-center py-12">
+                      <CheckCircle size={48} className="text-secondary mx-auto mb-4" />
+                      <h3 className="font-display text-2xl font-semibold text-foreground mb-2">Mensagem enviada!</h3>
+                      <p className="text-muted-foreground font-body text-sm mb-6">Respondemos em até 24h. Fique de olho no seu e-mail.</p>
+                      <Button onClick={() => setSent(false)} variant="outline" className="font-body text-sm rounded-full">
+                        Enviar outra mensagem
+                      </Button>
                     </div>
-                    <Input type="tel" placeholder="Telefone / WhatsApp" className="font-body" />
-                    <Input placeholder="Datas de interesse (ex: Páscoa 2026)" className="font-body" />
-                    <Textarea placeholder="Conte sobre a viagem dos seus sonhos..." rows={5} className="font-body resize-none" />
-                    <Button className="w-full bg-cta hover:bg-cta/90 text-cta-foreground font-body uppercase tracking-[0.15em] py-5 text-sm rounded-full">
-                      Enviar Mensagem
-                    </Button>
-                  </form>
+                  ) : (
+                    <>
+                      <h3 className="font-display text-2xl font-semibold text-foreground mb-2">Envie uma mensagem</h3>
+                      <p className="text-muted-foreground font-body text-sm mb-6">Respondemos em até 24h.</p>
+                      <form ref={formRef} className="space-y-4" onSubmit={handleSubmit}>
+                        {/* Honeypot — hidden from humans */}
+                        <input
+                          type="text"
+                          name="website"
+                          value={honeypot}
+                          onChange={(e) => setHoneypot(e.target.value)}
+                          className="absolute opacity-0 pointer-events-none h-0 w-0"
+                          tabIndex={-1}
+                          autoComplete="off"
+                          aria-hidden="true"
+                        />
+
+                        <div className="grid grid-cols-2 gap-3">
+                          <div>
+                            <Input
+                              placeholder="Seu nome"
+                              className="font-body"
+                              value={name}
+                              onChange={(e) => setName(e.target.value)}
+                              maxLength={100}
+                            />
+                            {errors.name && <p className="text-destructive font-body text-xs mt-1 flex items-center gap-1"><AlertCircle size={10} />{errors.name}</p>}
+                          </div>
+                          <div>
+                            <Input
+                              type="email"
+                              placeholder="Seu e-mail"
+                              className="font-body"
+                              value={email}
+                              onChange={(e) => setEmail(e.target.value)}
+                              maxLength={255}
+                            />
+                            {errors.email && <p className="text-destructive font-body text-xs mt-1 flex items-center gap-1"><AlertCircle size={10} />{errors.email}</p>}
+                          </div>
+                        </div>
+
+                        <div>
+                          <Input
+                            type="tel"
+                            placeholder="(XX) XXXXX-XXXX"
+                            className="font-body"
+                            value={phone}
+                            onChange={(e) => setPhone(maskPhone(e.target.value))}
+                            maxLength={16}
+                          />
+                          {errors.phone && <p className="text-destructive font-body text-xs mt-1 flex items-center gap-1"><AlertCircle size={10} />{errors.phone}</p>}
+                        </div>
+
+                        <Input
+                          placeholder="Datas de interesse (ex: Páscoa 2026)"
+                          className="font-body"
+                          value={dates}
+                          onChange={(e) => setDates(e.target.value)}
+                          maxLength={100}
+                        />
+
+                        <div>
+                          <Textarea
+                            placeholder="Conte sobre a viagem dos seus sonhos..."
+                            rows={5}
+                            className="font-body resize-none"
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+                            maxLength={1000}
+                          />
+                          {errors.message && <p className="text-destructive font-body text-xs mt-1 flex items-center gap-1"><AlertCircle size={10} />{errors.message}</p>}
+                        </div>
+
+                        {/* Math captcha */}
+                        <div className="flex items-center gap-3 bg-muted/50 rounded-lg p-3 border border-border">
+                          <span className="text-foreground font-body text-sm font-semibold whitespace-nowrap">
+                            {captcha.question}
+                          </span>
+                          <Input
+                            type="text"
+                            inputMode="numeric"
+                            placeholder="?"
+                            className="font-body w-20 text-center"
+                            value={captchaInput}
+                            onChange={(e) => setCaptchaInput(e.target.value.replace(/\D/g, "").slice(0, 2))}
+                            maxLength={2}
+                          />
+                          {errors.captcha && <p className="text-destructive font-body text-xs flex items-center gap-1"><AlertCircle size={10} />{errors.captcha}</p>}
+                        </div>
+
+                        <Button
+                          type="submit"
+                          disabled={sending}
+                          className="w-full bg-cta hover:bg-cta/90 text-cta-foreground font-body uppercase tracking-[0.15em] py-5 text-sm rounded-full gap-2"
+                        >
+                          {sending ? "Enviando..." : <><Send size={14} /> Enviar Mensagem</>}
+                        </Button>
+                      </form>
+                    </>
+                  )}
                 </div>
               </motion.div>
             </div>
