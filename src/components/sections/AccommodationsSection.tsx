@@ -86,10 +86,10 @@ const AccommodationsSection = () => {
               ))}
             </div>
           </div>
-          <button onClick={scrollPrev} className="absolute -left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary/90 text-secondary-foreground hidden md:flex items-center justify-center hover:bg-secondary transition-colors shadow-lg">
+          <button onClick={scrollPrev} className="absolute left-2 md:-left-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary/90 text-secondary-foreground flex items-center justify-center hover:bg-secondary transition-colors shadow-lg">
             <ChevronLeft size={18} />
           </button>
-          <button onClick={scrollNext} className="absolute -right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary/90 text-secondary-foreground hidden md:flex items-center justify-center hover:bg-secondary transition-colors shadow-lg">
+          <button onClick={scrollNext} className="absolute right-2 md:-right-3 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-secondary/90 text-secondary-foreground flex items-center justify-center hover:bg-secondary transition-colors shadow-lg">
             <ChevronRight size={18} />
           </button>
         </div>

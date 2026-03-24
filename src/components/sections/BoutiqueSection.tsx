@@ -26,7 +26,7 @@ const pillars = [
     id: "natureza",
     title: "Natureza preservada",
     desc: "Hectares de Mata Atlântica, trilhas, cachoeiras, lago natural e uma fazendinha com lhamas, alpacas e cavalos.",
-    image: "https://www.minhagloria.com.br/images/carousel-new-3.webp",
+    image: "/images/vista-hotel.jpg",
   },
 ];
 
