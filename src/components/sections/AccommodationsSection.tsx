@@ -12,9 +12,6 @@ const chaletImages = [
   { src: "/images/chale-quarto.jpg", label: "Suíte acolhedora" },
   { src: "/images/chale-chandon.jpg", label: "Detalhes premium" },
   { src: "/images/igreja.jpg", label: "Capela" },
-  { src: "/images/barbara-iran.jpg", label: "Aventura em família" },
-  { src: "/images/recreacao-coelho.jpg", label: "Fazendinha" },
-  { src: "/images/recreacao-pintura.jpg", label: "Oficinas criativas" },
 ];
 
 const AccommodationsSection = () => {
