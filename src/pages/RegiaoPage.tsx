@@ -18,7 +18,6 @@ const distances = [
 const attractions = [
   { icon: Waves, title: "Cachoeiras", desc: "Dezenas de cachoeiras na região, com trilhas de diferentes níveis de dificuldade." },
   { icon: Mountain, title: "Trilhas e mirantes", desc: "Trilhas pela Mata Atlântica com vistas panorâmicas da serra fluminense." },
-  { icon: UtensilsCrossed, title: "Gastronomia local", desc: "Restaurantes de comida serrana, queijarias artesanais e cafés coloniais." },
   { icon: ShoppingBag, title: "Artesanato", desc: "Feiras e lojas de artesanato em Nova Friburgo e vilarejos da região." },
   { icon: Camera, title: "Mirantes", desc: "Pontos de observação com vistas que valem a viagem por si só." },
   { icon: Leaf, title: "Reservas ecológicas", desc: "Áreas de preservação ambiental e projetos de ecoturismo." },
