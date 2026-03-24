@@ -239,7 +239,7 @@ const packages: HotelPackage[] = [
     description: "Cada detalhe foi pensado para transformar o Dia dos Namorados em uma experiência inesquecível. Lareira acesa, gastronomia de inverno e ambientes acolhedores para romance, conforto e tempo a dois.",
     longDescription: "Cada detalhe foi pensado para transformar o Dia dos Namorados em uma experiência inesquecível. Entre lareira acesa, gastronomia de inverno e ambientes acolhedores, convidamos você a viver dias de romance, conforto e tempo a dois, em um hotel boutique onde o atendimento é próximo e a experiência é intimista. Este pacote foi criado exclusivamente para o Dia dos Namorados, com uma programação pensada para desacelerar, celebrar e aproveitar o frio com charme e tranquilidade.",
     highlights: ["Welcome drink romântico na chegada", "Mimo especial no quarto", "Jantar exclusivo de Dia dos Namorados", "Jantar especial de inverno no sábado"],
-    included: ["Pensão completa (café, almoço e jantar)", "Welcome drink romântico", "Mimo especial no quarto", "Jantar exclusivo de Dia dos Namorados", "Acesso ao spa", "Wi-Fi gratuito", "Estacionamento privativo"],
+    included: ["Pensão completa (café, almoço e jantar)", "Welcome drink romântico", "Mimo especial no quarto", "Jantar exclusivo de Dia dos Namorados", "Wi-Fi gratuito", "Estacionamento privativo"],
     kidsFeatures: [],
     schedule: [
       { day: "Sexta-feira (12/06)", items: ["Check-in a partir das 15h", "Welcome drink romântico", "Mimo especial no quarto", "Jantar de boas-vindas à luz de velas"] },
