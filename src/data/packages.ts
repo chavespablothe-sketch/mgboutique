@@ -181,7 +181,7 @@ const packages: HotelPackage[] = [
     description: "O Dia das Mães merece ser inesquecível. O Hotel Boutique Minha Glória preparou o Festival das Rainhas: um fim de semana exclusivo com programação completa de experiências, gastronomia e homenagens especiais. Apenas 20 suítes disponíveis.",
     longDescription: "O Dia das Mães merece ser inesquecível. Pensando nisso, o Hotel Boutique Minha Glória preparou o Festival das Rainhas — um fim de semana exclusivo com programação completa de experiências, gastronomia e homenagens especiais. Apenas 20 suítes disponíveis. Celebre com chá da tarde, mini spa, oficinas e muitos mimos especiais para as mamães.",
     highlights: ["Welcome drink", "Chá da tarde", "Mini spa", "Oficinas"],
-    included: ["Pensão completa (café, almoço e jantar)", "Welcome drink", "Chá da tarde especial", "Mini spa para mamães", "Oficinas", "Wi-Fi gratuito", "Estacionamento privativo"],
+    included: ["Pensão completa (café, almoço e jantar)", "Welcome drink", "Chá da tarde especial", "Oficinas", "Wi-Fi gratuito", "Estacionamento privativo"],
     kidsFeatures: ["Oficinas especiais para fazer mimos para a mamãe", "Recreação monitorada", "Menu infantil especial", "1 criança até 12 anos: grátis nos fins de semana"],
     schedule: [
       { day: "Sexta-feira (08/05)", items: ["Check-in a partir das 15h", "Welcome drink", "Jantar de boas-vindas"] },
