@@ -200,7 +200,7 @@ const PacoteDetalhePage = () => {
                     </div>
 
                     <Button asChild size="lg" className="w-full bg-cta hover:bg-cta/90 text-cta-foreground font-body uppercase tracking-[0.15em] gap-2 py-5 mb-3 rounded-full shadow-lg">
-                      <a href={OMNIBEES_URL} target="_blank" rel="noopener noreferrer">
+                      <a href={pkg.checkIn && pkg.checkOut ? buildOmnibeesUrl({ checkIn: pkg.checkIn, checkOut: pkg.checkOut }) : OMNIBEES_URL} target="_blank" rel="noopener noreferrer">
                         Reservar agora <ArrowRight size={16} />
                       </a>
                     </Button>
