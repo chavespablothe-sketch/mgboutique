@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO, { breadcrumbSchema } from "@/components/SEO";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import CTASection from "@/components/CTASection";
 import PhotoGallery from "@/components/PhotoGallery";
 import { motion } from "framer-motion";
@@ -17,10 +16,10 @@ const numbers = [
 ];
 
 const pillars = [
-  { icon: Heart, title: "Hospitalidade Genuína", desc: "Cada hóspede é chamado pelo nome. Nossa equipe cuida de cada detalhe com carinho real, do check-in ao check-out.", image: "https://www.minhagloria.com.br/lovable-uploads/f7d9ecaa-e043-4c83-8549-89dfb50450a6.png" },
+  { icon: Heart, title: "Hospitalidade Genuína", desc: "Cada hóspede é chamado pelo nome. Nossa equipe cuida de cada detalhe com carinho real, do check-in ao check-out.", image: "/images/hospitalidade.jpg" },
   { icon: TreePine, title: "Natureza Intocada", desc: "Cercado pela Mata Atlântica, entre montanhas e cachoeiras, a natureza aqui não é cenário — é protagonista.", image: "https://www.minhagloria.com.br/lovable-uploads/b7fedef6-5188-49de-a6f5-ac36f6e262f8.png" },
-  { icon: Utensils, title: "Gastronomia de Alma", desc: "Pães artesanais, ervas da horta orgânica, carnes assadas com técnica e amor. Cada refeição celebra a terra onde estamos.", image: "https://www.minhagloria.com.br/lovable-uploads/252a23af-2a29-46e8-8e7e-dbd3ce9cf861.png" },
-  { icon: Users, title: "Feito para Famílias", desc: "1 criança até 12 anos grátis nos fins de semana. Recreação monitorada, fazendinha, trilhas kids e menu infantil.", image: "https://www.minhagloria.com.br/lovable-uploads/fa0a1d74-12c1-4134-8d8d-0e688addbccb.png" },
+  { icon: Utensils, title: "Gastronomia de Alma", desc: "Pães artesanais, ervas da horta orgânica, carnes assadas com técnica e amor. Cada refeição celebra a terra onde estamos.", image: "/images/animais-fazenda.jpg" },
+  { icon: Users, title: "Feito para Famílias", desc: "1 criança até 12 anos grátis nos fins de semana. Recreação monitorada, fazendinha, trilhas kids e menu infantil.", image: "/images/familia.jpg" },
 ];
 
 const galleryImages = [
@@ -170,7 +169,7 @@ const SobrePage = () => {
                   >
                     <div className="rounded-2xl overflow-hidden shadow-2xl photo-glow">
                       <img
-                        src="https://www.minhagloria.com.br/lovable-uploads/d853d202-1c9d-4cd8-8f3b-d89a257c4ee7.png"
+                        src="https://www.minhagloria.com.br/lovable-uploads/5de7a725-ff58-4211-b5e2-cf47d5d99ba7.png"
                         alt="Interior do chalé"
                         className="w-full h-[280px] lg:h-[400px] object-cover"
                         loading="lazy"
@@ -332,7 +331,6 @@ const SobrePage = () => {
         />
       </div>
       <Footer />
-      <WhatsAppButton />
     </div>
   );
 };

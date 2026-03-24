@@ -2,7 +2,6 @@ import { useEffect, useState, useMemo } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO, { breadcrumbSchema } from "@/components/SEO";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import CTASection from "@/components/CTASection";
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight, CalendarDays, CreditCard, Baby, Star, Percent, Check, UtensilsCrossed, Sun } from "lucide-react";
@@ -339,7 +338,6 @@ const TarifasPage = () => {
         />
       </div>
       <Footer />
-      <WhatsAppButton />
     </div>
   );
 };

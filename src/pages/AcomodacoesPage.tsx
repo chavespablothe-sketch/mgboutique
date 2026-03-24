@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO, { hotelSchema, breadcrumbSchema } from "@/components/SEO";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import CTASection from "@/components/CTASection";
 import { motion } from "framer-motion";
 import { Users, Maximize, ArrowRight, Baby, CreditCard, Star, Coffee } from "lucide-react";
@@ -171,7 +170,6 @@ const AcomodacoesPage = () => {
         />
       </div>
       <Footer />
-      <WhatsAppButton />
     </div>
   );
 };
