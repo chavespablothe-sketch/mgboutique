@@ -70,12 +70,6 @@ const BoutiqueSection = () => {
                     </AccordionTrigger>
                     <AccordionContent className="text-primary-foreground/60 font-body text-base leading-relaxed pb-6">
                       {item.desc}
-                      <div
-                        className="lg:hidden mt-4 rounded-xl overflow-hidden cursor-pointer"
-                        onClick={() => setLightbox({ src: item.image, alt: item.title })}
-                      >
-                        <img src={item.image} alt={item.title} className="w-full h-48 object-cover" loading="lazy" />
-                      </div>
                     </AccordionContent>
                   </AccordionItem>
                 ))}
