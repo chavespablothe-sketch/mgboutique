@@ -1,18 +1,25 @@
 
 
-## Substituir 3 fotos quebradas na seção Bem-vindos
+## Plano: Remover preços e valores dos pacotes
 
-A seção WelcomeSection tem 5 imagens no mosaico. As 3 primeiras usam URLs do domínio antigo (`minhagloria.com.br`) que não carregam mais. As 2 últimas usam paths locais (`/images/...`) que ainda funcionam.
+### Onde os preços aparecem
 
-### Plano
+1. **Home (OffersSection.tsx)** — Não mostra preços nos cards, apenas link "Ver tarifas especiais". OK, sem alteração necessária.
 
-1. Copiar as 3 fotos enviadas para `public/images/`:
-   - `640carrossel-5.webp` → `public/images/welcome-aerial.webp` (vista aérea)
-   - `640almoco-mg-25.webp` → `public/images/welcome-horse.webp` (cavalo com pedra)
-   - `640brunch-1.webp` → `public/images/welcome-brunch.webp` (brunch Chandon)
+2. **PacotesPage.tsx** — Bloco "a partir de" com `pkg.price`, `pkg.priceNote` e "por casal · pensão completa" (linhas 203-207). Será removido e substituído por um botão "Ver detalhes" mais limpo.
 
-2. Atualizar `WelcomeSection.tsx` — substituir as 3 URLs quebradas pelos novos paths locais:
-   - Imagem 1: `minhagloria.com.br/images/carousel-new-2.webp` → `/images/welcome-aerial.webp`
-   - Imagem 2: `minhagloria.com.br/images/carousel-new-4.webp` → `/images/welcome-horse.webp`
-   - Imagem 3: `minhagloria.com.br/lovable-uploads/...` → `/images/welcome-brunch.webp`
+3. **PacoteDetalhePage.tsx** — Card lateral sticky já não mostra preço (diz "Consulte valores ao reservar"). OK, sem alteração necessária.
+
+4. **TarifasPage.tsx** — Cards no grid não mostram preços visíveis. OK.
+
+5. **OffersSection.tsx (Home)** — Banner "Até 30% OFF" e "Mês do Consumidor" — sem preço explícito, mas implica desconto. Manter? Vou manter pois não mostra valor.
+
+### Alterações
+
+**Arquivo: `src/pages/PacotesPage.tsx`**
+- Remover o bloco `md:col-span-4` que exibe `pkg.price`, `pkg.priceNote`, "a partir de" e "por casal · pensão completa"
+- Ajustar o grid: o bloco de descrição ocupa toda a largura (`col-span-12`)
+- Mover o botão "Reservar" para dentro do bloco de descrição
+
+Isso é uma alteração simples em um único arquivo — o PacotesPage é o único lugar que exibe preços visíveis.
 
