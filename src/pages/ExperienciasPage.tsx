@@ -49,6 +49,11 @@ const animals = [
 
 const animalImages = [
   { src: "/images/cavalos-potro.jpg", alt: "Égua e potro na fazenda" },
+  { src: "/images/lhama-branca.jpg", alt: "Lhama branca" },
+  { src: "/images/faisao.jpg", alt: "Faisão colorido" },
+  { src: "/images/porquinho.jpg", alt: "Porquinho da fazenda" },
+  { src: "/images/cabra-marrom.jpg", alt: "Cabra marrom" },
+  { src: "/images/cabra-preta.jpg", alt: "Cabra preta" },
   { src: "https://www.minhagloria.com.br/lovable-uploads/7e908836-8970-467c-b270-a684eb943725.png", alt: "Arara Canindé" },
   { src: "https://www.minhagloria.com.br/lovable-uploads/f12e0477-9067-4dc3-8393-6e4c75444879.png", alt: "Tucano" },
   { src: "https://www.minhagloria.com.br/lovable-uploads/8b9ea58e-cf1a-4dd8-9279-e236fcb7b9f6.png", alt: "Lhamas" },
