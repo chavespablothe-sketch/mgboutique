@@ -80,6 +80,24 @@ const BoutiqueSection = () => {
                   </AccordionItem>
                 ))}
               </Accordion>
+
+              {/* Mobile grid images */}
+              <div className="grid grid-cols-2 gap-3 mt-8 lg:hidden">
+                {gridImages.map((img, i) => (
+                  <div
+                    key={i}
+                    className={`rounded-xl overflow-hidden cursor-pointer ${i === 0 ? "col-span-2 aspect-[16/9]" : "aspect-square"}`}
+                    onClick={() => setLightbox(img)}
+                  >
+                    <img
+                      src={img.src}
+                      alt={img.alt}
+                      className="w-full h-full object-cover"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </div>
             </motion.div>
 
             {/* Right — images grid */}
