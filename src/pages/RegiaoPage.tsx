@@ -93,7 +93,7 @@ const RegiaoPage = () => {
               <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
                 <div className="rounded-xl overflow-hidden h-full min-h-[400px]">
                   <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.5!2d-42.4308!3d-22.1547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x97801b3b3b3b3b%3A0x1234567890abcdef!2sHotel%20Fazenda%20Minha%20Gl%C3%B3ria!5e0!3m2!1spt-BR!2sbr!4v1"
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3686.5!2d-42.4308!3d-22.1547!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x990743d36959f7%3A0x5b7e3b0e8f1a9c2d!2sHotel+Fazenda+Minha+Gl%C3%B3ria!5e0!3m2!1spt-BR!2sbr!4v1"
                     width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy" title="Localização do Hotel Fazenda Minha Glória"
                   />
                 </div>
