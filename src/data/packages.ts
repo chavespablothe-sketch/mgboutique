@@ -482,6 +482,8 @@ const packages: HotelPackage[] = [
     ]),
     tag: "família",
     tagColor: "bg-secondary",
+    checkIn: "23122026",
+    checkOut: "26122026",
   },
   {
     slug: "reveillon-2026",
