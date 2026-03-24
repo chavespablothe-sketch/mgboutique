@@ -95,7 +95,7 @@ const packages: HotelPackage[] = [
     description: "No feriado de Páscoa 2026, o Hotel Boutique Minha Glória preparou uma programação especial, pensada para quem busca conforto, boa gastronomia e experiências únicas em um ambiente acolhedor.",
     longDescription: "A Páscoa no Minha Glória é uma celebração em família. Nossos pequenos hóspedes ganham uma programação especial com caça aos ovos pelos jardins da fazenda, oficina de chocolate artesanal e atividades lúdicas ao ar livre. Para os adultos, degustação de vinhos e jantares especiais com música ao vivo. Tudo pensado para criar memórias inesquecíveis em meio à natureza da Mata Atlântica.",
     highlights: ["Welcome drink de Páscoa", "Mimo no quarto com chocolate artesanal", "Jantares especiais com música ao vivo", "Experiências de wellness (yoga, meditação e massagem)"],
-    included: ["Pensão completa (café, almoço e jantar)", "Welcome drink na chegada", "Chocolate artesanal no quarto", "Acesso completo ao spa", "Atividades ao ar livre", "Wi-Fi gratuito", "Estacionamento privativo"],
+    included: ["Pensão completa (café, almoço e jantar)", "Welcome drink na chegada", "Chocolate artesanal no quarto", "Atividades ao ar livre", "Wi-Fi gratuito", "Estacionamento privativo"],
     kidsFeatures: ["Caça aos ovos de Páscoa nos jardins", "Oficina de chocolate artesanal", "Recreação monitorada", "Menu infantil especial", "1 criança até 12 anos: grátis nos fins de semana"],
     schedule: [
       { day: "Sexta-feira (03/04)", items: ["Check-in a partir das 15h", "Welcome drink de Páscoa", "Mimo de chocolate no quarto", "Jantar de boas-vindas com música ao vivo"] },
