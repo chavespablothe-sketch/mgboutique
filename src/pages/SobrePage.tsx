@@ -22,18 +22,6 @@ const pillars = [
   { icon: Users, title: "Feito para Famílias", desc: "1 criança até 12 anos grátis nos fins de semana. Recreação monitorada, fazendinha, trilhas kids e menu infantil.", image: "/images/familia.jpg" },
 ];
 
-const galleryImages = [
-  { src: "https://www.minhagloria.com.br/images/carousel-new-4.webp", alt: "Chalés entre a natureza" },
-  { src: "https://www.minhagloria.com.br/images/carousel-new-3.webp", alt: "Cavalos na fazenda" },
-  { src: "https://www.minhagloria.com.br/lovable-uploads/252a23af-2a29-46e8-8e7e-dbd3ce9cf861.png", alt: "Lago natural e área de lazer" },
-  { src: "https://www.minhagloria.com.br/lovable-uploads/fa0a1d74-12c1-4134-8d8d-0e688addbccb.png", alt: "Animais da fazenda" },
-  { src: "https://www.minhagloria.com.br/lovable-uploads/f7d9ecaa-e043-4c83-8549-89dfb50450a6.png", alt: "Piscina com vista para montanhas" },
-  { src: "https://www.minhagloria.com.br/lovable-uploads/b7fedef6-5188-49de-a6f5-ac36f6e262f8.png", alt: "Vista da montanha com flores" },
-  { src: "https://www.minhagloria.com.br/lovable-uploads/7b9a8c26-81a0-4894-9f0f-2a4c11fd34ce.png", alt: "Quadriciclo pela fazenda" },
-  { src: "https://www.minhagloria.com.br/images/carousel-new-1.jpg", alt: "Vista panorâmica da propriedade" },
-  { src: "https://www.minhagloria.com.br/lovable-uploads/d853d202-1c9d-4cd8-8f3b-d89a257c4ee7.png", alt: "Chalé aconchegante" },
-  { src: "https://www.minhagloria.com.br/lovable-uploads/5de7a725-ff58-4211-b5e2-cf47d5d99ba7.png", alt: "Formação rochosa panorâmica" },
-];
 
 const gastroHighlights = [
   { title: "Horta Orgânica", desc: "Ervas e vegetais frescos colhidos diariamente para cada prato. Da terra à mesa em minutos.", image: "https://www.minhagloria.com.br/lovable-uploads/95376411-f659-4689-bdf3-c03d058f945e.png" },
