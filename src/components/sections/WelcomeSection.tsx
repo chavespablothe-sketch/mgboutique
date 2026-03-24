@@ -61,7 +61,7 @@ const WelcomeSection = () => {
             className="col-span-2 md:col-span-7 overflow-hidden rounded-lg"
           >
             <img
-              src="https://www.minhagloria.com.br/images/carousel-new-2.webp"
+              src="/images/welcome-aerial.webp"
               alt="Vista aérea do Minha Glória Hotel Boutique"
               className="w-full h-[200px] md:h-[400px] object-cover hover:scale-105 transition-transform duration-1000"
               loading="lazy"
@@ -75,7 +75,7 @@ const WelcomeSection = () => {
             className="col-span-1 md:col-span-5 overflow-hidden rounded-lg"
           >
             <img
-              src="https://www.minhagloria.com.br/images/carousel-new-4.webp"
+              src="/images/welcome-horse.webp"
               alt="Chalés em meio à natureza"
               className="w-full h-[200px] md:h-[400px] object-cover hover:scale-105 transition-transform duration-1000"
               loading="lazy"
@@ -89,7 +89,7 @@ const WelcomeSection = () => {
             className="col-span-1 md:col-span-4 overflow-hidden rounded-lg"
           >
             <img
-              src="https://www.minhagloria.com.br/lovable-uploads/fa0a1d74-12c1-4134-8d8d-0e688addbccb.png"
+              src="/images/welcome-brunch.webp"
               alt="Animais da fazenda"
               className="w-full h-[200px] md:h-[280px] object-cover hover:scale-105 transition-transform duration-1000"
               loading="lazy"
