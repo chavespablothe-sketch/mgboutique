@@ -214,7 +214,7 @@ const packages: HotelPackage[] = [
     kidsFeatures: ["Recreação monitorada", "Atividades ao ar livre", "Menu infantil especial", "1 criança até 12 anos: grátis nos fins de semana"],
     schedule: [
       { day: "Quinta-feira (04/06)", items: ["Check-in a partir das 15h", "Welcome drink", "Jantar de boas-vindas"] },
-      { day: "Sexta-feira (05/06)", items: ["Café da manhã estendido", "Atividades ao ar livre", "Almoço", "Tarde de spa e descanso", "Jantar com música suave"] },
+      { day: "Sexta-feira (05/06)", items: ["Café da manhã estendido", "Atividades ao ar livre", "Almoço", "Tarde de descanso", "Jantar com música suave"] },
       { day: "Sábado (06/06)", items: ["Café da manhã", "Trilhas e atividades", "Almoço especial", "Noite de lareira e conversa"] },
       { day: "Domingo (07/06)", items: ["Café da manhã", "Check-out até 12h"] },
     ],
