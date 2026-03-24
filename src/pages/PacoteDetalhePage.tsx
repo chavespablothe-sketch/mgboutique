@@ -35,7 +35,7 @@ const PacoteDetalhePage = () => {
     <div className="min-h-screen">
       <SEO
         title={`${pkg.shortTitle} | Pacotes`}
-        description={`${pkg.description} ${pkg.period}, ${pkg.nights}. A partir de ${pkg.price} por casal.`}
+        description={`${pkg.description} ${pkg.period}, ${pkg.nights}. Consulte tarifas especiais.`}
         canonical={`/tarifas/${pkg.slug}`}
         ogImage={pkg.image}
         schemas={[

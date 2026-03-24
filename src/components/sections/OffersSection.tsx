@@ -69,11 +69,8 @@ const OffersSection = () => {
                   <p className="text-muted-foreground font-body text-sm leading-relaxed line-clamp-2">
                     {pkg.description.length > 100 ? pkg.description.slice(0, 100) + "…" : pkg.description}
                   </p>
-                  <p className="font-display text-xl font-semibold text-foreground">
-                    A partir de {pkg.price}
-                  </p>
                   <span className="inline-flex items-center gap-1.5 text-secondary font-body text-sm font-semibold group-hover:gap-2.5 transition-all border border-secondary/30 rounded-full px-5 py-2 mt-2 hover:bg-secondary/5">
-                    Reservar agora <ArrowRight size={14} />
+                    Ver tarifas especiais <ArrowRight size={14} />
                   </span>
                 </div>
               </Link>
