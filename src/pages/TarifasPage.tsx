@@ -139,24 +139,9 @@ const TarifasPage = () => {
                   <p className="text-primary-foreground/70 font-body text-lg leading-relaxed max-w-md mx-auto mb-4">
                     Em pacotes selecionados. Vagas limitadas — apenas 20 suítes disponíveis.
                   </p>
-                  <p className="text-secondary font-body text-sm font-bold uppercase tracking-wider mb-8">
+                  <p className="text-secondary font-body text-sm font-bold uppercase tracking-wider">
                     ⚡ As melhores tarifas da temporada — reserve antes que esgote
                   </p>
-                  <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                    <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body text-sm uppercase tracking-wider gap-2 rounded-full shadow-xl shadow-secondary/30">
-                      <a href={OMNIBEES_URL} target="_blank" rel="noopener noreferrer">
-                        <CalendarDays size={16} /> Garantir desconto <ArrowRight size={14} />
-                      </a>
-                    </Button>
-                    <a
-                      href="https://wa.me/5522997792023?text=Olá! Quero saber mais sobre o desconto do Mês do Consumidor"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 text-primary-foreground/80 font-body text-sm border border-primary-foreground/20 px-6 py-3 rounded-full hover:bg-primary-foreground/5 transition-colors"
-                    >
-                      Falar no WhatsApp
-                    </a>
-                  </div>
                 </motion.div>
               </div>
             </div>
