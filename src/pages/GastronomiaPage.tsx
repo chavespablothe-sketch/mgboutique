@@ -5,7 +5,7 @@ import SEO, { breadcrumbSchema } from "@/components/SEO";
 import WhatsAppButton from "@/components/WhatsAppButton";
 import CTASection from "@/components/CTASection";
 import { motion } from "framer-motion";
-import { UtensilsCrossed, Wine, Coffee, Leaf, Baby, Cake, Clock, Award, Sun, Check } from "lucide-react";
+import { UtensilsCrossed, Wine, Coffee, Leaf, Cake, Award, Sun } from "lucide-react";
 
 const meals = [
   {
