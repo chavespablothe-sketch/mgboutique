@@ -294,12 +294,6 @@ const SobrePage = () => {
           </div>
         </section>
 
-        {/* Photo Gallery — Clara style */}
-        <PhotoGallery
-          images={galleryImages}
-          title="Fragmentos de um paraíso"
-          subtitle="Galeria"
-        />
 
         {/* Practical info strip */}
         <section className="py-16 bg-primary">
