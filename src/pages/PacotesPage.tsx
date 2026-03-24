@@ -1,7 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import CTASection from "@/components/CTASection";
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight, CalendarDays, CreditCard, Baby, Star, Users, Percent, Clock, Gift } from "lucide-react";
@@ -248,7 +247,6 @@ const PacotesPage = () => {
         />
       </div>
       <Footer />
-      <WhatsAppButton />
     </div>
   );
 };

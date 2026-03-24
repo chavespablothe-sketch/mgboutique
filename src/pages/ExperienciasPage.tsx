@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO, { breadcrumbSchema } from "@/components/SEO";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import CTASection from "@/components/CTASection";
 import { motion, AnimatePresence } from "framer-motion";
 import { TreePine, Mountain, Waves, Bike, Dog, Palette, Footprints, Music, Gamepad2, Heart, Baby, Bird, Sparkles, Car, Clock, DollarSign, X, ChevronLeft, ChevronRight } from "lucide-react";
@@ -482,7 +481,6 @@ const ExperienciasPage = () => {
         />
       </div>
       <Footer />
-      <WhatsAppButton />
     </div>
   );
 };

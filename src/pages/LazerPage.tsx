@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import CTASection from "@/components/CTASection";
 import { motion } from "framer-motion";
 import { Flower2, TreePine, Bike, Mountain, Waves, Baby, Palette, Dog, Footprints, Music, Gamepad2, Heart } from "lucide-react";
@@ -136,7 +135,6 @@ const LazerPage = () => {
         />
       </div>
       <Footer />
-      <WhatsAppButton />
     </div>
   );
 };

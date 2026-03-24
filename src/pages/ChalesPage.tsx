@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import CTASection from "@/components/CTASection";
 import { motion } from "framer-motion";
 import { Users, Maximize, Bath, Wifi, Coffee, TreePine, ArrowRight, Baby, CreditCard, Check, Star, Sparkles } from "lucide-react";
@@ -226,7 +225,6 @@ const ChalesPage = () => {
         />
       </div>
       <Footer />
-      <WhatsAppButton />
     </div>
   );
 };

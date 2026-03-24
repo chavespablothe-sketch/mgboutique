@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import SEO, { breadcrumbSchema } from "@/components/SEO";
 import CTASection from "@/components/CTASection";
 import { motion, AnimatePresence } from "framer-motion";
@@ -223,7 +222,6 @@ const PacoteDetalhePage = () => {
         <CTASection title="Garanta sua vaga neste pacote" subtitle="Vagas limitadas — apenas 20 suítes. Pensão completa e 1 criança até 12 anos grátis nos fins de semana." showPhone={false} />
       </div>
       <Footer />
-      <WhatsAppButton />
 
       {/* Fullscreen Gallery Modal */}
       <AnimatePresence>

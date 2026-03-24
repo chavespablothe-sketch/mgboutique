@@ -3,7 +3,6 @@ import { useParams, Link, Navigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO, { breadcrumbSchema } from "@/components/SEO";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import { motion } from "framer-motion";
 import { Users, Maximize, Check, ArrowLeft, ArrowRight, CreditCard, Baby, Shield, Bed, Eye } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -196,7 +195,6 @@ const ChalePage = () => {
         </section>
       </div>
       <Footer />
-      <WhatsAppButton />
     </div>
   );
 };

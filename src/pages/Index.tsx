@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO, { hotelSchema, websiteSchema } from "@/components/SEO";
-import WhatsAppButton from "@/components/WhatsAppButton";
 import HeroSection from "@/components/sections/HeroSection";
 import WelcomeSection from "@/components/sections/WelcomeSection";
 import BoutiqueSection from "@/components/sections/BoutiqueSection";
@@ -30,7 +29,6 @@ const Index = () => {
       <TestimonialsSection />
       <CTASection />
       <Footer />
-      <WhatsAppButton />
     </div>
   );
 };
