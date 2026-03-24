@@ -41,6 +41,9 @@ const chalets: Chalet[] = [
     images: [
       "https://www.minhagloria.com.br/lovable-uploads/d853d202-1c9d-4cd8-8f3b-d89a257c4ee7.png",
       "https://www.minhagloria.com.br/lovable-uploads/2e4a3772-1627-445c-ad0a-bc144dd8a4d5.png",
+      "https://www.minhagloria.com.br/lovable-uploads/ad12c7f5-022c-4892-91f8-b68993394270.png",
+      "https://www.minhagloria.com.br/images/carousel-new-4.webp",
+      "https://www.minhagloria.com.br/lovable-uploads/dd9b430b-970f-407a-9a4f-952850e9d8b7.png",
     ],
     highlight: "Vista para o jardim",
     idealFor: "Casais e famílias pequenas",
