@@ -216,7 +216,8 @@ const ExperienciasPage = () => {
             <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto mb-16">
               {animalImages.map((img, i) => (
                 <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}
-                  className={`overflow-hidden rounded-2xl ring-2 ring-[hsl(37,60%,55%)]/20 photo-lift ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
+                  className={`overflow-hidden rounded-2xl ring-2 ring-[hsl(37,60%,55%)]/20 photo-lift cursor-pointer ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
+                  onClick={() => setLightboxIndex(i)}
                 >
                   <img src={img.src} alt={img.alt} className={`w-full object-cover hover:scale-110 transition-transform duration-1000 ${i === 0 ? 'h-[250px] md:h-full' : 'h-[200px] md:h-[250px]'}`} loading="lazy" />
                 </motion.div>
