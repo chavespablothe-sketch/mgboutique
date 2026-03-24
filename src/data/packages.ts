@@ -358,6 +358,8 @@ const packages: HotelPackage[] = [
     ]),
     tag: "família",
     tagColor: "bg-secondary",
+    checkIn: "07082026",
+    checkOut: "09082026",
   },
   {
     slug: "sete-de-setembro-2026",
