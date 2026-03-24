@@ -352,7 +352,7 @@ const packages: HotelPackage[] = [
     description: "Celebre o feriado da Independência com dias de descanso refinado, gastronomia autoral e experiências cuidadosamente desenhadas para desacelerar — em casal ou em família.",
     longDescription: "Celebre o feriado da Independência com dias de descanso refinado, gastronomia autoral e experiências cuidadosamente desenhadas para desacelerar — em casal ou em família. Um refúgio com atmosfera elegante, atendimento personalizado e programação equilibrada entre bem-estar, cultura e lazer. Para casais que desejam um feriado elegante e sem pressa, famílias que querem viajar com crianças sem abrir mão de sofisticação, e hóspedes que valorizam conforto, gastronomia e experiências exclusivas.",
     highlights: ["Welcome drink para adultos e bebida especial para crianças", "Mimo de boas-vindas no quarto", "Concierge dedicado durante a estadia", "Café da manhã especial diário, servido sem pressa"],
-    included: ["Pensão completa (café, almoço e jantar)", "Welcome drink adulto e infantil", "Mimo de boas-vindas", "Concierge dedicado", "Atividades diárias", "Acesso ao spa e piscina", "Wi-Fi gratuito", "Estacionamento privativo"],
+    included: ["Pensão completa (café, almoço e jantar)", "Welcome drink adulto e infantil", "Mimo de boas-vindas", "Concierge dedicado", "Atividades diárias", "Acesso à piscina", "Wi-Fi gratuito", "Estacionamento privativo"],
     kidsFeatures: ["Bebida especial de boas-vindas", "Recreação monitorada diária", "Atividades ao ar livre", "Menu infantil especial", "1 criança até 12 anos: grátis nos fins de semana"],
     schedule: [
       { day: "Sexta-feira (04/09)", items: ["Check-in a partir das 15h", "Welcome drink", "Mimo no quarto", "Jantar de boas-vindas"] },
