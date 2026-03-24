@@ -268,6 +268,8 @@ const packages: HotelPackage[] = [
     tag: "romântico",
     tagColor: "bg-primary",
     capacity: "Até 2 pessoas",
+    checkIn: "12062026",
+    checkOut: "14062026",
   },
   {
     slug: "arraia-inverno-2026",
