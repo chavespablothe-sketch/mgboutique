@@ -35,9 +35,9 @@ const allPhotos = [
   { src: "/images/gastro-sobremesas.jpg", alt: "Sobremesas artesanais com frutas" },
   { src: "/images/gastro-geleia.jpg", alt: "Geleia artesanal da fazenda" },
   { src: "/images/gastro-bolos.jpg", alt: "Bolos caseiros do café da manhã" },
+  { src: "/images/gastro-almoco-buffet.jpg", alt: "Buffet de almoço regional" },
   { src: "/images/amenities-gastronomia.jpg", alt: "Gastronomia do hotel" },
   { src: "/images/gastronomia-doces.jpg", alt: "Doces e sobremesas artesanais" },
-  { src: "/images/mini-chef.jpg", alt: "Oficina mini chef" },
   { src: "/images/welcome-brunch.webp", alt: "Brunch especial" },
 ];
 
