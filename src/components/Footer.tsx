@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           {/* Brand */}
           <div>
-            <img src="/images/logo-light.png" alt="Minha Glória Hotel Boutique" className="h-10 w-auto mb-4" />
+            <img src="/images/logo-light.png" alt="Minha Glória Hotel Boutique" className="h-24 w-auto mb-6" />
             <p className="text-primary-foreground/70 font-body text-sm leading-relaxed">
               Um refúgio exclusivo em 165 mil m² de Mata Atlântica, a 18km do centro de Nova Friburgo, em Bom Jardim-RJ.
             </p>
