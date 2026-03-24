@@ -12,7 +12,7 @@ const meals = [
     title: "Café da Manhã",
     time: "7h às 10h30 · estendido nos feriados",
     description: "Um despertar que merece ser saboreado. Buffet completo com pães artesanais saindo do forno — bolos caseiros, frutas frescas, geleias de produtores da serra, queijos regionais, ovos preparados ao seu gosto e café coado de grãos selecionados. Cada mesa tem vista para as montanhas.",
-    image: "/images/gastro-bolos.jpg",
+    image: "/images/gastro-cafe-sanduiches.jpg",
   },
   {
     icon: UtensilsCrossed,
