@@ -9,7 +9,7 @@ import { Calendar, Clock, Check, Baby, ArrowRight, ArrowLeft, Shield, CreditCard
 import { Button } from "@/components/ui/button";
 import packages from "@/data/packages";
 
-const OMNIBEES_URL = "https://book.omnibees.com/hotel/19498";
+import { buildOmnibeesUrl, OMNIBEES_URL } from "@/lib/omnibees";
 
 const PacoteDetalhePage = () => {
   const { slug } = useParams<{ slug: string }>();

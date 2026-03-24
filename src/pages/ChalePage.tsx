@@ -8,7 +8,7 @@ import { Users, Maximize, Check, ArrowLeft, ArrowRight, CreditCard, Baby, Shield
 import { Button } from "@/components/ui/button";
 import chalets from "@/data/chalets";
 
-const OMNIBEES_URL = "https://book.omnibees.com/hotel/19498";
+import { OMNIBEES_URL } from "@/lib/omnibees";
 
 const ChalePage = () => {
   const { slug } = useParams<{ slug: string }>();

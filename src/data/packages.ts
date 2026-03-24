@@ -18,6 +18,8 @@ export interface HotelPackage {
   tag: string;
   tagColor: string;
   capacity?: string;
+  checkIn?: string;  // ddMMyyyy for Omnibees
+  checkOut?: string; // ddMMyyyy for Omnibees
 }
 
 // Shared hotel photo pool for gallery expansion

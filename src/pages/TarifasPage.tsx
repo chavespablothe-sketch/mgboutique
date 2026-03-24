@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import packages from "@/data/packages";
 
-const OMNIBEES_URL = "https://book.omnibees.com/hotel/19498";
+import { OMNIBEES_URL } from "@/lib/omnibees";
 
 function getMonth(period: string): string {
   const monthMap: Record<string, string> = {
