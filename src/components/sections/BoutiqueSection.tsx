@@ -80,7 +80,7 @@ const BoutiqueSection = () => {
                 {gridImages.map((img, i) => (
                   <div
                     key={i}
-                    className={`rounded-xl overflow-hidden cursor-pointer ${i === 0 ? "col-span-2 aspect-[16/9]" : "aspect-square"}`}
+                    className={`rounded-xl overflow-hidden cursor-pointer ${i === 0 ? "col-span-2" : "aspect-square"}`}
                     onClick={() => setLightbox(img)}
                   >
                     <img
@@ -109,7 +109,7 @@ const BoutiqueSection = () => {
                 <img
                   src={gridImages[0].src}
                   alt={gridImages[0].alt}
-                  className="w-full h-full object-cover object-[50%_70%] transition-transform duration-300 hover:scale-105"
+                  className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                   loading="lazy"
                 />
               </div>
