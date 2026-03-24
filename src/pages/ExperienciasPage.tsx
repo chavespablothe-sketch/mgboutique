@@ -152,40 +152,23 @@ const ExperienciasPage = () => {
               </h2>
             </motion.div>
 
-            {/* Bento grid layout */}
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 max-w-6xl mx-auto">
-              {/* Large card - Cavalo */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="col-span-2 row-span-2 group relative overflow-hidden rounded-2xl cursor-pointer"
-              >
-                <div className="aspect-square">
-                  <img src={experiences[0].image} alt={experiences[0].title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-6 lg:p-8">
-                    <h3 className="font-display text-2xl lg:text-3xl font-semibold text-primary-foreground mb-2 hero-text-shadow">{experiences[0].title}</h3>
-                    <p className="text-primary-foreground/70 font-body text-sm leading-relaxed max-w-xs">{experiences[0].description}</p>
-                  </div>
-                </div>
-              </motion.div>
-              {/* Smaller cards */}
-              {experiences.slice(1).map((exp, i) => (
+            {/* Equal weight cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 max-w-6xl mx-auto">
+              {experiences.map((exp, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 30 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: (i + 1) * 0.08 }}
+                  transition={{ delay: i * 0.1 }}
                   className="group relative overflow-hidden rounded-2xl cursor-pointer"
                 >
-                  <div className="aspect-[4/5]">
+                  <div className="aspect-[3/4]">
                     <img src={exp.image} alt={exp.title} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" loading="lazy" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/30 to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-5">
-                      <h3 className="font-display text-lg lg:text-xl font-semibold text-primary-foreground mb-1 hero-text-shadow">{exp.title}</h3>
-                      <p className="text-primary-foreground/60 font-body text-xs leading-relaxed line-clamp-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">{exp.description}</p>
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/80 via-primary/20 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-6">
+                      <h3 className="font-display text-2xl font-semibold text-primary-foreground mb-2 hero-text-shadow">{exp.title}</h3>
+                      <p className="text-primary-foreground/70 font-body text-sm leading-relaxed">{exp.description}</p>
                     </div>
                   </div>
                 </motion.div>
