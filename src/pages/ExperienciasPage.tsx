@@ -312,7 +312,7 @@ const ExperienciasPage = () => {
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center max-w-6xl mx-auto mb-24">
               <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="overflow-hidden rounded-2xl">
-                <img src="https://www.minhagloria.com.br/lovable-uploads/04460747-2a8e-4012-a6be-1b1819ad5997.png" alt="Spa e massagem relaxante ao ar livre" className="w-full h-[350px] lg:h-[500px] object-cover hover:scale-105 transition-transform duration-1000" loading="lazy" />
+                <img src="/images/amenities-spa.jpg" alt="Spa e massagem relaxante ao ar livre" className="w-full h-[350px] lg:h-[500px] object-cover hover:scale-105 transition-transform duration-1000" loading="lazy" />
               </motion.div>
               <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
                 <div className="w-16 h-16 mb-6 rounded-full bg-primary/10 flex items-center justify-center">
