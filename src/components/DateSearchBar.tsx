@@ -54,6 +54,7 @@ const DateSearchBar = () => {
             onSelect={setCheckIn}
             disabled={(date) => date < new Date()}
             initialFocus
+            locale={ptBR}
             className={cn("p-3 pointer-events-auto")}
           />
         </PopoverContent>
