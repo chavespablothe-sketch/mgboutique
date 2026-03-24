@@ -22,4 +22,5 @@ export default defineConfig(({ mode }) => ({
   optimizeDeps: {
     include: ["react", "react-dom", "react/jsx-runtime", "@tanstack/react-query", "framer-motion", "@supabase/supabase-js"],
     force: true,
+  },
 }));
