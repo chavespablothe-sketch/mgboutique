@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Percent } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import packages from "@/data/packages";
 
@@ -9,25 +9,6 @@ const OffersSection = () => {
   return (
     <section className="py-24 lg:py-36 bg-background">
       <div className="container mx-auto px-4">
-        {/* Consumer Banner */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto mb-16 bg-cta rounded-2xl p-8 md:p-10 text-center"
-        >
-          <div className="inline-flex items-center gap-2 bg-cta-foreground/10 px-4 py-1.5 rounded-full mb-4">
-            <Percent size={14} className="text-cta-foreground" />
-            <span className="text-cta-foreground font-body text-xs font-bold uppercase tracking-wider">Mês do Consumidor</span>
-          </div>
-          <h3 className="font-display text-2xl md:text-3xl text-cta-foreground font-bold mb-2">
-            Até 30% OFF em pacotes selecionados
-          </h3>
-          <p className="text-cta-foreground/80 font-body text-sm">
-            Os valores promocionais já estão aplicados nos pacotes abaixo. Vagas limitadas.
-          </p>
-        </motion.div>
-
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

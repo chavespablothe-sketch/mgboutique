@@ -62,6 +62,52 @@ function buildGallery(own: string[]): string[] {
   return result;
 }
 
+const genericProgramSections: ProgramSection[] = [
+  {
+    icon: "✨",
+    title: "Chegada & Acolhimento",
+    items: [
+      "Recepção acolhedora com drink de boas-vindas para adultos e bebida especial para crianças",
+      "Mimo especial no quarto",
+      "Tempo livre para conhecer o hotel — piscina, jardins, áreas de descanso e espaços de convivência",
+      "Chá da tarde caseiro",
+      "Jantar e almoço com menu do chef",
+      "Música ambiente para momentos de tranquilidade",
+    ],
+  },
+  {
+    icon: "🌞",
+    title: "Lazer & Convivência",
+    items: [
+      "Café da manhã especial servido sem pressa",
+      "Recreação infantil supervisionada — jogos, oficinas criativas e atividades lúdicas",
+      "Tempo livre para relaxar — piscina, leitura ou passeios próximos",
+      "Tarde dedicada ao descanso e bem-estar",
+      "Chá da tarde com produtos artesanais",
+      "Atividade leve para hóspedes: música ao vivo, jogos ou experiência gastronômica",
+    ],
+  },
+  {
+    icon: "🎈",
+    title: "Para as crianças",
+    items: [
+      "Recreação monitorada em horários dedicados",
+      "Oficinas e brincadeiras",
+      "Espaço para diversão segura",
+    ],
+  },
+  {
+    icon: "💆",
+    title: "Para os adultos",
+    items: [
+      "Sessão de massagem relaxante",
+      "Ambiente tranquilo e acolhedor",
+      "Tempo de qualidade sem pressa",
+      "Oportunidades de descanso e bem-estar",
+    ],
+  },
+];
+
 
 const packages: HotelPackage[] = [
   {
@@ -166,6 +212,7 @@ const packages: HotelPackage[] = [
     tagColor: "bg-secondary",
     checkIn: "03042026",
     checkOut: "05042026",
+    programSections: genericProgramSections,
   },
   {
     slug: "tiradentes-2026",
@@ -198,6 +245,7 @@ const packages: HotelPackage[] = [
     tagColor: "bg-primary",
     checkIn: "17042026",
     checkOut: "21042026",
+    programSections: genericProgramSections,
   },
   {
     slug: "primeiro-de-maio-2026",
@@ -228,6 +276,7 @@ const packages: HotelPackage[] = [
     tagColor: "bg-secondary",
     checkIn: "01052026",
     checkOut: "03052026",
+    programSections: genericProgramSections,
   },
   {
     slug: "dia-das-maes-2026",
@@ -307,6 +356,7 @@ const packages: HotelPackage[] = [
     tagColor: "bg-primary",
     checkIn: "04062026",
     checkOut: "07062026",
+    programSections: genericProgramSections,
   },
   {
     slug: "dia-dos-namorados-2026",
@@ -338,6 +388,7 @@ const packages: HotelPackage[] = [
     capacity: "Até 2 pessoas",
     checkIn: "12062026",
     checkOut: "14062026",
+    programSections: genericProgramSections,
   },
   {
     slug: "arraia-inverno-2026",
@@ -368,6 +419,7 @@ const packages: HotelPackage[] = [
     tagColor: "bg-secondary",
     checkIn: "19062026",
     checkOut: "21062026",
+    programSections: genericProgramSections,
   },
   {
     slug: "julho-inverno-2026",
@@ -398,6 +450,7 @@ const packages: HotelPackage[] = [
     tagColor: "bg-secondary",
     checkIn: "03072026",
     checkOut: "05072026",
+    programSections: genericProgramSections,
   },
   {
     slug: "dia-dos-pais-2026",
@@ -428,6 +481,7 @@ const packages: HotelPackage[] = [
     tagColor: "bg-secondary",
     checkIn: "07082026",
     checkOut: "09082026",
+    programSections: genericProgramSections,
   },
   {
     slug: "sete-de-setembro-2026",
