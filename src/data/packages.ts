@@ -212,6 +212,7 @@ const packages: HotelPackage[] = [
     tagColor: "bg-secondary",
     checkIn: "03042026",
     checkOut: "05042026",
+    programSections: genericProgramSections,
   },
   {
     slug: "tiradentes-2026",
