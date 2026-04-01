@@ -276,6 +276,7 @@ const packages: HotelPackage[] = [
     tagColor: "bg-secondary",
     checkIn: "01052026",
     checkOut: "03052026",
+    programSections: genericProgramSections,
   },
   {
     slug: "dia-das-maes-2026",
