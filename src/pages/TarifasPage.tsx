@@ -11,21 +11,48 @@ import packages from "@/data/packages";
 
 import { OMNIBEES_URL } from "@/lib/omnibees";
 
-function getMonth(period: string): string {
+const allMonths = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+
+/** Images to use for the fim-de-semana package per month */
+const fdsMonthImages: Record<string, string> = {
+  "Abril": "/images/amenities-gastronomia.jpg",
+  "Maio": "/images/amenities-spa.jpg",
+  "Junho": "/images/lazer-piscina.webp",
+  "Julho": "/images/sobre-vista-pedra.jpg",
+  "Agosto": "/images/amenities-trilhas.png",
+  "Setembro": "/images/lazer-cavalos.jpg",
+  "Outubro": "/images/welcome-aerial.webp",
+  "Novembro": "/images/chale-banheira.jpg",
+  "Dezembro": "/images/vista-hotel.jpg",
+};
+
+function getMonths(period: string): string[] {
+  const lower = period.toLowerCase();
+  // Range like "abril a dezembro" → return all months in that range
+  const rangeMatch = lower.match(/(\w+)\s+a\s+(\w+)/);
+  if (rangeMatch) {
+    const monthKeys = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+    const startIdx = monthKeys.findIndex(m => lower.includes(m) && rangeMatch[1].includes(m));
+    const endIdx = monthKeys.findIndex(m => rangeMatch[2].includes(m));
+    if (startIdx !== -1 && endIdx !== -1 && endIdx > startIdx) {
+      return allMonths.slice(startIdx, endIdx + 1);
+    }
+  }
+  // Prioritize dezembro over janeiro for year-spanning periods
   const monthMap: Record<string, string> = {
+    "dezembro": "Dezembro",
     "janeiro": "Janeiro", "fevereiro": "Fevereiro", "março": "Março",
     "abril": "Abril", "maio": "Maio", "junho": "Junho",
     "julho": "Julho", "agosto": "Agosto", "setembro": "Setembro",
-    "outubro": "Outubro", "novembro": "Novembro", "dezembro": "Dezembro",
+    "outubro": "Outubro", "novembro": "Novembro",
   };
-  const lower = period.toLowerCase();
   for (const [key, val] of Object.entries(monthMap)) {
-    if (lower.includes(key)) return val;
+    if (lower.includes(key)) return [val];
   }
-  return "Outros";
+  return ["Outros"];
 }
 
-const monthOrder = ["Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+const monthOrder = ["Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
 
 const TarifasPage = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
@@ -34,9 +61,16 @@ const TarifasPage = () => {
   const packagesByMonth = useMemo(() => {
     const groups: Record<string, typeof packages> = {};
     packages.forEach(pkg => {
-      const month = getMonth(pkg.period);
-      if (!groups[month]) groups[month] = [];
-      groups[month].push(pkg);
+      const months = getMonths(pkg.period);
+      months.forEach(month => {
+        if (!groups[month]) groups[month] = [];
+        // For multi-month packages, override image per month
+        if (months.length > 1 && fdsMonthImages[month]) {
+          groups[month].push({ ...pkg, image: fdsMonthImages[month] });
+        } else {
+          groups[month].push(pkg);
+        }
+      });
     });
     return groups;
   }, []);
