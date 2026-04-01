@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import SEO, { breadcrumbSchema } from "@/components/SEO";
 import CTASection from "@/components/CTASection";
 import { motion } from "framer-motion";
-import { Calendar, ArrowRight, CalendarDays, CreditCard, Baby, Star, Percent, Check, UtensilsCrossed, Sun } from "lucide-react";
+import { Calendar, ArrowRight, CalendarDays, CreditCard, Baby, Star, Check, UtensilsCrossed, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import packages from "@/data/packages";
@@ -102,45 +102,6 @@ const TarifasPage = () => {
                   {item.text}
                 </span>
               ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Mês do Consumidor - Simplified */}
-        <section className="relative overflow-hidden">
-          <div className="bg-gradient-to-br from-cta via-cta to-primary py-16 lg:py-24">
-            <div className="absolute inset-0 opacity-5">
-              <div className="absolute top-10 left-10 w-64 h-64 rounded-full bg-primary-foreground blur-3xl animate-pulse" />
-              <div className="absolute bottom-10 right-10 w-96 h-96 rounded-full bg-secondary blur-3xl animate-pulse" />
-            </div>
-            <div className="container mx-auto px-4 relative z-10">
-              <div className="max-w-3xl mx-auto text-center">
-                <motion.div
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8 }}
-                >
-                  <div className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6 border border-primary-foreground/20">
-                    <Percent size={16} className="text-secondary animate-pulse" />
-                    <span className="text-primary-foreground font-body text-xs font-bold uppercase tracking-wider">Oferta por tempo limitado</span>
-                  </div>
-                  <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground font-bold leading-[0.95] mb-4">
-                    Mês do<br />
-                    <span className="italic text-secondary">Consumidor</span>
-                  </h2>
-                  <div className="flex items-baseline justify-center gap-3 mb-4">
-                    <span className="font-display text-7xl md:text-8xl font-bold text-primary-foreground">30%</span>
-                    <span className="font-body text-xl text-primary-foreground/80 uppercase tracking-wider">OFF</span>
-                  </div>
-                  <p className="text-primary-foreground/70 font-body text-lg leading-relaxed max-w-md mx-auto mb-4">
-                    Em pacotes selecionados. Vagas limitadas — apenas 20 suítes disponíveis.
-                  </p>
-                  <p className="text-secondary font-body text-sm font-bold uppercase tracking-wider">
-                    ⚡ As melhores tarifas da temporada — reserve antes que esgote
-                  </p>
-                </motion.div>
-              </div>
             </div>
           </div>
         </section>
