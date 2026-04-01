@@ -792,6 +792,64 @@ const packages: HotelPackage[] = [
     tagColor: "bg-secondary",
     checkIn: "30122026",
     checkOut: "03012027",
+    programSections: [
+      {
+        icon: "🍹",
+        title: "Boas-vindas especiais",
+        items: [
+          "Drink de boas-vindas para adultos e bebida especial para crianças",
+          "Mimo de boas-vindas no quarto",
+          "Atendimento personalizado durante toda a estadia",
+        ],
+      },
+      {
+        icon: "🍽",
+        title: "Gastronomia de Réveillon",
+        items: [
+          "Café da manhã especial diário",
+          "Chá da tarde durante a estadia",
+          "Jantares selecionados",
+          "Almoços festivos",
+          "Coquetel pré-Réveillon (31/12)",
+          "Ceia de Réveillon completa com brinde à meia-noite",
+          "Almoço especial de Ano Novo (01/01)",
+          "Almoço de encerramento no dia do check-out",
+        ],
+      },
+      {
+        icon: "🌺",
+        title: "Bem-estar & Relaxamento",
+        items: [
+          "Sessão de massagem relaxante para adultos",
+          "Uso livre da piscina e áreas de lazer",
+          "Momentos de descanso em ambientes acolhedores",
+          "Tempo livre para aproveitar o hotel com tranquilidade",
+          "Check-out estendido até 15h (mediante disponibilidade)",
+        ],
+      },
+      {
+        icon: "🎉",
+        title: "Experiências para crianças",
+        description: "Atividades supervisionadas em horários dedicados:",
+        items: [
+          "Recreação monitorada diária",
+          "Oficinas criativas e jogos",
+          "Sessões de cinema infantil",
+          "Brincadeiras temáticas e atividades ao ar livre",
+          "Espaços seguros para diversão enquanto os adultos relaxam",
+        ],
+      },
+      {
+        icon: "🤍",
+        title: "Experiências compartilhadas",
+        items: [
+          "Momentos especiais em família",
+          "Atividades culturais e gastronômicas",
+          "Celebrações pensadas para convivência e alegria",
+          "Ambiente festivo com clima acolhedor",
+        ],
+      },
+    ],
   },
 ];
 
