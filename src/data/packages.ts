@@ -388,6 +388,7 @@ const packages: HotelPackage[] = [
     capacity: "Até 2 pessoas",
     checkIn: "12062026",
     checkOut: "14062026",
+    programSections: genericProgramSections,
   },
   {
     slug: "arraia-inverno-2026",
