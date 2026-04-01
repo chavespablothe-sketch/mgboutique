@@ -91,7 +91,51 @@ const packages: HotelPackage[] = [
     ]),
     tag: "família",
     tagColor: "bg-secondary",
-    // No specific dates — generic weekend package
+    programSections: [
+      {
+        icon: "✨",
+        title: "Chegada & Acolhimento",
+        items: [
+          "Recepção acolhedora com drink de boas-vindas para adultos e bebida especial para crianças",
+          "Mimo especial no quarto",
+          "Tempo livre para conhecer o hotel — piscina, jardins, áreas de descanso e espaços de convivência",
+          "Chá da tarde caseiro",
+          "Jantar e almoço com menu do chef",
+          "Música ambiente para momentos de tranquilidade",
+        ],
+      },
+      {
+        icon: "🌞",
+        title: "Lazer & Convivência",
+        items: [
+          "Café da manhã especial servido sem pressa",
+          "Recreação infantil supervisionada — jogos, oficinas criativas e atividades lúdicas",
+          "Tempo livre para relaxar — piscina, leitura ou passeios próximos",
+          "Tarde dedicada ao descanso e bem-estar",
+          "Chá da tarde com produtos artesanais",
+          "Atividade leve para hóspedes: música ao vivo, jogos ou experiência gastronômica",
+        ],
+      },
+      {
+        icon: "🎈",
+        title: "Para as crianças",
+        items: [
+          "Recreação monitorada em horários dedicados",
+          "Oficinas e brincadeiras",
+          "Espaço para diversão segura",
+        ],
+      },
+      {
+        icon: "💆",
+        title: "Para os adultos",
+        items: [
+          "Sessão de massagem relaxante",
+          "Ambiente tranquilo e acolhedor",
+          "Tempo de qualidade sem pressa",
+          "Oportunidades de descanso e bem-estar",
+        ],
+      },
+    ],
   },
   {
     slug: "pascoa-2026",
