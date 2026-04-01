@@ -1,3 +1,10 @@
+export interface ProgramSection {
+  icon: string;
+  title: string;
+  description?: string;
+  items: string[];
+}
+
 export interface HotelPackage {
   slug: string;
   title: string;
@@ -13,13 +20,14 @@ export interface HotelPackage {
   included: string[];
   kidsFeatures: string[];
   schedule: { day: string; items: string[] }[];
+  programSections?: ProgramSection[];
   image: string;
   gallery: string[];
   tag: string;
   tagColor: string;
   capacity?: string;
-  checkIn?: string;  // ddMMyyyy for Omnibees
-  checkOut?: string; // ddMMyyyy for Omnibees
+  checkIn?: string;
+  checkOut?: string;
 }
 
 // Shared hotel photo pool for gallery expansion
