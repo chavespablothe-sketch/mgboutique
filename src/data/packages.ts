@@ -245,6 +245,7 @@ const packages: HotelPackage[] = [
     tagColor: "bg-primary",
     checkIn: "17042026",
     checkOut: "21042026",
+    programSections: genericProgramSections,
   },
   {
     slug: "primeiro-de-maio-2026",
