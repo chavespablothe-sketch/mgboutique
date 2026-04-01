@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Percent } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import packages from "@/data/packages";
 
