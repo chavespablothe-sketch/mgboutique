@@ -705,6 +705,61 @@ const packages: HotelPackage[] = [
     tagColor: "bg-secondary",
     checkIn: "23122026",
     checkOut: "26122026",
+    programSections: [
+      {
+        icon: "🎄",
+        title: "Boas-vindas natalinas",
+        items: [
+          "Drink de boas-vindas para adultos e bebida especial para crianças",
+          "Mimo natalino no quarto",
+          "Atendimento personalizado durante a estadia",
+        ],
+      },
+      {
+        icon: "🍽",
+        title: "Gastronomia de Natal",
+        items: [
+          "Café da manhã especial diário",
+          "Chá da tarde temático natalino",
+          "Ceia de Natal completa (24/12) com pratos tradicionais e sobremesas festivas",
+          "Almoço especial de Natal (25/12)",
+          "Jantares selecionados durante a estadia",
+          "Almoço de encerramento no dia do check-out",
+        ],
+      },
+      {
+        icon: "🌺",
+        title: "Bem-estar & Relaxamento",
+        items: [
+          "Sessão de massagem relaxante para adultos",
+          "Uso livre da piscina e áreas de lazer",
+          "Momentos de descanso em ambientes acolhedores",
+          "Tempo livre para relaxar e aproveitar o hotel",
+          "Check-out estendido até 15h (mediante disponibilidade)",
+        ],
+      },
+      {
+        icon: "🎅",
+        title: "Experiências para crianças",
+        description: "Atividades festivas e supervisionadas em horários dedicados:",
+        items: [
+          "Oficina de cartinhas e artes natalinas",
+          "Caça ao tesouro temática",
+          "Sessão de cinema infantil de Natal",
+          "Contação de histórias natalinas",
+          "Encontro especial com o Papai Noel 🎁",
+        ],
+      },
+      {
+        icon: "🤍",
+        title: "Experiências compartilhadas",
+        items: [
+          "Momentos especiais em família junto à decoração natalina",
+          "Atividades culturais e gastronômicas",
+          "Celebrações pensadas para convivência e afeto",
+        ],
+      },
+    ],
   },
   {
     slug: "reveillon-2026",
