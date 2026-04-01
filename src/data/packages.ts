@@ -546,6 +546,59 @@ const packages: HotelPackage[] = [
     tagColor: "bg-secondary",
     checkIn: "09102026",
     checkOut: "12102026",
+    programSections: [
+      {
+        icon: "🧸",
+        title: "Boas-vindas encantadas",
+        items: [
+          "Welcome drink para adultos e bebida especial para crianças",
+          "Surpresa especial para os pequenos",
+          "Mimo infantil no quarto",
+          "Kit diversão de boas-vindas",
+        ],
+      },
+      {
+        icon: "🎨",
+        title: "Programação infantil especial",
+        description: "Atividades supervisionadas, criativas e opcionais:",
+        items: [
+          "Oficinas de arte e criatividade",
+          "Caça ao tesouro temática pelo hotel",
+          "Contação de histórias interativa",
+          "Sessões de cinema infantil com pipoca",
+          "Oficina gastronômica (mão na massa)",
+          "Jogos cooperativos e brincadeiras ao ar livre",
+          "Espaço kids com monitoria em horários específicos",
+        ],
+      },
+      {
+        icon: "🌿",
+        title: "Experiências para toda a família",
+        items: [
+          "Atividades lúdicas ao ar livre",
+          "Experiência gastronômica compartilhada",
+          "Momentos especiais para criar memórias em família",
+          "Tempo livre para piscina e lazer",
+        ],
+      },
+      {
+        icon: "🍽",
+        title: "Gastronomia",
+        items: [
+          "Café da manhã especial diário",
+          "Opções infantis equilibradas e atrativas",
+          "Jantar temático familiar",
+          "Doces artesanais e surpresas ao longo da estadia",
+          "Almoço de encerramento",
+        ],
+      },
+      {
+        icon: "🎉",
+        title: "Destaque do feriado",
+        description: "Celebração especial de Dia das Crianças — uma experiência lúdica e afetiva preparada para surpreender os pequenos e emocionar toda a família.",
+        items: [],
+      },
+    ],
   },
   {
     slug: "finados-2026",
