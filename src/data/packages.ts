@@ -481,6 +481,7 @@ const packages: HotelPackage[] = [
     tagColor: "bg-secondary",
     checkIn: "07082026",
     checkOut: "09082026",
+    programSections: genericProgramSections,
   },
   {
     slug: "sete-de-setembro-2026",
