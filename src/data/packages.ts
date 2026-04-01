@@ -419,6 +419,7 @@ const packages: HotelPackage[] = [
     tagColor: "bg-secondary",
     checkIn: "19062026",
     checkOut: "21062026",
+    programSections: genericProgramSections,
   },
   {
     slug: "julho-inverno-2026",
