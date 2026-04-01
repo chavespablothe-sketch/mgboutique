@@ -5,6 +5,7 @@ import Footer from "@/components/Footer";
 import SEO, { breadcrumbSchema } from "@/components/SEO";
 import CTASection from "@/components/CTASection";
 import { motion, AnimatePresence } from "framer-motion";
+import ProgramSections from "@/components/sections/ProgramSections";
 import { Calendar, Clock, Check, Baby, ArrowRight, ArrowLeft, Shield, CreditCard, Users, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import packages from "@/data/packages";
@@ -151,6 +152,9 @@ const PacoteDetalhePage = () => {
                   </motion.div>
                 )}
 
+                {pkg.programSections && pkg.programSections.length > 0 && (
+                  <ProgramSections sections={pkg.programSections} />
+                )}
               </div>
 
               {/* Sticky Pricing Card */}

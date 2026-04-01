@@ -1,3 +1,10 @@
+export interface ProgramSection {
+  icon: string;
+  title: string;
+  description?: string;
+  items: string[];
+}
+
 export interface HotelPackage {
   slug: string;
   title: string;
@@ -13,13 +20,14 @@ export interface HotelPackage {
   included: string[];
   kidsFeatures: string[];
   schedule: { day: string; items: string[] }[];
+  programSections?: ProgramSection[];
   image: string;
   gallery: string[];
   tag: string;
   tagColor: string;
   capacity?: string;
-  checkIn?: string;  // ddMMyyyy for Omnibees
-  checkOut?: string; // ddMMyyyy for Omnibees
+  checkIn?: string;
+  checkOut?: string;
 }
 
 // Shared hotel photo pool for gallery expansion
@@ -83,7 +91,51 @@ const packages: HotelPackage[] = [
     ]),
     tag: "família",
     tagColor: "bg-secondary",
-    // No specific dates — generic weekend package
+    programSections: [
+      {
+        icon: "✨",
+        title: "Chegada & Acolhimento",
+        items: [
+          "Recepção acolhedora com drink de boas-vindas para adultos e bebida especial para crianças",
+          "Mimo especial no quarto",
+          "Tempo livre para conhecer o hotel — piscina, jardins, áreas de descanso e espaços de convivência",
+          "Chá da tarde caseiro",
+          "Jantar e almoço com menu do chef",
+          "Música ambiente para momentos de tranquilidade",
+        ],
+      },
+      {
+        icon: "🌞",
+        title: "Lazer & Convivência",
+        items: [
+          "Café da manhã especial servido sem pressa",
+          "Recreação infantil supervisionada — jogos, oficinas criativas e atividades lúdicas",
+          "Tempo livre para relaxar — piscina, leitura ou passeios próximos",
+          "Tarde dedicada ao descanso e bem-estar",
+          "Chá da tarde com produtos artesanais",
+          "Atividade leve para hóspedes: música ao vivo, jogos ou experiência gastronômica",
+        ],
+      },
+      {
+        icon: "🎈",
+        title: "Para as crianças",
+        items: [
+          "Recreação monitorada em horários dedicados",
+          "Oficinas e brincadeiras",
+          "Espaço para diversão segura",
+        ],
+      },
+      {
+        icon: "💆",
+        title: "Para os adultos",
+        items: [
+          "Sessão de massagem relaxante",
+          "Ambiente tranquilo e acolhedor",
+          "Tempo de qualidade sem pressa",
+          "Oportunidades de descanso e bem-estar",
+        ],
+      },
+    ],
   },
   {
     slug: "pascoa-2026",
@@ -207,6 +259,23 @@ const packages: HotelPackage[] = [
     capacity: "Apenas 20 suítes",
     checkIn: "08052026",
     checkOut: "10052026",
+    programSections: [
+      {
+        icon: "🏨",
+        title: "O pacote inclui",
+        items: [
+          "Hospedagem em suíte exclusiva",
+          "Welcome drink",
+          "Chá da tarde especial",
+          "Mini spa",
+          "Oficinas e atividades",
+          "Jantares harmonizados",
+          "Brunch especial",
+          "Sessão de fotos em família",
+          "Homenagem surpresa para as mamães",
+        ],
+      },
+    ],
   },
   {
     slug: "corpus-christi-2026",
@@ -390,6 +459,62 @@ const packages: HotelPackage[] = [
     tagColor: "bg-primary",
     checkIn: "04092026",
     checkOut: "07092026",
+    programSections: [
+      {
+        icon: "🖤",
+        title: "Boas-vindas exclusivas",
+        items: [
+          "Welcome drink para adultos e bebida especial para crianças",
+          "Mimo de boas-vindas no quarto",
+          "Concierge dedicado durante a estadia",
+        ],
+      },
+      {
+        icon: "🍽",
+        title: "Gastronomia de experiência",
+        items: [
+          "Café da manhã especial diário, servido sem pressa",
+          "Jantar de abertura — Noite Italiana com massas artesanais",
+          "Almoço BBQ premium no sábado",
+          "Jantar 'Brasil Contemporâneo' com música ao vivo",
+          "Mesa de sabores regionais no domingo pela manhã",
+          "Jantar exclusivo de despedida com surpresa especial",
+          "Almoço de encerramento no dia do check-out",
+        ],
+      },
+      {
+        icon: "🌺",
+        title: "Bem-estar & Slow Luxury",
+        items: [
+          "Sessão de massagem relaxante para adultos",
+          "Uso livre da piscina e áreas de lazer",
+          "Experiências guiadas ao ar livre",
+          "Tempo livre para spa e relaxamento",
+          "Check-out estendido até 15h (mediante disponibilidade)",
+        ],
+      },
+      {
+        icon: "🎨",
+        title: "Experiências para crianças",
+        description: "Atividades criativas e supervisionadas em horários dedicados:",
+        items: [
+          "Oficina de artes e criatividade",
+          "Caça ao tesouro lúdica",
+          "Sessão de cinema infantil",
+          "Contação de histórias",
+          "Espaço tranquilo com jogos",
+        ],
+      },
+      {
+        icon: "✨",
+        title: "Experiências compartilhadas",
+        items: [
+          "Pastel com caldo de cana na horta (adultos e crianças)",
+          "Atividades culturais e gastronômicas",
+          "Momentos especiais pensados para a convivência em família",
+        ],
+      },
+    ],
   },
   {
     slug: "dia-das-criancas-2026",
@@ -421,6 +546,59 @@ const packages: HotelPackage[] = [
     tagColor: "bg-secondary",
     checkIn: "09102026",
     checkOut: "12102026",
+    programSections: [
+      {
+        icon: "🧸",
+        title: "Boas-vindas encantadas",
+        items: [
+          "Welcome drink para adultos e bebida especial para crianças",
+          "Surpresa especial para os pequenos",
+          "Mimo infantil no quarto",
+          "Kit diversão de boas-vindas",
+        ],
+      },
+      {
+        icon: "🎨",
+        title: "Programação infantil especial",
+        description: "Atividades supervisionadas, criativas e opcionais:",
+        items: [
+          "Oficinas de arte e criatividade",
+          "Caça ao tesouro temática pelo hotel",
+          "Contação de histórias interativa",
+          "Sessões de cinema infantil com pipoca",
+          "Oficina gastronômica (mão na massa)",
+          "Jogos cooperativos e brincadeiras ao ar livre",
+          "Espaço kids com monitoria em horários específicos",
+        ],
+      },
+      {
+        icon: "🌿",
+        title: "Experiências para toda a família",
+        items: [
+          "Atividades lúdicas ao ar livre",
+          "Experiência gastronômica compartilhada",
+          "Momentos especiais para criar memórias em família",
+          "Tempo livre para piscina e lazer",
+        ],
+      },
+      {
+        icon: "🍽",
+        title: "Gastronomia",
+        items: [
+          "Café da manhã especial diário",
+          "Opções infantis equilibradas e atrativas",
+          "Jantar temático familiar",
+          "Doces artesanais e surpresas ao longo da estadia",
+          "Almoço de encerramento",
+        ],
+      },
+      {
+        icon: "🎉",
+        title: "Destaque do feriado",
+        description: "Celebração especial de Dia das Crianças — uma experiência lúdica e afetiva preparada para surpreender os pequenos e emocionar toda a família.",
+        items: [],
+      },
+    ],
   },
   {
     slug: "finados-2026",
@@ -452,6 +630,50 @@ const packages: HotelPackage[] = [
     tagColor: "bg-primary",
     checkIn: "30102026",
     checkOut: "02112026",
+    programSections: [
+      {
+        icon: "🖤",
+        title: "Boas-vindas acolhedoras",
+        items: [
+          "Welcome drink na chegada",
+          "Chá calmante de boas-vindas no quarto",
+          "Mimo especial com proposta relaxante",
+          "Atendimento personalizado durante toda a estadia",
+        ],
+      },
+      {
+        icon: "🌺",
+        title: "Bem-estar & Slow Living",
+        items: [
+          "Atividades suaves de relaxamento e respiração",
+          "Tempo livre para piscina, spa e descanso",
+          "Ambientes preparados para silêncio e conforto",
+          "Check-out estendido até 15h (mediante disponibilidade)",
+        ],
+      },
+      {
+        icon: "🍽",
+        title: "Gastronomia reconfortante",
+        items: [
+          "Café da manhã especial diário, servido sem pressa",
+          "Menus sazonais leves e equilibrados",
+          "Jantar temático de abertura",
+          "Experiência gastronômica sensorial",
+          "Jantar de despedida acolhedor",
+          "Almoço de encerramento",
+        ],
+      },
+      {
+        icon: "✨",
+        title: "Experiências culturais e sensoriais",
+        items: [
+          "Música ambiente ao vivo em clima intimista",
+          "Degustações selecionadas",
+          "Momentos contemplativos ao ar livre",
+          "Atividades opcionais sob reserva",
+        ],
+      },
+    ],
   },
   {
     slug: "natal-2026",
@@ -483,6 +705,61 @@ const packages: HotelPackage[] = [
     tagColor: "bg-secondary",
     checkIn: "23122026",
     checkOut: "26122026",
+    programSections: [
+      {
+        icon: "🎄",
+        title: "Boas-vindas natalinas",
+        items: [
+          "Drink de boas-vindas para adultos e bebida especial para crianças",
+          "Mimo natalino no quarto",
+          "Atendimento personalizado durante a estadia",
+        ],
+      },
+      {
+        icon: "🍽",
+        title: "Gastronomia de Natal",
+        items: [
+          "Café da manhã especial diário",
+          "Chá da tarde temático natalino",
+          "Ceia de Natal completa (24/12) com pratos tradicionais e sobremesas festivas",
+          "Almoço especial de Natal (25/12)",
+          "Jantares selecionados durante a estadia",
+          "Almoço de encerramento no dia do check-out",
+        ],
+      },
+      {
+        icon: "🌺",
+        title: "Bem-estar & Relaxamento",
+        items: [
+          "Sessão de massagem relaxante para adultos",
+          "Uso livre da piscina e áreas de lazer",
+          "Momentos de descanso em ambientes acolhedores",
+          "Tempo livre para relaxar e aproveitar o hotel",
+          "Check-out estendido até 15h (mediante disponibilidade)",
+        ],
+      },
+      {
+        icon: "🎅",
+        title: "Experiências para crianças",
+        description: "Atividades festivas e supervisionadas em horários dedicados:",
+        items: [
+          "Oficina de cartinhas e artes natalinas",
+          "Caça ao tesouro temática",
+          "Sessão de cinema infantil de Natal",
+          "Contação de histórias natalinas",
+          "Encontro especial com o Papai Noel 🎁",
+        ],
+      },
+      {
+        icon: "🤍",
+        title: "Experiências compartilhadas",
+        items: [
+          "Momentos especiais em família junto à decoração natalina",
+          "Atividades culturais e gastronômicas",
+          "Celebrações pensadas para convivência e afeto",
+        ],
+      },
+    ],
   },
   {
     slug: "reveillon-2026",
@@ -515,6 +792,64 @@ const packages: HotelPackage[] = [
     tagColor: "bg-secondary",
     checkIn: "30122026",
     checkOut: "03012027",
+    programSections: [
+      {
+        icon: "🍹",
+        title: "Boas-vindas especiais",
+        items: [
+          "Drink de boas-vindas para adultos e bebida especial para crianças",
+          "Mimo de boas-vindas no quarto",
+          "Atendimento personalizado durante toda a estadia",
+        ],
+      },
+      {
+        icon: "🍽",
+        title: "Gastronomia de Réveillon",
+        items: [
+          "Café da manhã especial diário",
+          "Chá da tarde durante a estadia",
+          "Jantares selecionados",
+          "Almoços festivos",
+          "Coquetel pré-Réveillon (31/12)",
+          "Ceia de Réveillon completa com brinde à meia-noite",
+          "Almoço especial de Ano Novo (01/01)",
+          "Almoço de encerramento no dia do check-out",
+        ],
+      },
+      {
+        icon: "🌺",
+        title: "Bem-estar & Relaxamento",
+        items: [
+          "Sessão de massagem relaxante para adultos",
+          "Uso livre da piscina e áreas de lazer",
+          "Momentos de descanso em ambientes acolhedores",
+          "Tempo livre para aproveitar o hotel com tranquilidade",
+          "Check-out estendido até 15h (mediante disponibilidade)",
+        ],
+      },
+      {
+        icon: "🎉",
+        title: "Experiências para crianças",
+        description: "Atividades supervisionadas em horários dedicados:",
+        items: [
+          "Recreação monitorada diária",
+          "Oficinas criativas e jogos",
+          "Sessões de cinema infantil",
+          "Brincadeiras temáticas e atividades ao ar livre",
+          "Espaços seguros para diversão enquanto os adultos relaxam",
+        ],
+      },
+      {
+        icon: "🤍",
+        title: "Experiências compartilhadas",
+        items: [
+          "Momentos especiais em família",
+          "Atividades culturais e gastronômicas",
+          "Celebrações pensadas para convivência e alegria",
+          "Ambiente festivo com clima acolhedor",
+        ],
+      },
+    ],
   },
 ];
 
