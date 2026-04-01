@@ -356,6 +356,7 @@ const packages: HotelPackage[] = [
     tagColor: "bg-primary",
     checkIn: "04062026",
     checkOut: "07062026",
+    programSections: genericProgramSections,
   },
   {
     slug: "dia-dos-namorados-2026",
