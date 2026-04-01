@@ -630,6 +630,50 @@ const packages: HotelPackage[] = [
     tagColor: "bg-primary",
     checkIn: "30102026",
     checkOut: "02112026",
+    programSections: [
+      {
+        icon: "🖤",
+        title: "Boas-vindas acolhedoras",
+        items: [
+          "Welcome drink na chegada",
+          "Chá calmante de boas-vindas no quarto",
+          "Mimo especial com proposta relaxante",
+          "Atendimento personalizado durante toda a estadia",
+        ],
+      },
+      {
+        icon: "🌺",
+        title: "Bem-estar & Slow Living",
+        items: [
+          "Atividades suaves de relaxamento e respiração",
+          "Tempo livre para piscina, spa e descanso",
+          "Ambientes preparados para silêncio e conforto",
+          "Check-out estendido até 15h (mediante disponibilidade)",
+        ],
+      },
+      {
+        icon: "🍽",
+        title: "Gastronomia reconfortante",
+        items: [
+          "Café da manhã especial diário, servido sem pressa",
+          "Menus sazonais leves e equilibrados",
+          "Jantar temático de abertura",
+          "Experiência gastronômica sensorial",
+          "Jantar de despedida acolhedor",
+          "Almoço de encerramento",
+        ],
+      },
+      {
+        icon: "✨",
+        title: "Experiências culturais e sensoriais",
+        items: [
+          "Música ambiente ao vivo em clima intimista",
+          "Degustações selecionadas",
+          "Momentos contemplativos ao ar livre",
+          "Atividades opcionais sob reserva",
+        ],
+      },
+    ],
   },
   {
     slug: "natal-2026",
