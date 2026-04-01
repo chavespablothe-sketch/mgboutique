@@ -152,6 +152,9 @@ const PacoteDetalhePage = () => {
                   </motion.div>
                 )}
 
+                {pkg.programSections && pkg.programSections.length > 0 && (
+                  <ProgramSections sections={pkg.programSections} />
+                )}
               </div>
 
               {/* Sticky Pricing Card */}
