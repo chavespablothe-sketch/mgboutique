@@ -151,24 +151,6 @@ const PacoteDetalhePage = () => {
                   </motion.div>
                 )}
 
-                <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
-                  <h2 className="font-display text-2xl font-semibold text-foreground mb-6">Programação</h2>
-                  <div className="space-y-6">
-                    {pkg.schedule.map((day, i) => (
-                      <div key={i} className="border-l-2 border-secondary pl-6 py-1">
-                        <h3 className="font-display text-lg font-semibold text-foreground mb-3">{day.day}</h3>
-                        <ul className="space-y-2">
-                          {day.items.map((item, j) => (
-                            <li key={j} className="flex items-center gap-3 text-muted-foreground font-body text-sm">
-                              <span className="w-1.5 h-1.5 rounded-full bg-secondary shrink-0" />
-                              {item}
-                            </li>
-                          ))}
-                        </ul>
-                      </div>
-                    ))}
-                  </div>
-                </motion.div>
               </div>
 
               {/* Sticky Pricing Card */}
