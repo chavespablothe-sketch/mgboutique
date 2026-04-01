@@ -259,6 +259,23 @@ const packages: HotelPackage[] = [
     capacity: "Apenas 20 suítes",
     checkIn: "08052026",
     checkOut: "10052026",
+    programSections: [
+      {
+        icon: "🏨",
+        title: "O pacote inclui",
+        items: [
+          "Hospedagem em suíte exclusiva",
+          "Welcome drink",
+          "Chá da tarde especial",
+          "Mini spa",
+          "Oficinas e atividades",
+          "Jantares harmonizados",
+          "Brunch especial",
+          "Sessão de fotos em família",
+          "Homenagem surpresa para as mamães",
+        ],
+      },
+    ],
   },
   {
     slug: "corpus-christi-2026",
