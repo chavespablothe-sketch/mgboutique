@@ -1,25 +1,28 @@
 
 
-## Plano: Remover preços e valores dos pacotes
+## Plan: Mover Ano Novo para Dezembro
 
-### Onde os preços aparecem
+O problema é que a função `getMonth()` itera o `monthMap` e retorna o **primeiro** mês encontrado no texto do período. Como "janeiro" vem antes de "dezembro" no objeto, pacotes com período "30 de dezembro … a 3 de janeiro" são classificados como "Janeiro".
 
-1. **Home (OffersSection.tsx)** — Não mostra preços nos cards, apenas link "Ver tarifas especiais". OK, sem alteração necessária.
+### Solução
 
-2. **PacotesPage.tsx** — Bloco "a partir de" com `pkg.price`, `pkg.priceNote` e "por casal · pensão completa" (linhas 203-207). Será removido e substituído por um botão "Ver detalhes" mais limpo.
+**Arquivo:** `src/pages/TarifasPage.tsx`
 
-3. **PacoteDetalhePage.tsx** — Card lateral sticky já não mostra preço (diz "Consulte valores ao reservar"). OK, sem alteração necessária.
+1. **Reordenar o `monthMap`** para que "dezembro" venha **antes** de "janeiro", garantindo que pacotes com ambos os meses sejam classificados em Dezembro.
 
-4. **TarifasPage.tsx** — Cards no grid não mostram preços visíveis. OK.
+2. **Remover "Janeiro" do `monthOrder`** (caso tenha sido adicionado), já que não haverá mais pacotes nessa categoria.
 
-5. **OffersSection.tsx (Home)** — Banner "Até 30% OFF" e "Mês do Consumidor" — sem preço explícito, mas implica desconto. Manter? Vou manter pois não mostra valor.
+Mudança concreta na função `getMonth` (linha 15-19): inverter a ordem para que "dezembro" seja checado primeiro:
 
-### Alterações
+```ts
+const monthMap: Record<string, string> = {
+  "dezembro": "Dezembro",
+  "janeiro": "Janeiro", "fevereiro": "Fevereiro", "março": "Março",
+  "abril": "Abril", "maio": "Maio", "junho": "Junho",
+  "julho": "Julho", "agosto": "Agosto", "setembro": "Setembro",
+  "outubro": "Outubro", "novembro": "Novembro",
+};
+```
 
-**Arquivo: `src/pages/PacotesPage.tsx`**
-- Remover o bloco `md:col-span-4` que exibe `pkg.price`, `pkg.priceNote`, "a partir de" e "por casal · pensão completa"
-- Ajustar o grid: o bloco de descrição ocupa toda a largura (`col-span-12`)
-- Mover o botão "Reservar" para dentro do bloco de descrição
-
-Isso é uma alteração simples em um único arquivo — o PacotesPage é o único lugar que exibe preços visíveis.
+Isso garante que qualquer pacote mencionando "dezembro" (mesmo que também mencione "janeiro") será agrupado em Dezembro.
 
