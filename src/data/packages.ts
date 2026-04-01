@@ -450,6 +450,7 @@ const packages: HotelPackage[] = [
     tagColor: "bg-secondary",
     checkIn: "03072026",
     checkOut: "05072026",
+    programSections: genericProgramSections,
   },
   {
     slug: "dia-dos-pais-2026",
