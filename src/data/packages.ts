@@ -459,6 +459,62 @@ const packages: HotelPackage[] = [
     tagColor: "bg-primary",
     checkIn: "04092026",
     checkOut: "07092026",
+    programSections: [
+      {
+        icon: "🖤",
+        title: "Boas-vindas exclusivas",
+        items: [
+          "Welcome drink para adultos e bebida especial para crianças",
+          "Mimo de boas-vindas no quarto",
+          "Concierge dedicado durante a estadia",
+        ],
+      },
+      {
+        icon: "🍽",
+        title: "Gastronomia de experiência",
+        items: [
+          "Café da manhã especial diário, servido sem pressa",
+          "Jantar de abertura — Noite Italiana com massas artesanais",
+          "Almoço BBQ premium no sábado",
+          "Jantar "Brasil Contemporâneo" com música ao vivo",
+          "Mesa de sabores regionais no domingo pela manhã",
+          "Jantar exclusivo de despedida com surpresa especial",
+          "Almoço de encerramento no dia do check-out",
+        ],
+      },
+      {
+        icon: "🌺",
+        title: "Bem-estar & Slow Luxury",
+        items: [
+          "Sessão de massagem relaxante para adultos",
+          "Uso livre da piscina e áreas de lazer",
+          "Experiências guiadas ao ar livre",
+          "Tempo livre para spa e relaxamento",
+          "Check-out estendido até 15h (mediante disponibilidade)",
+        ],
+      },
+      {
+        icon: "🎨",
+        title: "Experiências para crianças",
+        description: "Atividades criativas e supervisionadas em horários dedicados:",
+        items: [
+          "Oficina de artes e criatividade",
+          "Caça ao tesouro lúdica",
+          "Sessão de cinema infantil",
+          "Contação de histórias",
+          "Espaço tranquilo com jogos",
+        ],
+      },
+      {
+        icon: "✨",
+        title: "Experiências compartilhadas",
+        items: [
+          "Pastel com caldo de cana na horta (adultos e crianças)",
+          "Atividades culturais e gastronômicas",
+          "Momentos especiais pensados para a convivência em família",
+        ],
+      },
+    ],
   },
   {
     slug: "dia-das-criancas-2026",
