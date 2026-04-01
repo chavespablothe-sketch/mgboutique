@@ -476,7 +476,7 @@ const packages: HotelPackage[] = [
           "Café da manhã especial diário, servido sem pressa",
           "Jantar de abertura — Noite Italiana com massas artesanais",
           "Almoço BBQ premium no sábado",
-          "Jantar "Brasil Contemporâneo" com música ao vivo",
+          "Jantar 'Brasil Contemporâneo' com música ao vivo",
           "Mesa de sabores regionais no domingo pela manhã",
           "Jantar exclusivo de despedida com surpresa especial",
           "Almoço de encerramento no dia do check-out",
