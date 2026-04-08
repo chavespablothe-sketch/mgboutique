@@ -39,6 +39,18 @@ function getUrgencyBadge(days: number): { label: string; className: string } | n
   return null;
 }
 
+/** Override images for the home section cards */
+const homeImageOverrides: Record<string, string> = {
+  "tiradentes-2026": "/images/pacotes-quadriciclo.png",
+  "primeiro-de-maio-2026": "/images/pacotes-playground.png",
+  "dia-das-maes-2026": "/images/pacotes-arara.png",
+  "corpus-christi-2026": "/images/pacotes-inflavel.png",
+};
+
+function getHomeImage(pkg: (typeof packages)[0]): string {
+  return homeImageOverrides[pkg.slug] || pkg.image;
+}
+
 function getNextPackages() {
   return packages
     .filter((p) => p.checkIn && p.slug !== "fim-de-semana")
@@ -106,7 +118,7 @@ function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }
       <Link to={`/tarifas/${pkg.slug}`} className="group block">
         <div className="relative overflow-hidden rounded-2xl aspect-[4/3]">
           <img
-            src={pkg.image}
+            src={getHomeImage(pkg)}
             alt={pkg.shortTitle}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             loading="lazy"
@@ -180,7 +192,7 @@ function PackageCard({ pkg, i }: { pkg: (typeof packages)[0]; i: number }) {
       <Link to={`/tarifas/${pkg.slug}`} className="group block">
         <div className="relative overflow-hidden rounded-2xl aspect-[4/3] mb-4">
           <img
-            src={pkg.image}
+            src={getHomeImage(pkg)}
             alt={pkg.shortTitle}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             loading="lazy"
