@@ -1,14 +1,214 @@
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Clock, Tag } from "lucide-react";
 import { Link } from "react-router-dom";
 import packages from "@/data/packages";
+import { buildOmnibeesUrl } from "@/lib/omnibees";
+
+/* ── helpers ─────────────────────────────────────────────── */
+
+function parseCheckIn(ddmmyyyy: string): Date {
+  const d = parseInt(ddmmyyyy.slice(0, 2), 10);
+  const m = parseInt(ddmmyyyy.slice(2, 4), 10) - 1;
+  const y = parseInt(ddmmyyyy.slice(4, 8), 10);
+  return new Date(y, m, d);
+}
+
+function getDaysUntil(ddmmyyyy: string): number {
+  const target = parseCheckIn(ddmmyyyy);
+  const now = new Date();
+  now.setHours(0, 0, 0, 0);
+  return Math.ceil((target.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
+}
+
+function getUrgencyBadge(days: number): { label: string; className: string } | null {
+  if (days < 15) return { label: "Últimas vagas", className: "bg-red-600 text-white" };
+  if (days < 30) return { label: "Últimos quartos", className: "bg-orange-500 text-white" };
+  if (days < 60) return { label: "Vagas limitadas", className: "bg-amber-500 text-white" };
+  return null;
+}
+
+function getNextPackages() {
+  return packages
+    .filter((p) => p.checkIn && p.slug !== "fim-de-semana")
+    .filter((p) => getDaysUntil(p.checkIn!) > 0)
+    .sort((a, b) => getDaysUntil(a.checkIn!) - getDaysUntil(b.checkIn!));
+}
+
+/* ── sub-components ──────────────────────────────────────── */
+
+function UrgencyBanner({ pkg, days }: { pkg: (typeof packages)[0]; days: number }) {
+  const badge = getUrgencyBadge(days);
+  const bookingUrl = buildOmnibeesUrl({ checkIn: pkg.checkIn, checkOut: pkg.checkOut });
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: -10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="bg-foreground/5 border border-foreground/10 rounded-xl px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 mb-12"
+    >
+      <div className="flex items-center gap-3 flex-wrap justify-center sm:justify-start">
+        <span className="flex items-center gap-1.5 text-foreground font-body text-sm font-semibold">
+          <Clock size={16} className="text-secondary" />
+          {pkg.shortTitle} em {days} dias
+        </span>
+        {badge && (
+          <span className={`text-xs font-semibold px-3 py-1 rounded-full ${badge.className}`}>
+            {badge.label}
+          </span>
+        )}
+      </div>
+      <a
+        href={bookingUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-1.5 bg-secondary text-secondary-foreground font-body text-sm font-semibold px-5 py-2 rounded-full hover:bg-secondary/90 transition-colors whitespace-nowrap"
+      >
+        Garantir minha vaga <ArrowRight size={14} />
+      </a>
+    </motion.div>
+  );
+}
+
+function DiscountSeal() {
+  return (
+    <span className="inline-flex items-center gap-1 bg-secondary/15 text-secondary border border-secondary/30 text-xs font-semibold px-3 py-1 rounded-full">
+      <Tag size={12} />
+      Desconto já aplicado
+    </span>
+  );
+}
+
+function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }) {
+  const badge = getUrgencyBadge(days);
+  const bookingUrl = buildOmnibeesUrl({ checkIn: pkg.checkIn, checkOut: pkg.checkOut });
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 mb-14"
+    >
+      {/* Image */}
+      <Link to={`/tarifas/${pkg.slug}`} className="group block">
+        <div className="relative overflow-hidden rounded-xl aspect-[4/3]">
+          <img
+            src={pkg.image}
+            alt={pkg.shortTitle}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            loading="lazy"
+          />
+          {badge && (
+            <span className={`absolute top-4 left-4 text-xs font-semibold px-3 py-1.5 rounded-full ${badge.className}`}>
+              {badge.label}
+            </span>
+          )}
+        </div>
+      </Link>
+
+      {/* Info */}
+      <div className="flex flex-col justify-center space-y-4">
+        <div>
+          <span className="text-secondary font-body text-xs tracking-[0.4em] uppercase block mb-2">
+            Próximo feriado
+          </span>
+          <h3 className="font-display text-3xl md:text-4xl text-foreground font-semibold leading-tight">
+            {pkg.shortTitle}
+          </h3>
+        </div>
+        <p className="text-muted-foreground font-body text-base leading-relaxed">
+          {pkg.period} · {pkg.nights}
+        </p>
+        <p className="text-editorial text-muted-foreground text-base leading-relaxed line-clamp-3">
+          {pkg.description}
+        </p>
+        <div className="flex flex-wrap gap-2 items-center">
+          <DiscountSeal />
+          {badge && (
+            <span className={`text-xs font-semibold px-3 py-1 rounded-full ${badge.className}`}>
+              {badge.label}
+            </span>
+          )}
+        </div>
+        <div className="flex flex-wrap gap-3 pt-2">
+          <a
+            href={bookingUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 bg-secondary text-secondary-foreground font-body text-sm font-semibold px-6 py-3 rounded-full hover:bg-secondary/90 transition-colors"
+          >
+            Reservar agora <ArrowRight size={14} />
+          </a>
+          <Link
+            to={`/tarifas/${pkg.slug}`}
+            className="inline-flex items-center gap-1.5 border border-foreground/20 text-foreground font-body text-sm px-6 py-3 rounded-full hover:bg-muted transition-colors"
+          >
+            Ver detalhes
+          </Link>
+        </div>
+      </div>
+    </motion.div>
+  );
+}
+
+function PackageCard({ pkg, i }: { pkg: (typeof packages)[0]; i: number }) {
+  const days = getDaysUntil(pkg.checkIn!);
+  const badge = getUrgencyBadge(days);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: i * 0.1 }}
+    >
+      <Link to={`/tarifas/${pkg.slug}`} className="group block">
+        <div className="relative overflow-hidden rounded-xl aspect-[4/3] mb-4">
+          <img
+            src={pkg.image}
+            alt={pkg.shortTitle}
+            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            loading="lazy"
+          />
+          {badge && (
+            <span className={`absolute top-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-full ${badge.className}`}>
+              {badge.label}
+            </span>
+          )}
+        </div>
+        <div className="space-y-2">
+          <h4 className="font-display text-lg text-foreground font-semibold">{pkg.shortTitle}</h4>
+          <p className="text-muted-foreground font-body text-sm">{pkg.period} · {pkg.nights}</p>
+          <div className="flex flex-wrap gap-2">
+            <DiscountSeal />
+          </div>
+          <span className="inline-flex items-center gap-1.5 text-secondary font-body text-sm font-semibold group-hover:gap-2.5 transition-all border border-secondary/30 rounded-full px-5 py-2 mt-1 hover:bg-secondary/5">
+            Ver tarifas especiais <ArrowRight size={14} />
+          </span>
+        </div>
+      </Link>
+    </motion.div>
+  );
+}
+
+/* ── main section ────────────────────────────────────────── */
 
 const OffersSection = () => {
-  const featured = packages.slice(0, 3);
+  const upcoming = getNextPackages();
+  if (upcoming.length === 0) return null;
+
+  const featured = upcoming[0];
+  const featuredDays = getDaysUntil(featured.checkIn!);
+  const secondary = upcoming.slice(1, 4);
 
   return (
     <section className="py-24 lg:py-36 bg-background">
       <div className="container mx-auto px-4">
+        {/* Urgency banner */}
+        <UrgencyBanner pkg={featured} days={featuredDays} />
+
+        {/* Section header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -26,39 +226,19 @@ const OffersSection = () => {
           </p>
         </motion.div>
 
-        {/* Clean card layout matching TarifasPage */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
-          {featured.map((pkg, i) => (
-            <motion.div
-              key={pkg.slug}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-            >
-              <Link to={`/tarifas/${pkg.slug}`} className="group block">
-                <div className="relative overflow-hidden rounded-xl aspect-[4/3] mb-4">
-                  <img
-                    src={pkg.image}
-                    alt={pkg.shortTitle}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                    loading="lazy"
-                  />
-                </div>
-                <div className="space-y-2">
-                  <p className="text-secondary font-body text-sm">{pkg.period}</p>
-                  <p className="text-muted-foreground font-body text-sm leading-relaxed line-clamp-2">
-                    {pkg.description.length > 100 ? pkg.description.slice(0, 100) + "…" : pkg.description}
-                  </p>
-                  <span className="inline-flex items-center gap-1.5 text-secondary font-body text-sm font-semibold group-hover:gap-2.5 transition-all border border-secondary/30 rounded-full px-5 py-2 mt-2 hover:bg-secondary/5">
-                    Ver tarifas especiais <ArrowRight size={14} />
-                  </span>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
-        </div>
+        {/* Featured highlight */}
+        <FeaturedCard pkg={featured} days={featuredDays} />
 
+        {/* Secondary grid */}
+        {secondary.length > 0 && (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
+            {secondary.map((pkg, i) => (
+              <PackageCard key={pkg.slug} pkg={pkg} i={i} />
+            ))}
+          </div>
+        )}
+
+        {/* View all */}
         <div className="text-center">
           <Link
             to="/tarifas"
