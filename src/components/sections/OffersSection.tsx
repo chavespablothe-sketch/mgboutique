@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Clock, Tag } from "lucide-react";
+import { ArrowRight, Clock, Tag, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import packages from "@/data/packages";
 import { buildOmnibeesUrl } from "@/lib/omnibees";
@@ -21,9 +21,21 @@ function getDaysUntil(ddmmyyyy: string): number {
 }
 
 function getUrgencyBadge(days: number): { label: string; className: string } | null {
-  if (days < 15) return { label: "Últimas vagas", className: "bg-red-600 text-white" };
-  if (days < 30) return { label: "Últimos quartos", className: "bg-orange-500 text-white" };
-  if (days < 60) return { label: "Vagas limitadas", className: "bg-amber-500 text-white" };
+  if (days < 15)
+    return {
+      label: "Últimas vagas",
+      className: "bg-primary text-primary-foreground",
+    };
+  if (days < 30)
+    return {
+      label: "Últimos quartos",
+      className: "bg-secondary text-secondary-foreground",
+    };
+  if (days < 60)
+    return {
+      label: "Vagas limitadas",
+      className: "bg-secondary/20 text-secondary border border-secondary/40",
+    };
   return null;
 }
 
@@ -45,15 +57,15 @@ function UrgencyBanner({ pkg, days }: { pkg: (typeof packages)[0]; days: number 
       initial={{ opacity: 0, y: -10 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="bg-foreground/5 border border-foreground/10 rounded-xl px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 mb-12"
+      className="bg-primary/5 border border-primary/15 rounded-2xl px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-3 mb-14"
     >
       <div className="flex items-center gap-3 flex-wrap justify-center sm:justify-start">
         <span className="flex items-center gap-1.5 text-foreground font-body text-sm font-semibold">
-          <Clock size={16} className="text-secondary" />
-          {pkg.shortTitle} em {days} dias
+          <Clock size={15} className="text-secondary" />
+          {pkg.shortTitle} em <strong className="text-secondary">{days} dias</strong>
         </span>
         {badge && (
-          <span className={`text-xs font-semibold px-3 py-1 rounded-full ${badge.className}`}>
+          <span className={`text-[11px] font-semibold px-3 py-1 rounded-full ${badge.className}`}>
             {badge.label}
           </span>
         )}
@@ -62,7 +74,7 @@ function UrgencyBanner({ pkg, days }: { pkg: (typeof packages)[0]; days: number 
         href={bookingUrl}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-1.5 bg-secondary text-secondary-foreground font-body text-sm font-semibold px-5 py-2 rounded-full hover:bg-secondary/90 transition-colors whitespace-nowrap"
+        className="inline-flex items-center gap-1.5 bg-cta text-cta-foreground font-body text-sm font-semibold px-6 py-2.5 rounded-full hover:brightness-110 transition-all whitespace-nowrap shadow-sm"
       >
         Garantir minha vaga <ArrowRight size={14} />
       </a>
@@ -72,8 +84,8 @@ function UrgencyBanner({ pkg, days }: { pkg: (typeof packages)[0]; days: number 
 
 function DiscountSeal() {
   return (
-    <span className="inline-flex items-center gap-1 bg-secondary/15 text-secondary border border-secondary/30 text-xs font-semibold px-3 py-1 rounded-full">
-      <Tag size={12} />
+    <span className="inline-flex items-center gap-1.5 bg-secondary/10 text-secondary border border-secondary/25 text-[11px] font-semibold px-3 py-1 rounded-full tracking-wide">
+      <Tag size={11} />
       Desconto já aplicado
     </span>
   );
@@ -88,19 +100,20 @@ function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10 mb-14"
+      className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16 bg-card/60 rounded-3xl p-4 lg:p-6 border border-border/60"
     >
       {/* Image */}
       <Link to={`/tarifas/${pkg.slug}`} className="group block">
-        <div className="relative overflow-hidden rounded-xl aspect-[4/3]">
+        <div className="relative overflow-hidden rounded-2xl aspect-[4/3]">
           <img
             src={pkg.image}
             alt={pkg.shortTitle}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             loading="lazy"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
           {badge && (
-            <span className={`absolute top-4 left-4 text-xs font-semibold px-3 py-1.5 rounded-full ${badge.className}`}>
+            <span className={`absolute top-4 left-4 text-[11px] font-semibold px-3.5 py-1.5 rounded-full shadow-sm ${badge.className}`}>
               {badge.label}
             </span>
           )}
@@ -108,9 +121,9 @@ function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }
       </Link>
 
       {/* Info */}
-      <div className="flex flex-col justify-center space-y-4">
+      <div className="flex flex-col justify-center space-y-5 py-2 lg:pr-4">
         <div>
-          <span className="text-secondary font-body text-xs tracking-[0.4em] uppercase block mb-2">
+          <span className="text-secondary font-body text-[11px] tracking-[0.4em] uppercase block mb-3">
             Próximo feriado
           </span>
           <h3 className="font-display text-3xl md:text-4xl text-foreground font-semibold leading-tight">
@@ -120,31 +133,32 @@ function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }
         <p className="text-muted-foreground font-body text-base leading-relaxed">
           {pkg.period} · {pkg.nights}
         </p>
-        <p className="text-editorial text-muted-foreground text-base leading-relaxed line-clamp-3">
+        <p className="text-muted-foreground font-body text-[15px] leading-relaxed line-clamp-3">
           {pkg.description}
         </p>
         <div className="flex flex-wrap gap-2 items-center">
           <DiscountSeal />
           {badge && (
-            <span className={`text-xs font-semibold px-3 py-1 rounded-full ${badge.className}`}>
+            <span className={`text-[11px] font-semibold px-3 py-1 rounded-full ${badge.className}`}>
               {badge.label}
             </span>
           )}
         </div>
-        <div className="flex flex-wrap gap-3 pt-2">
+        <div className="flex flex-wrap gap-3 pt-1">
           <a
             href={bookingUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 bg-secondary text-secondary-foreground font-body text-sm font-semibold px-6 py-3 rounded-full hover:bg-secondary/90 transition-colors"
+            className="inline-flex items-center gap-2 bg-cta text-cta-foreground font-body text-sm font-semibold px-7 py-3 rounded-full hover:brightness-110 transition-all shadow-md shadow-cta/20"
           >
-            Reservar agora <ArrowRight size={14} />
+            <Sparkles size={14} />
+            Reservar agora
           </a>
           <Link
             to={`/tarifas/${pkg.slug}`}
-            className="inline-flex items-center gap-1.5 border border-foreground/20 text-foreground font-body text-sm px-6 py-3 rounded-full hover:bg-muted transition-colors"
+            className="inline-flex items-center gap-1.5 border border-foreground/15 text-foreground font-body text-sm px-6 py-3 rounded-full hover:bg-muted transition-colors"
           >
-            Ver detalhes
+            Ver detalhes <ArrowRight size={14} />
           </Link>
         </div>
       </div>
@@ -164,26 +178,29 @@ function PackageCard({ pkg, i }: { pkg: (typeof packages)[0]; i: number }) {
       transition={{ delay: i * 0.1 }}
     >
       <Link to={`/tarifas/${pkg.slug}`} className="group block">
-        <div className="relative overflow-hidden rounded-xl aspect-[4/3] mb-4">
+        <div className="relative overflow-hidden rounded-2xl aspect-[4/3] mb-4">
           <img
             src={pkg.image}
             alt={pkg.shortTitle}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             loading="lazy"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
           {badge && (
-            <span className={`absolute top-3 left-3 text-xs font-semibold px-2.5 py-1 rounded-full ${badge.className}`}>
+            <span className={`absolute top-3 left-3 text-[11px] font-semibold px-2.5 py-1 rounded-full shadow-sm ${badge.className}`}>
               {badge.label}
             </span>
           )}
         </div>
-        <div className="space-y-2">
-          <h4 className="font-display text-lg text-foreground font-semibold">{pkg.shortTitle}</h4>
-          <p className="text-muted-foreground font-body text-sm">{pkg.period} · {pkg.nights}</p>
-          <div className="flex flex-wrap gap-2">
-            <DiscountSeal />
-          </div>
-          <span className="inline-flex items-center gap-1.5 text-secondary font-body text-sm font-semibold group-hover:gap-2.5 transition-all border border-secondary/30 rounded-full px-5 py-2 mt-1 hover:bg-secondary/5">
+        <div className="space-y-2.5">
+          <h4 className="font-display text-xl text-foreground font-semibold group-hover:text-secondary transition-colors">
+            {pkg.shortTitle}
+          </h4>
+          <p className="text-muted-foreground font-body text-sm">
+            {pkg.period} · {pkg.nights}
+          </p>
+          <DiscountSeal />
+          <span className="inline-flex items-center gap-1.5 text-cta font-body text-sm font-semibold group-hover:gap-2.5 transition-all border border-cta/30 rounded-full px-5 py-2 mt-1 hover:bg-cta/5">
             Ver tarifas especiais <ArrowRight size={14} />
           </span>
         </div>
@@ -221,7 +238,7 @@ const OffersSection = () => {
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground font-semibold mb-6 leading-[1.05]">
             Pacotes <span className="italic text-secondary">2026</span>
           </h2>
-          <p className="text-editorial text-muted-foreground text-xl max-w-2xl mx-auto leading-relaxed">
+          <p className="text-muted-foreground font-body text-lg max-w-2xl mx-auto leading-relaxed">
             Cada feriado, uma experiência única. Pensão completa, recreação e momentos inesquecíveis.
           </p>
         </motion.div>
@@ -231,7 +248,7 @@ const OffersSection = () => {
 
         {/* Secondary grid */}
         {secondary.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-14">
             {secondary.map((pkg, i) => (
               <PackageCard key={pkg.slug} pkg={pkg} i={i} />
             ))}
@@ -242,7 +259,7 @@ const OffersSection = () => {
         <div className="text-center">
           <Link
             to="/tarifas"
-            className="inline-flex items-center gap-2 border border-foreground/20 text-foreground hover:bg-muted font-body uppercase tracking-[0.15em] px-8 py-3 rounded-full text-sm transition-colors"
+            className="inline-flex items-center gap-2 border border-foreground/15 text-foreground hover:bg-muted font-body uppercase tracking-[0.15em] px-8 py-3 rounded-full text-sm transition-colors"
           >
             Ver todos os pacotes de 2026
           </Link>
