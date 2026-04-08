@@ -128,8 +128,14 @@ function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent" />
           {badge && (
-            <span className={`absolute top-4 left-4 text-[11px] font-semibold px-3.5 py-1.5 rounded-full shadow-sm ${badge.className}`}>
-              {badge.label}
+            <span className="absolute top-4 left-4 z-10">
+              {badge.pulse && (
+                <span className={`absolute inset-0 rounded-full ${badge.className} animate-ping opacity-40`} />
+              )}
+              <span className={`relative text-[11px] font-semibold px-3.5 py-1.5 rounded-full shadow-lg ${badge.className} flex items-center gap-1.5`}>
+                <span className="w-1.5 h-1.5 rounded-full bg-current opacity-80 animate-pulse" />
+                {badge.label}
+              </span>
             </span>
           )}
         </div>
@@ -202,8 +208,14 @@ function PackageCard({ pkg, i }: { pkg: (typeof packages)[0]; i: number }) {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/25 via-transparent to-transparent" />
           {badge && (
-            <span className={`absolute top-3 left-3 text-[11px] font-semibold px-2.5 py-1 rounded-full shadow-sm ${badge.className}`}>
-              {badge.label}
+            <span className="absolute top-3 left-3 z-10">
+              {badge.pulse && (
+                <span className={`absolute inset-0 rounded-full ${badge.className} animate-ping opacity-40`} />
+              )}
+              <span className={`relative text-[11px] font-semibold px-2.5 py-1 rounded-full shadow-lg ${badge.className} flex items-center gap-1.5`}>
+                <span className="w-1.5 h-1.5 rounded-full bg-current opacity-80 animate-pulse" />
+                {badge.label}
+              </span>
             </span>
           )}
         </div>
