@@ -118,7 +118,7 @@ function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }
       <Link to={`/tarifas/${pkg.slug}`} className="group block">
         <div className="relative overflow-hidden rounded-2xl aspect-[4/3]">
           <img
-            src={pkg.image}
+            src={getHomeImage(pkg)}
             alt={pkg.shortTitle}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             loading="lazy"
@@ -192,7 +192,7 @@ function PackageCard({ pkg, i }: { pkg: (typeof packages)[0]; i: number }) {
       <Link to={`/tarifas/${pkg.slug}`} className="group block">
         <div className="relative overflow-hidden rounded-2xl aspect-[4/3] mb-4">
           <img
-            src={pkg.image}
+            src={getHomeImage(pkg)}
             alt={pkg.shortTitle}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             loading="lazy"
