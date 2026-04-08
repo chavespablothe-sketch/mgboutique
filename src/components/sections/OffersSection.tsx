@@ -25,16 +25,19 @@ function getUrgencyBadge(days: number): { label: string; className: string } | n
     return {
       label: "Últimas vagas",
       className: "bg-primary text-primary-foreground",
+      pulse: true,
     };
   if (days < 30)
     return {
       label: "Últimos quartos",
       className: "bg-secondary text-secondary-foreground",
+      pulse: true,
     };
   if (days < 60)
     return {
       label: "Vagas limitadas",
       className: "bg-secondary/20 text-secondary border border-secondary/40",
+      pulse: false,
     };
   return null;
 }
