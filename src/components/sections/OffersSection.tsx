@@ -39,6 +39,18 @@ function getUrgencyBadge(days: number): { label: string; className: string } | n
   return null;
 }
 
+/** Override images for the home section cards */
+const homeImageOverrides: Record<string, string> = {
+  "tiradentes-2026": "/images/pacotes-quadriciclo.png",
+  "primeiro-de-maio-2026": "/images/pacotes-playground.png",
+  "dia-das-maes-2026": "/images/pacotes-arara.png",
+  "corpus-christi-2026": "/images/pacotes-inflavel.png",
+};
+
+function getHomeImage(pkg: (typeof packages)[0]): string {
+  return homeImageOverrides[pkg.slug] || pkg.image;
+}
+
 function getNextPackages() {
   return packages
     .filter((p) => p.checkIn && p.slug !== "fim-de-semana")
