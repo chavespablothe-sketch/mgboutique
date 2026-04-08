@@ -20,7 +20,7 @@ function getDaysUntil(ddmmyyyy: string): number {
   return Math.ceil((target.getTime() - now.getTime()) / (1000 * 60 * 60 * 24));
 }
 
-function getUrgencyBadge(days: number): { label: string; className: string } | null {
+function getUrgencyBadge(days: number): { label: string; className: string; pulse: boolean } | null {
   if (days < 15)
     return {
       label: "Últimas vagas",
