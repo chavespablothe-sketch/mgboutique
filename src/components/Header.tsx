@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, CalendarDays, Search } from "lucide-react";
+import { Menu, X, CalendarDays, Search, Tag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import DateSearchBar from "@/components/DateSearchBar";
 
@@ -89,9 +89,9 @@ const Header = () => {
                 >
                   <Search size={14} />
                 </button>
-                <Button asChild size="sm" className="bg-promo hover:bg-promo/90 text-promo-foreground font-body text-[10px] uppercase tracking-[0.15em] gap-1.5 px-4 py-2 rounded-full shadow-lg shadow-promo/25">
+                <Button asChild size="sm" className="bg-promo hover:bg-promo/90 text-promo-foreground font-body text-[10px] uppercase tracking-[0.15em] gap-1.5 px-4 py-2 rounded-full shadow-lg shadow-promo/40 font-bold animate-pulse-soft ring-2 ring-promo/30">
                   <Link to="/tarifas">
-                    <CalendarDays size={12} />
+                    <Tag size={12} className="fill-promo-foreground" />
                     Promoções
                   </Link>
                 </Button>
