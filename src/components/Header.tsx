@@ -140,9 +140,9 @@ const Header = () => {
               <Link
                 to="/tarifas"
                 onClick={() => setIsOpen(false)}
-                className="py-3 px-4 rounded-lg text-sm tracking-[0.2em] uppercase font-body text-secondary font-bold"
+                className="py-3 px-4 rounded-lg text-sm tracking-[0.2em] uppercase font-body text-promo font-bold"
               >
-                Tarifas e Pacotes
+                Promoções
               </Link>
               <div className="mt-4 pt-4 border-t border-primary-foreground/10 flex gap-3">
                 <Button asChild size="lg" className="flex-1 bg-cta hover:bg-cta/90 text-cta-foreground font-body text-sm uppercase tracking-[0.15em] gap-2 rounded-full shadow-lg shadow-cta/20">
