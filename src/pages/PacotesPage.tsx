@@ -86,7 +86,7 @@ const PacotesPage = () => {
             <div className="flex flex-wrap justify-center gap-2 mt-6">
               {[
                 { icon: CreditCard, text: "10x sem juros" },
-                { icon: Baby, text: "1 criança até 12 anos grátis" },
+                { icon: Baby, text: "1 criança até 06 anos grátis" },
                 { icon: Star, text: "Pensão completa" },
                 { icon: Users, text: "Apenas 20 suítes" },
               ].map((item, i) => (

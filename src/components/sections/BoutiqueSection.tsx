@@ -13,7 +13,7 @@ const pillars = [
   {
     id: "familias",
     title: "Pensado para famílias",
-    desc: "Recreação monitorada com atividades lúdicas para todas as idades — oficinas de plantio, pintura ao ar livre e muito contato com a natureza. 1 criança até 12 anos se hospeda gratuitamente nos fins de semana. Menu kids, berço e cadeirão inclusos.",
+    desc: "Recreação monitorada com atividades lúdicas para todas as idades — oficinas de plantio, pintura ao ar livre e muito contato com a natureza. 1 criança até 06 anos se hospeda gratuitamente nos fins de semana. Menu kids, berço e cadeirão inclusos.",
     image: "/images/recreacao-plantio.jpg",
   },
   {
