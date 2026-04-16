@@ -89,10 +89,10 @@ const Header = () => {
                 >
                   <Search size={14} />
                 </button>
-                <Button asChild size="sm" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body text-[10px] uppercase tracking-[0.15em] gap-1.5 px-4 py-2 rounded-full">
+                <Button asChild size="sm" className="bg-promo hover:bg-promo/90 text-promo-foreground font-body text-[10px] uppercase tracking-[0.15em] gap-1.5 px-4 py-2 rounded-full shadow-lg shadow-promo/25">
                   <Link to="/tarifas">
                     <CalendarDays size={12} />
-                    Tarifas
+                    Promoções
                   </Link>
                 </Button>
                 <Button asChild size="sm" className="bg-cta hover:bg-cta/90 text-cta-foreground font-body text-[10px] uppercase tracking-[0.15em] gap-1.5 px-4 py-2 rounded-full shadow-lg shadow-cta/20">
