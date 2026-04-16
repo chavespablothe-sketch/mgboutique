@@ -20,8 +20,8 @@ Updated: now
 - Google: 4.7 | Booking: 9.3 (Fantástico) | NO TripAdvisor
 
 ## Kids Policy
-- 1 criança até 12 anos grátis nos fins de semana e feriados
-- Acima de 12 anos ou 2ª criança: tarifa adicional
+- 1 criança até 06 anos grátis nos fins de semana e feriados
+- Acima de 06 anos ou 2ª criança: tarifa adicional
 
 ## Meal Policy
 - Seg-Qui: apenas café da manhã
