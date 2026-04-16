@@ -44,8 +44,8 @@
     --hotel-brown: 30 20% 30%;
     --cta: 145 45% 42%;
     --cta-foreground: 0 0% 100%;
-    --promo: 16 88% 55%;
-    --promo-foreground: 0 0% 100%;
+    --promo: 45 100% 55%;
+    --promo-foreground: 160 35% 12%;
   }
 
   .dark {
