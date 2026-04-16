@@ -64,6 +64,10 @@ export default {
           DEFAULT: "hsl(var(--cta))",
           foreground: "hsl(var(--cta-foreground))",
         },
+        promo: {
+          DEFAULT: "hsl(var(--promo))",
+          foreground: "hsl(var(--promo-foreground))",
+        },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background, 0 0% 98%))",
           foreground: "hsl(var(--sidebar-foreground, 240 5.3% 26.1%))",
