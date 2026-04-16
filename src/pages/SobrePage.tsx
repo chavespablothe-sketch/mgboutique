@@ -19,7 +19,7 @@ const pillars = [
   { icon: Heart, title: "Hospitalidade Genuína", desc: "Cada hóspede é chamado pelo nome. Nossa equipe cuida de cada detalhe com carinho real, do check-in ao check-out.", image: "/images/hospitalidade.jpg" },
   { icon: TreePine, title: "Natureza Intocada", desc: "Cercado pela Mata Atlântica, entre montanhas e cachoeiras, a natureza aqui não é cenário — é protagonista.", image: "/images/vista-aerea-pedra.jpg" },
   { icon: Utensils, title: "Gastronomia de Alma", desc: "Pães artesanais, doces finos, sobremesas com frutas frescas, ervas da horta orgânica e carnes assadas com técnica e amor. Cada refeição celebra a terra onde estamos.", image: "/images/gastronomia-doces.jpg" },
-  { icon: Users, title: "Feito para Famílias", desc: "1 criança até 12 anos grátis nos fins de semana. Recreação monitorada, fazendinha, trilhas kids e menu infantil.", image: "/images/familia.jpg" },
+  { icon: Users, title: "Feito para Famílias", desc: "1 criança até 06 anos grátis nos fins de semana. Recreação monitorada, fazendinha, trilhas kids e menu infantil.", image: "/images/familia.jpg" },
 ];
 
 

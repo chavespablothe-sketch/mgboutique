@@ -89,7 +89,7 @@ const TarifasPage = () => {
     <div className="min-h-screen">
       <SEO
         title="Tarifas e Pacotes | Ofertas Especiais"
-        description="Pacotes de fim de semana, feriados e datas especiais no Minha Glória Hotel Boutique. Pensão completa, 1 criança até 12 anos grátis. Parcele em até 10x."
+        description="Pacotes de fim de semana, feriados e datas especiais no Minha Glória Hotel Boutique. Pensão completa, 1 criança até 06 anos grátis. Parcele em até 10x."
         canonical="/tarifas"
         schemas={[
           {
@@ -128,7 +128,7 @@ const TarifasPage = () => {
             <div className="flex flex-wrap justify-center gap-2 mt-6">
               {[
                 { icon: CreditCard, text: "10x sem juros" },
-                { icon: Baby, text: "1 criança até 12 anos grátis" },
+                { icon: Baby, text: "1 criança até 06 anos grátis" },
                 { icon: Star, text: "Pensão completa" },
               ].map((item, i) => (
                 <span key={i} className="flex items-center gap-1.5 text-primary-foreground/70 font-body text-xs bg-primary-foreground/5 px-3 py-1.5 rounded-full border border-primary-foreground/10">
@@ -311,7 +311,7 @@ const TarifasPage = () => {
               </div>
               <div className="p-5 bg-card rounded-xl border border-border">
                 <h3 className="font-display text-base font-semibold text-foreground mb-2">Crianças</h3>
-                <p>1 criança até 12 anos se hospeda gratuitamente nos fins de semana. Acima de 12 anos ou 2ª criança, tarifa adicional.</p>
+                <p>1 criança até 06 anos se hospeda gratuitamente nos fins de semana. Acima de 06 anos ou 2ª criança, tarifa adicional.</p>
               </div>
               <div className="p-5 bg-card rounded-xl border border-border">
                 <h3 className="font-display text-base font-semibold text-foreground mb-2">Pets</h3>

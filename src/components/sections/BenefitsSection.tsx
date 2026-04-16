@@ -14,8 +14,8 @@ const benefits = [
   },
   {
     icon: Baby,
-    title: "1 criança até 12 anos grátis",
-    description: "Nossos pequenos hóspedes são VIP. 1 criança até 12 anos se hospeda gratuitamente nos fins de semana, com berço, cadeirão, menu infantil e recreação monitorada inclusos.",
+    title: "1 criança até 06 anos grátis",
+    description: "Nossos pequenos hóspedes são VIP. 1 criança até 06 anos se hospeda gratuitamente nos fins de semana, com berço, cadeirão, menu infantil e recreação monitorada inclusos.",
   },
   {
     icon: Sparkles,

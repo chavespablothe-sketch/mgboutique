@@ -387,7 +387,7 @@ const ExperienciasPage = () => {
                 className="bg-secondary/20 p-6 rounded-xl border border-secondary/30 flex flex-col items-center justify-center text-center">
                 <span className="text-secondary font-display text-4xl font-semibold mb-2">Free</span>
                 <p className="text-primary-foreground font-body text-sm leading-relaxed">
-                  1 criança até 12 anos se hospeda <strong className="text-secondary">gratuitamente</strong> nos fins de semana
+                  1 criança até 06 anos se hospeda <strong className="text-secondary">gratuitamente</strong> nos fins de semana
                 </p>
               </motion.div>
             </div>

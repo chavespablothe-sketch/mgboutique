@@ -172,7 +172,7 @@ const PacoteDetalhePage = () => {
                         <CreditCard size={16} className="text-secondary" /> Parcele em até 10x sem juros
                       </div>
                       <div className="flex items-center gap-3 text-muted-foreground font-body text-sm">
-                        <Baby size={16} className="text-secondary" /> 1 criança até 12 anos: grátis nos fins de semana
+                        <Baby size={16} className="text-secondary" /> 1 criança até 06 anos: grátis nos fins de semana
                       </div>
                       <div className="flex items-center gap-3 text-muted-foreground font-body text-sm">
                         <Shield size={16} className="text-secondary" /> Melhor preço garantido
@@ -202,7 +202,7 @@ const PacoteDetalhePage = () => {
           </div>
         </section>
 
-        <CTASection title="Garanta sua vaga neste pacote" subtitle="Vagas limitadas — apenas 20 suítes. Pensão completa e 1 criança até 12 anos grátis nos fins de semana." showPhone={false} />
+        <CTASection title="Garanta sua vaga neste pacote" subtitle="Vagas limitadas — apenas 20 suítes. Pensão completa e 1 criança até 06 anos grátis nos fins de semana." showPhone={false} />
       </div>
       <Footer />
 
