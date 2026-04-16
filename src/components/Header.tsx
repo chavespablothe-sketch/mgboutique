@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, CalendarDays, Search } from "lucide-react";
+import { Menu, X, CalendarDays, Search, Tag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import DateSearchBar from "@/components/DateSearchBar";
 
