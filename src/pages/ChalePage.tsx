@@ -212,6 +212,13 @@ const ChalePage = () => {
         </section>
       </div>
       <Footer />
+      <Lightbox
+        images={lightboxImages}
+        open={lightboxOpen}
+        initialIndex={lightboxIndex}
+        onClose={() => setLightboxOpen(false)}
+        caption={chalet.name}
+      />
     </div>
   );
 };
