@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO, { breadcrumbSchema } from "@/components/SEO";
+import Lightbox from "@/components/Lightbox";
 import { motion } from "framer-motion";
-import { Users, Maximize, Check, ArrowLeft, ArrowRight, CreditCard, Baby, Shield, Bed, Eye } from "lucide-react";
+import { Users, Maximize, Check, ArrowLeft, ArrowRight, CreditCard, Baby, Shield, Bed, Eye, Images } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import chalets from "@/data/chalets";
 
@@ -14,10 +15,15 @@ const ChalePage = () => {
   const { slug } = useParams<{ slug: string }>();
   const chalet = chalets.find((c) => c.slug === slug);
   const otherChalets = chalets.filter((c) => c.slug !== slug).slice(0, 3);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   useEffect(() => { window.scrollTo(0, 0); }, [slug]);
 
   if (!chalet) return <Navigate to="/acomodacoes" replace />;
+
+  const lightboxImages = chalet.images.map((src, i) => ({ src, alt: `${chalet.name} - foto ${i + 1}` }));
+  const openLightboxAt = (i: number) => { setLightboxIndex(i); setLightboxOpen(true); };
 
   return (
     <div className="min-h-screen">
