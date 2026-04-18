@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Lightbox from "./Lightbox";
 
 interface GalleryImage {
   src: string;
@@ -11,10 +12,12 @@ interface PhotoGalleryProps {
   images: GalleryImage[];
   title?: string;
   subtitle?: string;
+  lightboxCaption?: string;
 }
 
-const PhotoGallery = ({ images, title, subtitle }: PhotoGalleryProps) => {
+const PhotoGallery = ({ images, title, subtitle, lightboxCaption }: PhotoGalleryProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   const goTo = (index: number) => {
     setActiveIndex(index);
