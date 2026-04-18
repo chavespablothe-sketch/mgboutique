@@ -3,10 +3,13 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CTASection from "@/components/CTASection";
 import { motion } from "framer-motion";
-import { Calendar, ArrowRight, CalendarDays, CreditCard, Baby, Star, Users, Percent, Clock, Gift } from "lucide-react";
+import { Calendar, ArrowRight, CalendarDays, CreditCard, Baby, Star, Users, Percent, Clock, Gift, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import packages from "@/data/packages";
+import allPackages from "@/data/packages";
+import { filterActivePackages, pickHoverMessage } from "@/lib/packageStatus";
+
+const packages = filterActivePackages(allPackages);
 
 // Derive month from period string
 function getMonth(period: string): string {
@@ -185,6 +188,14 @@ const PacotesPage = () => {
                         <span>{pkg.period}</span>
                         <span className="text-primary-foreground/40">·</span>
                         <span>{pkg.nights}</span>
+                      </div>
+                    </div>
+
+                    {/* Hover whisper — light rotating message */}
+                    <div className="pointer-events-none absolute top-4 right-4 opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out">
+                      <div className="flex items-center gap-2 bg-background/95 backdrop-blur-md text-foreground text-xs font-body px-3.5 py-2 rounded-full shadow-lg border border-secondary/30">
+                        <Sparkles size={12} className="text-secondary animate-pulse" />
+                        <span className="italic">{pickHoverMessage(pkg.slug)}</span>
                       </div>
                     </div>
                   </Link>
