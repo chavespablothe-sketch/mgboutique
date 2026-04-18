@@ -23,7 +23,7 @@ const ChalePage = () => {
     <div className="min-h-screen">
       <SEO
         title={`${chalet.name} | Acomodações`}
-        description={`${chalet.description} ${chalet.capacity}, ${chalet.size}. A partir de ${chalet.priceFrom}/noite no Minha Glória Hotel Boutique.`}
+        description={`${chalet.description} ${chalet.capacity}, ${chalet.size}. Reserve no Minha Glória Hotel Boutique.`}
         canonical={`/acomodacoes/${chalet.slug}`}
         ogImage={chalet.images[0]}
         schemas={[
