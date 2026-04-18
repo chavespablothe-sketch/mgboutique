@@ -1,3 +1,17 @@
+/**
+ * Source of truth: Omnibees official listing
+ * https://book.omnibees.com/hotelresults?q=21954
+ *
+ * Last sync: 2026-04-18
+ *
+ * Rules:
+ * - Names, capacity, area, view, descriptions: copied verbatim from Omnibees.
+ * - Comodidades: only what appears in the official "Comodidades principais" panel.
+ *   Single differentiator preserved: banheira no Romântico (citado no texto oficial).
+ * - Never display priceFrom on the site (regra core).
+ * - Order matches Omnibees: Tradicional → Família → Superior → Premium → Romântico.
+ */
+
 export interface Chalet {
   slug: string;
   name: string;
@@ -8,7 +22,6 @@ export interface Chalet {
   size: string;
   beds: string;
   view: string;
-  priceFrom: string;
   amenities: string[];
   amenitiesByCategory: {
     quarto: string[];
@@ -20,140 +33,153 @@ export interface Chalet {
   idealFor: string;
 }
 
+const IMG = (id: string | number) =>
+  `https://media.omnibees.com/Images/21954/RoomTypes/570x428/${id}.jpg`;
+const IMG_JPEG = (id: string | number) =>
+  `https://media.omnibees.com/Images/21954/RoomTypes/570x428/${id}.jpeg`;
+
+const baseAmenities = ["Ar condicionado", "Frigobar", "Mini-bar", "Wi-Fi", "Varanda", "Banheiro privado"];
+
 const chalets: Chalet[] = [
   {
     slug: "chale-tradicional",
     name: "Chalé Tradicional",
-    tagline: "Charme rústico, conforto moderno",
-    description: "Seu primeiro abraço da serra. Chalé aconchegante com decoração rústica sofisticada, onde madeira e pedra criam uma atmosfera de acolhimento.",
-    longDescription: "Seu primeiro abraço da serra. Chalé aconchegante com decoração rústica sofisticada, onde madeira e pedra criam uma atmosfera de acolhimento. Pela manhã, a luz filtra pelas árvores e entra pela janela. À noite, o silêncio da montanha é a trilha sonora do seu descanso. Cada detalhe foi pensado para que você se sinta em casa — uma casa cercada por Mata Atlântica, onde o tempo passa mais devagar e a natureza cuida de tudo.",
-    capacity: "2–4 hóspedes",
-    size: "55m²",
-    beds: "1 cama queen + 1 sofá-cama",
+    tagline: "Conforto e ar puro em meio à natureza",
+    description: "Com vista para o jardim, desfrute de conforto e ar puro em meio à natureza.",
+    longDescription:
+      "Com vista para o jardim, desfrute de conforto e ar puro em meio à natureza. Cama de casal, ambiente aconchegante e tudo o que você precisa para uma estadia tranquila.",
+    capacity: "Até 3 pessoas",
+    size: "20m²",
+    beds: "Cama de casal",
     view: "Vista para o jardim",
-    priceFrom: "R$ 567,00",
-    amenities: ["Ar condicionado", "Frigobar", "TV Smart 50\"", "Varanda privativa", "Wi-Fi", "Café Nespresso", "Amenities naturais"],
+    amenities: baseAmenities,
     amenitiesByCategory: {
-      quarto: ["Ar condicionado", "Frigobar", "TV Smart 50\"", "Wi-Fi", "Café Nespresso"],
-      banheiro: ["Amenities naturais", "Secador de cabelo", "Toalhas premium"],
-      areaExterna: ["Varanda privativa", "Vista para o jardim"],
+      quarto: ["Ar condicionado", "Frigobar", "Mini-bar", "Wi-Fi", "Apartamento para não fumantes"],
+      banheiro: ["Banheiro privado", "Secador de cabelo"],
+      areaExterna: ["Varanda", "Vista para o jardim"],
     },
     images: [
-      "https://media.omnibees.com/Images/21954/RoomTypes/570x428/5241884.jpeg",
-      "https://media.omnibees.com/Images/21954/RoomTypes/570x428/1601853.jpg",
-      "https://media.omnibees.com/Images/21954/RoomTypes/570x428/1601861.jpg",
-      "https://media.omnibees.com/Images/21954/RoomTypes/570x428/1601860.jpg",
-      "https://media.omnibees.com/Images/21954/RoomTypes/570x428/1601862.jpg",
+      IMG_JPEG(5241884),
+      IMG(1601852),
+      IMG(1601853),
+      IMG(1601854),
+      IMG(1601855),
+      IMG(1601856),
     ],
     highlight: "Vista para o jardim",
-    idealFor: "Casais e famílias pequenas",
-  },
-  {
-    slug: "chale-premium",
-    name: "Chalé Premium",
-    tagline: "Conforto ampliado para a família",
-    description: "Espaço pensado para receber a família com conforto. Quarto amplo com cama queen e sofá-cama duplo, climatização e varanda privativa.",
-    longDescription: "O Chalé Premium combina o aconchego rústico da serra com o espaço extra que famílias pedem. Cama queen confortável e sofá-cama duplo permitem que pais e filhos pequenos compartilhem o mesmo refúgio sem abrir mão do conforto. A decoração mistura tijolo aparente, madeira de demolição e tecidos naturais, criando uma atmosfera quente que convida a desacelerar. A climatização garante noites perfeitas em qualquer estação, e a varanda privativa é o cenário ideal para o café da manhã contemplando o jardim.",
-    capacity: "2–4 hóspedes",
-    size: "65m²",
-    beds: "1 cama queen + 2 camas de solteiro",
-    view: "Vista para o jardim",
-    priceFrom: "R$ 680,00",
-    amenities: ["Ar condicionado", "Frigobar", "TV Smart", "Varanda privativa", "Wi-Fi", "Café Nespresso", "Amenities naturais"],
-    amenitiesByCategory: {
-      quarto: ["Ar condicionado", "Frigobar", "TV Smart", "Wi-Fi", "Café Nespresso"],
-      banheiro: ["Amenities naturais", "Secador de cabelo", "Toalhas premium"],
-      areaExterna: ["Varanda privativa", "Vista para o jardim"],
-    },
-    images: [
-      "/images/chales/premium-2.jpg",
-      "/images/chales/premium-1.jpg",
-      "/images/chales/premium-3.jpg",
-      "/images/chales/premium-4.jpg",
-    ],
-    highlight: "Espaço para a família",
-    idealFor: "Famílias com 1 ou 2 crianças",
-  },
-  {
-    slug: "chale-superior",
-    name: "Chalé Superior",
-    tagline: "A experiência boutique elevada",
-    description: "Para quem quer mais espaço, mais vista e mais momentos de contemplação. Lareira, cama king e atmosfera rústica sofisticada.",
-    longDescription: "Para quem quer mais espaço, mais vista e mais momentos de contemplação. O Chalé Superior é um refúgio elevado: cama king de madeira maciça, lareira a lenha que aquece as noites frias da serra e detalhes em tijolo aparente que dão personalidade ao ambiente. O interior amplo combina texturas naturais com acabamentos cuidadosos — madeira de demolição, granito polido no banheiro e tecidos que convidam ao toque. O luxo aqui é o silêncio, a vista para a fazendinha e o tempo que parece andar mais devagar.",
-    capacity: "2–4 hóspedes",
-    size: "70m²",
-    beds: "1 cama king + 1 sofá-cama",
-    view: "Vista para a fazendinha",
-    priceFrom: "R$ 756,00",
-    amenities: ["Lareira", "Ar condicionado", "Frigobar", "TV Smart", "Varanda privativa", "Wi-Fi", "Café Nespresso", "Roupão e chinelos", "Amenities premium"],
-    amenitiesByCategory: {
-      quarto: ["Lareira a lenha", "Ar condicionado", "Frigobar", "TV Smart", "Wi-Fi", "Café Nespresso", "Roupão e chinelos"],
-      banheiro: ["Amenities premium", "Secador de cabelo", "Toalhas premium", "Box amplo"],
-      areaExterna: ["Varanda privativa", "Vista para a fazendinha"],
-    },
-    images: [
-      "/images/chales/superior-1.jpg",
-      "/images/chales/superior-2.jpg",
-      "/images/chales/superior-3.jpg",
-      "/images/chales/superior-4.jpg",
-      "/images/chales/superior-5.jpg",
-    ],
-    highlight: "Lareira a lenha",
-    idealFor: "Casais em busca de conforto",
-  },
-  {
-    slug: "chale-romantico",
-    name: "Chalé Romântico",
-    tagline: "O ápice da exclusividade",
-    description: "O ápice da exclusividade no Minha Glória. Banheira de hidromassagem, lareira e decoração premium com peças artesanais da região.",
-    longDescription: "O ápice da exclusividade no Minha Glória. Banheira de hidromassagem para mergulhar no relaxamento após um dia de trilhas. Lareira para aquecer conversas e criar aquele momento cinematográfico que você sempre quis viver. Decoração premium com peças artesanais da região — cada objeto conta uma história, cada textura convida ao toque. Este chalé foi pensado para momentos que merecem ser inesquecíveis: aniversários, luas de mel, ou simplesmente a decisão de se dar um presente.",
-    capacity: "2 hóspedes",
-    size: "95m²",
-    beds: "1 cama king",
-    view: "Vista para o lago e montanhas",
-    priceFrom: "R$ 1.134,00",
-    amenities: ["Hidromassagem", "Lareira", "Ar condicionado", "TV Smart 60\"", "Varanda privativa", "Wi-Fi", "Café Nespresso", "Roupão e chinelos", "Amenities premium", "Minibar selecionado"],
-    amenitiesByCategory: {
-      quarto: ["Lareira", "Ar condicionado", "TV Smart 60\"", "Wi-Fi", "Café Nespresso", "Roupão e chinelos", "Minibar selecionado"],
-      banheiro: ["Hidromassagem", "Amenities premium", "Secador de cabelo", "Toalhas premium"],
-      areaExterna: ["Varanda privativa", "Vista para o lago"],
-    },
-    images: [
-      "https://media.omnibees.com/Images/21954/RoomTypes/570x428/1601890.jpg",
-      "https://media.omnibees.com/Images/21954/RoomTypes/570x428/1601898.jpg",
-      "https://media.omnibees.com/Images/21954/RoomTypes/570x428/1601895.jpg",
-      "https://media.omnibees.com/Images/21954/RoomTypes/570x428/1601876.jpg",
-      "https://media.omnibees.com/Images/21954/RoomTypes/570x428/1601899.jpg",
-    ],
-    highlight: "Hidromassagem + Lareira",
-    idealFor: "Casais em momentos especiais",
+    idealFor: "Casais e hóspedes individuais",
   },
   {
     slug: "chale-familia",
     name: "Chalé Família",
-    tagline: "Onde a família se reúne",
-    description: "Projetado para o que realmente importa: estar junto. Casa ampla com quarto principal e espaço extra para crianças.",
-    longDescription: "Projetado para o que realmente importa: estar junto. A Casa Família é a maior acomodação do Minha Glória — com cama queen extra-grande e duas camas de solteiro, acomoda toda a família com folga. Espaço generoso para malas, carrinhos e toda a parafernália que viagem em família exige. Berço disponível, proteção nas tomadas e todo o cuidado que pais atentos procuram. A decoração é acolhedora e resistente — pensada para que as crianças possam ser crianças, sem restrições.",
-    capacity: "4–6 hóspedes",
-    size: "110m²",
-    beds: "1 cama queen + 2 camas de solteiro",
-    view: "Vista para o jardim e fazendinha",
-    priceFrom: "R$ 1.134,00",
-    amenities: ["Ar condicionado", "Frigobar", "TV Smart", "Varanda", "Wi-Fi", "Área de convivência", "Berço disponível", "Proteção tomadas"],
+    tagline: "Amplo, com varanda e vista para os jardins",
+    description: "Chalés amplos para acolher com conforto e exclusividade. Possuem varanda com vista para os jardins.",
+    longDescription:
+      "Chalés amplos para acolher com conforto e exclusividade. Possuem varanda com vista para os jardins. Cama de casal e camas adicionais para acomodar toda a família com folga.",
+    capacity: "Até 6 pessoas",
+    size: "40m²",
+    beds: "Cama de casal + camas adicionais",
+    view: "Vista para o jardim",
+    amenities: [...baseAmenities, "Televisão"],
     amenitiesByCategory: {
-      quarto: ["Ar condicionado", "Frigobar", "TV Smart", "Wi-Fi", "Berço disponível", "Proteção tomadas"],
-      banheiro: ["Amenities naturais", "Secador de cabelo", "Toalhas premium"],
-      areaExterna: ["Varanda privativa", "Vista para o jardim e fazendinha", "Área de convivência"],
+      quarto: ["Ar condicionado", "Frigobar", "Mini-bar", "Wi-Fi", "Televisão", "Berço (sob solicitação)"],
+      banheiro: ["Banheiro privado", "Secador de cabelo"],
+      areaExterna: ["Varanda", "Vista para os jardins"],
     },
     images: [
-      "https://media.omnibees.com/Images/21954/RoomTypes/570x428/1601845.jpg",
-      "https://media.omnibees.com/Images/21954/RoomTypes/570x428/1601846.jpg",
-      "https://media.omnibees.com/Images/21954/RoomTypes/570x428/1601847.jpg",
-      "https://media.omnibees.com/Images/21954/RoomTypes/570x428/1601856.jpg",
-      "https://media.omnibees.com/Images/21954/RoomTypes/570x428/1601851.jpg",
+      IMG(1601845),
+      IMG(1601844),
+      IMG(1601846),
+      IMG(1601847),
+      IMG(1601848),
+      IMG(1601849),
     ],
-    highlight: "Perfeito para famílias",
+    highlight: "Espaço para a família",
     idealFor: "Famílias com crianças",
+  },
+  {
+    slug: "chale-superior",
+    name: "Chalé Superior",
+    tagline: "Conforto e aconchego",
+    description: "Desfrute de conforto e aconchego.",
+    longDescription:
+      "Desfrute de conforto e aconchego em um chalé com vista para o jardim, ambiente cuidadosamente preparado para acomodar até 4 pessoas com tranquilidade.",
+    capacity: "Até 4 pessoas",
+    size: "30m²",
+    beds: "Cama de casal + cama adicional",
+    view: "Vista para o jardim",
+    amenities: baseAmenities,
+    amenitiesByCategory: {
+      quarto: ["Ar condicionado", "Frigobar", "Mini-bar", "Wi-Fi"],
+      banheiro: ["Banheiro privado", "Secador de cabelo"],
+      areaExterna: ["Varanda", "Vista para o jardim"],
+    },
+    images: [
+      IMG(1601925),
+      IMG(1601895),
+      IMG(1601896),
+      IMG(1601897),
+      IMG(1601898),
+      IMG(1601899),
+    ],
+    highlight: "Conforto e aconchego",
+    idealFor: "Casais e pequenas famílias",
+  },
+  {
+    slug: "chale-premium",
+    name: "Chalé Premium",
+    tagline: "Conforto e privacidade",
+    description: "Chalé para quem busca conforto e privacidade.",
+    longDescription:
+      "Chalé para quem busca conforto e privacidade. Espaço pensado para acolher até 5 pessoas em meio à natureza, com varanda e vista para o jardim.",
+    capacity: "Até 5 pessoas",
+    size: "30m²",
+    beds: "Cama de casal + camas adicionais",
+    view: "Vista para o jardim",
+    amenities: baseAmenities,
+    amenitiesByCategory: {
+      quarto: ["Ar condicionado", "Frigobar", "Mini-bar", "Wi-Fi"],
+      banheiro: ["Banheiro privado", "Secador de cabelo"],
+      areaExterna: ["Varanda", "Vista para o jardim"],
+    },
+    images: [
+      IMG(1601843),
+      IMG(1601834),
+      IMG(1601835),
+      IMG(1601836),
+      IMG(1601837),
+      IMG(1601842),
+    ],
+    highlight: "Conforto e privacidade",
+    idealFor: "Famílias e grupos pequenos",
+  },
+  {
+    slug: "chale-romantico",
+    name: "Chalé Romântico",
+    tagline: "Banheira e varanda para momentos a dois",
+    description: "Desfrute de conforto e exclusividade. Chalés com banheira e varanda para relaxar e curtir momentos em casal.",
+    longDescription:
+      "Desfrute de conforto e exclusividade. Chalés com banheira e varanda para relaxar e curtir momentos em casal. Ambiente preparado para escapadas românticas, com vista para o jardim e clima de aconchego.",
+    capacity: "Até 4 pessoas",
+    size: "30m²",
+    beds: "Cama de casal",
+    view: "Vista para o jardim",
+    amenities: [...baseAmenities, "Banheira"],
+    amenitiesByCategory: {
+      quarto: ["Ar condicionado", "Frigobar", "Mini-bar", "Wi-Fi"],
+      banheiro: ["Banheira", "Banheiro privado", "Secador de cabelo"],
+      areaExterna: ["Varanda", "Vista para o jardim"],
+    },
+    images: [
+      IMG(1601890),
+      IMG(1601876),
+      IMG(1601880),
+      IMG(1601884),
+      IMG(1601886),
+      IMG(1601891),
+    ],
+    highlight: "Banheira + varanda",
+    idealFor: "Casais em momentos especiais",
   },
 ];
 
