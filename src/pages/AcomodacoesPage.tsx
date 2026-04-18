@@ -16,7 +16,7 @@ const AcomodacoesPage = () => {
     <div className="min-h-screen">
       <SEO
         title="Acomodações | Chalés Exclusivos na Serra Fluminense"
-        description="5 categorias de chalés em meio à Mata Atlântica: Tradicional, Premium, Superior, Romântico e Família. De 55m² a 110m², varanda privativa e vista para as montanhas."
+        description="5 categorias de chalés em meio à Mata Atlântica: Tradicional, Família, Superior, Premium e Romântico. Vista para o jardim, varanda privativa e o conforto que sua estadia merece."
         canonical="/acomodacoes"
         schemas={[
           { ...hotelSchema, "@type": "LodgingBusiness", makesOffer: chalets.map(c => ({ "@type": "Offer", name: c.name, description: c.description })) },
