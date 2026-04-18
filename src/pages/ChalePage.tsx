@@ -37,7 +37,6 @@ const ChalePage = () => {
             bed: { "@type": "BedDetails", typeOfBed: chalet.beds },
             image: chalet.images,
             amenityFeature: chalet.amenities.map(a => ({ "@type": "LocationFeatureSpecification", name: a, value: true })),
-            offers: { "@type": "Offer", priceSpecification: { "@type": "PriceSpecification", price: chalet.priceFrom.replace(/[^\d]/g, ""), priceCurrency: "BRL", unitText: "noite" } },
           },
           breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Acomodações", url: "/acomodacoes" }, { name: chalet.name, url: `/acomodacoes/${chalet.slug}` }]),
         ]}
