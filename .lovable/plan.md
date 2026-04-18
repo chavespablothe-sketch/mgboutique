@@ -1,48 +1,45 @@
 
 
-## Auditoria reforçada: gratuidade infantil "até 12 anos" → "até 06 anos"
+## Auditoria: "Chalé Master" → "Chalé Romântico"
 
-Verifiquei novamente a home e todo o site. Confirmo as ocorrências, incluindo as da home.
+### Ocorrências encontradas
 
-### Ocorrências na HOME (`src/pages/Index.tsx` → componentes renderizados)
+Vou rodar busca completa, mas com base no que já conheço:
 
-| Componente | Linha | Texto atual |
-|---|---|---|
-| `WelcomeSection.tsx` | 8 | `"1 criança até 12 anos grátis"` (highlight chip) |
-| `BoutiqueSection.tsx` | 16 | `"1 criança até 12 anos grátis nos finais de semana..."` |
-| `BenefitsSection.tsx` | 17 | título: `"1 criança até 12 anos grátis"` |
-| `BenefitsSection.tsx` | 18 | descrição: `"1 criança até 12 anos se hospeda gratuitamente..."` |
-| `CTASection.tsx` | 17 | `"...1 criança até 12 anos grátis..."` |
-| `OffersSection.tsx` | — | sem menção ✅ |
+**`src/data/chalets.ts`** (linha ~93)
+- `slug: "chale-master"` → manter ou trocar para `chale-romantico`?
+- `name: "Chalé Master"` → `Chalé Romântico`
 
-### Demais arquivos (fora da home) — confirmados
+**Possíveis outros locais:**
+- `src/data/packages.ts` (pode mencionar "Chalé Master" em descrições/upgrades)
+- Páginas que listam categorias (`AcomodacoesPage`, `ChalePage`, `TarifasPage`)
+- SEO/meta descriptions
+- Memórias do projeto
 
-- `src/pages/SobrePage.tsx` (L22)
-- `src/pages/LazerPage.tsx` (L117, L182)
-- `src/pages/ExperienciasPage.tsx` (L390)
-- `src/pages/ChalePage.tsx` (L152)
-- `src/pages/AcomodacoesPage.tsx` (L154, L169)
-- `src/pages/PacotesPage.tsx` (L89)
-- `src/pages/PacoteDetalhePage.tsx` (L175, L205)
-- `src/pages/ContatoPage.tsx` (L22 — FAQ, duas ocorrências na mesma string)
-- `src/pages/TarifasPage.tsx` (L92, L131, L314 com duas ocorrências)
-- `src/data/packages.ts` — campo `kidsFeatures` em ~13 pacotes
-- `.lovable/memory/index.md` → atualizar "Kids Policy"
+### Decisão necessária sobre o slug
 
-### Regras de substituição
+O slug atual é `chale-master` → URL: `/acomodacoes/chale-master`
 
-| De | Para |
-|---|---|
-| `1 criança até 12 anos grátis` | `1 criança até 06 anos grátis` |
-| `1 criança até 12 anos se hospeda gratuitamente...` | `1 criança até 06 anos se hospeda gratuitamente...` |
-| `Kid free até 12 anos (fim de semana)` | `Kid free até 06 anos (fim de semana)` |
-| `crianças até 12 anos grátis` | `crianças até 06 anos grátis` |
-| `Acima de 12 anos ou 2ª criança...` | `Acima de 06 anos ou 2ª criança...` |
+**Opção A (recomendada):** Trocar slug para `chale-romantico`
+- ✅ URL coerente com o novo nome
+- ⚠️ Quebra links antigos (não há indicação de tráfego SEO consolidado ainda)
 
-⚠️ **Não alterar** ocorrências de `12` em horários (`12h`, `12h30`), classes Tailwind (`gap-12`, `mb-12`), datas (`12/10`) ou parcelamento (`10x`).
+**Opção B:** Manter slug `chale-master`, trocar só o nome exibido
+- ✅ Não quebra links
+- ❌ URL fica inconsistente com a marca
 
-### Total
-**4 componentes da home + 9 páginas + `packages.ts` + memória = 15 arquivos**
+### Plano de execução (após confirmação)
 
-Após sua aprovação, executo todas as substituições string-por-string preservando o restante da copy.
+1. **Buscar todas as ocorrências** com `code--search_files` para "Chalé Master", "chale-master" e "Master" (filtrando falsos positivos como "Masterclass" se houver).
+2. **Substituir em todos os arquivos**:
+   - `src/data/chalets.ts` — `name`, possíveis menções no `longDescription`
+   - `src/data/packages.ts` — qualquer menção em features/descrições
+   - Páginas (`AcomodacoesPage.tsx`, `ChalePage.tsx`, `TarifasPage.tsx`, etc.)
+   - Componentes que listam categorias
+3. **Atualizar slug** (se Opção A) e adicionar redirect de `/acomodacoes/chale-master` → `/acomodacoes/chale-romantico` em `App.tsx` para preservar links existentes.
+4. **Atualizar memória** se houver referência a "Master" nas regras do projeto.
+
+### Pergunta antes de executar
+
+Preciso confirmar a decisão sobre o slug (Opção A com redirect, ou Opção B mantendo `chale-master` na URL).
 
