@@ -76,8 +76,8 @@ const chalets: Chalet[] = [
     idealFor: "Casais em busca de conforto",
   },
   {
-    slug: "chale-master",
-    name: "Chalé Master",
+    slug: "chale-romantico",
+    name: "Chalé Romântico",
     tagline: "O ápice da exclusividade",
     description: "O ápice da exclusividade no Minha Glória. Banheira de hidromassagem, lareira e decoração premium com peças artesanais da região.",
     longDescription: "O ápice da exclusividade no Minha Glória. Banheira de hidromassagem para mergulhar no relaxamento após um dia de trilhas. Lareira para aquecer conversas e criar aquele momento cinematográfico que você sempre quis viver. Decoração premium com peças artesanais da região — cada objeto conta uma história, cada textura convida ao toque. Este chalé foi pensado para momentos que merecem ser inesquecíveis: aniversários, luas de mel, ou simplesmente a decisão de se dar um presente.",

@@ -34,7 +34,7 @@ const chalets = [
     tagline: "A experiência boutique elevada",
   },
   {
-    name: "Chalé Master",
+    name: "Chalé Romântico",
     images: [
       "https://www.minhagloria.com.br/lovable-uploads/44683466-44b0-4f6e-896a-51a9ae1249fc.png",
       "https://www.minhagloria.com.br/lovable-uploads/85379e6d-f1dc-433a-bc75-77c926ac6d9b.png",
