@@ -59,18 +59,21 @@ const ChalePage = () => {
               : "grid-cols-1 md:grid-cols-2"
           }`}>
             {chalet.images.slice(0, 5).map((img, i) => (
-              <div
+              <button
                 key={i}
-                className={`relative overflow-hidden ${
+                type="button"
+                onClick={() => openLightboxAt(i)}
+                className={`relative overflow-hidden cursor-zoom-in group ${
                   i === 0 && chalet.images.length >= 5
                     ? "col-span-2 row-span-2"
                     : i === 0 && chalet.images.length >= 3
                     ? "row-span-2 md:row-span-1 md:col-span-2"
                     : ""
                 }`}
+                aria-label={`Ver foto ${i + 1} em tela cheia`}
               >
-                <img src={img} alt={`${chalet.name} - foto ${i + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-              </div>
+                <img src={img} alt={`${chalet.name} - foto ${i + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              </button>
             ))}
           </div>
           <div className="absolute top-6 left-6 z-10">
@@ -78,6 +81,15 @@ const ChalePage = () => {
               <ArrowLeft size={14} /> Acomodações
             </Link>
           </div>
+          {chalet.images.length > 5 && (
+            <button
+              type="button"
+              onClick={() => openLightboxAt(0)}
+              className="absolute bottom-6 right-6 z-10 inline-flex items-center gap-2 bg-background/90 backdrop-blur-sm text-foreground font-body text-sm px-5 py-2.5 rounded-full hover:bg-background transition-colors shadow-lg border border-border"
+            >
+              <Images size={14} /> Ver todas as {chalet.images.length} fotos
+            </button>
+          )}
         </section>
 
         {/* Content */}
