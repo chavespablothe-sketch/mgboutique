@@ -19,7 +19,7 @@ const AcomodacoesPage = () => {
         description="5 categorias de chalés em meio à Mata Atlântica: Tradicional, Premium, Superior, Romântico e Família. De 55m² a 110m², varanda privativa e vista para as montanhas."
         canonical="/acomodacoes"
         schemas={[
-          { ...hotelSchema, "@type": "LodgingBusiness", makesOffer: chalets.map(c => ({ "@type": "Offer", name: c.name, description: c.description, priceSpecification: { "@type": "PriceSpecification", price: c.priceFrom.replace(/[^\d]/g, ""), priceCurrency: "BRL" } })) },
+          { ...hotelSchema, "@type": "LodgingBusiness", makesOffer: chalets.map(c => ({ "@type": "Offer", name: c.name, description: c.description })) },
           breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Acomodações", url: "/acomodacoes" }]),
         ]}
       />
