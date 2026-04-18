@@ -4,12 +4,15 @@ import Footer from "@/components/Footer";
 import SEO, { breadcrumbSchema } from "@/components/SEO";
 import CTASection from "@/components/CTASection";
 import { motion } from "framer-motion";
-import { Calendar, ArrowRight, CalendarDays, CreditCard, Baby, Star, Check, UtensilsCrossed, Sun } from "lucide-react";
+import { Calendar, ArrowRight, CalendarDays, CreditCard, Baby, Star, Check, UtensilsCrossed, Sun, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
-import packages from "@/data/packages";
+import allPackages from "@/data/packages";
+import { filterActivePackages, pickHoverMessage } from "@/lib/packageStatus";
 
 import { OMNIBEES_URL } from "@/lib/omnibees";
+
+const packages = filterActivePackages(allPackages);
 
 const allMonths = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
 
@@ -257,6 +260,13 @@ const TarifasPage = () => {
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                               loading="lazy"
                             />
+                            {/* Hover whisper — gentle rotating message */}
+                            <div className="pointer-events-none absolute inset-x-3 top-3 flex justify-end opacity-0 -translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 ease-out">
+                              <div className="flex items-center gap-1.5 bg-background/95 backdrop-blur-md text-foreground text-[11px] font-body px-3 py-1.5 rounded-full shadow-lg border border-secondary/30">
+                                <Sparkles size={11} className="text-secondary shrink-0 animate-pulse" />
+                                <span className="italic">{pickHoverMessage(pkg.slug + month)}</span>
+                              </div>
+                            </div>
                           </div>
 
                           {/* Info */}
