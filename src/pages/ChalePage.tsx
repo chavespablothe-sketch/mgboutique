@@ -23,7 +23,7 @@ const ChalePage = () => {
     <div className="min-h-screen">
       <SEO
         title={`${chalet.name} | Acomodações`}
-        description={`${chalet.description} ${chalet.capacity}, ${chalet.size}. A partir de ${chalet.priceFrom}/noite no Minha Glória Hotel Boutique.`}
+        description={`${chalet.description} ${chalet.capacity}, ${chalet.size}. Reserve no Minha Glória Hotel Boutique.`}
         canonical={`/acomodacoes/${chalet.slug}`}
         ogImage={chalet.images[0]}
         schemas={[
@@ -37,7 +37,6 @@ const ChalePage = () => {
             bed: { "@type": "BedDetails", typeOfBed: chalet.beds },
             image: chalet.images,
             amenityFeature: chalet.amenities.map(a => ({ "@type": "LocationFeatureSpecification", name: a, value: true })),
-            offers: { "@type": "Offer", priceSpecification: { "@type": "PriceSpecification", price: chalet.priceFrom.replace(/[^\d]/g, ""), priceCurrency: "BRL", unitText: "noite" } },
           },
           breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Acomodações", url: "/acomodacoes" }, { name: chalet.name, url: `/acomodacoes/${chalet.slug}` }]),
         ]}
