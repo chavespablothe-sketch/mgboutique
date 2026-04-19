@@ -1,33 +1,35 @@
 
 
-## Plano ultra-econômico: 1 chamada de browser, 1 edit de código
+## Plano: extrair packs completos via 1 visita à URL correta
 
-### Insight chave
-Os IDs da Omnibees são **sequenciais por categoria**. Já temos 6 IDs válidos por chalé. As fotos faltantes estão em IDs vizinhos no mesmo range. Não preciso de browser pra cada categoria — preciso de **1 página** que liste tudo.
+### URL oficial (atualizada)
+`https://book.omnibees.com/hotelresults?c=11566&q=21954&...&CheckIn=12052026&CheckOut=14052026&...`
 
-### Estratégia (mínimo absoluto)
+### Execução (mínimo absoluto)
 
-**1 chamada `browser--extract`** na URL da Omnibees que você passou, com instrução cirúrgica:
-> "Para cada um dos 5 quartos listados, extraia o nome do quarto e TODAS as URLs `media.omnibees.com/Images/21954/RoomTypes/...` presentes no HTML (incluindo `<img src>`, `data-src`, `srcset` e atributos lazy-load do slideshow)."
+**1 navegação** → URL acima.
 
-A Omnibees pré-carrega as URLs do slideshow no DOM mesmo sem clicar — fica tudo em `data-*` ou `<noscript>`. 1 extract = 70 URLs mapeadas por categoria.
+**1 extract dirigido** com instrução cirúrgica:
+> "Para cada um dos 5 quartos (Tradicional, Família, Superior, Premium, Romântico), extraia o nome e TODAS as URLs `media.omnibees.com/Images/21954/RoomTypes/...` no DOM — incluindo `<img src>`, `data-src`, `srcset`, `data-lazy`, `<noscript>` e atributos do slideshow. Retorne JSON: `{ quarto: string, ids: string[] }[]`."
 
-**Se vier incompleto** (ex: só os 6 thumbs): plano B com 5 extracts (1 por modal aberto). Só ativo se necessário.
+**Meta de contagem** (badges que você confirmou): Tradicional 14 · Família 7 · Superior 26 · Premium 11 · Romântico 12.
 
-### 1 edit de código
-- `src/data/chalets.ts`: substituir `images[]` das 5 categorias pelos packs completos. Bump de resolução `570x428` → `1024x768` na função `IMG()` (1 linha, afeta tudo).
+**Plano B (só se vier incompleto)**: 1 `act` por categoria que precisar (abre modal) + 1 `extract`. Te aviso antes.
 
-### 1 edit de memória
-- `mem://features/chalets.md`: gravar contagem oficial (14/7/26/11/12) + regra "contar pelo badge do modal, não pelos thumbs".
+### Edits (depois do extract)
 
-### Validação zero-custo
-Sem browser de validação. Auditoria via `console.log` no dev: contagem por slug. Você abre `/acomodacoes/{slug}` e confirma visualmente.
+1. **`src/data/chalets.ts`**
+   - Substituir `images[]` das 5 categorias pelos packs completos, ordem oficial.
+   - Bump resolução: `570x428` → `1024x768` na função `IMG()` (1 linha).
+   - Manter capa atual como primeira foto quando possível.
 
-### Custo total
-- **1 chamada de browser** (vs 6 do plano anterior)
-- **2 edits de arquivo**
-- **0 screenshots, 0 retries especulativos, 0 navegação extra**
+2. **`.lovable/memory/features/chalets.md`**
+   - Atualizar tabela de IDs (14/7/26/11/12).
+   - Adicionar regra: "contar fotos pelo badge do modal, nunca pelos thumbs da listagem".
 
-### Risco e mitigação
-Se o extract não pegar tudo de primeira → escalo pra plano B (5 extracts dirigidos). Te aviso antes de gastar.
+### Validação
+`console.log` de auditoria no dev (contagem por slug). Você confirma visualmente em `/acomodacoes/{slug}`. Sem browser de validação.
+
+### Custo
+1 navegação + 1 extract + 2 edits. Zero screenshots, zero retries especulativos.
 
