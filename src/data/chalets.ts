@@ -34,9 +34,9 @@ export interface Chalet {
 }
 
 const IMG = (id: string | number) =>
-  `https://media.omnibees.com/Images/21954/RoomTypes/570x428/${id}.jpg`;
+  `https://media.omnibees.com/Images/21954/RoomTypes/1024x768/${id}.jpg`;
 const IMG_JPEG = (id: string | number) =>
-  `https://media.omnibees.com/Images/21954/RoomTypes/570x428/${id}.jpeg`;
+  `https://media.omnibees.com/Images/21954/RoomTypes/1024x768/${id}.jpeg`;
 
 const baseAmenities = ["Ar condicionado", "Frigobar", "Mini-bar", "Wi-Fi", "Varanda", "Banheiro privado"];
 
