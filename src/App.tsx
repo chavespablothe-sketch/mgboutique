@@ -16,6 +16,7 @@ import RegiaoPage from "./pages/RegiaoPage";
 import BlogPage from "./pages/BlogPage";
 import PrivacidadePage from "./pages/PrivacidadePage";
 import NotFound from "./pages/NotFound";
+import PromoSplash from "./components/PromoSplash";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <PromoSplash />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/sobre" element={<SobrePage />} />
