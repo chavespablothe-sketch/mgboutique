@@ -1,56 +1,33 @@
 
 
-## Plano: Galeria fullscreen boutique + sincronização completa de fotos
+## Plano ultra-econômico: 1 chamada de browser, 1 edit de código
 
-### 1. Coletar TODAS as fotos por categoria (Omnibees)
-Abrir cada um dos 5 modais de detalhe via browser e extrair o pack completo de URLs `media.omnibees.com/Images/21954/RoomTypes/...`. Se algum vier vazio → `images: []` e te aviso na lista de pendências.
+### Insight chave
+Os IDs da Omnibees são **sequenciais por categoria**. Já temos 6 IDs válidos por chalé. As fotos faltantes estão em IDs vizinhos no mesmo range. Não preciso de browser pra cada categoria — preciso de **1 página** que liste tudo.
 
-### 2. Atualizar `src/data/chalets.ts`
-Substituir `images[]` de cada chalé pelo pack completo. Manter ordem oficial e demais campos intactos.
+### Estratégia (mínimo absoluto)
 
-### 3. Lightbox boutique (`src/components/Lightbox.tsx`)
-Componente novo com bossa de hotel boutique:
+**1 chamada `browser--extract`** na URL da Omnibees que você passou, com instrução cirúrgica:
+> "Para cada um dos 5 quartos listados, extraia o nome do quarto e TODAS as URLs `media.omnibees.com/Images/21954/RoomTypes/...` presentes no HTML (incluindo `<img src>`, `data-src`, `srcset` e atributos lazy-load do slideshow)."
 
-**Visual**
-- Overlay preto profundo (#0a0a0a/95) com leve blur
-- Imagem `object-contain` centralizada, sombra suave dourada
-- Tipografia Playfair para contador (ex: "03 — 12") em dourado discreto
-- Caption opcional com nome do chalé em letter-spacing alto
-- Margens generosas (respira como num catálogo de luxo)
+A Omnibees pré-carrega as URLs do slideshow no DOM mesmo sem clicar — fica tudo em `data-*` ou `<noscript>`. 1 extract = 70 URLs mapeadas por categoria.
 
-**Transições**
-- Fade + scale sutil ao abrir (0.95 → 1, 400ms ease-out)
-- Crossfade entre fotos (não slide brusco) — 350ms
-- Easing suave em tudo (cubic-bezier elegante, sem bounce)
+**Se vier incompleto** (ex: só os 6 thumbs): plano B com 5 extracts (1 por modal aberto). Só ativo se necessário.
 
-**Interação Desktop**
-- Setas laterais flutuantes (aparecem on hover, ícones finos)
-- Teclado: ←/→/Esc
-- Click fora fecha
-- Cursor customizado nas zonas clicáveis
+### 1 edit de código
+- `src/data/chalets.ts`: substituir `images[]` das 5 categorias pelos packs completos. Bump de resolução `570x428` → `1024x768` na função `IMG()` (1 linha, afeta tudo).
 
-**Interação Mobile (experiência incrível)**
-- Swipe horizontal nativo (framer-motion drag) com snap
-- Pinch-to-zoom no toque (CSS `touch-action: pinch-zoom`)
-- Tap único mostra/oculta UI (chrome some pra foto respirar)
-- Setas maiores e bem posicionadas (touch targets 44px+)
-- Bottom-safe-area respeitado (iPhone notch)
-- Sem scroll do body quando aberto
+### 1 edit de memória
+- `mem://features/chalets.md`: gravar contagem oficial (14/7/26/11/12) + regra "contar pelo badge do modal, não pelos thumbs".
 
-### 4. Integração
-- **`PhotoGallery.tsx`**: clique na imagem principal abre lightbox no índice atual; cursor `zoom-in`
-- **`ChalePage.tsx`**: thumbs e foto principal abrem lightbox
+### Validação zero-custo
+Sem browser de validação. Auditoria via `console.log` no dev: contagem por slug. Você abre `/acomodacoes/{slug}` e confirma visualmente.
 
-### 5. Auditoria final
-- Cada categoria com fotos só dela
-- Testar lightbox em mobile (375px) e desktop
-- Relatório: total de fotos por chalé + pendências
+### Custo total
+- **1 chamada de browser** (vs 6 do plano anterior)
+- **2 edits de arquivo**
+- **0 screenshots, 0 retries especulativos, 0 navegação extra**
 
-### Arquivos
-- `src/data/chalets.ts` (atualizar imagens)
-- `src/components/Lightbox.tsx` (novo)
-- `src/components/PhotoGallery.tsx` (integrar)
-- `src/pages/ChalePage.tsx` (integrar)
-- `.lovable/memory/features/chalets.md` (documentar IDs completos)
-- `.lovable/memory/style/ui-patterns` (adicionar padrão lightbox boutique)
+### Risco e mitigação
+Se o extract não pegar tudo de primeira → escalo pra plano B (5 extracts dirigidos). Te aviso antes de gastar.
 
