@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
+import Lightbox from "./Lightbox";
 
 interface GalleryImage {
   src: string;
@@ -11,10 +12,12 @@ interface PhotoGalleryProps {
   images: GalleryImage[];
   title?: string;
   subtitle?: string;
+  lightboxCaption?: string;
 }
 
-const PhotoGallery = ({ images, title, subtitle }: PhotoGalleryProps) => {
+const PhotoGallery = ({ images, title, subtitle, lightboxCaption }: PhotoGalleryProps) => {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
 
   const goTo = (index: number) => {
     setActiveIndex(index);
@@ -95,7 +98,7 @@ const PhotoGallery = ({ images, title, subtitle }: PhotoGalleryProps) => {
             </div>
 
             {/* Main image */}
-            <div className="order-1 lg:order-2 relative overflow-hidden rounded-2xl bg-muted aspect-[4/3] lg:aspect-auto lg:min-h-[500px]">
+            <div className="order-1 lg:order-2 relative overflow-hidden rounded-2xl bg-muted aspect-[4/3] lg:aspect-auto lg:min-h-[500px] group">
               <AnimatePresence mode="wait">
                 <motion.img
                   key={activeIndex}
@@ -105,10 +108,11 @@ const PhotoGallery = ({ images, title, subtitle }: PhotoGalleryProps) => {
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0, scale: 0.98 }}
                   transition={{ duration: 0.5 }}
-                  className="w-full h-full object-cover absolute inset-0"
+                  onClick={() => setLightboxOpen(true)}
+                  className="w-full h-full object-cover absolute inset-0 cursor-zoom-in"
                 />
               </AnimatePresence>
-              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent">
+              <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/60 to-transparent pointer-events-none">
                 <p className="text-white font-body text-sm">{images[activeIndex].alt}</p>
               </div>
               {/* Nav arrows on main image */}
@@ -121,6 +125,14 @@ const PhotoGallery = ({ images, title, subtitle }: PhotoGalleryProps) => {
             </div>
           </div>
         </div>
+
+        <Lightbox
+          images={images}
+          open={lightboxOpen}
+          initialIndex={activeIndex}
+          onClose={() => setLightboxOpen(false)}
+          caption={lightboxCaption ?? title}
+        />
       </div>
     </section>
   );

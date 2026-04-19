@@ -1,10 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams, Link, Navigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO, { breadcrumbSchema } from "@/components/SEO";
+import Lightbox from "@/components/Lightbox";
 import { motion } from "framer-motion";
-import { Users, Maximize, Check, ArrowLeft, ArrowRight, CreditCard, Baby, Shield, Bed, Eye } from "lucide-react";
+import { Users, Maximize, Check, ArrowLeft, ArrowRight, CreditCard, Baby, Shield, Bed, Eye, Images } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import chalets from "@/data/chalets";
 
@@ -14,10 +15,15 @@ const ChalePage = () => {
   const { slug } = useParams<{ slug: string }>();
   const chalet = chalets.find((c) => c.slug === slug);
   const otherChalets = chalets.filter((c) => c.slug !== slug).slice(0, 3);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   useEffect(() => { window.scrollTo(0, 0); }, [slug]);
 
   if (!chalet) return <Navigate to="/acomodacoes" replace />;
+
+  const lightboxImages = chalet.images.map((src, i) => ({ src, alt: `${chalet.name} - foto ${i + 1}` }));
+  const openLightboxAt = (i: number) => { setLightboxIndex(i); setLightboxOpen(true); };
 
   return (
     <div className="min-h-screen">
@@ -53,18 +59,21 @@ const ChalePage = () => {
               : "grid-cols-1 md:grid-cols-2"
           }`}>
             {chalet.images.slice(0, 5).map((img, i) => (
-              <div
+              <button
                 key={i}
-                className={`relative overflow-hidden ${
+                type="button"
+                onClick={() => openLightboxAt(i)}
+                className={`relative overflow-hidden cursor-zoom-in group ${
                   i === 0 && chalet.images.length >= 5
                     ? "col-span-2 row-span-2"
                     : i === 0 && chalet.images.length >= 3
                     ? "row-span-2 md:row-span-1 md:col-span-2"
                     : ""
                 }`}
+                aria-label={`Ver foto ${i + 1} em tela cheia`}
               >
-                <img src={img} alt={`${chalet.name} - foto ${i + 1}`} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" />
-              </div>
+                <img src={img} alt={`${chalet.name} - foto ${i + 1}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+              </button>
             ))}
           </div>
           <div className="absolute top-6 left-6 z-10">
@@ -72,6 +81,15 @@ const ChalePage = () => {
               <ArrowLeft size={14} /> Acomodações
             </Link>
           </div>
+          {chalet.images.length > 5 && (
+            <button
+              type="button"
+              onClick={() => openLightboxAt(0)}
+              className="absolute bottom-6 right-6 z-10 inline-flex items-center gap-2 bg-background/90 backdrop-blur-sm text-foreground font-body text-sm px-5 py-2.5 rounded-full hover:bg-background transition-colors shadow-lg border border-border"
+            >
+              <Images size={14} /> Ver todas as {chalet.images.length} fotos
+            </button>
+          )}
         </section>
 
         {/* Content */}
@@ -194,6 +212,13 @@ const ChalePage = () => {
         </section>
       </div>
       <Footer />
+      <Lightbox
+        images={lightboxImages}
+        open={lightboxOpen}
+        initialIndex={lightboxIndex}
+        onClose={() => setLightboxOpen(false)}
+        caption={chalet.name}
+      />
     </div>
   );
 };
