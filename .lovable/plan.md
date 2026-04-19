@@ -1,35 +1,41 @@
 
 
-## Plano: extrair packs completos via 1 visita à URL correta
+## Plano final (mínimo absoluto)
 
-### URL oficial (atualizada)
-`https://book.omnibees.com/hotelresults?c=11566&q=21954&...&CheckIn=12052026&CheckOut=14052026&...`
+### Escopo
+1. Hover nos cards de pacotes (home)
+2. Incluir `fim-de-semana` no grid
+3. Frase dinâmica do mês na seção de pacotes
+4. Splash promocional flutuante → `/tarifas`, **com pulsação sofisticada**
 
-### Execução (mínimo absoluto)
+### Pulsação sofisticada do splash
+- Glow dourado pulsante atrás do badge (`absolute inset-0 rounded-full bg-secondary/40 animate-ping`).
+- Brilho sutil na borda alternando opacidade (`animate-pulse` lento, 3s).
+- Ponto dourado piscando ao lado de "Últimos quartos".
+- Sem flicker agressivo — elegante, ritmo lento.
 
-**1 navegação** → URL acima.
+### Edits (2 novos + 2 editados)
 
-**1 extract dirigido** com instrução cirúrgica:
-> "Para cada um dos 5 quartos (Tradicional, Família, Superior, Premium, Romântico), extraia o nome e TODAS as URLs `media.omnibees.com/Images/21954/RoomTypes/...` no DOM — incluindo `<img src>`, `data-src`, `srcset`, `data-lazy`, `<noscript>` e atributos do slideshow. Retorne JSON: `{ quarto: string, ids: string[] }[]`."
+**1. `src/lib/monthPhrase.ts`** (novo, 5 linhas) — helper das frases mensais.
 
-**Meta de contagem** (badges que você confirmou): Tradicional 14 · Família 7 · Superior 26 · Premium 11 · Romântico 12.
+**2. `src/components/sections/OffersSection.tsx`** (1 edit consolidado)
+- Remover filtro que exclui `fim-de-semana`.
+- Adicionar `hover:shadow-xl hover:-translate-y-1 transition-all duration-500` nos wrappers.
+- Subtítulo dourado com `monthPhrase()` acima do `<h2>`.
 
-**Plano B (só se vier incompleto)**: 1 `act` por categoria que precisar (abre modal) + 1 `extract`. Te aviso antes.
+**3. `src/components/PromoSplash.tsx`** (novo, ~80 linhas)
+- `fixed bottom-6 right-6` desktop / barra fina `bottom-4 inset-x-4` mobile.
+- Aparece após 400px scroll (fade + slide-up).
+- Verde com borda dourada, glow `animate-ping` + `animate-pulse` combinados.
+- Badge "Últimos quartos" com ponto dourado pulsante.
+- Click → `<Link to="/tarifas">`.
+- Fechável com `×` (persistência em `sessionStorage`).
 
-### Edits (depois do extract)
+**4. `src/App.tsx`** (1 linha) — montar `<PromoSplash />` global.
 
-1. **`src/data/chalets.ts`**
-   - Substituir `images[]` das 5 categorias pelos packs completos, ordem oficial.
-   - Bump resolução: `570x428` → `1024x768` na função `IMG()` (1 linha).
-   - Manter capa atual como primeira foto quando possível.
-
-2. **`.lovable/memory/features/chalets.md`**
-   - Atualizar tabela de IDs (14/7/26/11/12).
-   - Adicionar regra: "contar fotos pelo badge do modal, nunca pelos thumbs da listagem".
-
-### Validação
-`console.log` de auditoria no dev (contagem por slug). Você confirma visualmente em `/acomodacoes/{slug}`. Sem browser de validação.
+### Memória
+Update curto em `mem://features/offers-section`: frase mensal automática + splash sticky com pulsação → `/tarifas`.
 
 ### Custo
-1 navegação + 1 extract + 2 edits. Zero screenshots, zero retries especulativos.
+2 arquivos novos + 2 edits + 1 update memória. Zero browser, zero scripts, zero validação automatizada.
 
