@@ -3,6 +3,7 @@ import { ArrowRight, Clock, Tag, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import packages from "@/data/packages";
 import { buildOmnibeesUrl } from "@/lib/omnibees";
+import { monthPhrase } from "@/lib/monthPhrase";
 
 /* ── helpers ─────────────────────────────────────────────── */
 
@@ -56,7 +57,7 @@ function getHomeImage(pkg: (typeof packages)[0]): string {
 
 function getNextPackages() {
   return packages
-    .filter((p) => p.checkIn && p.slug !== "fim-de-semana")
+    .filter((p) => p.checkIn)
     .filter((p) => getDaysUntil(p.checkIn!) > 0)
     .sort((a, b) => getDaysUntil(a.checkIn!) - getDaysUntil(b.checkIn!));
 }
@@ -115,7 +116,7 @@ function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16 bg-card/60 rounded-3xl p-4 lg:p-6 border border-border/60"
+      className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16 bg-card/60 rounded-3xl p-4 lg:p-6 border border-border/60 hover:shadow-xl hover:-translate-y-1 transition-all duration-500"
     >
       {/* Image */}
       <Link to={`/tarifas/${pkg.slug}`} className="group block">
@@ -197,6 +198,7 @@ function PackageCard({ pkg, i }: { pkg: (typeof packages)[0]; i: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
       transition={{ delay: i * 0.1 }}
+      className="hover:shadow-xl hover:-translate-y-1 transition-all duration-500 rounded-2xl"
     >
       <Link to={`/tarifas/${pkg.slug}`} className="group block">
         <div className="relative overflow-hidden rounded-2xl aspect-[4/3] mb-4">
@@ -262,6 +264,9 @@ const OffersSection = () => {
           <span className="text-secondary font-body text-xs tracking-[0.5em] uppercase mb-4 block">
             Próximos feriados
           </span>
+          <p className="font-display italic text-secondary text-xl md:text-2xl mb-3">
+            {monthPhrase()}
+          </p>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground font-semibold mb-6 leading-[1.05]">
             Pacotes <span className="italic text-secondary">2026</span>
           </h2>
