@@ -101,6 +101,7 @@ const chalets: Chalet[] = [
       IMG(1601847),
       IMG(1601848),
       IMG(1601849),
+      IMG(1601850),
     ],
     highlight: "Espaço para a família",
     idealFor: "Famílias com crianças",
