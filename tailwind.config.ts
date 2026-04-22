@@ -101,12 +101,17 @@ export default {
           "0%, 100%": { boxShadow: "0 0 0 0 hsl(var(--promo) / 0.5)" },
           "50%": { boxShadow: "0 0 0 8px hsl(var(--promo) / 0)" },
         },
+        marquee: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-up": "fade-up 0.8s ease-out forwards",
         "pulse-soft": "pulse-soft 2s ease-in-out infinite",
+        marquee: "marquee 60s linear infinite",
       },
     },
   },
