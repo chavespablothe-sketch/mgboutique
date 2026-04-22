@@ -3,7 +3,7 @@ import Footer from "@/components/Footer";
 import SEO, { hotelSchema, websiteSchema } from "@/components/SEO";
 import HeroSection from "@/components/sections/HeroSection";
 import WelcomeSection from "@/components/sections/WelcomeSection";
-import VideoSection from "@/components/sections/VideoSection";
+
 import BoutiqueSection from "@/components/sections/BoutiqueSection";
 import AccommodationsSection from "@/components/sections/AccommodationsSection";
 import AmenitiesSection from "@/components/sections/AmenitiesSection";
@@ -24,7 +24,7 @@ const Index = () => {
       <HeroSection />
       <OffersSection />
       <WelcomeSection />
-      <VideoSection />
+      
       <BoutiqueSection />
       <AccommodationsSection />
       <AmenitiesSection />
