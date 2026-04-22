@@ -297,9 +297,9 @@ const packages: HotelPackage[] = [
       { day: "Sábado (09/05)", items: ["Café da manhã estendido", "Oficinas e atividades", "Almoço especial", "Chá da tarde", "Jantar com música ao vivo"] },
       { day: "Domingo (10/05)", items: ["Café da manhã comemorativo de Dia das Mães", "Almoço especial em homenagem às mães", "Check-out até 15h"] },
     ],
-    image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/upz29sh58k-1771960107741.webp",
+    image: "/images/pacote-dia-das-maes-2026.png",
     gallery: buildGallery([
-      "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/upz29sh58k-1771960107741.webp",
+      "/images/pacote-dia-das-maes-2026.png",
       "/images/amenities-spa.jpg",
       "/images/amenities-trilhas.png",
     ]),
