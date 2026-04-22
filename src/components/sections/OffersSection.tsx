@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Clock, Tag, Sparkles } from "lucide-react";
+import { ArrowRight, Clock, Tag, Sparkles, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 import packages from "@/data/packages";
 import { buildOmnibeesUrl } from "@/lib/omnibees";
@@ -124,16 +124,39 @@ function DiscountSeal() {
   );
 }
 
+function MothersDayFrame({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="relative mb-16">
+      {/* Decorative gradient envelope */}
+      <div className="absolute -inset-3 md:-inset-5 rounded-[2rem] bg-gradient-to-br from-pink-200/40 via-secondary/20 to-rose-100/40 blur-xl" aria-hidden />
+      <div className="absolute -inset-1 rounded-[2rem] bg-gradient-to-br from-pink-300/30 via-secondary/30 to-rose-200/30" aria-hidden />
+      {/* Floating hearts */}
+      <Heart className="absolute -top-4 -left-2 text-pink-400/70 fill-pink-300/50 rotate-[-15deg] animate-pulse" size={28} aria-hidden />
+      <Heart className="absolute -top-2 right-6 text-rose-400/60 fill-rose-300/40 rotate-[12deg]" size={20} aria-hidden />
+      <Heart className="absolute -bottom-3 left-10 text-pink-400/60 fill-pink-300/40 rotate-[8deg]" size={22} aria-hidden />
+      <div className="relative">
+        {/* Ribbon label */}
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
+          <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-pink-500 to-rose-500 text-white font-display italic text-sm px-5 py-1.5 rounded-full shadow-lg">
+            <Heart size={12} className="fill-white" /> Festival das Rainhas
+          </span>
+        </div>
+        {children}
+      </div>
+    </div>
+  );
+}
+
 function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }) {
   const badge = getUrgencyBadge(days);
   const bookingUrl = buildOmnibeesUrl({ checkIn: pkg.checkIn, checkOut: pkg.checkOut });
 
-  return (
+  const card = (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 mb-16 bg-card/60 rounded-3xl p-4 lg:p-6 border border-border/60 hover:shadow-xl hover:-translate-y-1 transition-all duration-500"
+      className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 bg-card/60 rounded-3xl p-4 lg:p-6 border border-border/60 hover:shadow-xl hover:-translate-y-1 transition-all duration-500"
     >
       {/* Image */}
       <Link to={`/tarifas/${pkg.slug}`} className="group block">
@@ -203,6 +226,11 @@ function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }
       </div>
     </motion.div>
   );
+
+  if (pkg.slug === "dia-das-maes-2026") {
+    return <MothersDayFrame>{card}</MothersDayFrame>;
+  }
+  return <div className="mb-16">{card}</div>;
 }
 
 function PackageCard({ pkg, i }: { pkg: (typeof packages)[0]; i: number }) {
