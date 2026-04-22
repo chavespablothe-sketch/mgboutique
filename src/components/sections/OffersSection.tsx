@@ -291,7 +291,9 @@ const OffersSection = () => {
 
   const featured = upcoming[0];
   const featuredDays = getDaysUntil(featured.checkIn!);
-  const secondary = upcoming.slice(1, 4);
+  const secondary = upcoming.slice(1);
+  // Duplicate list for seamless infinite marquee
+  const marquee = secondary.length > 0 ? [...secondary, ...secondary] : [];
 
   return (
     <section className="py-24 lg:py-36 bg-background">
@@ -323,12 +325,19 @@ const OffersSection = () => {
         {/* Featured highlight */}
         <FeaturedCard pkg={featured} days={featuredDays} />
 
-        {/* Secondary grid */}
+        {/* Looping marquee of all upcoming packages */}
         {secondary.length > 0 && (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-14">
-            {secondary.map((pkg, i) => (
-              <PackageCard key={pkg.slug} pkg={pkg} i={i} />
-            ))}
+          <div className="relative mb-14 overflow-hidden group" aria-label="Mais pacotes do ano">
+            {/* Edge fades */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-16 md:w-24 bg-gradient-to-r from-background to-transparent z-10" />
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-16 md:w-24 bg-gradient-to-l from-background to-transparent z-10" />
+            <div className="flex gap-6 md:gap-8 w-max animate-marquee group-hover:[animation-play-state:paused]">
+              {marquee.map((pkg, i) => (
+                <div key={`${pkg.slug}-${i}`} className="w-[280px] md:w-[340px] shrink-0">
+                  <PackageCard pkg={pkg} i={0} />
+                </div>
+              ))}
+            </div>
           </div>
         )}
 
