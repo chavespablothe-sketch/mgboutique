@@ -7,8 +7,8 @@ import { motion } from "framer-motion";
 import { MapPin, Clock, Car, Mountain, Waves, UtensilsCrossed, ShoppingBag, Camera, Leaf } from "lucide-react";
 
 const distances = [
-  { from: "Rio de Janeiro", time: "2h30", km: "170km" },
-  { from: "Niterói", time: "2h45", km: "185km" },
+  { from: "Rio de Janeiro", time: "3h", km: "160km" },
+  { from: "Niterói", time: "2h45", km: "150km" },
   { from: "Petrópolis", time: "1h30", km: "90km" },
   { from: "Nova Friburgo (centro)", time: "25min", km: "18km" },
   { from: "São Paulo", time: "6h", km: "480km" },
@@ -30,10 +30,10 @@ const RegiaoPage = () => {
     <div className="min-h-screen">
       <SEO
         title="A Região | Bom Jardim e Serra Fluminense"
-        description="A 2h30 do Rio de Janeiro, Bom Jardim é o destino ideal para famílias. Cachoeiras, trilhas, gastronomia serrana e clima ameno o ano todo."
+        description="A 3h do Rio de Janeiro, Bom Jardim é o destino ideal para famílias. Cachoeiras, trilhas, gastronomia serrana e clima ameno o ano todo."
         canonical="/regiao"
         schemas={[
-          { "@context": "https://schema.org", "@type": "TouristDestination", name: "Bom Jardim, Serra Fluminense", description: "Destino de ecoturismo a 2h30 do Rio de Janeiro, com cachoeiras, trilhas e gastronomia serrana.", touristType: "Famílias" },
+          { "@context": "https://schema.org", "@type": "TouristDestination", name: "Bom Jardim, Serra Fluminense", description: "Destino de ecoturismo a 3h do Rio de Janeiro, com cachoeiras, trilhas e gastronomia serrana.", touristType: "Famílias" },
           breadcrumbSchema([{ name: "Home", url: "/" }, { name: "A Região", url: "/regiao" }]),
         ]}
       />
