@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
-import { ArrowRight, Clock, Tag, Sparkles, Heart } from "lucide-react";
+import { ArrowRight, ArrowLeft, Clock, Tag, Sparkles, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useRef } from "react";
 import packages from "@/data/packages";
 import { buildOmnibeesUrl } from "@/lib/omnibees";
 import { monthPhrase } from "@/lib/monthPhrase";
@@ -287,13 +288,23 @@ function PackageCard({ pkg, i }: { pkg: (typeof packages)[0]; i: number }) {
 
 const OffersSection = () => {
   const upcoming = getNextPackages();
+  const scrollerRef = useRef<HTMLDivElement>(null);
   if (upcoming.length === 0) return null;
 
-  const featured = upcoming[0];
+  // Highlight the next 2 upcoming weekends/holidays
+  const featuredList = upcoming.slice(0, 2);
+  const featured = featuredList[0];
   const featuredDays = getDaysUntil(featured.checkIn!);
-  const secondary = upcoming.slice(1);
+  const secondary = upcoming.slice(2);
   // Duplicate list for seamless infinite marquee
   const marquee = secondary.length > 0 ? [...secondary, ...secondary] : [];
+
+  const scrollBy = (dir: 1 | -1) => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const amount = el.clientWidth * 0.7 * dir;
+    el.scrollBy({ left: amount, behavior: "smooth" });
+  };
 
   return (
     <section className="py-24 lg:py-36 bg-background">
@@ -322,21 +333,47 @@ const OffersSection = () => {
           </p>
         </motion.div>
 
-        {/* Featured highlight */}
-        <FeaturedCard pkg={featured} days={featuredDays} />
+        {/* Featured highlights — next 2 weekends/holidays */}
+        {featuredList.map((pkg) => (
+          <FeaturedCard key={pkg.slug} pkg={pkg} days={getDaysUntil(pkg.checkIn!)} />
+        ))}
 
-        {/* Looping marquee of all upcoming packages */}
+        {/* Looping carousel of remaining upcoming packages with arrows */}
         {secondary.length > 0 && (
-          <div className="relative mb-14 overflow-hidden group" aria-label="Mais pacotes do ano">
+          <div className="relative mb-14 group" aria-label="Mais pacotes do ano">
             {/* Edge fades */}
             <div className="pointer-events-none absolute inset-y-0 left-0 w-16 md:w-24 bg-gradient-to-r from-background to-transparent z-10" />
             <div className="pointer-events-none absolute inset-y-0 right-0 w-16 md:w-24 bg-gradient-to-l from-background to-transparent z-10" />
-            <div className="flex gap-6 md:gap-8 w-max animate-marquee group-hover:[animation-play-state:paused]">
-              {marquee.map((pkg, i) => (
-                <div key={`${pkg.slug}-${i}`} className="w-[280px] md:w-[340px] shrink-0">
-                  <PackageCard pkg={pkg} i={0} />
-                </div>
-              ))}
+
+            {/* Arrow controls */}
+            <button
+              type="button"
+              aria-label="Pacote anterior"
+              onClick={() => scrollBy(-1)}
+              className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-card/90 backdrop-blur border border-border shadow-md flex items-center justify-center text-foreground hover:bg-secondary hover:text-secondary-foreground transition-colors"
+            >
+              <ArrowLeft size={18} />
+            </button>
+            <button
+              type="button"
+              aria-label="Próximo pacote"
+              onClick={() => scrollBy(1)}
+              className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-card/90 backdrop-blur border border-border shadow-md flex items-center justify-center text-foreground hover:bg-secondary hover:text-secondary-foreground transition-colors"
+            >
+              <ArrowRight size={18} />
+            </button>
+
+            <div
+              ref={scrollerRef}
+              className="overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar"
+            >
+              <div className="flex gap-6 md:gap-8 w-max animate-marquee group-hover:[animation-play-state:paused] py-2">
+                {marquee.map((pkg, i) => (
+                  <div key={`${pkg.slug}-${i}`} className="w-[280px] md:w-[340px] shrink-0 snap-start">
+                    <PackageCard pkg={pkg} i={0} />
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         )}

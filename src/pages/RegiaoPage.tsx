@@ -8,7 +8,7 @@ import { MapPin, Clock, Car, Mountain, Waves, UtensilsCrossed, ShoppingBag, Came
 
 const distances = [
   { from: "Rio de Janeiro", time: "3h", km: "160km" },
-  { from: "Niterói", time: "2h45", km: "150km" },
+  { from: "Niterói", time: "2h30", km: "140km" },
   { from: "Petrópolis", time: "1h30", km: "90km" },
   { from: "Nova Friburgo (centro)", time: "25min", km: "18km" },
   { from: "São Paulo", time: "6h", km: "480km" },
