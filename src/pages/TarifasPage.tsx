@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import SEO, { breadcrumbSchema } from "@/components/SEO";
 import CTASection from "@/components/CTASection";
 import { motion } from "framer-motion";
-import { Calendar, ArrowRight, CalendarDays, CreditCard, Baby, Star, Check, UtensilsCrossed, Sun, Sparkles } from "lucide-react";
+import { Calendar, ArrowRight, CalendarDays, CreditCard, Baby, Star, Check, UtensilsCrossed, Sun, Sparkles, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import allPackages from "@/data/packages";
@@ -243,14 +243,9 @@ const TarifasPage = () => {
 
                   {/* Cards grid - clean like reference */}
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {pkgs.map((pkg, i) => (
-                      <motion.div
-                        key={pkg.slug}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: i * 0.05 }}
-                      >
+                    {pkgs.map((pkg, i) => {
+                      const isMothersDay = pkg.slug === "dia-das-maes-2026";
+                      const cardInner = (
                         <Link to={`/tarifas/${pkg.slug}`} className="group block">
                           {/* Image */}
                           <div className="relative overflow-hidden rounded-xl aspect-[4/3] mb-4">
@@ -280,8 +275,41 @@ const TarifasPage = () => {
                             </span>
                           </div>
                         </Link>
-                      </motion.div>
-                    ))}
+                      );
+
+                      return (
+                        <motion.div
+                          key={pkg.slug}
+                          initial={{ opacity: 0, y: 20 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ delay: i * 0.05 }}
+                        >
+                          {isMothersDay ? (
+                            <div className="relative pt-5">
+                              {/* Soft glow envelope */}
+                              <div className="absolute -inset-2 rounded-[1.75rem] bg-gradient-to-br from-pink-200/50 via-rose-100/40 to-secondary/20 blur-lg" aria-hidden />
+                              <div className="absolute -inset-0.5 rounded-[1.5rem] bg-gradient-to-br from-pink-300/40 via-rose-200/30 to-pink-200/30" aria-hidden />
+                              {/* Floating hearts */}
+                              <Heart className="absolute -top-1 -left-1 text-pink-400/80 fill-pink-300/60 rotate-[-15deg] animate-pulse z-10" size={22} aria-hidden />
+                              <Heart className="absolute top-2 right-2 text-rose-400/70 fill-rose-300/50 rotate-[12deg] z-10" size={16} aria-hidden />
+                              <Heart className="absolute -bottom-2 left-8 text-pink-400/70 fill-pink-300/50 rotate-[8deg] z-10" size={18} aria-hidden />
+                              {/* Ribbon */}
+                              <div className="absolute -top-1 left-1/2 -translate-x-1/2 z-20">
+                                <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-pink-500 to-rose-500 text-white font-display italic text-xs px-4 py-1 rounded-full shadow-md whitespace-nowrap">
+                                  <Heart size={11} className="fill-white" /> Festival das Rainhas
+                                </span>
+                              </div>
+                              <div className="relative bg-background/70 rounded-[1.25rem] p-3 backdrop-blur-sm">
+                                {cardInner}
+                              </div>
+                            </div>
+                          ) : (
+                            cardInner
+                          )}
+                        </motion.div>
+                      );
+                    })}
                   </div>
                 </div>
               ))}
