@@ -48,7 +48,7 @@ function getUrgencyBadge(days: number): { label: string; className: string; puls
 const homeImageOverrides: Record<string, string> = {
   "tiradentes-2026": "/images/pacotes-quadriciclo.png",
   "primeiro-de-maio-2026": "/images/pacotes-playground.png",
-  "dia-das-maes-2026": "/images/pacotes-arara.png",
+  "dia-das-maes-2026": "/images/pacote-dia-das-maes-2026.png",
   "corpus-christi-2026": "/images/pacotes-inflavel.png",
 };
 
