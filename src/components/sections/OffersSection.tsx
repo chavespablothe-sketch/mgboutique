@@ -186,7 +186,6 @@ function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }
       {/* Info */}
       <div className="flex flex-col justify-center space-y-5 py-2 lg:pr-4">
         <div>
-          </span>
           <h3 className="font-display text-3xl md:text-4xl text-foreground font-semibold leading-tight">
             {pkg.shortTitle}
           </h3>
