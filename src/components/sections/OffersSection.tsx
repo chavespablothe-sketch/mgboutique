@@ -5,6 +5,7 @@ import { useRef } from "react";
 import packages from "@/data/packages";
 import { buildOmnibeesUrl } from "@/lib/omnibees";
 import { monthPhrase } from "@/lib/monthPhrase";
+import { isPackageActive } from "@/lib/packageStatus";
 
 /* ── helpers ─────────────────────────────────────────────── */
 
@@ -58,26 +59,11 @@ function getHomeImage(pkg: (typeof packages)[0]): string {
 
 function getNextPackages() {
   const now = new Date();
-  const currentMonth = now.getMonth();
-  const currentYear = now.getFullYear();
   return packages
-    .filter((p) => p.checkIn)
-    .filter((p) => {
-      const days = getDaysUntil(p.checkIn!);
-      if (days > 0) return true;
-      // Keep packages from the current month even if already started/past
-      const d = parseCheckIn(p.checkIn!);
-      return d.getMonth() === currentMonth && d.getFullYear() === currentYear;
-    })
-    .sort((a, b) => {
-      const da = getDaysUntil(a.checkIn!);
-      const db = getDaysUntil(b.checkIn!);
-      // Future first (smallest positive), then past (closest to today)
-      if (da > 0 && db <= 0) return -1;
-      if (db > 0 && da <= 0) return 1;
-      if (da > 0 && db > 0) return da - db;
-      return db - da;
-    });
+    .filter((p) => p.checkIn && p.checkOut)
+    // Auto-remove 1 day after checkOut (handled by isPackageActive: end = checkOut day 23:59:59)
+    .filter((p) => isPackageActive(p, now))
+    .sort((a, b) => getDaysUntil(a.checkIn!) - getDaysUntil(b.checkIn!));
 }
 
 /* ── sub-components ──────────────────────────────────────── */
