@@ -266,9 +266,9 @@ const packages: HotelPackage[] = [
       { day: "Sábado (02/05)", items: ["Café da manhã estendido", "Trilha guiada pela Mata Atlântica", "Almoço regional", "Recreação infantil", "Spa e piscina", "Jantar especial"] },
       { day: "Domingo (03/05)", items: ["Café da manhã especial", "Atividades em família", "Check-out até 12h"] },
     ],
-    image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/xb2vhb4dm2l-1770315436578.jpg",
+    image: "/images/pacote-dia-do-trabalhador-2026.png",
     gallery: buildGallery([
-      "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/xb2vhb4dm2l-1770315436578.jpg",
+      "/images/pacote-dia-do-trabalhador-2026.png",
       "/images/lazer-lhamas.jpg",
       "/images/sobre-vista-pedra.jpg",
     ]),
