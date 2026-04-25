@@ -398,7 +398,7 @@ const OffersSection = () => {
             <button
               type="button"
               aria-label="Próximo pacote"
-              onClick={() => scrollBy(1)}
+              onClick={() => scrollByDir(1)}
               className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-card/90 backdrop-blur border border-border shadow-md flex items-center justify-center text-foreground hover:bg-secondary hover:text-secondary-foreground transition-colors"
             >
               <ArrowRight size={18} />
