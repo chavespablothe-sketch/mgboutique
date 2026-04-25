@@ -337,9 +337,12 @@ const OffersSection = () => {
   // Duplicate list for seamless infinite marquee
   const marquee = secondary.length > 0 ? [...secondary, ...secondary] : [];
 
-  const scrollBy = (dir: 1 | -1) => {
+  const auto = useAutoScroll(scrollerRef, { speed: 0.5, pauseMs: 6000 });
+
+  const scrollByDir = (dir: 1 | -1) => {
     const el = scrollerRef.current;
     if (!el) return;
+    auto.pause();
     const amount = el.clientWidth * 0.7 * dir;
     el.scrollBy({ left: amount, behavior: "smooth" });
   };
