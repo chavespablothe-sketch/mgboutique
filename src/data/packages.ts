@@ -409,9 +409,9 @@ const packages: HotelPackage[] = [
       { day: "Sábado", items: ["Café da manhã estendido com itens típicos", "Atividades ao ar livre", "Almoço", "Brincadeiras juninas para crianças", "Jantar especial com música"] },
       { day: "Domingo", items: ["Café da manhã", "Atividades de despedida", "Check-out até 12h"] },
     ],
-    image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/p8dj0qouok-1770318030523.webp",
+    image: "/images/pacote-arraia-inverno-2026.png",
     gallery: buildGallery([
-      "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/p8dj0qouok-1770318030523.webp",
+      "/images/pacote-arraia-inverno-2026.png",
       "/images/lazer-piscina.webp",
       "/images/sobre-vista-pedra.jpg",
     ]),
