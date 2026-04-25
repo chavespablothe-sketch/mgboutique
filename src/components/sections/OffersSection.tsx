@@ -406,9 +406,9 @@ const OffersSection = () => {
 
             <div
               ref={scrollerRef}
-              className="overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar"
+              className="overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar touch-pan-x"
             >
-              <div className="flex gap-6 md:gap-8 w-max animate-marquee group-hover:[animation-play-state:paused] py-2">
+              <div className="flex gap-6 md:gap-8 py-2">
                 {marquee.map((pkg, i) => (
                   <div key={`${pkg.slug}-${i}`} className="w-[280px] md:w-[340px] shrink-0 snap-start">
                     <PackageCard pkg={pkg} i={0} />
