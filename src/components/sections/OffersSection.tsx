@@ -1,7 +1,61 @@
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowLeft, Clock, Tag, Sparkles, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
+
+/** Auto-scroll horizontal infinito com pausa em interação. */
+function useAutoScroll(
+  ref: React.RefObject<HTMLDivElement>,
+  { speed = 0.5, pauseMs = 6000 }: { speed?: number; pauseMs?: number } = {},
+) {
+  const lastInteractRef = useRef<number>(0);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) return;
+
+    let rafId = 0;
+    const tick = () => {
+      const now = performance.now();
+      if (now - lastInteractRef.current > pauseMs) {
+        const half = el.scrollWidth / 2;
+        if (half > 0) {
+          let next = el.scrollLeft + speed;
+          if (next >= half) next -= half;
+          el.scrollLeft = next;
+        }
+      }
+      rafId = requestAnimationFrame(tick);
+    };
+    rafId = requestAnimationFrame(tick);
+
+    const mark = () => {
+      lastInteractRef.current = performance.now();
+    };
+    const events: (keyof HTMLElementEventMap)[] = [
+      "mouseenter",
+      "touchstart",
+      "pointerdown",
+      "wheel",
+      "focusin",
+    ];
+    events.forEach((e) => el.addEventListener(e, mark, { passive: true }));
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      events.forEach((e) => el.removeEventListener(e, mark));
+    };
+  }, [ref, speed, pauseMs]);
+
+  return {
+    pause: () => {
+      lastInteractRef.current = performance.now();
+    },
+  };
+}
 import packages from "@/data/packages";
 import { buildOmnibeesUrl } from "@/lib/omnibees";
 import { monthPhrase } from "@/lib/monthPhrase";
