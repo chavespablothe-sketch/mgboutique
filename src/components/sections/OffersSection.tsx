@@ -1,7 +1,61 @@
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowLeft, Clock, Tag, Sparkles, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
-import { useRef } from "react";
+import { useRef, useEffect } from "react";
+
+/** Auto-scroll horizontal infinito com pausa em interação. */
+function useAutoScroll(
+  ref: React.RefObject<HTMLDivElement>,
+  { speed = 0.5, pauseMs = 6000 }: { speed?: number; pauseMs?: number } = {},
+) {
+  const lastInteractRef = useRef<number>(0);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduceMotion) return;
+
+    let rafId = 0;
+    const tick = () => {
+      const now = performance.now();
+      if (now - lastInteractRef.current > pauseMs) {
+        const half = el.scrollWidth / 2;
+        if (half > 0) {
+          let next = el.scrollLeft + speed;
+          if (next >= half) next -= half;
+          el.scrollLeft = next;
+        }
+      }
+      rafId = requestAnimationFrame(tick);
+    };
+    rafId = requestAnimationFrame(tick);
+
+    const mark = () => {
+      lastInteractRef.current = performance.now();
+    };
+    const events: (keyof HTMLElementEventMap)[] = [
+      "mouseenter",
+      "touchstart",
+      "pointerdown",
+      "wheel",
+      "focusin",
+    ];
+    events.forEach((e) => el.addEventListener(e, mark, { passive: true }));
+
+    return () => {
+      cancelAnimationFrame(rafId);
+      events.forEach((e) => el.removeEventListener(e, mark));
+    };
+  }, [ref, speed, pauseMs]);
+
+  return {
+    pause: () => {
+      lastInteractRef.current = performance.now();
+    },
+  };
+}
 import packages from "@/data/packages";
 import { buildOmnibeesUrl } from "@/lib/omnibees";
 import { monthPhrase } from "@/lib/monthPhrase";
@@ -283,9 +337,12 @@ const OffersSection = () => {
   // Duplicate list for seamless infinite marquee
   const marquee = secondary.length > 0 ? [...secondary, ...secondary] : [];
 
-  const scrollBy = (dir: 1 | -1) => {
+  const auto = useAutoScroll(scrollerRef, { speed: 0.5, pauseMs: 6000 });
+
+  const scrollByDir = (dir: 1 | -1) => {
     const el = scrollerRef.current;
     if (!el) return;
+    auto.pause();
     const amount = el.clientWidth * 0.7 * dir;
     el.scrollBy({ left: amount, behavior: "smooth" });
   };
@@ -333,7 +390,7 @@ const OffersSection = () => {
             <button
               type="button"
               aria-label="Pacote anterior"
-              onClick={() => scrollBy(-1)}
+              onClick={() => scrollByDir(-1)}
               className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-card/90 backdrop-blur border border-border shadow-md flex items-center justify-center text-foreground hover:bg-secondary hover:text-secondary-foreground transition-colors"
             >
               <ArrowLeft size={18} />
@@ -341,7 +398,7 @@ const OffersSection = () => {
             <button
               type="button"
               aria-label="Próximo pacote"
-              onClick={() => scrollBy(1)}
+              onClick={() => scrollByDir(1)}
               className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 w-11 h-11 rounded-full bg-card/90 backdrop-blur border border-border shadow-md flex items-center justify-center text-foreground hover:bg-secondary hover:text-secondary-foreground transition-colors"
             >
               <ArrowRight size={18} />
@@ -349,9 +406,9 @@ const OffersSection = () => {
 
             <div
               ref={scrollerRef}
-              className="overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar"
+              className="overflow-x-auto scroll-smooth snap-x snap-mandatory no-scrollbar touch-pan-x"
             >
-              <div className="flex gap-6 md:gap-8 w-max animate-marquee group-hover:[animation-play-state:paused] py-2">
+              <div className="flex gap-6 md:gap-8 py-2">
                 {marquee.map((pkg, i) => (
                   <div key={`${pkg.slug}-${i}`} className="w-[280px] md:w-[340px] shrink-0 snap-start">
                     <PackageCard pkg={pkg} i={0} />
