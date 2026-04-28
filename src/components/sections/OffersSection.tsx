@@ -270,7 +270,33 @@ function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }
   if (pkg.slug === "dia-das-maes-2026") {
     return <MothersDayFrame>{card}</MothersDayFrame>;
   }
+  if (pkg.slug === "dia-dos-namorados-2026") {
+    return <ValentinesFrame>{card}</ValentinesFrame>;
+  }
   return <div className="mb-16">{card}</div>;
+}
+
+function ValentinesFrame({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="relative mb-16">
+      {/* Soft red/rose glow envelope */}
+      <div className="absolute -inset-3 md:-inset-5 rounded-[2rem] bg-gradient-to-br from-rose-300/30 via-red-400/20 to-rose-200/30 blur-xl" aria-hidden />
+      <div className="absolute -inset-1 rounded-[2rem] bg-gradient-to-br from-rose-400/30 via-red-500/25 to-rose-300/30" aria-hidden />
+      {/* Floating hearts */}
+      <Heart className="absolute -top-4 -left-2 text-rose-500/70 fill-rose-400/50 rotate-[-15deg] animate-pulse" size={28} aria-hidden />
+      <Heart className="absolute -top-2 right-6 text-red-500/60 fill-rose-400/40 rotate-[12deg]" size={20} aria-hidden />
+      <Heart className="absolute -bottom-3 left-10 text-rose-500/60 fill-rose-400/40 rotate-[8deg]" size={22} aria-hidden />
+      <div className="relative">
+        {/* Ribbon label */}
+        <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
+          <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-rose-600 to-red-600 text-white font-display italic text-sm px-5 py-1.5 rounded-full shadow-lg">
+            <Heart size={12} className="fill-white" /> Dia dos Namorados
+          </span>
+        </div>
+        {children}
+      </div>
+    </div>
+  );
 }
 
 function PackageCard({ pkg, i }: { pkg: (typeof packages)[0]; i: number }) {
