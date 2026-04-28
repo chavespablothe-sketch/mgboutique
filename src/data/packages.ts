@@ -377,9 +377,9 @@ const packages: HotelPackage[] = [
       { day: "Sábado (13/06)", items: ["Café da manhã estendido", "Dia de relaxamento", "Almoço", "Jantar especial de inverno com música ao vivo"] },
       { day: "Domingo (14/06)", items: ["Café da manhã especial de Dia dos Namorados", "Brunch romântico", "Check-out até 15h"] },
     ],
-    image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/zx8shub1zpr-1770317797525.webp",
+    image: "/images/pacote-namorados-2026.png",
     gallery: buildGallery([
-      "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/zx8shub1zpr-1770317797525.webp",
+      "/images/pacote-namorados-2026.png",
       "/images/amenities-spa.jpg",
       "/images/amenities-trilhas.png",
     ]),
