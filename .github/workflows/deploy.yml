@@ -10,25 +10,20 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Baixa o código do repositório
       - name: Checkout
         uses: actions/checkout@v3
 
-      # Configura Node.js
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      # Instala dependências
       - name: Install dependencies
         run: npm install
 
-      # Gera o build (Vite)
       - name: Build project
         run: npm run build
 
-      # Deploy para Hostinger via FTP
       - name: Deploy via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
