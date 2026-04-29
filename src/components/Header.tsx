@@ -24,11 +24,11 @@ const Header = () => {
     <>
       <header className="fixed top-0 left-0 right-0 z-50">
         <div className="bg-primary/95 backdrop-blur-md border-b border-primary-foreground/5">
-          <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between h-20 lg:h-24">
+          <div className="container mx-auto px-3 lg:px-4">
+            <div className="flex items-center justify-between gap-2 h-16 lg:h-24">
               {/* Mobile menu toggle */}
               <button
-                className="lg:hidden text-primary-foreground"
+                className="lg:hidden text-primary-foreground shrink-0"
                 onClick={() => setIsOpen(!isOpen)}
               >
                 {isOpen ? <X size={22} /> : <Menu size={22} />}
@@ -52,11 +52,11 @@ const Header = () => {
               </nav>
 
               {/* Logo */}
-              <Link to="/" className="flex items-center justify-center shrink-0 mx-6 lg:mx-10">
+              <Link to="/" className="flex items-center justify-center shrink-0 mx-2 lg:mx-10">
                 <img
                   src="/images/logo-light.png"
                   alt="Minha Glória Hotel Boutique"
-                  className="h-14 lg:h-16 w-auto object-contain"
+                  className="h-10 lg:h-16 w-auto object-contain"
                 />
               </Link>
 
@@ -103,14 +103,14 @@ const Header = () => {
               </div>
 
               {/* Mobile/Tablet CTAs */}
-              <div className="flex lg:hidden items-center gap-2">
-                <Button asChild size="sm" className="bg-promo hover:bg-promo/90 text-promo-foreground font-body text-[10px] uppercase tracking-wider gap-1 px-3 py-1.5 rounded-full shadow-md shadow-promo/40 font-bold animate-pulse-soft ring-2 ring-promo/30">
+              <div className="flex lg:hidden items-center gap-1.5 shrink-0">
+                <Button asChild size="sm" className="bg-promo hover:bg-promo/90 text-promo-foreground font-body text-[9px] uppercase tracking-wider gap-1 px-2.5 py-1.5 rounded-full shadow-md shadow-promo/40 font-bold animate-pulse-soft ring-1 ring-promo/30 h-auto">
                   <Link to="/tarifas">
-                    <Tag size={11} className="fill-promo-foreground" />
+                    <Tag size={10} className="fill-promo-foreground" />
                     Promo
                   </Link>
                 </Button>
-                <Button asChild size="sm" className="bg-cta hover:bg-cta/90 text-cta-foreground font-body text-[10px] uppercase tracking-wider px-3 py-1.5 rounded-full">
+                <Button asChild size="sm" className="bg-cta hover:bg-cta/90 text-cta-foreground font-body text-[9px] uppercase tracking-wider px-2.5 py-1.5 rounded-full h-auto">
                   <a href={OMNIBEES_URL} target="_blank" rel="noopener noreferrer">
                     Reservar
                   </a>
