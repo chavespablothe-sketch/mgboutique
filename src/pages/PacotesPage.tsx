@@ -59,9 +59,11 @@ const PacotesPage = () => {
           <div className="container mx-auto px-4 flex items-center justify-center gap-3 text-center">
             <Percent size={16} className="shrink-0" />
             <p className="font-body text-sm font-bold uppercase tracking-wider">
-              Mês do Consumidor — até 30% OFF em pacotes selecionados
+              Dia das Mães — 15% OFF nos últimos quartos
             </p>
-            <span className="hidden md:inline font-body text-xs opacity-80">| Vagas limitadas</span>
+            <Link to="/pacotes/dia-das-maes-2026" className="hidden md:inline-flex items-center gap-1 font-body text-xs underline underline-offset-2 hover:opacity-80">
+              Ver pacote <ArrowRight size={12} />
+            </Link>
           </div>
         </div>
 
@@ -110,8 +112,8 @@ const PacotesPage = () => {
                 <div className="w-10 h-10 rounded-full bg-cta/10 flex items-center justify-center">
                   <Percent size={18} className="text-cta" />
                 </div>
-                <h3 className="font-display text-lg font-semibold text-foreground">Até 30% OFF</h3>
-                <p className="text-muted-foreground font-body text-xs">Mês do consumidor em pacotes selecionados</p>
+                <h3 className="font-display text-lg font-semibold text-foreground">15% OFF Dia das Mães</h3>
+                <p className="text-muted-foreground font-body text-xs">Aplicado nos últimos quartos disponíveis</p>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <div className="w-10 h-10 rounded-full bg-cta/10 flex items-center justify-center">
@@ -181,6 +183,18 @@ const PacotesPage = () => {
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent" />
+
+                    {pkg.slug === "dia-das-maes-2026" && (
+                      <div className="absolute top-4 left-4 flex flex-col gap-1.5">
+                        <span className="inline-flex items-center gap-1.5 bg-cta text-cta-foreground text-[11px] font-body font-bold uppercase tracking-[0.15em] px-3 py-1.5 rounded-full shadow-lg">
+                          <Percent size={12} /> 15% OFF
+                        </span>
+                        <span className="inline-flex items-center gap-1 bg-background/90 backdrop-blur-sm text-foreground text-[10px] font-body font-medium px-2.5 py-1 rounded-full shadow border border-border/50">
+                          Últimos quartos
+                        </span>
+                      </div>
+                    )}
+
                     <div className="absolute bottom-0 left-0 right-0 p-6">
                       <h3 className="font-display text-2xl md:text-3xl font-semibold text-primary-foreground mb-1">{pkg.shortTitle}</h3>
                       <div className="flex items-center gap-2 text-primary-foreground/80 text-sm font-body">
