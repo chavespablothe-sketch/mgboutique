@@ -103,14 +103,14 @@ const Header = () => {
               </div>
 
               {/* Mobile/Tablet CTAs */}
-              <div className="flex lg:hidden items-center gap-2">
-                <Button asChild size="sm" className="bg-promo hover:bg-promo/90 text-promo-foreground font-body text-[10px] uppercase tracking-wider gap-1 px-3 py-1.5 rounded-full shadow-md shadow-promo/40 font-bold animate-pulse-soft ring-2 ring-promo/30">
+              <div className="flex lg:hidden items-center gap-1.5 shrink-0">
+                <Button asChild size="sm" className="bg-promo hover:bg-promo/90 text-promo-foreground font-body text-[9px] uppercase tracking-wider gap-1 px-2.5 py-1.5 rounded-full shadow-md shadow-promo/40 font-bold animate-pulse-soft ring-1 ring-promo/30 h-auto">
                   <Link to="/tarifas">
-                    <Tag size={11} className="fill-promo-foreground" />
+                    <Tag size={10} className="fill-promo-foreground" />
                     Promo
                   </Link>
                 </Button>
-                <Button asChild size="sm" className="bg-cta hover:bg-cta/90 text-cta-foreground font-body text-[10px] uppercase tracking-wider px-3 py-1.5 rounded-full">
+                <Button asChild size="sm" className="bg-cta hover:bg-cta/90 text-cta-foreground font-body text-[9px] uppercase tracking-wider px-2.5 py-1.5 rounded-full h-auto">
                   <a href={OMNIBEES_URL} target="_blank" rel="noopener noreferrer">
                     Reservar
                   </a>
