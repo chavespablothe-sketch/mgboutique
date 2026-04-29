@@ -10,6 +10,7 @@ import AmenitiesSection from "@/components/sections/AmenitiesSection";
 import OffersSection from "@/components/sections/OffersSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import CTASection from "@/components/CTASection";
+import MaesPromoLightbox from "@/components/MaesPromoLightbox";
 
 const Index = () => {
   return (
@@ -31,6 +32,7 @@ const Index = () => {
       <TestimonialsSection />
       <CTASection />
       <Footer />
+      <MaesPromoLightbox />
     </div>
   );
 };
