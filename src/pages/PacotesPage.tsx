@@ -183,6 +183,18 @@ const PacotesPage = () => {
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/70 via-transparent to-transparent" />
+
+                    {pkg.slug === "dia-das-maes-2026" && (
+                      <div className="absolute top-4 left-4 flex flex-col gap-1.5">
+                        <span className="inline-flex items-center gap-1.5 bg-cta text-cta-foreground text-[11px] font-body font-bold uppercase tracking-[0.15em] px-3 py-1.5 rounded-full shadow-lg">
+                          <Percent size={12} /> 15% OFF
+                        </span>
+                        <span className="inline-flex items-center gap-1 bg-background/90 backdrop-blur-sm text-foreground text-[10px] font-body font-medium px-2.5 py-1 rounded-full shadow border border-border/50">
+                          Últimos quartos
+                        </span>
+                      </div>
+                    )}
+
                     <div className="absolute bottom-0 left-0 right-0 p-6">
                       <h3 className="font-display text-2xl md:text-3xl font-semibold text-primary-foreground mb-1">{pkg.shortTitle}</h3>
                       <div className="flex items-center gap-2 text-primary-foreground/80 text-sm font-body">
