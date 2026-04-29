@@ -52,11 +52,11 @@ const Header = () => {
               </nav>
 
               {/* Logo */}
-              <Link to="/" className="flex items-center justify-center shrink-0 mx-6 lg:mx-10">
+              <Link to="/" className="flex items-center justify-center shrink-0 mx-2 lg:mx-10">
                 <img
                   src="/images/logo-light.png"
                   alt="Minha Glória Hotel Boutique"
-                  className="h-14 lg:h-16 w-auto object-contain"
+                  className="h-10 lg:h-16 w-auto object-contain"
                 />
               </Link>
 
