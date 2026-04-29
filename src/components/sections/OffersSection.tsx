@@ -184,6 +184,18 @@ function MothersDayFrame({ children }: { children: React.ReactNode }) {
             <Heart size={12} className="fill-white" /> Festival das Rainhas
           </span>
         </div>
+
+        {/* Blinking -15% splash */}
+        <div className="absolute -top-6 -right-3 md:-top-8 md:-right-6 z-30 pointer-events-none">
+          <div className="relative animate-pulse">
+            <span className="absolute inset-0 rounded-full bg-rose-500/60 blur-xl animate-ping" aria-hidden />
+            <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-rose-500 to-pink-600 text-white shadow-2xl ring-4 ring-white/70 flex flex-col items-center justify-center rotate-[-12deg]">
+              <span className="font-display font-bold text-2xl md:text-3xl leading-none">-15%</span>
+              <span className="font-body uppercase tracking-[0.12em] text-[8px] md:text-[9px] mt-1">últimos quartos</span>
+            </div>
+          </div>
+        </div>
+
         {children}
       </div>
     </div>
