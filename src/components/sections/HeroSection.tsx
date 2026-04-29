@@ -21,6 +21,23 @@ const HeroSection = () => {
 
         <div className="relative z-10 container mx-auto px-4 lg:px-8 pt-20">
           <div className="max-w-2xl">
+            <motion.div
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="mb-5"
+            >
+              <Link
+                to="/pacotes/dia-das-maes-2026"
+                className="inline-flex items-center gap-2 bg-primary-foreground/10 hover:bg-primary-foreground/15 backdrop-blur-md border border-secondary/40 text-primary-foreground text-[11px] sm:text-xs font-body px-3.5 py-1.5 rounded-full transition-all group"
+              >
+                <span className="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse" />
+                <span className="tracking-wider uppercase text-secondary font-semibold">15% OFF</span>
+                <span className="text-primary-foreground/80">Festival das Rainhas · últimos quartos</span>
+                <ArrowRight size={11} className="text-secondary group-hover:translate-x-0.5 transition-transform" />
+              </Link>
+            </motion.div>
+
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
