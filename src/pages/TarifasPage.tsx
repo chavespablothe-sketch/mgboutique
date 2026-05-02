@@ -18,7 +18,6 @@ const allMonths = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "
 
 /** Images to use for the fim-de-semana package per month */
 const fdsMonthImages: Record<string, string> = {
-  "Abril": "/images/amenities-gastronomia.jpg",
   "Maio": "/images/amenities-spa.jpg",
   "Junho": "/images/lazer-piscina.webp",
   "Julho": "/images/sobre-vista-pedra.jpg",
