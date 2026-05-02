@@ -368,11 +368,15 @@ const OffersSection = () => {
   const scrollerRef = useRef<HTMLDivElement>(null);
   if (upcoming.length === 0) return null;
 
-  // Highlight the next 2 upcoming weekends/holidays
-  const featuredList = upcoming.slice(0, 2);
+  // Highlight Dia das Mães + Festa Junina (Arraiá de Inverno) when present, fallback to next 2
+  const featuredSlugs = ["dia-das-maes-2026", "arraia-inverno-2026"];
+  const explicitFeatured = featuredSlugs
+    .map((slug) => upcoming.find((p) => p.slug === slug))
+    .filter(Boolean) as typeof upcoming;
+  const featuredList = explicitFeatured.length > 0 ? explicitFeatured : upcoming.slice(0, 2);
   const featured = featuredList[0];
   const featuredDays = getDaysUntil(featured.checkIn!);
-  const secondary = upcoming.slice(2);
+  const secondary = upcoming.filter((p) => !featuredList.some((f) => f.slug === p.slug));
   // Duplicate list for seamless infinite marquee
   const marquee = secondary.length > 0 ? [...secondary, ...secondary] : [];
 

@@ -14,10 +14,18 @@ export function getPackageEndDate(pkg: HotelPackage): Date | null {
   return new Date(year, month, day, 23, 59, 59);
 }
 
+/** Pacotes ocultos manualmente (não aparecem em Home, Pacotes e Tarifas). */
+export const HIDDEN_PACKAGE_SLUGS: Set<string> = new Set([
+  "pascoa-2026",
+  "tiradentes-2026",
+  "primeiro-de-maio-2026",
+]);
+
 /**
  * A package is "active" if it has no end date (recurring) OR its end date is in the future.
  */
 export function isPackageActive(pkg: HotelPackage, now: Date = new Date()): boolean {
+  if (HIDDEN_PACKAGE_SLUGS.has(pkg.slug)) return false;
   const end = getPackageEndDate(pkg);
   if (!end) return true;
   return end.getTime() >= now.getTime();
