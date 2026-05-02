@@ -54,7 +54,7 @@ function getMonths(period: string): string[] {
   return ["Outros"];
 }
 
-const monthOrder = ["Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+const monthOrder = ["Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
 
 const TarifasPage = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
