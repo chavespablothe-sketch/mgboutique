@@ -18,7 +18,6 @@ const allMonths = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "
 
 /** Images to use for the fim-de-semana package per month */
 const fdsMonthImages: Record<string, string> = {
-  "Abril": "/images/amenities-gastronomia.jpg",
   "Maio": "/images/amenities-spa.jpg",
   "Junho": "/images/lazer-piscina.webp",
   "Julho": "/images/sobre-vista-pedra.jpg",
@@ -55,7 +54,7 @@ function getMonths(period: string): string[] {
   return ["Outros"];
 }
 
-const monthOrder = ["Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+const monthOrder = ["Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
 
 const TarifasPage = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
