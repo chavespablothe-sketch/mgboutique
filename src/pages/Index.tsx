@@ -11,6 +11,7 @@ import OffersSection from "@/components/sections/OffersSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import CTASection from "@/components/CTASection";
 import MaesPromoLightbox from "@/components/MaesPromoLightbox";
+import FakeMessageAlertLightbox from "@/components/FakeMessageAlertLightbox";
 
 const Index = () => {
   return (
