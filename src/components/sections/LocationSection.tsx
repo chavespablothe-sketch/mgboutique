@@ -31,7 +31,7 @@ const LocationSection = () => {
                 { icon: MapPin, title: "Endereço", desc: "Estrada Rosário km 4,5 — Banquete, Bom Jardim/RJ" },
                 { icon: Car, title: "Distâncias", desc: "Rio de Janeiro: 2h30 · São Paulo: 3h · Nova Friburgo: 18km" },
                 { icon: Phone, title: "Reservas", desc: "(22) 99779-2023 · WhatsApp disponível" },
-                { icon: Clock, title: "Horários", desc: "Check-in: a partir das 15h · Check-out: até as 12h" },
+                { icon: Clock, title: "Horários", desc: "Check-in: a partir das 14h · Check-out: até as 12h" },
               ].map((item, i) => (
                 <motion.div
                   key={i}

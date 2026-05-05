@@ -340,7 +340,7 @@ const TarifasPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm font-body text-muted-foreground">
               <div className="p-5 bg-card rounded-xl border border-border">
                 <h3 className="font-display text-base font-semibold text-foreground mb-2">Check-in / Check-out</h3>
-                <p>Check-in a partir das 15h. Check-out até 12h (extensível mediante consulta e disponibilidade).</p>
+                <p>Check-in a partir das 14h. Check-out até 12h (extensível mediante consulta e disponibilidade).</p>
               </div>
               <div className="p-5 bg-card rounded-xl border border-border">
                 <h3 className="font-display text-base font-semibold text-foreground mb-2">Cancelamento</h3>
