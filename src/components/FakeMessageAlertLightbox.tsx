@@ -30,7 +30,7 @@ const FakeMessageAlertLightbox = () => {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 10, scale: 0.97 }}
           transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-[95] w-[calc(100vw-2rem)] max-w-[280px] bg-card/95 backdrop-blur-md rounded-xl shadow-xl border border-border overflow-hidden"
+          className="fixed bottom-4 left-4 sm:bottom-6 sm:left-6 z-[95] w-[calc(100vw-2rem)] max-w-[280px] bg-card/95 backdrop-blur-md rounded-xl shadow-xl border border-border overflow-hidden"
           role="dialog"
           aria-label="Aviso sobre mensagens fraudulentas"
         >
