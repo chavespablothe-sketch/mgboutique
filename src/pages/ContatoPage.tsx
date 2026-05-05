@@ -16,7 +16,7 @@ const faqs = [
   { cat: "Reservas", q: "Qual a política de cancelamento?", a: "Cancelamento gratuito até 7 dias antes do check-in. Após esse prazo, pode haver cobrança de uma diária." },
   { cat: "Reservas", q: "Quais as formas de pagamento?", a: "Aceitamos cartões de crédito (parcele em até 10x sem juros), PIX e transferência bancária." },
   { cat: "Reservas", q: "É necessário pagar depósito caução?", a: "Não cobramos caução. Apenas o pagamento da reserva conforme as condições escolhidas." },
-  { cat: "Hospedagem", q: "Qual o horário de check-in e check-out?", a: "Check-in a partir das 15h e check-out até 12h. Late check-out sob consulta e disponibilidade." },
+  { cat: "Hospedagem", q: "Qual o horário de check-in e check-out?", a: "Check-in a partir das 14h e check-out até 12h. Late check-out sob consulta e disponibilidade." },
   { cat: "Hospedagem", q: "O que está incluído na diária?", a: "Café da manhã artesanal está sempre incluso. Nos finais de semana e feriados, oferecemos pensão completa (café, almoço e jantar)." },
   { cat: "Hospedagem", q: "Qual o regime de refeições?", a: "Nos pacotes de fim de semana e feriados: pensão completa. Em dias avulsos de semana: café da manhã incluso, almoço e jantar sob consulta." },
   { cat: "Crianças", q: "A partir de que idade a criança paga?", a: "1 criança até 06 anos se hospeda gratuitamente nos fins de semana e feriados. Acima de 06 anos ou a partir da segunda criança, é cobrada tarifa adicional." },
@@ -162,7 +162,7 @@ const ContatoPage = () => {
                 <div className="space-y-5 mb-8">
                   {[
                     { icon: MapPin, title: "Endereço", desc: "Estrada Rosário km 4,5 — Banquete, Bom Jardim/RJ" },
-                    { icon: Clock, title: "Check-in / Check-out", desc: "Check-in: 15h · Check-out: 12h" },
+                    { icon: Clock, title: "Check-in / Check-out", desc: "Check-in: 14h · Check-out: 12h" },
                     { icon: Navigation, title: "Como chegar", desc: "RJ-116, saída para Banquete. 2h30 do RJ." },
                   ].map((item, i) => (
                     <div key={i} className="flex gap-4">

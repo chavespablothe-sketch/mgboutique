@@ -125,7 +125,7 @@ const packages: HotelPackage[] = [
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink na chegada", "Acesso à piscina", "Recreação infantil", "Wi-Fi gratuito", "Estacionamento privativo"],
     kidsFeatures: ["Recreação monitorada em horários dedicados", "Oficinas e brincadeiras", "Espaço para diversão segura", "Menu infantil especial", "1 criança até 06 anos: grátis nos fins de semana"],
     schedule: [
-      { day: "Sexta-feira", items: ["Check-in a partir das 15h", "Welcome drink", "Jantar de boas-vindas"] },
+      { day: "Sexta-feira", items: ["Check-in a partir das 14h", "Welcome drink", "Jantar de boas-vindas"] },
       { day: "Sábado", items: ["Café da manhã estendido", "Atividades ao ar livre", "Almoço", "Recreação infantil", "Jantar especial"] },
       { day: "Domingo", items: ["Café da manhã", "Atividades em família", "Check-out até 12h"] },
     ],
@@ -198,7 +198,7 @@ const packages: HotelPackage[] = [
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink na chegada", "Chocolate artesanal no quarto", "Atividades ao ar livre", "Wi-Fi gratuito", "Estacionamento privativo"],
     kidsFeatures: ["Caça aos ovos de Páscoa nos jardins", "Oficina de chocolate artesanal", "Recreação monitorada", "Menu infantil especial", "1 criança até 06 anos: grátis nos fins de semana"],
     schedule: [
-      { day: "Sexta-feira (03/04)", items: ["Check-in a partir das 15h", "Welcome drink de Páscoa", "Mimo de chocolate no quarto", "Jantar de boas-vindas com música ao vivo"] },
+      { day: "Sexta-feira (03/04)", items: ["Check-in a partir das 14h", "Welcome drink de Páscoa", "Mimo de chocolate no quarto", "Jantar de boas-vindas com música ao vivo"] },
       { day: "Sábado (04/04)", items: ["Café da manhã estendido até 11h", "Caça aos ovos para crianças", "Oficina de chocolate", "Almoço especial de Páscoa", "Tarde livre: piscina, trilhas", "Yoga ao pôr-do-sol", "Jantar temático com harmonização de vinhos"] },
       { day: "Domingo (05/04)", items: ["Café da manhã especial de Páscoa", "Atividades ao ar livre em família", "Check-out até 12h", "Brunch de despedida"] },
     ],
@@ -229,7 +229,7 @@ const packages: HotelPackage[] = [
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink adulto e infantil", "Mimo de boas-vindas", "Atividades diárias programadas", "Passeio de quadriciclo", "Acesso à piscina", "Wi-Fi gratuito", "Estacionamento privativo"],
     kidsFeatures: ["Bebida especial de boas-vindas", "Recreação monitorada diária", "Contato com animais da fazenda", "Atividades educativas na natureza", "Menu kids em todas as refeições", "1 criança até 06 anos: grátis nos fins de semana"],
     schedule: [
-      { day: "Quinta-feira (17/04)", items: ["Check-in a partir das 15h", "Welcome drink e bebida kids", "Passeio de reconhecimento da fazenda", "Jantar de boas-vindas"] },
+      { day: "Quinta-feira (17/04)", items: ["Check-in a partir das 14h", "Welcome drink e bebida kids", "Passeio de reconhecimento da fazenda", "Jantar de boas-vindas"] },
       { day: "Sexta-feira (18/04)", items: ["Café da manhã estendido", "Trilha ecológica guiada", "Almoço regional", "Recreação infantil", "Spa e piscina", "Jantar com música"] },
       { day: "Sábado (19/04)", items: ["Café da manhã", "Passeio de quadriciclo", "Visita aos animais da fazenda", "Almoço na varanda", "Tarde de atividades em família", "Noite de fogueira com marshmallow"] },
       { day: "Domingo (20/04)", items: ["Café da manhã estendido", "Atividades ao ar livre", "Almoço especial", "Tarde livre", "Jantar de despedida"] },
@@ -262,7 +262,7 @@ const packages: HotelPackage[] = [
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink", "Atividades recreativas", "Acesso à piscina", "Trilhas guiadas", "Wi-Fi gratuito", "Estacionamento privativo"],
     kidsFeatures: ["Atividades ao ar livre supervisionadas", "Contato com animais da fazenda", "Oficina de artes com materiais naturais", "Menu infantil em todas as refeições", "1 criança até 06 anos: grátis nos fins de semana"],
     schedule: [
-      { day: "Sexta-feira (01/05)", items: ["Check-in a partir das 15h", "Welcome drink", "Passeio pela fazenda", "Jantar de boas-vindas"] },
+      { day: "Sexta-feira (01/05)", items: ["Check-in a partir das 14h", "Welcome drink", "Passeio pela fazenda", "Jantar de boas-vindas"] },
       { day: "Sábado (02/05)", items: ["Café da manhã estendido", "Trilha guiada pela Mata Atlântica", "Almoço regional", "Recreação infantil", "Spa e piscina", "Jantar especial"] },
       { day: "Domingo (03/05)", items: ["Café da manhã especial", "Atividades em família", "Check-out até 12h"] },
     ],
@@ -293,7 +293,7 @@ const packages: HotelPackage[] = [
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink", "Chá da tarde especial", "Oficinas", "Wi-Fi gratuito", "Estacionamento privativo"],
     kidsFeatures: ["Oficinas especiais para fazer mimos para a mamãe", "Recreação monitorada", "Menu infantil especial", "1 criança até 06 anos: grátis nos fins de semana"],
     schedule: [
-      { day: "Sexta-feira (08/05)", items: ["Check-in a partir das 15h", "Welcome drink", "Jantar de boas-vindas"] },
+      { day: "Sexta-feira (08/05)", items: ["Check-in a partir das 14h", "Welcome drink", "Jantar de boas-vindas"] },
       { day: "Sábado (09/05)", items: ["Café da manhã estendido", "Oficinas e atividades", "Almoço especial", "Chá da tarde", "Jantar com música ao vivo"] },
       { day: "Domingo (10/05)", items: ["Café da manhã comemorativo de Dia das Mães", "Almoço especial em homenagem às mães", "Check-out até 15h"] },
     ],
@@ -341,7 +341,7 @@ const packages: HotelPackage[] = [
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink", "Ambientes com lareira", "Música ao vivo", "Atividades em família", "Wi-Fi gratuito", "Estacionamento privativo"],
     kidsFeatures: ["Recreação monitorada", "Atividades ao ar livre", "Menu infantil especial", "1 criança até 06 anos: grátis nos fins de semana"],
     schedule: [
-      { day: "Quinta-feira (04/06)", items: ["Check-in a partir das 15h", "Welcome drink", "Jantar de boas-vindas"] },
+      { day: "Quinta-feira (04/06)", items: ["Check-in a partir das 14h", "Welcome drink", "Jantar de boas-vindas"] },
       { day: "Sexta-feira (05/06)", items: ["Café da manhã estendido", "Atividades ao ar livre", "Almoço", "Tarde de descanso", "Jantar com música suave"] },
       { day: "Sábado (06/06)", items: ["Café da manhã", "Trilhas e atividades", "Almoço especial", "Noite de lareira e conversa"] },
       { day: "Domingo (07/06)", items: ["Café da manhã", "Check-out até 12h"] },
@@ -373,7 +373,7 @@ const packages: HotelPackage[] = [
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink romântico", "Mimo especial no quarto", "Jantar exclusivo de Dia dos Namorados", "Wi-Fi gratuito", "Estacionamento privativo"],
     kidsFeatures: [],
     schedule: [
-      { day: "Sexta-feira (12/06)", items: ["Check-in a partir das 15h", "Welcome drink romântico", "Mimo especial no quarto", "Jantar de boas-vindas à luz de velas"] },
+      { day: "Sexta-feira (12/06)", items: ["Check-in a partir das 14h", "Welcome drink romântico", "Mimo especial no quarto", "Jantar de boas-vindas à luz de velas"] },
       { day: "Sábado (13/06)", items: ["Café da manhã estendido", "Dia de relaxamento", "Almoço", "Jantar especial de inverno com música ao vivo"] },
       { day: "Domingo (14/06)", items: ["Café da manhã especial de Dia dos Namorados", "Brunch romântico", "Check-out até 15h"] },
     ],
@@ -405,7 +405,7 @@ const packages: HotelPackage[] = [
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink junino", "Menu típico junino em versão boutique", "Decoração temática", "Música ao vivo", "Wi-Fi gratuito", "Estacionamento privativo"],
     kidsFeatures: ["Recreação temática junina", "Brincadeiras típicas de festa junina", "Menu infantil com itens típicos", "1 criança até 06 anos: grátis nos fins de semana"],
     schedule: [
-      { day: "Sexta-feira", items: ["Check-in a partir das 15h", "Welcome drink junino", "Jantar de boas-vindas com culinária junina"] },
+      { day: "Sexta-feira", items: ["Check-in a partir das 14h", "Welcome drink junino", "Jantar de boas-vindas com culinária junina"] },
       { day: "Sábado", items: ["Café da manhã estendido com itens típicos", "Atividades ao ar livre", "Almoço", "Brincadeiras juninas para crianças", "Jantar especial com música"] },
       { day: "Domingo", items: ["Café da manhã", "Atividades de despedida", "Check-out até 12h"] },
     ],
@@ -436,7 +436,7 @@ const packages: HotelPackage[] = [
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink de inverno", "Menu especial de inverno", "Lareira acesa", "Atividades em família", "Wi-Fi gratuito", "Estacionamento privativo"],
     kidsFeatures: ["Recreação monitorada", "Atividades ao ar livre de inverno", "Menu infantil especial", "1 criança até 06 anos: grátis nos fins de semana"],
     schedule: [
-      { day: "Sexta-feira", items: ["Check-in a partir das 15h", "Welcome drink de inverno", "Jantar de boas-vindas reconfortante"] },
+      { day: "Sexta-feira", items: ["Check-in a partir das 14h", "Welcome drink de inverno", "Jantar de boas-vindas reconfortante"] },
       { day: "Sábado", items: ["Café da manhã estendido", "Trilhas e atividades ao ar livre", "Almoço com pratos quentes", "Recreação infantil", "Jantar especial com lareira"] },
       { day: "Domingo", items: ["Café da manhã", "Atividades em família", "Check-out até 12h"] },
     ],
@@ -467,7 +467,7 @@ const packages: HotelPackage[] = [
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink adulto e infantil", "Mimo especial no quarto", "Chá da tarde", "Almoço comemorativo de Dia dos Pais", "Brinde de homenagem", "Lembrança especial para os pais", "Wi-Fi gratuito", "Estacionamento privativo"],
     kidsFeatures: ["Bebida especial de boas-vindas", "Recreação monitorada", "Oficina para preparar presente para o papai", "Menu infantil especial", "1 criança até 06 anos: grátis nos fins de semana"],
     schedule: [
-      { day: "Sexta-feira (07/08)", items: ["Check-in a partir das 15h", "Welcome drink", "Mimo especial no quarto", "Jantar de boas-vindas"] },
+      { day: "Sexta-feira (07/08)", items: ["Check-in a partir das 14h", "Welcome drink", "Mimo especial no quarto", "Jantar de boas-vindas"] },
       { day: "Sábado (08/08)", items: ["Café da manhã estendido", "Atividades ao ar livre", "Almoço", "Chá da tarde especial", "Recreação infantil", "Jantar com música ao vivo"] },
       { day: "Domingo (09/08)", items: ["Café da manhã comemorativo", "Atividade leve em família", "Almoço Especial de Dia dos Pais", "Brinde de homenagem e lembrança", "Check-out até 15h"] },
     ],
@@ -498,7 +498,7 @@ const packages: HotelPackage[] = [
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink adulto e infantil", "Mimo de boas-vindas", "Concierge dedicado", "Atividades diárias", "Acesso à piscina", "Wi-Fi gratuito", "Estacionamento privativo"],
     kidsFeatures: ["Bebida especial de boas-vindas", "Recreação monitorada diária", "Atividades ao ar livre", "Menu infantil especial", "1 criança até 06 anos: grátis nos fins de semana"],
     schedule: [
-      { day: "Sexta-feira (04/09)", items: ["Check-in a partir das 15h", "Welcome drink", "Mimo no quarto", "Jantar de boas-vindas"] },
+      { day: "Sexta-feira (04/09)", items: ["Check-in a partir das 14h", "Welcome drink", "Mimo no quarto", "Jantar de boas-vindas"] },
       { day: "Sábado (05/09)", items: ["Café da manhã especial", "Trilhas e atividades", "Almoço", "Piscina e lazer", "Jantar com música ao vivo"] },
       { day: "Domingo (06/09)", items: ["Café da manhã", "Atividades em família", "Almoço especial", "Tarde livre", "Jantar de despedida"] },
       { day: "Segunda-feira (07/09)", items: ["Café da manhã", "Check-out até 12h"] },
@@ -585,7 +585,7 @@ const packages: HotelPackage[] = [
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink adulto e infantil", "Mimo infantil no quarto", "Kit diversão de boas-vindas", "Celebração de Dia das Crianças", "Recreação especial", "Wi-Fi gratuito", "Estacionamento privativo"],
     kidsFeatures: ["Bebida e surpresa especial de boas-vindas", "Kit diversão no quarto", "Celebração de Dia das Crianças", "Recreação especial diária", "Oficinas criativas", "Menu infantil divertido", "1 criança até 06 anos: grátis nos fins de semana"],
     schedule: [
-      { day: "Sexta-feira (09/10)", items: ["Check-in a partir das 15h", "Welcome drink e surpresa kids", "Mimo infantil no quarto", "Jantar de boas-vindas"] },
+      { day: "Sexta-feira (09/10)", items: ["Check-in a partir das 14h", "Welcome drink e surpresa kids", "Mimo infantil no quarto", "Jantar de boas-vindas"] },
       { day: "Sábado (10/10)", items: ["Café da manhã", "Oficinas criativas para crianças", "Almoço em família", "Recreação especial", "Jantar temático"] },
       { day: "Domingo (11/10)", items: ["Café da manhã", "Atividades ao ar livre", "Almoço", "Celebração especial de Dia das Crianças", "Jantar de despedida"] },
       { day: "Segunda-feira (12/10)", items: ["Café da manhã", "Atividades finais", "Check-out até 12h"] },
@@ -669,7 +669,7 @@ const packages: HotelPackage[] = [
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink", "Chá calmante no quarto", "Mimo relaxante", "Atendimento personalizado", "Wi-Fi gratuito", "Estacionamento privativo"],
     kidsFeatures: ["Recreação monitorada", "Atividades ao ar livre", "Menu infantil especial", "1 criança até 06 anos: grátis nos fins de semana"],
     schedule: [
-      { day: "Sexta-feira (30/10)", items: ["Check-in a partir das 15h", "Welcome drink", "Chá calmante e mimo no quarto", "Jantar de boas-vindas"] },
+      { day: "Sexta-feira (30/10)", items: ["Check-in a partir das 14h", "Welcome drink", "Chá calmante e mimo no quarto", "Jantar de boas-vindas"] },
       { day: "Sábado (31/10)", items: ["Café da manhã estendido", "Bem-estar e relaxamento", "Almoço", "Tarde de introspecção e descanso", "Jantar com música suave"] },
       { day: "Domingo (01/11)", items: ["Café da manhã", "Atividades leves ao ar livre", "Almoço especial", "Tarde livre", "Jantar de despedida"] },
       { day: "Segunda-feira (02/11)", items: ["Café da manhã", "Check-out até 12h"] },
@@ -744,7 +744,7 @@ const packages: HotelPackage[] = [
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink adulto e infantil", "Mimo natalino no quarto", "Ceia de Natal especial", "Decoração festiva", "Atividades temáticas de Natal", "Wi-Fi gratuito", "Estacionamento privativo"],
     kidsFeatures: ["Bebida especial de boas-vindas", "Mimo natalino no quarto", "Atividades temáticas de Natal", "Recreação monitorada", "Menu infantil especial", "1 criança até 06 anos: grátis nos fins de semana"],
     schedule: [
-      { day: "Quarta-feira (23/12)", items: ["Check-in a partir das 15h", "Welcome drink", "Mimo natalino no quarto", "Jantar de boas-vindas"] },
+      { day: "Quarta-feira (23/12)", items: ["Check-in a partir das 14h", "Welcome drink", "Mimo natalino no quarto", "Jantar de boas-vindas"] },
       { day: "Quinta-feira (24/12)", items: ["Café da manhã especial", "Atividades natalinas", "Almoço", "Tarde de preparação para a noite de Natal", "Ceia de Natal especial"] },
       { day: "Sexta-feira (25/12)", items: ["Café da manhã de Natal", "Atividades em família", "Almoço de Natal", "Tarde livre", "Jantar de despedida"] },
       { day: "Sábado (26/12)", items: ["Café da manhã", "Check-out até 12h"] },
@@ -848,7 +848,7 @@ const packages: HotelPackage[] = [
       "Espaços seguros para diversão enquanto os adultos relaxam",
     ],
     schedule: [
-      { day: "Quarta-feira (30/12)", items: ["Check-in a partir das 15h", "Welcome drink", "Mimo no quarto", "Jantar de boas-vindas"] },
+      { day: "Quarta-feira (30/12)", items: ["Check-in a partir das 14h", "Welcome drink", "Mimo no quarto", "Jantar de boas-vindas"] },
       { day: "Quinta-feira (31/12)", items: ["Café da manhã especial", "Atividades de fim de ano", "Coquetel pré-Réveillon", "Ceia de Réveillon completa", "Brinde à meia-noite"] },
       { day: "Sexta-feira (01/01)", items: ["Café da manhã", "Almoço especial de Ano Novo", "Tarde de descanso"] },
       { day: "Sábado (02/01)", items: ["Café da manhã", "Atividades em família", "Almoço", "Jantar de despedida"] },
