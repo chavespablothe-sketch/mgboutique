@@ -43,14 +43,14 @@ const MaesPromoLightbox = () => {
             exit={{ opacity: 0, scale: 0.95, y: 10 }}
             transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
             onClick={(e) => e.stopPropagation()}
-            className="relative w-full max-w-[360px] sm:max-w-[400px] bg-card rounded-2xl overflow-hidden shadow-2xl border border-secondary/30"
+            className="relative w-full max-w-[280px] sm:max-w-[300px] bg-card rounded-2xl overflow-hidden shadow-2xl border border-secondary/30"
           >
             <button
               onClick={handleClose}
               aria-label="Fechar"
-              className="absolute top-2 right-2 z-10 w-8 h-8 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition-colors backdrop-blur-sm"
+              className="absolute top-1.5 right-1.5 z-10 w-7 h-7 rounded-full bg-black/40 hover:bg-black/60 text-white flex items-center justify-center transition-colors backdrop-blur-sm"
             >
-              <X size={16} />
+              <X size={14} />
             </button>
 
             <Link to="/pacotes/dia-das-maes-2026" onClick={handleClose} className="block group">
@@ -60,21 +60,21 @@ const MaesPromoLightbox = () => {
                   alt="Festival das Rainhas — Dia das Mães 2026"
                   className="w-full h-auto block group-hover:scale-[1.02] transition-transform duration-500"
                 />
-                <span className="absolute top-3 left-3 bg-secondary text-primary text-[10px] font-body font-semibold uppercase tracking-[0.18em] px-3 py-1 rounded-full shadow-md">
+                <span className="absolute top-2 left-2 bg-secondary text-primary text-[9px] font-body font-semibold uppercase tracking-[0.15em] px-2.5 py-0.5 rounded-full shadow-md">
                   15% OFF · últimos quartos
                 </span>
               </div>
 
-              <div className="p-4 sm:p-5 bg-card">
-                <p className="font-display text-lg text-foreground font-semibold leading-tight mb-1">
+              <div className="p-3 sm:p-4 bg-card">
+                <p className="font-display text-base text-foreground font-semibold leading-tight mb-0.5">
                   Festival das Rainhas
                 </p>
-                <p className="font-body text-xs text-muted-foreground mb-4">
+                <p className="font-body text-[11px] text-muted-foreground mb-3">
                   8 a 10 de maio · 2 noites · pensão completa
                 </p>
 
-                <span className="w-full inline-flex items-center justify-center gap-2 bg-cta hover:bg-cta/90 text-cta-foreground font-body text-xs uppercase tracking-[0.15em] px-5 py-3 rounded-full shadow-md transition-all">
-                  Ver pacote <ArrowRight size={14} />
+                <span className="w-full inline-flex items-center justify-center gap-1.5 bg-cta hover:bg-cta/90 text-cta-foreground font-body text-[11px] uppercase tracking-[0.12em] px-4 py-2.5 rounded-full shadow-md transition-all">
+                  Ver pacote <ArrowRight size={12} />
                 </span>
               </div>
             </Link>
