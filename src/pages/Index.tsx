@@ -34,6 +34,7 @@ const Index = () => {
       <CTASection />
       <Footer />
       <MaesPromoLightbox />
+      <FakeMessageAlertLightbox />
     </div>
   );
 };
