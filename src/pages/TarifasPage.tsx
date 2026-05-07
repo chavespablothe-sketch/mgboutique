@@ -30,15 +30,19 @@ const fdsMonthImages: Record<string, string> = {
 
 function getMonths(period: string): string[] {
   const lower = period.toLowerCase();
-  // Range like "abril a dezembro" → return all months in that range
-  const rangeMatch = lower.match(/(\w+)\s+a\s+(\w+)/);
-  if (rangeMatch) {
-    const monthKeys = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
-    const startIdx = monthKeys.findIndex(m => lower.includes(m) && rangeMatch[1].includes(m));
-    const endIdx = monthKeys.findIndex(m => rangeMatch[2].includes(m));
-    if (startIdx !== -1 && endIdx !== -1 && endIdx > startIdx) {
-      return allMonths.slice(startIdx, endIdx + 1);
-    }
+  const monthKeys = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+  // Find all month names mentioned (in order of appearance)
+  const found: { name: string; idx: number; pos: number }[] = [];
+  monthKeys.forEach((m, idx) => {
+    const pos = lower.indexOf(m);
+    if (pos !== -1) found.push({ name: m, idx, pos });
+  });
+  // Range: if 2+ distinct months and an "a" between them → expand range
+  if (found.length >= 2 && /\ba\b/.test(lower)) {
+    const sorted = [...found].sort((a, b) => a.pos - b.pos);
+    const startIdx = sorted[0].idx;
+    const endIdx = sorted[sorted.length - 1].idx;
+    if (endIdx > startIdx) return allMonths.slice(startIdx, endIdx + 1);
   }
   // Prioritize dezembro over janeiro for year-spanning periods
   const monthMap: Record<string, string> = {
