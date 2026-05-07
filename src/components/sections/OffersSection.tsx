@@ -240,6 +240,11 @@ function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }
       {/* Info */}
       <div className="flex flex-col justify-center space-y-5 py-2 lg:pr-4">
         <div>
+          {pkg.slug === "arraia-inverno-2026" && (
+            <span className="inline-flex items-center gap-1.5 bg-secondary/15 text-secondary border border-secondary/40 font-body text-[11px] font-semibold uppercase tracking-[0.2em] px-3 py-1 rounded-full mb-3">
+              <Sparkles size={11} /> Novidade · agora em junho e julho
+            </span>
+          )}
           <h3 className="font-display text-3xl md:text-4xl text-foreground font-semibold leading-tight">
             {pkg.shortTitle}
           </h3>
