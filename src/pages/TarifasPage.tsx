@@ -70,8 +70,8 @@ const TarifasPage = () => {
       const months = getMonths(pkg.period);
       months.forEach(month => {
         if (!groups[month]) groups[month] = [];
-        // For multi-month packages, override image per month
-        if (months.length > 1 && fdsMonthImages[month]) {
+        // For multi-month packages, override image per month (skip Arraiá — keep its own art)
+        if (months.length > 1 && fdsMonthImages[month] && pkg.slug !== "arraia-inverno-2026") {
           groups[month].push({ ...pkg, image: fdsMonthImages[month] });
         } else {
           groups[month].push(pkg);
