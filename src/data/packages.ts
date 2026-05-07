@@ -418,7 +418,7 @@ const packages: HotelPackage[] = [
     tag: "bem-estar",
     tagColor: "bg-secondary",
     checkIn: "19062026",
-    checkOut: "21062026",
+    checkOut: "26072026",
     programSections: genericProgramSections,
   },
   {
