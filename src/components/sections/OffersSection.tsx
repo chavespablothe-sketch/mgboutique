@@ -290,7 +290,57 @@ function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }
   if (pkg.slug === "dia-dos-namorados-2026") {
     return <ValentinesFrame>{card}</ValentinesFrame>;
   }
+  if (pkg.slug === "arraia-inverno-2026") {
+    return <ArraiaFrame>{card}</ArraiaFrame>;
+  }
   return <div className="mb-16">{card}</div>;
+}
+
+/** Balão junino + faixa "Vem pro Arraiá!" — flutua sobre o card do pacote. */
+function ArraiaFrame({ children }: { children: React.ReactNode }) {
+  return (
+    <div className="relative mb-16 pt-10 md:pt-6">
+      {/* Bandeirinhas decorativas no topo */}
+      <div className="absolute -top-1 left-0 right-0 flex justify-center gap-1.5 pointer-events-none z-10" aria-hidden>
+        {["#e8b94a", "#d97a3c", "#7fa05a", "#c94f4f", "#e8b94a", "#7fa05a", "#d97a3c"].map((c, i) => (
+          <span
+            key={i}
+            className="w-3 h-4 rotate-180"
+            style={{ background: c, clipPath: "polygon(0 0, 100% 0, 50% 100%)" }}
+          />
+        ))}
+      </div>
+
+      {/* Balão junino flutuante */}
+      <div className="absolute -top-4 -right-2 md:-top-6 md:-right-4 z-30 pointer-events-none animate-pulse">
+        <svg width="76" height="96" viewBox="0 0 76 96" className="drop-shadow-lg md:w-[92px] md:h-[116px]">
+          <ellipse cx="38" cy="36" rx="32" ry="34" fill="#d97a3c" />
+          <path d="M38 2 Q22 36 38 70 Q54 36 38 2 Z" fill="#e8b94a" opacity="0.9" />
+          <path d="M38 2 Q34 36 38 70 Q42 36 38 2 Z" fill="#7fa05a" opacity="0.85" />
+          <ellipse cx="38" cy="36" rx="32" ry="34" fill="none" stroke="#5a3a1a" strokeWidth="1" opacity="0.4" />
+          <ellipse cx="38" cy="70" rx="10" ry="3" fill="#5a3a1a" />
+          <line x1="30" y1="71" x2="26" y2="86" stroke="#5a3a1a" strokeWidth="1" />
+          <line x1="46" y1="71" x2="50" y2="86" stroke="#5a3a1a" strokeWidth="1" />
+          <line x1="38" y1="72" x2="38" y2="86" stroke="#5a3a1a" strokeWidth="1" />
+          <rect x="26" y="84" width="24" height="10" rx="2" fill="#8b5a2b" />
+          <rect x="26" y="84" width="24" height="10" rx="2" fill="none" stroke="#5a3a1a" strokeWidth="0.8" />
+          <ellipse cx="38" cy="80" rx="2" ry="3" fill="#fbbf24" opacity="0.9" />
+        </svg>
+      </div>
+
+      {/* Faixa "Vem pro Arraiá!" */}
+      <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
+        <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-[#d97a3c] to-[#e8b94a] text-white font-display italic text-sm md:text-base px-5 py-1.5 rounded-full shadow-lg whitespace-nowrap">
+          <Sparkles size={12} className="text-white" /> Vem pro Arraiá!
+        </span>
+      </div>
+
+      {/* Glow sutil em tons quentes */}
+      <div className="absolute -inset-2 rounded-[2rem] bg-gradient-to-br from-[#e8b94a]/20 via-[#d97a3c]/15 to-[#7fa05a]/15 blur-xl -z-10" aria-hidden />
+
+      <div className="relative">{children}</div>
+    </div>
+  );
 }
 
 function ValentinesFrame({ children }: { children: React.ReactNode }) {
