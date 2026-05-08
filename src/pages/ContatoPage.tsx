@@ -92,8 +92,18 @@ const ContatoPage = () => {
 
       if (error) throw error;
 
+      // Monta texto e abre WhatsApp para continuar a conversa
+      const waText =
+        `Olá! Acabei de enviar uma mensagem pelo site do Minha Glória.%0A%0A` +
+        `*Nome:* ${name.trim()}%0A` +
+        `*E-mail:* ${email.trim()}%0A` +
+        (phone.trim() ? `*Telefone:* ${phone.trim()}%0A` : "") +
+        (dates.trim() ? `*Datas de interesse:* ${dates.trim()}%0A` : "") +
+        `%0A*Mensagem:*%0A${encodeURIComponent(message.trim()).replace(/%20/g, " ")}`;
+      window.open(`https://wa.me/5522997792023?text=${waText}`, "_blank", "noopener,noreferrer");
+
       setSent(true);
-      toast.success("Mensagem enviada com sucesso!");
+      toast.success("Mensagem enviada! Continue a conversa no WhatsApp.");
       setName(""); setEmail(""); setPhone(""); setDates(""); setMessage("");
       setCaptchaInput("");
       setCaptcha(generateCaptcha());
