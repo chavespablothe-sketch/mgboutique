@@ -81,6 +81,10 @@ const ContatoPage = () => {
     if (honeypot) return;
 
     setSending(true);
+
+    // Abre a aba do WhatsApp SINCRONAMENTE (evita bloqueio de pop-up)
+    const waWindow = window.open("about:blank", "_blank");
+
     try {
       const { error } = await supabase.from("contact_messages").insert({
         name: name.trim(),
@@ -92,15 +96,22 @@ const ContatoPage = () => {
 
       if (error) throw error;
 
-      // Monta texto e abre WhatsApp para continuar a conversa
-      const waText =
-        `Olá! Acabei de enviar uma mensagem pelo site do Minha Glória.%0A%0A` +
-        `*Nome:* ${name.trim()}%0A` +
-        `*E-mail:* ${email.trim()}%0A` +
-        (phone.trim() ? `*Telefone:* ${phone.trim()}%0A` : "") +
-        (dates.trim() ? `*Datas de interesse:* ${dates.trim()}%0A` : "") +
-        `%0A*Mensagem:*%0A${encodeURIComponent(message.trim()).replace(/%20/g, " ")}`;
-      window.open(`https://wa.me/5522997792023?text=${waText}`, "_blank", "noopener,noreferrer");
+      const waText = encodeURIComponent(
+        `Olá! Acabei de enviar uma mensagem pelo site do Minha Glória.\n\n` +
+        `*Nome:* ${name.trim()}\n` +
+        `*E-mail:* ${email.trim()}\n` +
+        (phone.trim() ? `*Telefone:* ${phone.trim()}\n` : "") +
+        (dates.trim() ? `*Datas de interesse:* ${dates.trim()}\n` : "") +
+        `\n*Mensagem:*\n${message.trim()}`
+      );
+      const waUrl = `https://wa.me/5522997792023?text=${waText}`;
+
+      if (waWindow) {
+        waWindow.location.href = waUrl;
+      } else {
+        // fallback: redireciona na mesma aba
+        window.location.href = waUrl;
+      }
 
       setSent(true);
       toast.success("Mensagem enviada! Continue a conversa no WhatsApp.");
@@ -108,6 +119,7 @@ const ContatoPage = () => {
       setCaptchaInput("");
       setCaptcha(generateCaptcha());
     } catch {
+      if (waWindow) waWindow.close();
       toast.error("Erro ao enviar. Tente novamente ou use o WhatsApp.");
     } finally {
       setSending(false);
