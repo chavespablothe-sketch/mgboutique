@@ -104,7 +104,7 @@ const homeImageOverrides: Record<string, string> = {
   "tiradentes-2026": "/images/pacotes-quadriciclo.png",
   "primeiro-de-maio-2026": "/images/pacote-dia-do-trabalhador-2026.png",
   "dia-das-maes-2026": "/images/pacote-dia-das-maes-2026.png",
-  "corpus-christi-2026": "/images/pacotes-inflavel.png",
+  "corpus-christi-2026": "/images/pacote-corpus-christi-2026.png",
   "arraia-inverno-2026": "/images/pacote-arraia-inverno-2026.png",
   "dia-dos-namorados-2026": "/images/pacote-namorados-2026.png",
 };
