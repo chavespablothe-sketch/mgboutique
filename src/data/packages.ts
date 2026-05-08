@@ -346,9 +346,9 @@ const packages: HotelPackage[] = [
       { day: "Sábado (06/06)", items: ["Café da manhã", "Trilhas e atividades", "Almoço especial", "Noite de lareira e conversa"] },
       { day: "Domingo (07/06)", items: ["Café da manhã", "Check-out até 12h"] },
     ],
-    image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/h2ejepl5m1d-1770316184149.jpg",
+    image: "/images/pacote-corpus-christi-2026.png",
     gallery: buildGallery([
-      "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/h2ejepl5m1d-1770316184149.jpg",
+      "/images/pacote-corpus-christi-2026.png",
       "/images/lazer-lhamas.jpg",
       "/images/lazer-piscina.webp",
     ]),

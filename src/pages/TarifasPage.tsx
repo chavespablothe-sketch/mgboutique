@@ -248,6 +248,7 @@ const TarifasPage = () => {
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {pkgs.map((pkg, i) => {
                       const isMothersDay = pkg.slug === "dia-das-maes-2026";
+                      const isArraia = pkg.slug === "arraia-inverno-2026";
                       const cardInner = (
                         <Link to={`/tarifas/${pkg.slug}`} className="group block">
                           {/* Image */}
@@ -287,7 +288,7 @@ const TarifasPage = () => {
 
                       return (
                         <motion.div
-                          key={pkg.slug}
+                          key={pkg.slug + month}
                           initial={{ opacity: 0, y: 20 }}
                           whileInView={{ opacity: 1, y: 0 }}
                           viewport={{ once: true }}
@@ -306,6 +307,45 @@ const TarifasPage = () => {
                               <div className="absolute -top-1 left-1/2 -translate-x-1/2 z-20">
                                 <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-pink-500 to-rose-500 text-white font-display italic text-xs px-4 py-1 rounded-full shadow-md whitespace-nowrap">
                                   <Heart size={11} className="fill-white" /> Festival das Rainhas
+                                </span>
+                              </div>
+                              <div className="relative bg-background/70 rounded-[1.25rem] p-3 backdrop-blur-sm">
+                                {cardInner}
+                              </div>
+                            </div>
+                          ) : isArraia ? (
+                            <div className="relative pt-6">
+                              {/* Glow quente */}
+                              <div className="absolute -inset-2 rounded-[1.75rem] bg-gradient-to-br from-[#e8b94a]/25 via-[#d97a3c]/20 to-[#7fa05a]/20 blur-lg" aria-hidden />
+                              {/* Bandeirinhas */}
+                              <div className="absolute top-0 left-2 right-2 flex justify-center gap-1 pointer-events-none z-10" aria-hidden>
+                                {["#e8b94a","#d97a3c","#7fa05a","#c94f4f","#e8b94a","#7fa05a","#d97a3c","#c94f4f","#e8b94a"].map((c, idx) => (
+                                  <span
+                                    key={idx}
+                                    className="w-2.5 h-3.5 origin-top animate-sway"
+                                    style={{ background: c, clipPath: "polygon(0 0, 100% 0, 50% 100%)", animationDelay: `${(idx % 4) * 0.2}s` }}
+                                  />
+                                ))}
+                              </div>
+                              {/* Balão flutuante */}
+                              <div className="absolute -top-1 -right-2 z-30 pointer-events-none animate-float-soft">
+                                <svg width="56" height="72" viewBox="0 0 76 96" className="drop-shadow-lg">
+                                  <ellipse cx="38" cy="36" rx="32" ry="34" fill="#d97a3c" />
+                                  <path d="M38 2 Q22 36 38 70 Q54 36 38 2 Z" fill="#e8b94a" opacity="0.9" />
+                                  <path d="M38 2 Q34 36 38 70 Q42 36 38 2 Z" fill="#7fa05a" opacity="0.85" />
+                                  <ellipse cx="28" cy="22" rx="5" ry="3" fill="#fff" opacity="0.4" />
+                                  <ellipse cx="38" cy="70" rx="9" ry="2.5" fill="#5a3a1a" />
+                                  <line x1="38" y1="72" x2="38" y2="88" stroke="#5a3a1a" strokeWidth="1" />
+                                  <rect x="29" y="84" width="18" height="8" rx="1.5" fill="#8b5a2b" />
+                                  <ellipse cx="38" cy="80" rx="2" ry="3" fill="#fbbf24">
+                                    <animate attributeName="opacity" values="0.5;1;0.5" dur="1.2s" repeatCount="indefinite" />
+                                  </ellipse>
+                                </svg>
+                              </div>
+                              {/* Faixa */}
+                              <div className="absolute top-3 left-1/2 -translate-x-1/2 z-20">
+                                <span className="inline-flex items-center gap-1 bg-gradient-to-r from-[#c94f4f] via-[#d97a3c] to-[#e8b94a] text-white font-display italic text-[11px] px-3 py-0.5 rounded-full shadow-md whitespace-nowrap border border-white/40">
+                                  <Sparkles size={10} /> Vem pro Arraiá! 🤠
                                 </span>
                               </div>
                               <div className="relative bg-background/70 rounded-[1.25rem] p-3 backdrop-blur-sm">
