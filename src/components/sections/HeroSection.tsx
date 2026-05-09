@@ -21,34 +21,7 @@ const HeroSection = () => {
 
         <div className="relative z-10 container mx-auto px-4 lg:px-8 pt-20">
           <div className="max-w-2xl">
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="mb-5"
-            >
-              <Link
-                to="/pacotes/dia-das-maes-2026"
-                className="group relative inline-flex items-center gap-2.5 px-4 py-2 rounded-full backdrop-blur-md transition-all overflow-hidden"
-                style={{
-                  background: "linear-gradient(135deg, hsl(340 82% 52% / 0.92), hsl(335 75% 45% / 0.92))",
-                  boxShadow: "0 0 0 1px hsl(340 90% 70% / 0.5), 0 8px 30px -8px hsl(340 80% 50% / 0.6)",
-                }}
-              >
-                <span
-                  className="absolute inset-0 rounded-full animate-ping"
-                  style={{ background: "hsl(340 82% 60% / 0.5)", animationDuration: "2.2s" }}
-                />
-                <span className="relative w-2 h-2 rounded-full bg-white animate-pulse shadow-[0_0_10px_rgba(255,255,255,0.9)]" />
-                <span className="relative font-display text-white text-sm sm:text-base font-bold tracking-wide" style={{ textShadow: "0 1px 6px rgba(0,0,0,0.35)" }}>
-                  Dia das Mães · 15% OFF
-                </span>
-                <span className="relative hidden sm:inline text-white/90 text-xs font-body tracking-wide">
-                  últimos quartos
-                </span>
-                <ArrowRight size={13} className="relative text-white group-hover:translate-x-0.5 transition-transform" />
-              </Link>
-            </motion.div>
+            
 
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
