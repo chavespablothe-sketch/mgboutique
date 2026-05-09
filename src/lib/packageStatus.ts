@@ -19,6 +19,7 @@ export const HIDDEN_PACKAGE_SLUGS: Set<string> = new Set([
   "pascoa-2026",
   "tiradentes-2026",
   "primeiro-de-maio-2026",
+  "dia-das-maes-2026",
 ]);
 
 /**
