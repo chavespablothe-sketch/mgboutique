@@ -54,18 +54,7 @@ const PacotesPage = () => {
     <div className="min-h-screen">
       <Header />
       <div className="pt-16 lg:pt-20">
-        {/* Promo Banner */}
-        <div className="bg-cta text-cta-foreground py-3">
-          <div className="container mx-auto px-4 flex items-center justify-center gap-3 text-center">
-            <Percent size={16} className="shrink-0" />
-            <p className="font-body text-sm font-bold uppercase tracking-wider">
-              Dia das Mães — 15% OFF nos últimos quartos
-            </p>
-            <Link to="/pacotes/dia-das-maes-2026" className="hidden md:inline-flex items-center gap-1 font-body text-xs underline underline-offset-2 hover:opacity-80">
-              Ver pacote <ArrowRight size={12} />
-            </Link>
-          </div>
-        </div>
+
 
         {/* Hero */}
         <section className="relative py-20 lg:py-28 bg-primary overflow-hidden">
@@ -110,10 +99,10 @@ const PacotesPage = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto text-center">
               <div className="flex flex-col items-center gap-2">
                 <div className="w-10 h-10 rounded-full bg-cta/10 flex items-center justify-center">
-                  <Percent size={18} className="text-cta" />
+                  <Sparkles size={18} className="text-cta" />
                 </div>
-                <h3 className="font-display text-lg font-semibold text-foreground">15% OFF Dia das Mães</h3>
-                <p className="text-muted-foreground font-body text-xs">Aplicado nos últimos quartos disponíveis</p>
+                <h3 className="font-display text-lg font-semibold text-foreground">Arraiá de Inverno</h3>
+                <p className="text-muted-foreground font-body text-xs">Novidade · todos os FDS de junho e julho</p>
               </div>
               <div className="flex flex-col items-center gap-2">
                 <div className="w-10 h-10 rounded-full bg-cta/10 flex items-center justify-center">
