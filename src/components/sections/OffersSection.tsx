@@ -450,7 +450,7 @@ const OffersSection = () => {
   if (upcoming.length === 0) return null;
 
   // Highlight Dia das Mães + Festa Junina (Arraiá de Inverno) when present, fallback to next 2
-  const featuredSlugs = ["dia-das-maes-2026", "arraia-inverno-2026"];
+  const featuredSlugs = ["arraia-inverno-2026"];
   const explicitFeatured = featuredSlugs
     .map((slug) => upcoming.find((p) => p.slug === slug))
     .filter(Boolean) as typeof upcoming;
