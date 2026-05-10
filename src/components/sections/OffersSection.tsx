@@ -546,7 +546,7 @@ const OffersSection = () => {
     <section className="py-24 lg:py-36 bg-background">
       <div className="container mx-auto px-4">
         {/* Urgency banner */}
-        <UrgencyBanner pkg={featured} days={featuredDays} />
+        <UrgencyBanner pkg={nearest} days={nearestDays} />
 
         {/* Section header */}
         <motion.div
@@ -570,9 +570,11 @@ const OffersSection = () => {
         </motion.div>
 
         {/* Featured highlights — next 2 weekends/holidays */}
-        {featuredList.map((pkg) => (
-          <FeaturedCard key={pkg.slug} pkg={pkg} days={getDaysUntil(pkg.checkIn!)} />
-        ))}
+        {featuredList.map((pkg) => {
+          const d = resolvePackageDates(pkg);
+          const days = d.checkIn ? getDaysUntil(d.checkIn) : 999;
+          return <FeaturedCard key={pkg.slug} pkg={pkg} days={days} />;
+        })}
 
         {/* Looping carousel of remaining upcoming packages with arrows */}
         {secondary.length > 0 && (
