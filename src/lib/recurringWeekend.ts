@@ -59,13 +59,12 @@ export function getNextWeekend(
   const rangeEnd = startOfDay(parse(rangeEndDDMMYYYY));
   const today = startOfDay(now);
 
-  // If a weekend already started (Sat/Sun) we still consider it the "current" one
-  // until Sunday ends — so step back to that Friday.
-  let candidate = today;
+  // Always look for the next upcoming Friday (a Sat/Sun today means this weekend
+  // is ending — so we jump to next week's weekend).
   const dow = today.getDay();
-  if (dow === 6) candidate = new Date(today.getTime() - 1 * 86400000); // Sat → Fri
-  else if (dow === 0) candidate = new Date(today.getTime() - 2 * 86400000); // Sun → Fri
-  else candidate = nextFriday(today);
+  let candidate: Date;
+  if (dow === 5) candidate = today; // Friday: this weekend is starting today
+  else candidate = nextFriday(new Date(today.getTime() + 86400000)); // tomorrow onward
 
   if (candidate < rangeStart) candidate = nextFriday(rangeStart);
   if (candidate > rangeEnd) return null;
