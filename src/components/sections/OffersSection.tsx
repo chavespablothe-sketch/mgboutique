@@ -545,8 +545,7 @@ const OffersSection = () => {
   return (
     <section className="py-24 lg:py-36 bg-background">
       <div className="container mx-auto px-4">
-        {/* Urgency banner */}
-        <UrgencyBanner pkg={nearest} days={nearestDays} />
+        {/* Urgency banner removed per request */}
 
         {/* Section header */}
         <motion.div
