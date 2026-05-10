@@ -1,0 +1,35 @@
+# SPA fallback for Hostinger / Apache hosting
+# Serve index.html for any route that does not match a real file or directory
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # If an existing asset or directory is requested, serve it directly
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Otherwise, hand the request to index.html (React Router takes over)
+  RewriteRule ^ index.html [L]
+</IfModule>
+
+# Mime types & caching for static assets
+<IfModule mod_mime.c>
+  AddType application/javascript .js
+  AddType text/css .css
+  AddType image/svg+xml .svg
+  AddType image/webp .webp
+  AddType font/woff2 .woff2
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType text/css "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>

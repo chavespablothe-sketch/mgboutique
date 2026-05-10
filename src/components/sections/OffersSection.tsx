@@ -113,6 +113,20 @@ function getHomeImage(pkg: (typeof packages)[0]): string {
   return homeImageOverrides[pkg.slug] || pkg.image;
 }
 
+/** Display overrides for the home featured cards (title/period/link). */
+const homeDisplayOverrides: Record<
+  string,
+  { shortTitle?: string; period?: string; description?: string; linkSlug?: string }
+> = {
+  "primeiro-de-maio-2026": {
+    shortTitle: "Fins de Semana de Maio",
+    period: "Todos os fins de semana de maio · 2026",
+    description:
+      "Aproveite os fins de semana de maio no Minha Glória: pensão completa, recreação para crianças e momentos em família em meio à Mata Atlântica. Inclui o feriado prolongado de 1º de maio.",
+    linkSlug: "fim-de-semana",
+  },
+};
+
 function getNextPackages() {
   const now = new Date();
   return packages

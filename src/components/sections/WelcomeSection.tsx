@@ -77,7 +77,7 @@ const WelcomeSection = () => {
             <img
               src="/images/welcome-horse.webp"
               alt="Chalés em meio à natureza"
-              className="w-full h-[200px] md:h-[400px] object-cover hover:scale-105 transition-transform duration-1000"
+              className="w-full h-[200px] md:h-[400px] object-cover object-top hover:scale-105 transition-transform duration-1000"
               loading="lazy"
             />
           </motion.div>
