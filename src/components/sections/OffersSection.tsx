@@ -310,7 +310,7 @@ function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }
   if (pkg.slug === "arraia-inverno-2026") {
     return <ArraiaFrame>{card}</ArraiaFrame>;
   }
-  if (pkg.slug === "primeiro-de-maio-2026") {
+  if (pkg.slug === "fins-de-semana-maio-2026" || pkg.slug === "primeiro-de-maio-2026") {
     return <KidsFamilyFrame>{card}</KidsFamilyFrame>;
   }
   return <div className="mb-16">{card}</div>;
@@ -460,8 +460,10 @@ function ValentinesFrame({ children }: { children: React.ReactNode }) {
 }
 
 function PackageCard({ pkg, i }: { pkg: (typeof packages)[0]; i: number }) {
-  const days = getDaysUntil(pkg.checkIn!);
+  const dates = resolvePackageDates(pkg);
+  const days = dates.checkIn ? getDaysUntil(dates.checkIn) : 999;
   const badge = getUrgencyBadge(days);
+  const period = dates.recurring ? dates.recurring.shortLabel : pkg.period;
 
   return (
     <motion.div
@@ -497,7 +499,7 @@ function PackageCard({ pkg, i }: { pkg: (typeof packages)[0]; i: number }) {
             {pkg.shortTitle}
           </h4>
           <p className="text-muted-foreground font-body text-sm">
-            {pkg.period} · {pkg.nights}
+            {period} · {pkg.nights}
           </p>
           <DiscountSeal />
           <span className="inline-flex items-center gap-1.5 text-cta font-body text-sm font-semibold group-hover:gap-2.5 transition-all border border-cta/30 rounded-full px-5 py-2 mt-1 hover:bg-cta/5">
@@ -516,14 +518,16 @@ const OffersSection = () => {
   const scrollerRef = useRef<HTMLDivElement>(null);
   if (upcoming.length === 0) return null;
 
-  // Highlight Dia das Mães + Festa Junina (Arraiá de Inverno) when present, fallback to next 2
-  const featuredSlugs = ["primeiro-de-maio-2026", "arraia-inverno-2026"];
+  // Destaques fixos: Fins de Semana de Maio + Arraiá de Inverno; fallback para os 2 mais próximos.
+  const featuredSlugs = ["fins-de-semana-maio-2026", "arraia-inverno-2026"];
   const explicitFeatured = featuredSlugs
     .map((slug) => upcoming.find((p) => p.slug === slug))
     .filter(Boolean) as typeof upcoming;
   const featuredList = explicitFeatured.length > 0 ? explicitFeatured : upcoming.slice(0, 2);
-  const featured = featuredList[0];
-  const featuredDays = getDaysUntil(featured.checkIn!);
+  // Banner de urgência sempre aponta para o pacote ATIVO mais próximo (não o destaque fixo).
+  const nearest = upcoming[0];
+  const nearestDates = resolvePackageDates(nearest);
+  const nearestDays = nearestDates.checkIn ? getDaysUntil(nearestDates.checkIn) : 0;
   const secondary = upcoming.filter((p) => !featuredList.some((f) => f.slug === p.slug));
   // Duplicate list for seamless infinite marquee
   const marquee = secondary.length > 0 ? [...secondary, ...secondary] : [];
