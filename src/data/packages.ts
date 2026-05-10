@@ -422,6 +422,7 @@ const packages: HotelPackage[] = [
     tagColor: "bg-secondary",
     checkIn: "19062026",
     checkOut: "26072026",
+    recurringWeekends: { from: "19062026", to: "26072026" },
     programSections: genericProgramSections,
   },
   {
