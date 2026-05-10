@@ -136,7 +136,8 @@ function getNextPackages() {
 
 function UrgencyBanner({ pkg, days }: { pkg: (typeof packages)[0]; days: number }) {
   const badge = getUrgencyBadge(days);
-  const bookingUrl = buildOmnibeesUrl({ checkIn: pkg.checkIn, checkOut: pkg.checkOut });
+  const dates = resolvePackageDates(pkg);
+  const bookingUrl = buildOmnibeesUrl({ checkIn: dates.checkIn, checkOut: dates.checkOut });
 
   return (
     <motion.div
@@ -214,11 +215,12 @@ function MothersDayFrame({ children }: { children: React.ReactNode }) {
 
 function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }) {
   const badge = getUrgencyBadge(days);
-  const bookingUrl = buildOmnibeesUrl({ checkIn: pkg.checkIn, checkOut: pkg.checkOut });
+  const dates = resolvePackageDates(pkg);
+  const bookingUrl = buildOmnibeesUrl({ checkIn: dates.checkIn, checkOut: dates.checkOut });
   const display = homeDisplayOverrides[pkg.slug] ?? {};
-  const displayTitle = display.shortTitle ?? pkg.shortTitle;
-  const displayPeriod = display.period ?? pkg.period;
-  const displayDescription = display.description ?? pkg.description;
+  const displayTitle = pkg.shortTitle;
+  const displayPeriod = dates.recurring ? dates.recurring.shortLabel : pkg.period;
+  const displayDescription = pkg.description;
   const detailsSlug = display.linkSlug ?? pkg.slug;
 
   const card = (
