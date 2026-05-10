@@ -1,4 +1,5 @@
 import type { HotelPackage } from "@/data/packages";
+import { getNextWeekend, type RecurringWeekend } from "@/lib/recurringWeekend";
 
 /**
  * Parse the optional checkOut field (DDMMYYYY) into a Date at end-of-day.
@@ -10,22 +11,51 @@ export function getPackageEndDate(pkg: HotelPackage): Date | null {
   const month = parseInt(pkg.checkOut.slice(2, 4), 10) - 1;
   const year = parseInt(pkg.checkOut.slice(4, 8), 10);
   if (Number.isNaN(day) || Number.isNaN(month) || Number.isNaN(year)) return null;
-  // Expire AFTER the checkout day — the package must disappear on the day after checkout.
   return new Date(year, month, day, 23, 59, 59);
 }
 
-/** Pacotes ocultos manualmente (não aparecem em Home, Pacotes e Tarifas). */
+/** Pacotes ocultos manualmente. */
 export const HIDDEN_PACKAGE_SLUGS: Set<string> = new Set([
   "pascoa-2026",
   "tiradentes-2026",
   "dia-das-maes-2026",
+  "primeiro-de-maio-2026",
 ]);
 
+export interface ResolvedDates {
+  checkIn?: string;
+  checkOut?: string;
+  recurring?: RecurringWeekend | null;
+}
+
 /**
- * A package is "active" if it has no end date (recurring) OR its end date is in the future.
+ * For recurring packages, compute the next weekend's checkIn/checkOut.
+ * For fixed packages, return the static dates.
+ */
+export function resolvePackageDates(pkg: HotelPackage, now: Date = new Date()): ResolvedDates {
+  if (pkg.recurringWeekends) {
+    const next = getNextWeekend(pkg.recurringWeekends.from, pkg.recurringWeekends.to, now);
+    if (!next) return { recurring: null };
+    return { checkIn: next.checkIn, checkOut: next.checkOut, recurring: next };
+  }
+  return { checkIn: pkg.checkIn, checkOut: pkg.checkOut };
+}
+
+/**
+ * A package is "active" if:
+ *  - not in the hidden list, AND
+ *  - has no end date (truly evergreen), OR
+ *  - is recurring with a future weekend, OR
+ *  - has a fixed checkOut in the future.
  */
 export function isPackageActive(pkg: HotelPackage, now: Date = new Date()): boolean {
   if (HIDDEN_PACKAGE_SLUGS.has(pkg.slug)) return false;
+
+  if (pkg.recurringWeekends) {
+    const next = getNextWeekend(pkg.recurringWeekends.from, pkg.recurringWeekends.to, now);
+    return next !== null;
+  }
+
   const end = getPackageEndDate(pkg);
   if (!end) return true;
   return end.getTime() >= now.getTime();
