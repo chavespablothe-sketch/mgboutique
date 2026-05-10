@@ -59,7 +59,7 @@ function useAutoScroll(
 import packages from "@/data/packages";
 import { buildOmnibeesUrl } from "@/lib/omnibees";
 import { monthPhrase } from "@/lib/monthPhrase";
-import { isPackageActive } from "@/lib/packageStatus";
+import { isPackageActive, resolvePackageDates } from "@/lib/packageStatus";
 
 /* ── helpers ─────────────────────────────────────────────── */
 
@@ -102,6 +102,7 @@ function getUrgencyBadge(days: number): { label: string; className: string; puls
 /** Override images for the home section cards */
 const homeImageOverrides: Record<string, string> = {
   "tiradentes-2026": "/images/pacotes-quadriciclo.png",
+  "fins-de-semana-maio-2026": "/images/pacote-primeiro-de-maio-2026.jpg",
   "primeiro-de-maio-2026": "/images/pacote-primeiro-de-maio-2026.jpg",
   "dia-das-maes-2026": "/images/pacote-dia-das-maes-2026.png",
   "corpus-christi-2026": "/images/pacote-corpus-christi-2026.png",
@@ -113,27 +114,22 @@ function getHomeImage(pkg: (typeof packages)[0]): string {
   return homeImageOverrides[pkg.slug] || pkg.image;
 }
 
-/** Display overrides for the home featured cards (title/period/link). */
+/** Display overrides for the home featured cards (linkSlug only — period vem do resolvePackageDates). */
 const homeDisplayOverrides: Record<
   string,
-  { shortTitle?: string; period?: string; description?: string; linkSlug?: string }
+  { linkSlug?: string }
 > = {
-  "primeiro-de-maio-2026": {
-    shortTitle: "Fins de Semana de Maio",
-    period: "Todos os fins de semana de maio · 2026",
-    description:
-      "Aproveite os fins de semana de maio no Minha Glória: pensão completa, recreação para crianças e momentos em família em meio à Mata Atlântica. Inclui o feriado prolongado de 1º de maio.",
-    linkSlug: "fim-de-semana",
-  },
+  "fins-de-semana-maio-2026": { linkSlug: "fim-de-semana" },
 };
 
 function getNextPackages() {
   const now = new Date();
   return packages
-    .filter((p) => p.checkIn && p.checkOut)
-    // Auto-remove 1 day after checkOut (handled by isPackageActive: end = checkOut day 23:59:59)
     .filter((p) => isPackageActive(p, now))
-    .sort((a, b) => getDaysUntil(a.checkIn!) - getDaysUntil(b.checkIn!));
+    .map((p) => ({ pkg: p, dates: resolvePackageDates(p, now) }))
+    .filter((x) => !!x.dates.checkIn)
+    .sort((a, b) => getDaysUntil(a.dates.checkIn!) - getDaysUntil(b.dates.checkIn!))
+    .map((x) => x.pkg);
 }
 
 /* ── sub-components ──────────────────────────────────────── */
