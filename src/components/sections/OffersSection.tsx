@@ -59,7 +59,7 @@ function useAutoScroll(
 import packages from "@/data/packages";
 import { buildOmnibeesUrl } from "@/lib/omnibees";
 import { monthPhrase } from "@/lib/monthPhrase";
-import { isPackageActive } from "@/lib/packageStatus";
+import { isPackageActive, resolvePackageDates } from "@/lib/packageStatus";
 
 /* ── helpers ─────────────────────────────────────────────── */
 
@@ -102,6 +102,7 @@ function getUrgencyBadge(days: number): { label: string; className: string; puls
 /** Override images for the home section cards */
 const homeImageOverrides: Record<string, string> = {
   "tiradentes-2026": "/images/pacotes-quadriciclo.png",
+  "fins-de-semana-maio-2026": "/images/pacote-primeiro-de-maio-2026.jpg",
   "primeiro-de-maio-2026": "/images/pacote-primeiro-de-maio-2026.jpg",
   "dia-das-maes-2026": "/images/pacote-dia-das-maes-2026.png",
   "corpus-christi-2026": "/images/pacote-corpus-christi-2026.png",
@@ -113,34 +114,30 @@ function getHomeImage(pkg: (typeof packages)[0]): string {
   return homeImageOverrides[pkg.slug] || pkg.image;
 }
 
-/** Display overrides for the home featured cards (title/period/link). */
+/** Display overrides for the home featured cards (linkSlug only — period vem do resolvePackageDates). */
 const homeDisplayOverrides: Record<
   string,
-  { shortTitle?: string; period?: string; description?: string; linkSlug?: string }
+  { linkSlug?: string }
 > = {
-  "primeiro-de-maio-2026": {
-    shortTitle: "Fins de Semana de Maio",
-    period: "Todos os fins de semana de maio · 2026",
-    description:
-      "Aproveite os fins de semana de maio no Minha Glória: pensão completa, recreação para crianças e momentos em família em meio à Mata Atlântica. Inclui o feriado prolongado de 1º de maio.",
-    linkSlug: "fim-de-semana",
-  },
+  "fins-de-semana-maio-2026": { linkSlug: "fim-de-semana" },
 };
 
 function getNextPackages() {
   const now = new Date();
   return packages
-    .filter((p) => p.checkIn && p.checkOut)
-    // Auto-remove 1 day after checkOut (handled by isPackageActive: end = checkOut day 23:59:59)
     .filter((p) => isPackageActive(p, now))
-    .sort((a, b) => getDaysUntil(a.checkIn!) - getDaysUntil(b.checkIn!));
+    .map((p) => ({ pkg: p, dates: resolvePackageDates(p, now) }))
+    .filter((x) => !!x.dates.checkIn)
+    .sort((a, b) => getDaysUntil(a.dates.checkIn!) - getDaysUntil(b.dates.checkIn!))
+    .map((x) => x.pkg);
 }
 
 /* ── sub-components ──────────────────────────────────────── */
 
 function UrgencyBanner({ pkg, days }: { pkg: (typeof packages)[0]; days: number }) {
   const badge = getUrgencyBadge(days);
-  const bookingUrl = buildOmnibeesUrl({ checkIn: pkg.checkIn, checkOut: pkg.checkOut });
+  const dates = resolvePackageDates(pkg);
+  const bookingUrl = buildOmnibeesUrl({ checkIn: dates.checkIn, checkOut: dates.checkOut });
 
   return (
     <motion.div
@@ -218,11 +215,12 @@ function MothersDayFrame({ children }: { children: React.ReactNode }) {
 
 function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }) {
   const badge = getUrgencyBadge(days);
-  const bookingUrl = buildOmnibeesUrl({ checkIn: pkg.checkIn, checkOut: pkg.checkOut });
+  const dates = resolvePackageDates(pkg);
+  const bookingUrl = buildOmnibeesUrl({ checkIn: dates.checkIn, checkOut: dates.checkOut });
   const display = homeDisplayOverrides[pkg.slug] ?? {};
-  const displayTitle = display.shortTitle ?? pkg.shortTitle;
-  const displayPeriod = display.period ?? pkg.period;
-  const displayDescription = display.description ?? pkg.description;
+  const displayTitle = pkg.shortTitle;
+  const displayPeriod = dates.recurring ? dates.recurring.shortLabel : pkg.period;
+  const displayDescription = pkg.description;
   const detailsSlug = display.linkSlug ?? pkg.slug;
 
   const card = (
@@ -312,7 +310,7 @@ function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }
   if (pkg.slug === "arraia-inverno-2026") {
     return <ArraiaFrame>{card}</ArraiaFrame>;
   }
-  if (pkg.slug === "primeiro-de-maio-2026") {
+  if (pkg.slug === "fins-de-semana-maio-2026" || pkg.slug === "primeiro-de-maio-2026") {
     return <KidsFamilyFrame>{card}</KidsFamilyFrame>;
   }
   return <div className="mb-16">{card}</div>;
@@ -462,8 +460,10 @@ function ValentinesFrame({ children }: { children: React.ReactNode }) {
 }
 
 function PackageCard({ pkg, i }: { pkg: (typeof packages)[0]; i: number }) {
-  const days = getDaysUntil(pkg.checkIn!);
+  const dates = resolvePackageDates(pkg);
+  const days = dates.checkIn ? getDaysUntil(dates.checkIn) : 999;
   const badge = getUrgencyBadge(days);
+  const period = dates.recurring ? dates.recurring.shortLabel : pkg.period;
 
   return (
     <motion.div
@@ -499,7 +499,7 @@ function PackageCard({ pkg, i }: { pkg: (typeof packages)[0]; i: number }) {
             {pkg.shortTitle}
           </h4>
           <p className="text-muted-foreground font-body text-sm">
-            {pkg.period} · {pkg.nights}
+            {period} · {pkg.nights}
           </p>
           <DiscountSeal />
           <span className="inline-flex items-center gap-1.5 text-cta font-body text-sm font-semibold group-hover:gap-2.5 transition-all border border-cta/30 rounded-full px-5 py-2 mt-1 hover:bg-cta/5">
@@ -518,14 +518,16 @@ const OffersSection = () => {
   const scrollerRef = useRef<HTMLDivElement>(null);
   if (upcoming.length === 0) return null;
 
-  // Highlight Dia das Mães + Festa Junina (Arraiá de Inverno) when present, fallback to next 2
-  const featuredSlugs = ["primeiro-de-maio-2026", "arraia-inverno-2026"];
+  // Destaques fixos: Fins de Semana de Maio + Arraiá de Inverno; fallback para os 2 mais próximos.
+  const featuredSlugs = ["fins-de-semana-maio-2026", "arraia-inverno-2026"];
   const explicitFeatured = featuredSlugs
     .map((slug) => upcoming.find((p) => p.slug === slug))
     .filter(Boolean) as typeof upcoming;
   const featuredList = explicitFeatured.length > 0 ? explicitFeatured : upcoming.slice(0, 2);
-  const featured = featuredList[0];
-  const featuredDays = getDaysUntil(featured.checkIn!);
+  // Banner de urgência sempre aponta para o pacote ATIVO mais próximo (não o destaque fixo).
+  const nearest = upcoming[0];
+  const nearestDates = resolvePackageDates(nearest);
+  const nearestDays = nearestDates.checkIn ? getDaysUntil(nearestDates.checkIn) : 0;
   const secondary = upcoming.filter((p) => !featuredList.some((f) => f.slug === p.slug));
   // Duplicate list for seamless infinite marquee
   const marquee = secondary.length > 0 ? [...secondary, ...secondary] : [];
@@ -544,7 +546,7 @@ const OffersSection = () => {
     <section className="py-24 lg:py-36 bg-background">
       <div className="container mx-auto px-4">
         {/* Urgency banner */}
-        <UrgencyBanner pkg={featured} days={featuredDays} />
+        <UrgencyBanner pkg={nearest} days={nearestDays} />
 
         {/* Section header */}
         <motion.div
@@ -568,9 +570,11 @@ const OffersSection = () => {
         </motion.div>
 
         {/* Featured highlights — next 2 weekends/holidays */}
-        {featuredList.map((pkg) => (
-          <FeaturedCard key={pkg.slug} pkg={pkg} days={getDaysUntil(pkg.checkIn!)} />
-        ))}
+        {featuredList.map((pkg) => {
+          const d = resolvePackageDates(pkg);
+          const days = d.checkIn ? getDaysUntil(d.checkIn) : 999;
+          return <FeaturedCard key={pkg.slug} pkg={pkg} days={days} />;
+        })}
 
         {/* Looping carousel of remaining upcoming packages with arrows */}
         {secondary.length > 0 && (

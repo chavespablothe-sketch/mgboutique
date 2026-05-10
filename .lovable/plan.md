@@ -1,38 +1,49 @@
-## Diagnóstico do bug atual
+## Diagnóstico
 
-No `OffersSection.tsx` o carrossel de pacotes secundários tem dois sistemas de movimento brigando:
+Hoje é **10/05/2026**. O destaque "Fins de Semana de Maio" sumiu porque o pacote `primeiro-de-maio-2026` tem `checkOut = 03/05/2026` → `isPackageActive()` o filtrou como expirado. A contagem regressiva pulou direto para o próximo feriado fixo.
 
-1. **Animação CSS `animate-marquee`** no filho interno move o conteúdo via `transform: translateX(...)`.
-2. **Setas** chamam `scrollerRef.current.scrollBy(...)` no container pai (`overflow-x-auto`).
+## Regra nova (confirmada pelo usuário)
 
-Como o conteúdo é movido por `transform` (não por scroll real), o `scrollLeft` do pai não acompanha — as setas parecem inertes. Além disso, `snap-mandatory` + `transform` em movimento causa travadas no swipe mobile.
+> Quando o pacote não tem data específica (ex.: "Fins de Semana de Maio", "Arraiá de Inverno"), o sistema deve **calcular automaticamente o próximo fim de semana** dentro da janela do pacote e usar essa data como `checkIn` para a contagem regressiva e para o link Omnibees.
 
-## Solução
+## Plano
 
-Substituir o marquee CSS por **auto-scroll programático** (via `requestAnimationFrame` incrementando `scrollLeft`), com **pausa em interação** e setas que controlam o mesmo `scrollLeft`. Sem conflito, já que tudo opera no mesmo eixo (scroll nativo).
+### 1. Util `src/lib/recurringWeekend.ts`
+- `getNextWeekend(rangeStart, rangeEnd, now)` → retorna `{ checkIn: "DDMMYYYY", checkOut, label: "16 e 17 de maio" }` para a próxima sexta/domingo dentro da janela. Se acabou, retorna `null`.
+- Função genérica, reutilizável para qualquer pacote recorrente.
 
-### Comportamento desejado
+### 2. Marcar pacotes como "recorrentes" em `src/data/packages.ts`
+- Novo campo opcional `recurringWeekends?: { from: string; to: string }` (DDMMYYYY).
+- Adicionar entry **`fins-de-semana-maio-2026`**:
+  - `recurringWeekends: { from: "01052026", to: "31052026" }`.
+  - Sem `checkIn`/`checkOut` fixos.
+  - `shortTitle: "Fins de Semana de Maio"`, `period: "Todos os fins de semana de maio · 2026"`.
+  - `linkSlug` para reservas: `fim-de-semana`.
+- No entry **`arraia-inverno-2026`**: adicionar `recurringWeekends: { from: "19062026", to: "26072026" }` (mantém os campos atuais como fallback de exibição).
 
-- **Auto-rotação**: avança ~0.5px por frame (~30px/s) continuamente para a direita.
-- **Loop infinito**: duplicar a lista; ao passar da metade do `scrollWidth`, "teleportar" `scrollLeft` de volta sem animação (truque clássico de marquee infinito sem usar transform).
-- **Pausa automática quando o usuário interage**: ao `mouseenter`, `touchstart`, `focusin` dentro da seção, ou ao clicar nas setas — pausa por **6 segundos** após a última interação, depois retoma.
-- **Setas** chamam `scrollBy({ left: ±70% da largura, behavior: "smooth" })` e disparam a pausa temporária.
-- **Swipe mobile** funciona nativamente (`overflow-x-auto` + `touch-pan-x`); também dispara pausa.
-- **`prefers-reduced-motion`**: desativa a auto-rotação (acessibilidade).
+### 3. Resolver datas dinâmicas
+- Helper `resolvePackageDates(pkg, now)` em `src/lib/packageStatus.ts`:
+  - Se `pkg.recurringWeekends`, retorna o próximo FDS via `getNextWeekend(...)`.
+  - Caso contrário retorna `{ checkIn: pkg.checkIn, checkOut: pkg.checkOut }`.
+- `isPackageActive` passa a usar essa resolução: pacote recorrente continua ativo enquanto `getNextWeekend` retornar algo.
 
-### Mudanças (todas em `src/components/sections/OffersSection.tsx`)
+### 4. Atualizar `OffersSection.tsx`
+- `featuredSlugs = ["fins-de-semana-maio-2026", "arraia-inverno-2026"]`.
+- Em `FeaturedCard`, `PackageCard` e `UrgencyBanner`: substituir leituras diretas de `pkg.checkIn` / `pkg.checkOut` por `resolvePackageDates(pkg)` — usado tanto em `getDaysUntil` quanto em `buildOmnibeesUrl`.
+- Period exibido para recorrentes: usa o `label` retornado (ex.: "Próximo FDS · 16 e 17 de maio") em vez do `period` estático.
+- Manter `KidsFamilyFrame` para `fins-de-semana-maio-2026` (moldura com balões e selo "Feriado em Família").
+- Manter `ArraiaFrame` para Arraiá; agora o countdown aponta para o próximo sábado da janela, não mais 19/06 fixo.
 
-1. Remover classes `animate-marquee` e `group-hover:[animation-play-state:paused]` do filho interno.
-2. Remover `w-max` do filho (deixar flexbox natural).
-3. Adicionar `touch-pan-x` no scroller.
-4. Manter `marquee = [...secondary, ...secondary]` (a duplicação ajuda o loop).
-5. Criar hook local `useAutoScroll(ref, { speed: 0.5, pauseMs: 6000 })`:
-   - rAF loop que faz `el.scrollLeft += speed` quando não pausado.
-   - Quando `el.scrollLeft >= el.scrollWidth / 2`, subtrair `scrollWidth/2` de `scrollLeft` (reset invisível, pois a segunda metade é idêntica à primeira).
-   - Listeners: `mouseenter`, `mouseleave`, `touchstart`, `focusin`, `wheel`, `pointerdown` no container → setam timestamp de "última interação"; rAF só avança se `now - lastInteract > pauseMs`.
-   - Respeitar `window.matchMedia("(prefers-reduced-motion: reduce)")`.
-6. `scrollBy()` das setas dispara o mesmo "última interação = now" para pausar 6s.
+### 5. Limpeza
+- Remover override de display em cima de `primeiro-de-maio-2026` (vira pacote próprio).
+- `primeiro-de-maio-2026` continua existindo como histórico mas fora da home (já expirou naturalmente).
 
-### Nota
+## Arquivos afetados
+- **Novo**: `src/lib/recurringWeekend.ts`
+- **Editar**: `src/data/packages.ts`, `src/lib/packageStatus.ts`, `src/components/sections/OffersSection.tsx`
 
-Atualizar a memória `mem://features/offers-section` com a nova lógica do carrossel (auto-scroll + pausa em interação + setas) após implementação.
+## Validação
+- Em `/`, o card "Fins de Semana de Maio · 16 e 17 de maio" aparece acima do Arraiá com a moldura kids.
+- Banner de urgência: "Fins de Semana de Maio em 6 dias".
+- Para Arraiá: mostra "Arraiá em 39 dias" (sexta 19/06 ainda é o primeiro). Após 19/06, atualiza sozinho para o próximo sábado.
+- Após 31/05, o card de maio some sozinho.
