@@ -354,7 +354,7 @@ function KidsFamilyFrame({ children }: { children: React.ReactNode }) {
         {/* Faixa "Família & Kids" */}
         <div className="absolute top-3 left-1/2 -translate-x-1/2 z-20">
           <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-[#7fa05a] via-[#e8b94a] to-[#e07a9b] text-white font-display italic text-sm md:text-base px-5 py-1.5 rounded-full shadow-lg whitespace-nowrap border-2 border-white/40">
-            <Sparkles size={12} className="text-white" /> Feriado em Família 🐰✨
+            <Sparkles size={12} className="text-white" /> Família & Kids ✨
           </span>
         </div>
         {children}
