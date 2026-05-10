@@ -28,6 +28,9 @@ export interface HotelPackage {
   capacity?: string;
   checkIn?: string;
   checkOut?: string;
+  /** When set, the package recurs on every Fri–Sun within this window.
+   *  checkIn/checkOut are computed dynamically as the next weekend. */
+  recurringWeekends?: { from: string; to: string };
 }
 
 // Shared hotel photo pool for gallery expansion
