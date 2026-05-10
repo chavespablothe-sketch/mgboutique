@@ -113,6 +113,20 @@ function getHomeImage(pkg: (typeof packages)[0]): string {
   return homeImageOverrides[pkg.slug] || pkg.image;
 }
 
+/** Display overrides for the home featured cards (title/period/link). */
+const homeDisplayOverrides: Record<
+  string,
+  { shortTitle?: string; period?: string; description?: string; linkSlug?: string }
+> = {
+  "primeiro-de-maio-2026": {
+    shortTitle: "Fins de Semana de Maio",
+    period: "Todos os fins de semana de maio · 2026",
+    description:
+      "Aproveite os fins de semana de maio no Minha Glória: pensão completa, recreação para crianças e momentos em família em meio à Mata Atlântica. Inclui o feriado prolongado de 1º de maio.",
+    linkSlug: "fim-de-semana",
+  },
+};
+
 function getNextPackages() {
   const now = new Date();
   return packages
@@ -205,6 +219,11 @@ function MothersDayFrame({ children }: { children: React.ReactNode }) {
 function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }) {
   const badge = getUrgencyBadge(days);
   const bookingUrl = buildOmnibeesUrl({ checkIn: pkg.checkIn, checkOut: pkg.checkOut });
+  const display = homeDisplayOverrides[pkg.slug] ?? {};
+  const displayTitle = display.shortTitle ?? pkg.shortTitle;
+  const displayPeriod = display.period ?? pkg.period;
+  const displayDescription = display.description ?? pkg.description;
+  const detailsSlug = display.linkSlug ?? pkg.slug;
 
   const card = (
     <motion.div
@@ -214,11 +233,11 @@ function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }
       className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 bg-card/60 rounded-3xl p-4 lg:p-6 border border-border/60 hover:shadow-xl hover:-translate-y-1 transition-all duration-500"
     >
       {/* Image */}
-      <Link to={`/tarifas/${pkg.slug}`} className="group block">
+      <Link to={`/tarifas/${detailsSlug}`} className="group block">
         <div className="relative overflow-hidden rounded-2xl aspect-[4/3]">
           <img
             src={getHomeImage(pkg)}
-            alt={pkg.shortTitle}
+            alt={displayTitle}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
             loading="lazy"
           />
@@ -246,14 +265,14 @@ function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }
             </span>
           )}
           <h3 className="font-display text-3xl md:text-4xl text-foreground font-semibold leading-tight">
-            {pkg.shortTitle}
+            {displayTitle}
           </h3>
         </div>
         <p className="text-muted-foreground font-body text-base leading-relaxed">
-          {pkg.period} · {pkg.nights}
+          {displayPeriod} · {pkg.nights}
         </p>
         <p className="text-muted-foreground font-body text-[15px] leading-relaxed line-clamp-3">
-          {pkg.description}
+          {displayDescription}
         </p>
         <div className="flex flex-wrap gap-2 items-center">
           <DiscountSeal />
@@ -274,7 +293,7 @@ function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }
             Reservar agora
           </a>
           <Link
-            to={`/tarifas/${pkg.slug}`}
+            to={`/tarifas/${detailsSlug}`}
             className="inline-flex items-center gap-1.5 border border-foreground/15 text-foreground font-body text-sm px-6 py-3 rounded-full hover:bg-muted transition-colors"
           >
             Ver detalhes <ArrowRight size={14} />
