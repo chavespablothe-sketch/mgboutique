@@ -102,7 +102,7 @@ function getUrgencyBadge(days: number): { label: string; className: string; puls
 /** Override images for the home section cards */
 const homeImageOverrides: Record<string, string> = {
   "tiradentes-2026": "/images/pacotes-quadriciclo.png",
-  "primeiro-de-maio-2026": "/images/pacote-dia-do-trabalhador-2026.png",
+  "primeiro-de-maio-2026": "/images/pacote-primeiro-de-maio-2026.jpg",
   "dia-das-maes-2026": "/images/pacote-dia-das-maes-2026.png",
   "corpus-christi-2026": "/images/pacote-corpus-christi-2026.png",
   "arraia-inverno-2026": "/images/pacote-arraia-inverno-2026.png",
@@ -450,7 +450,7 @@ const OffersSection = () => {
   if (upcoming.length === 0) return null;
 
   // Highlight Dia das Mães + Festa Junina (Arraiá de Inverno) when present, fallback to next 2
-  const featuredSlugs = ["arraia-inverno-2026"];
+  const featuredSlugs = ["primeiro-de-maio-2026", "arraia-inverno-2026"];
   const explicitFeatured = featuredSlugs
     .map((slug) => upcoming.find((p) => p.slug === slug))
     .filter(Boolean) as typeof upcoming;
