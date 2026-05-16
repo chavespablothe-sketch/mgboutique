@@ -518,8 +518,8 @@ const OffersSection = () => {
   const scrollerRef = useRef<HTMLDivElement>(null);
   if (upcoming.length === 0) return null;
 
-  // Destaques fixos: Fins de Semana de Maio + Arraiá de Inverno; fallback para os 2 mais próximos.
-  const featuredSlugs = ["fins-de-semana-maio-2026", "arraia-inverno-2026"];
+  // Destaques fixos: Fim de Semana (recorrente) + Corpus Christi + Arraiá de Inverno.
+  const featuredSlugs = ["fins-de-semana-maio-2026", "corpus-christi-2026", "arraia-inverno-2026"];
   const explicitFeatured = featuredSlugs
     .map((slug) => upcoming.find((p) => p.slug === slug))
     .filter(Boolean) as typeof upcoming;

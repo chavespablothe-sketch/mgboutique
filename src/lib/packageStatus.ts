@@ -41,12 +41,22 @@ export function resolvePackageDates(pkg: HotelPackage, now: Date = new Date()): 
   return { checkIn: pkg.checkIn, checkOut: pkg.checkOut };
 }
 
+/** Parse checkIn (DDMMYYYY) into a Date at start-of-day. */
+function getPackageCheckInDate(pkg: HotelPackage): Date | null {
+  if (!pkg.checkIn || pkg.checkIn.length !== 8) return null;
+  const day = parseInt(pkg.checkIn.slice(0, 2), 10);
+  const month = parseInt(pkg.checkIn.slice(2, 4), 10) - 1;
+  const year = parseInt(pkg.checkIn.slice(4, 8), 10);
+  if (Number.isNaN(day) || Number.isNaN(month) || Number.isNaN(year)) return null;
+  return new Date(year, month, day, 0, 0, 0);
+}
+
 /**
  * A package is "active" if:
  *  - not in the hidden list, AND
- *  - has no end date (truly evergreen), OR
  *  - is recurring with a future weekend, OR
- *  - has a fixed checkOut in the future.
+ *  - has a checkIn in the future (today counts as still active), OR
+ *  - has no checkIn at all (truly evergreen, e.g. "fim-de-semana" genérico).
  */
 export function isPackageActive(pkg: HotelPackage, now: Date = new Date()): boolean {
   if (HIDDEN_PACKAGE_SLUGS.has(pkg.slug)) return false;
@@ -56,9 +66,10 @@ export function isPackageActive(pkg: HotelPackage, now: Date = new Date()): bool
     return next !== null;
   }
 
-  const end = getPackageEndDate(pkg);
-  if (!end) return true;
-  return end.getTime() >= now.getTime();
+  const checkIn = getPackageCheckInDate(pkg);
+  if (!checkIn) return true;
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  return checkIn.getTime() >= today.getTime();
 }
 
 /** Returns only currently-active packages, preserving original order. */
