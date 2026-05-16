@@ -1,0 +1,24 @@
+# Minha Glória Hotel Boutique
+
+> Hotel boutique em Bom Jardim, RJ. Chalés exclusivos em meio à Mata Atlântica, com pensão completa nos finais de semana, spa e experiências para toda a família.
+
+## Pages
+
+- [Home](/): Apresentação do hotel, destaques e ofertas.
+- [Sobre](/sobre): História, valores e pilares da Minha Glória.
+- [Acomodações](/acomodacoes): 5 categorias de chalés exclusivos.
+- [Chalé Tradicional](/acomodacoes/chale-tradicional): Conforto e charme rústico.
+- [Chalé Premium](/acomodacoes/chale-premium): Sofisticação e vista privilegiada.
+- [Chalé Superior](/acomodacoes/chale-superior): Espaço amplo com varanda.
+- [Chalé Romântico](/acomodacoes/chale-romantico): Refúgio para casais.
+- [Chalé Família](/acomodacoes/chale-familia): Ideal para famílias com crianças.
+- [Experiências](/experiencias): Atividades de lazer, natureza e bem-estar.
+- [Gastronomia](/gastronomia): Pensão completa nos finais de semana e feriados.
+- [Tarifas e Pacotes](/tarifas): Pacotes de fim de semana e datas especiais.
+- [Região](/regiao): O que conhecer em Bom Jardim e arredores.
+- [Contato](/contato): Telefone, e-mail e formulário de reservas.
+- [Blog](/blog): Conteúdos sobre o hotel e a região.
+
+## Optional
+
+- [Política de Privacidade](/privacidade): Tratamento de dados pessoais.
