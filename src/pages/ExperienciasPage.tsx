@@ -468,28 +468,6 @@ const ExperienciasPage = () => {
               </motion.div>
             </div>
 
-            {/* Fun facts */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
-              {[
-                { emoji: "🏰", label: "Castelo inflável" },
-                { emoji: "🛝", label: "Escorregador gigante" },
-                { emoji: "🤸", label: "Cama elástica" },
-                { emoji: "🎨", label: "Parquinho colorido" },
-              ].map((f, i) => (
-                <motion.div
-                  key={f.label}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.08 }}
-                  whileHover={{ y: -4 }}
-                  className="bg-background/80 backdrop-blur-sm rounded-2xl p-5 text-center shadow-md border border-white"
-                >
-                  <div className="text-4xl mb-2">{f.emoji}</div>
-                  <p className="font-body text-sm font-semibold text-foreground">{f.label}</p>
-                </motion.div>
-              ))}
-            </div>
 
             <motion.p
               initial={{ opacity: 0 }}
