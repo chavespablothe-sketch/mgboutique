@@ -48,6 +48,7 @@ const animals = [
 ];
 
 const animalImages = [
+  { src: "/images/tucano-visitante.jpg", alt: "Encontro com tucano na fazendinha" },
   { src: "/images/cavalos-potro.jpg", alt: "Égua e potro na fazenda" },
   { src: "/images/arara-caninde.jpg", alt: "Arara Canindé" },
   { src: "/images/lhama-branca.jpg", alt: "Lhama branca" },
