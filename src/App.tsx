@@ -26,7 +26,6 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
-        <PromoSplash />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/sobre" element={<SobrePage />} />
