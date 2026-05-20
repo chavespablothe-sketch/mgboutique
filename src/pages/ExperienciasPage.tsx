@@ -396,6 +396,116 @@ const ExperienciasPage = () => {
           </div>
         </section>
 
+        {/* Infláveis — playful weekend section */}
+        <section className="relative py-24 lg:py-32 overflow-hidden bg-gradient-to-br from-[hsl(45,95%,92%)] via-[hsl(35,90%,88%)] to-[hsl(20,85%,85%)]">
+          {/* Floating colored balloons */}
+          <div className="absolute inset-0 overflow-hidden pointer-events-none">
+            {[
+              { c: "hsl(0,80%,65%)", x: "8%", y: "12%", s: 70, d: 0 },
+              { c: "hsl(45,95%,60%)", x: "18%", y: "70%", s: 50, d: 0.4 },
+              { c: "hsl(200,75%,60%)", x: "85%", y: "18%", s: 60, d: 0.8 },
+              { c: "hsl(140,55%,55%)", x: "92%", y: "65%", s: 45, d: 1.2 },
+              { c: "hsl(280,55%,65%)", x: "50%", y: "8%", s: 40, d: 1.6 },
+              { c: "hsl(15,85%,60%)", x: "75%", y: "85%", s: 55, d: 2 },
+            ].map((b, i) => (
+              <motion.div
+                key={i}
+                className="absolute rounded-full shadow-lg"
+                style={{
+                  left: b.x, top: b.y, width: b.s, height: b.s,
+                  background: `radial-gradient(circle at 30% 30%, ${b.c}, ${b.c} 70%, rgba(0,0,0,0.15))`,
+                }}
+                animate={{ y: [0, -18, 0], rotate: [0, 4, 0] }}
+                transition={{ duration: 5 + i * 0.4, repeat: Infinity, ease: "easeInOut", delay: b.d }}
+              />
+            ))}
+          </div>
+
+          <div className="container mx-auto px-4 relative z-10">
+            <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-3xl mx-auto text-center mb-16">
+              <motion.div
+                animate={{ rotate: [-3, 3, -3] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="inline-flex items-center gap-2 px-5 py-2 mb-6 rounded-full bg-primary text-primary-foreground font-body text-xs uppercase tracking-[0.3em] shadow-lg"
+              >
+                <Sparkles size={14} className="text-secondary" />
+                Todo fim de semana
+              </motion.div>
+              <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground font-semibold mb-6 leading-[1.05]">
+                Pula-pula, tobogã e <span className="italic text-[hsl(15,85%,55%)]">muita alegria</span>
+              </h2>
+              <p className="text-editorial text-foreground/70 text-lg md:text-xl leading-relaxed">
+                Cama elástica, castelo inflável, escorregador gigante e parquinho colorido —
+                montados <strong className="text-foreground">todos os fins de semana</strong> para
+                a criançada gastar energia sem limites.
+              </p>
+            </motion.div>
+
+            {/* Playful image collage */}
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-4 max-w-6xl mx-auto mb-12">
+              <motion.div
+                initial={{ opacity: 0, x: -30, rotate: -2 }}
+                whileInView={{ opacity: 1, x: 0, rotate: -1.5 }}
+                viewport={{ once: true }}
+                whileHover={{ rotate: 0, scale: 1.02 }}
+                transition={{ duration: 0.6 }}
+                className="md:col-span-3 relative rounded-3xl overflow-hidden shadow-2xl border-4 border-background"
+              >
+                <img src={inflavel01} alt="Parquinho coberto com pula-pula e brinquedos coloridos" className="w-full h-[320px] md:h-[460px] object-cover" loading="lazy" />
+                <div className="absolute top-4 left-4 bg-secondary text-primary px-4 py-1.5 rounded-full font-body text-xs uppercase tracking-widest font-semibold shadow-md">
+                  Parquinho coberto
+                </div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, x: 30, rotate: 2 }}
+                whileInView={{ opacity: 1, x: 0, rotate: 1.5 }}
+                viewport={{ once: true }}
+                whileHover={{ rotate: 0, scale: 1.02 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="md:col-span-2 relative rounded-3xl overflow-hidden shadow-2xl border-4 border-background"
+              >
+                <img src={inflavel02} alt="Tobogã inflável gigante com vista para a serra" className="w-full h-[320px] md:h-[460px] object-cover" loading="lazy" />
+                <div className="absolute top-4 right-4 bg-[hsl(15,85%,55%)] text-white px-4 py-1.5 rounded-full font-body text-xs uppercase tracking-widest font-semibold shadow-md">
+                  Tobogã gigante
+                </div>
+              </motion.div>
+            </div>
+
+            {/* Fun facts */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+              {[
+                { emoji: "🏰", label: "Castelo inflável" },
+                { emoji: "🛝", label: "Escorregador gigante" },
+                { emoji: "🤸", label: "Cama elástica" },
+                { emoji: "🎨", label: "Parquinho colorido" },
+              ].map((f, i) => (
+                <motion.div
+                  key={f.label}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  whileHover={{ y: -4 }}
+                  className="bg-background/80 backdrop-blur-sm rounded-2xl p-5 text-center shadow-md border border-white"
+                >
+                  <div className="text-4xl mb-2">{f.emoji}</div>
+                  <p className="font-body text-sm font-semibold text-foreground">{f.label}</p>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.p
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="text-center text-foreground/60 font-body text-sm mt-10 max-w-xl mx-auto italic"
+            >
+              ✨ Os infláveis ficam montados de sexta a domingo, e em feriados prolongados.
+            </motion.p>
+          </div>
+        </section>
+
         {/* Services & Pricing */}
         <section className="py-24 lg:py-32 bg-background">
           <div className="container mx-auto px-4">
