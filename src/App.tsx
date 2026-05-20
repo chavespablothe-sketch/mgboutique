@@ -16,7 +16,7 @@ import RegiaoPage from "./pages/RegiaoPage";
 import BlogPage from "./pages/BlogPage";
 import PrivacidadePage from "./pages/PrivacidadePage";
 import NotFound from "./pages/NotFound";
-import PromoSplash from "./components/PromoSplash";
+
 
 const queryClient = new QueryClient();
 
