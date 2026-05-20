@@ -423,14 +423,10 @@ const ExperienciasPage = () => {
 
           <div className="container mx-auto px-4 relative z-10">
             <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-3xl mx-auto text-center mb-16">
-              <motion.div
-                animate={{ rotate: [-3, 3, -3] }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                className="inline-flex items-center gap-2 px-5 py-2 mb-6 rounded-full bg-primary text-primary-foreground font-body text-xs uppercase tracking-[0.3em] shadow-lg"
-              >
+              <div className="inline-flex items-center gap-2 px-5 py-2 mb-6 rounded-full bg-primary text-primary-foreground font-body text-xs uppercase tracking-[0.3em] shadow-lg">
                 <Sparkles size={14} className="text-secondary" />
                 Todo fim de semana
-              </motion.div>
+              </div>
               <h2 className="font-display text-4xl md:text-5xl lg:text-6xl text-foreground font-semibold mb-6 leading-[1.05]">
                 Pula-pula, tobogã e <span className="italic text-[hsl(15,85%,55%)]">muita alegria</span>
               </h2>
