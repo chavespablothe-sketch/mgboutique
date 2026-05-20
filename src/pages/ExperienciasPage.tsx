@@ -203,7 +203,7 @@ const ExperienciasPage = () => {
                   className={`overflow-hidden rounded-2xl ring-2 ring-[hsl(37,60%,55%)]/20 photo-lift cursor-pointer ${i === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}
                   onClick={() => setLightboxIndex(i)}
                 >
-                  <img src={img.src} alt={img.alt} className={`w-full object-cover hover:scale-110 transition-transform duration-1000 ${i === 0 ? 'h-[250px] md:h-full' : 'h-[200px] md:h-[250px]'}`} loading="lazy" />
+                  <img src={img.src} alt={img.alt} className={`w-full object-cover object-top hover:scale-110 transition-transform duration-1000 ${i === 0 ? 'h-[320px] md:h-full' : 'h-[260px] md:h-[340px]'}`} loading="lazy" />
                 </motion.div>
               ))}
             </div>
