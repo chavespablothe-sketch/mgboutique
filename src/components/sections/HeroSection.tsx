@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import DateSearchBar from "@/components/DateSearchBar";
 
@@ -41,10 +41,38 @@ const HeroSection = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.8 }}
-              className="text-primary-foreground/70 font-body text-base md:text-lg max-w-md mb-10 leading-relaxed"
+              className="text-primary-foreground/70 font-body text-base md:text-lg max-w-md mb-6 leading-relaxed"
             >
-              
             </motion.p>
+
+            {/* Corpus Christi highlight */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.95 }}
+              className="mb-8"
+            >
+              <Link
+                to="/tarifas/corpus-christi-2026"
+                className="group inline-flex items-center gap-3 bg-gradient-to-r from-amber-500/20 via-secondary/20 to-amber-500/20 backdrop-blur-md border border-secondary/40 rounded-full pl-1 pr-5 py-1 shadow-lg shadow-secondary/10 hover:shadow-secondary/25 hover:border-secondary/60 transition-all duration-500"
+              >
+                <span className="flex items-center justify-center h-9 w-9 rounded-full bg-secondary/90 text-primary shadow-inner">
+                  <Sparkles size={16} />
+                </span>
+                <div className="flex flex-col items-start">
+                  <span className="text-[10px] font-body font-semibold tracking-[0.15em] uppercase text-secondary">
+                    Próximo feriado
+                  </span>
+                  <span className="font-display text-sm text-primary-foreground group-hover:text-secondary transition-colors">
+                    Corpus Christi 2026 · 4 a 6 de junho
+                  </span>
+                </div>
+                <ArrowRight
+                  size={14}
+                  className="text-secondary/70 group-hover:text-secondary group-hover:translate-x-0.5 transition-all ml-1"
+                />
+              </Link>
+            </motion.div>
 
             <motion.div
               initial={{ opacity: 0 }}
