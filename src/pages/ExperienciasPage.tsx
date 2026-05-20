@@ -7,6 +7,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { TreePine, Mountain, Waves, Bike, Dog, Palette, Footprints, Music, Gamepad2, Heart, Baby, Bird, Sparkles, Car, Clock, DollarSign, X, ChevronLeft, ChevronRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import quadriJeepImg from "@/assets/quadri-jeep.png";
+import inflavel01 from "@/assets/inflavel-01.jpg";
+import inflavel02 from "@/assets/inflavel-02.jpg";
 
 const experiences = [
   { title: "Passeio a Cavalo e Charrete", description: "Cavalgadas guiadas pelas trilhas da propriedade, com paradas em mirantes panorâmicos.", image: "/images/cavalo.jpg", audience: "Famílias" },
