@@ -72,7 +72,7 @@ const PacotesPage = () => {
                 Pacotes & <span className="italic text-secondary">Experiências</span>
               </h1>
               <p className="text-primary-foreground/60 font-body text-base md:text-lg leading-relaxed max-w-xl mx-auto">
-                De Páscoa a Réveillon, experiências exclusivas para casais e famílias na serra fluminense.
+                Experiências exclusivas para casais e famílias na serra fluminense.
               </p>
             </motion.div>
 
