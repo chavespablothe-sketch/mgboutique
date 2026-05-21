@@ -12,7 +12,7 @@ import KidsSection from "@/components/sections/KidsSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import CTASection from "@/components/CTASection";
 import ArraiaPromoLightbox from "@/components/ArraiaPromoLightbox";
-import FakeMessageAlertLightbox from "@/components/FakeMessageAlertLightbox";
+
 
 const Index = () => {
   return (
@@ -36,7 +36,7 @@ const Index = () => {
       <CTASection />
       <Footer />
       <ArraiaPromoLightbox />
-      <FakeMessageAlertLightbox />
+      
     </div>
   );
 };

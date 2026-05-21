@@ -20,7 +20,7 @@ const PacoteDetalhePage = () => {
 
   useEffect(() => { window.scrollTo(0, 0); }, [slug]);
 
-  if (!pkg) return <Navigate to="/tarifas" replace />;
+  if (!pkg) return <Navigate to="/ofertas" replace />;
 
   const allImages = pkg.gallery.length > 0 ? pkg.gallery : [pkg.image];
 
@@ -37,7 +37,7 @@ const PacoteDetalhePage = () => {
       <SEO
         title={`${pkg.shortTitle} | Pacotes`}
         description={`${pkg.description} ${pkg.period}, ${pkg.nights}. Consulte tarifas especiais.`}
-        canonical={`/tarifas/${pkg.slug}`}
+        canonical={`/ofertas/${pkg.slug}`}
         ogImage={pkg.image}
         schemas={[
           {
@@ -50,7 +50,7 @@ const PacoteDetalhePage = () => {
             image: pkg.image,
             seller: { "@type": "Hotel", name: "Minha Glória Hotel Boutique" },
           },
-          breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Tarifas", url: "/tarifas" }, { name: pkg.shortTitle, url: `/tarifas/${pkg.slug}` }]),
+          breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Ofertas", url: "/ofertas" }, { name: pkg.shortTitle, url: `/ofertas/${pkg.slug}` }]),
         ]}
       />
       <Header />
@@ -65,8 +65,8 @@ const PacoteDetalhePage = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/40 to-primary/20" />
           <div className="relative z-10 container mx-auto px-4 pb-14">
-            <Link to="/tarifas" className="inline-flex items-center gap-2 text-secondary font-body text-sm mb-5 hover:text-secondary/80 transition-colors">
-              <ArrowLeft size={14} /> Voltar às tarifas
+            <Link to="/ofertas" className="inline-flex items-center gap-2 text-secondary font-body text-sm mb-5 hover:text-secondary/80 transition-colors">
+              <ArrowLeft size={14} /> Voltar às ofertas
             </Link>
             <span className={`inline-block ${pkg.tagColor} text-primary-foreground text-xs font-body uppercase tracking-wider px-4 py-1.5 rounded-full mb-4`}>
               {pkg.tag}
@@ -196,7 +196,7 @@ const PacoteDetalhePage = () => {
                   <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
                     className="bg-card rounded-xl border border-border p-8 shadow-xl"
                   >
-                    <p className="font-display text-2xl font-semibold text-foreground mb-1">Tarifas Especiais</p>
+                    <p className="font-display text-2xl font-semibold text-foreground mb-1">Oferta Especial</p>
                     <p className="text-muted-foreground font-body text-sm mb-1">{pkg.nights} · por casal</p>
                     <p className="text-secondary font-body text-sm font-semibold mb-6">Consulte valores ao reservar</p>
 

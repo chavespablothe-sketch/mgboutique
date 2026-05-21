@@ -90,9 +90,9 @@ const Header = () => {
                   <Search size={14} />
                 </button>
                 <Button asChild size="sm" className="bg-promo hover:bg-promo/90 text-promo-foreground font-body text-[10px] uppercase tracking-[0.15em] gap-1.5 px-4 py-2 rounded-full shadow-lg shadow-promo/40 font-bold animate-pulse-soft ring-2 ring-promo/30">
-                  <Link to="/tarifas">
+                  <Link to="/ofertas">
                     <Tag size={12} className="fill-promo-foreground" />
-                    Promoções
+                    Ofertas
                   </Link>
                 </Button>
                 <Button asChild size="sm" className="bg-cta hover:bg-cta/90 text-cta-foreground font-body text-[10px] uppercase tracking-[0.15em] gap-1.5 px-4 py-2 rounded-full shadow-lg shadow-cta/20">
@@ -105,9 +105,9 @@ const Header = () => {
               {/* Mobile/Tablet CTAs */}
               <div className="flex lg:hidden items-center gap-1.5 shrink-0">
                 <Button asChild size="sm" className="bg-promo hover:bg-promo/90 text-promo-foreground font-body text-[9px] uppercase tracking-wider gap-1 px-2.5 py-1.5 rounded-full shadow-md shadow-promo/40 font-bold animate-pulse-soft ring-1 ring-promo/30 h-auto">
-                  <Link to="/tarifas">
+                  <Link to="/ofertas">
                     <Tag size={10} className="fill-promo-foreground" />
-                    Promo
+                    Ofertas
                   </Link>
                 </Button>
                 <Button asChild size="sm" className="bg-cta hover:bg-cta/90 text-cta-foreground font-body text-[9px] uppercase tracking-wider px-2.5 py-1.5 rounded-full h-auto">
@@ -146,11 +146,11 @@ const Header = () => {
                 </Link>
               ))}
               <Link
-                to="/tarifas"
+                to="/ofertas"
                 onClick={() => setIsOpen(false)}
                 className="py-3 px-4 rounded-lg text-sm tracking-[0.2em] uppercase font-body text-promo font-bold"
               >
-                Promoções
+                Ofertas
               </Link>
               <div className="mt-4 pt-4 border-t border-primary-foreground/10 flex gap-3">
                 <Button asChild size="lg" className="flex-1 bg-cta hover:bg-cta/90 text-cta-foreground font-body text-sm uppercase tracking-[0.15em] gap-2 rounded-full shadow-lg shadow-cta/20">

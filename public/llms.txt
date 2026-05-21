@@ -14,7 +14,7 @@
 - [Chalé Família](/acomodacoes/chale-familia): Ideal para famílias com crianças.
 - [Experiências](/experiencias): Atividades de lazer, natureza e bem-estar.
 - [Gastronomia](/gastronomia): Pensão completa nos finais de semana e feriados.
-- [Tarifas e Pacotes](/tarifas): Pacotes de fim de semana e datas especiais.
+- [Ofertas e Pacotes](/ofertas): Pacotes de fim de semana e datas especiais.
 - [Região](/regiao): O que conhecer em Bom Jardim e arredores.
 - [Contato](/contato): Telefone, e-mail e formulário de reservas.
 - [Blog](/blog): Conteúdos sobre o hotel e a região.

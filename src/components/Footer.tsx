@@ -51,7 +51,7 @@ const Footer = () => {
                 { label: "Gastronomia", to: "/gastronomia" },
                 { label: "A Região", to: "/regiao" },
                 { label: "Sobre", to: "/sobre" },
-                { label: "Promoções", to: "/tarifas" },
+                { label: "Ofertas", to: "/ofertas" },
                 { label: "Contato", to: "/contato" },
                 { label: "Blog", to: "/blog" },
               ].map((link) => (

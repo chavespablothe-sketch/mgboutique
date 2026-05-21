@@ -1,49 +1,41 @@
-## Diagnóstico
+## Objetivo
 
-Hoje é **10/05/2026**. O destaque "Fins de Semana de Maio" sumiu porque o pacote `primeiro-de-maio-2026` tem `checkOut = 03/05/2026` → `isPackageActive()` o filtrou como expirado. A contagem regressiva pulou direto para o próximo feriado fixo.
+1. Padronizar o nome da seção como **"Ofertas"** em todos os pontos de contato (botões, menus, títulos, links).
+2. Remover o lightbox flutuante **"Aviso importante"** (sobre mensagens fraudulentas).
 
-## Regra nova (confirmada pelo usuário)
+---
 
-> Quando o pacote não tem data específica (ex.: "Fins de Semana de Maio", "Arraiá de Inverno"), o sistema deve **calcular automaticamente o próximo fim de semana** dentro da janela do pacote e usar essa data como `checkIn` para a contagem regressiva e para o link Omnibees.
+## 1. Renomear para "Ofertas"
 
-## Plano
+### Rota
+- Adicionar nova rota `/ofertas` apontando para `TarifasPage`.
+- Manter `/tarifas` e `/tarifas/:slug` como **redirects** para `/ofertas` e `/ofertas/:slug` (preserva SEO e links antigos).
+- Detalhe de pacote passa a ser `/ofertas/:slug`.
 
-### 1. Util `src/lib/recurringWeekend.ts`
-- `getNextWeekend(rangeStart, rangeEnd, now)` → retorna `{ checkIn: "DDMMYYYY", checkOut, label: "16 e 17 de maio" }` para a próxima sexta/domingo dentro da janela. Se acabou, retorna `null`.
-- Função genérica, reutilizável para qualquer pacote recorrente.
+### Textos visíveis (label "Promoções" / "Tarifas" → "Ofertas")
+- **Header desktop e mobile** (`src/components/Header.tsx`): item de menu "Promoções" → "Ofertas", link aponta para `/ofertas`.
+- **Footer** (`src/components/Footer.tsx`): item "Promoções" → "Ofertas".
+- **PromoSplash** (`src/components/PromoSplash.tsx`): `aria-label` e badge "Promoção · Últimos quartos" → "Oferta · Últimos quartos"; link para `/ofertas`.
+- **TarifasPage** (`src/pages/TarifasPage.tsx`): título "Tarifas & Pacotes" → "Ofertas & Pacotes"; SEO title/canonical/breadcrumb atualizados para "Ofertas" e `/ofertas`; CTA "Ver tarifas especiais" → "Ver oferta".
+- **PacoteDetalhePage** (`src/pages/PacoteDetalhePage.tsx`): breadcrumb, link "Voltar às tarifas" → "Voltar às ofertas", canonical `/ofertas/:slug`, bloco "Tarifas Especiais" → "Oferta Especial".
+- **OffersSection** (`src/components/sections/OffersSection.tsx`): todos os `to="/tarifas/..."` → `/ofertas/...`; CTA "Ver tarifas especiais" → "Ver oferta".
+- **HeroSection** (`src/components/sections/HeroSection.tsx`): link `/tarifas/corpus-christi-2026` → `/ofertas/corpus-christi-2026`.
+- **ExperienciasPage** (`src/pages/ExperienciasPage.tsx`): link `/tarifas` → `/ofertas`.
 
-### 2. Marcar pacotes como "recorrentes" em `src/data/packages.ts`
-- Novo campo opcional `recurringWeekends?: { from: string; to: string }` (DDMMYYYY).
-- Adicionar entry **`fins-de-semana-maio-2026`**:
-  - `recurringWeekends: { from: "01052026", to: "31052026" }`.
-  - Sem `checkIn`/`checkOut` fixos.
-  - `shortTitle: "Fins de Semana de Maio"`, `period: "Todos os fins de semana de maio · 2026"`.
-  - `linkSlug` para reservas: `fim-de-semana`.
-- No entry **`arraia-inverno-2026`**: adicionar `recurringWeekends: { from: "19062026", to: "26072026" }` (mantém os campos atuais como fallback de exibição).
+### O que NÃO muda
+- Pasta/arquivo `TarifasPage.tsx` permanece (renomear arquivo é opcional e não traz benefício ao usuário). Apenas o conteúdo visual e as rotas mudam.
+- Texto em `PrivacidadePage.tsx` ("promoções e pacotes") permanece — é genérico, não é label de navegação.
+- Texto "Tarifas variam por temporada" em `ChalePage.tsx` permanece — refere-se a preço, não à seção.
 
-### 3. Resolver datas dinâmicas
-- Helper `resolvePackageDates(pkg, now)` em `src/lib/packageStatus.ts`:
-  - Se `pkg.recurringWeekends`, retorna o próximo FDS via `getNextWeekend(...)`.
-  - Caso contrário retorna `{ checkIn: pkg.checkIn, checkOut: pkg.checkOut }`.
-- `isPackageActive` passa a usar essa resolução: pacote recorrente continua ativo enquanto `getNextWeekend` retornar algo.
+---
 
-### 4. Atualizar `OffersSection.tsx`
-- `featuredSlugs = ["fins-de-semana-maio-2026", "arraia-inverno-2026"]`.
-- Em `FeaturedCard`, `PackageCard` e `UrgencyBanner`: substituir leituras diretas de `pkg.checkIn` / `pkg.checkOut` por `resolvePackageDates(pkg)` — usado tanto em `getDaysUntil` quanto em `buildOmnibeesUrl`.
-- Period exibido para recorrentes: usa o `label` retornado (ex.: "Próximo FDS · 16 e 17 de maio") em vez do `period` estático.
-- Manter `KidsFamilyFrame` para `fins-de-semana-maio-2026` (moldura com balões e selo "Feriado em Família").
-- Manter `ArraiaFrame` para Arraiá; agora o countdown aponta para o próximo sábado da janela, não mais 19/06 fixo.
+## 2. Remover o lightbox "Aviso importante"
 
-### 5. Limpeza
-- Remover override de display em cima de `primeiro-de-maio-2026` (vira pacote próprio).
-- `primeiro-de-maio-2026` continua existindo como histórico mas fora da home (já expirou naturalmente).
+- Em `src/pages/Index.tsx`: remover import e uso de `<FakeMessageAlertLightbox />`.
+- Verificar se o componente é usado em outro lugar; se não, deletar `src/components/FakeMessageAlertLightbox.tsx`.
 
-## Arquivos afetados
-- **Novo**: `src/lib/recurringWeekend.ts`
-- **Editar**: `src/data/packages.ts`, `src/lib/packageStatus.ts`, `src/components/sections/OffersSection.tsx`
+---
 
-## Validação
-- Em `/`, o card "Fins de Semana de Maio · 16 e 17 de maio" aparece acima do Arraiá com a moldura kids.
-- Banner de urgência: "Fins de Semana de Maio em 6 dias".
-- Para Arraiá: mostra "Arraiá em 39 dias" (sexta 19/06 ainda é o primeiro). Após 19/06, atualiza sozinho para o próximo sábado.
-- Após 31/05, o card de maio some sozinho.
+## Verificação final
+- `rg "tarifas|Promoç"` para garantir que não sobrou link/label antigo de navegação.
+- Conferir preview: header, footer, splash, página `/ofertas` e detalhe `/ofertas/:slug` carregando; `/tarifas` redirecionando.
