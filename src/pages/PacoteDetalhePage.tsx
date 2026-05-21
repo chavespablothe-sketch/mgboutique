@@ -20,7 +20,7 @@ const PacoteDetalhePage = () => {
 
   useEffect(() => { window.scrollTo(0, 0); }, [slug]);
 
-  if (!pkg) return <Navigate to="/tarifas" replace />;
+  if (!pkg) return <Navigate to="/ofertas" replace />;
 
   const allImages = pkg.gallery.length > 0 ? pkg.gallery : [pkg.image];
 
@@ -65,7 +65,7 @@ const PacoteDetalhePage = () => {
           />
           <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/40 to-primary/20" />
           <div className="relative z-10 container mx-auto px-4 pb-14">
-            <Link to="/tarifas" className="inline-flex items-center gap-2 text-secondary font-body text-sm mb-5 hover:text-secondary/80 transition-colors">
+            <Link to="/ofertas" className="inline-flex items-center gap-2 text-secondary font-body text-sm mb-5 hover:text-secondary/80 transition-colors">
               <ArrowLeft size={14} /> Voltar às tarifas
             </Link>
             <span className={`inline-block ${pkg.tagColor} text-primary-foreground text-xs font-body uppercase tracking-wider px-4 py-1.5 rounded-full mb-4`}>

@@ -38,7 +38,7 @@ const PromoSplash = () => {
       aria-label="Promoção em destaque"
     >
       <Link
-        to="/tarifas"
+        to="/ofertas"
         className="group relative block overflow-hidden rounded-2xl bg-promo text-promo-foreground border border-promo-foreground/30 shadow-2xl shadow-promo/40 hover:shadow-promo/70 transition-all duration-500"
       >
         {/* Soft pulsing border glow */}

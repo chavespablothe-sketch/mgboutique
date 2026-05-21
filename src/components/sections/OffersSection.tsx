@@ -231,7 +231,7 @@ function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }
       className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 bg-card/60 rounded-3xl p-4 lg:p-6 border border-border/60 hover:shadow-xl hover:-translate-y-1 transition-all duration-500"
     >
       {/* Image */}
-      <Link to={`/tarifas/${detailsSlug}`} className="group block">
+      <Link to={`/ofertas/${detailsSlug}`} className="group block">
         <div className="relative overflow-hidden rounded-2xl aspect-[4/3]">
           <img
             src={getHomeImage(pkg)}
@@ -291,7 +291,7 @@ function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }
             Reservar agora
           </a>
           <Link
-            to={`/tarifas/${detailsSlug}`}
+            to={`/ofertas/${detailsSlug}`}
             className="inline-flex items-center gap-1.5 border border-foreground/15 text-foreground font-body text-sm px-6 py-3 rounded-full hover:bg-muted transition-colors"
           >
             Ver detalhes <ArrowRight size={14} />
@@ -496,7 +496,7 @@ function PackageCard({ pkg, i }: { pkg: (typeof packages)[0]; i: number }) {
       transition={{ delay: i * 0.1 }}
       className="hover:shadow-xl hover:-translate-y-1 transition-all duration-500 rounded-2xl"
     >
-      <Link to={`/tarifas/${pkg.slug}`} className="group block">
+      <Link to={`/ofertas/${pkg.slug}`} className="group block">
         <div className="relative overflow-hidden rounded-2xl aspect-[4/3] mb-4">
           <img
             src={getHomeImage(pkg)}
@@ -641,7 +641,7 @@ const OffersSection = () => {
         {/* View all */}
         <div className="text-center">
           <Link
-            to="/tarifas"
+            to="/ofertas"
             className="inline-flex items-center gap-2 border border-foreground/15 text-foreground hover:bg-muted font-body uppercase tracking-[0.15em] px-8 py-3 rounded-full text-sm transition-colors"
           >
             Ver todos os pacotes de 2026

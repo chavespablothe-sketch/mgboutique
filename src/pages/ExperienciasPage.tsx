@@ -538,7 +538,7 @@ const ExperienciasPage = () => {
               comidas típicas, férias de julho com programação kids especial, Natal e Réveillon com
               celebrações inesquecíveis.
             </p>
-            <Link to="/tarifas" className="text-secondary font-body text-sm font-semibold uppercase tracking-wider inline-flex items-center gap-2 hover:gap-3 transition-all">
+            <Link to="/ofertas" className="text-secondary font-body text-sm font-semibold uppercase tracking-wider inline-flex items-center gap-2 hover:gap-3 transition-all">
               Ver pacotes temáticos <motion.span>→</motion.span>
             </Link>
           </div>

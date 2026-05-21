@@ -90,7 +90,7 @@ const Header = () => {
                   <Search size={14} />
                 </button>
                 <Button asChild size="sm" className="bg-promo hover:bg-promo/90 text-promo-foreground font-body text-[10px] uppercase tracking-[0.15em] gap-1.5 px-4 py-2 rounded-full shadow-lg shadow-promo/40 font-bold animate-pulse-soft ring-2 ring-promo/30">
-                  <Link to="/tarifas">
+                  <Link to="/ofertas">
                     <Tag size={12} className="fill-promo-foreground" />
                     Promoções
                   </Link>
@@ -105,7 +105,7 @@ const Header = () => {
               {/* Mobile/Tablet CTAs */}
               <div className="flex lg:hidden items-center gap-1.5 shrink-0">
                 <Button asChild size="sm" className="bg-promo hover:bg-promo/90 text-promo-foreground font-body text-[9px] uppercase tracking-wider gap-1 px-2.5 py-1.5 rounded-full shadow-md shadow-promo/40 font-bold animate-pulse-soft ring-1 ring-promo/30 h-auto">
-                  <Link to="/tarifas">
+                  <Link to="/ofertas">
                     <Tag size={10} className="fill-promo-foreground" />
                     Promo
                   </Link>
@@ -146,7 +146,7 @@ const Header = () => {
                 </Link>
               ))}
               <Link
-                to="/tarifas"
+                to="/ofertas"
                 onClick={() => setIsOpen(false)}
                 className="py-3 px-4 rounded-lg text-sm tracking-[0.2em] uppercase font-body text-promo font-bold"
               >

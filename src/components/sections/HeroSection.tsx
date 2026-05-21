@@ -53,7 +53,7 @@ const HeroSection = () => {
               className="mb-8"
             >
               <Link
-                to="/tarifas/corpus-christi-2026"
+                to="/ofertas/corpus-christi-2026"
                 className="group inline-flex items-center gap-3 bg-gradient-to-r from-amber-500/20 via-secondary/20 to-amber-500/20 backdrop-blur-md border border-secondary/40 rounded-full pl-1 pr-5 py-1 shadow-lg shadow-secondary/10 hover:shadow-secondary/25 hover:border-secondary/60 transition-all duration-500"
               >
                 <span className="flex items-center justify-center h-9 w-9 rounded-full bg-secondary/90 text-primary shadow-inner">

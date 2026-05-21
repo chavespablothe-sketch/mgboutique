@@ -250,7 +250,7 @@ const TarifasPage = () => {
                       const isMothersDay = pkg.slug === "dia-das-maes-2026";
                       const isArraia = pkg.slug === "arraia-inverno-2026";
                       const cardInner = (
-                        <Link to={`/tarifas/${pkg.slug}`} className="group block">
+                        <Link to={`/ofertas/${pkg.slug}`} className="group block">
                           {/* Image */}
                           <div className="relative overflow-hidden rounded-xl aspect-[4/3] mb-4">
                             <img
