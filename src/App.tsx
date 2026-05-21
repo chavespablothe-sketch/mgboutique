@@ -34,16 +34,18 @@ const App = () => (
           <Route path="/acomodacoes/:slug" element={<ChalePage />} />
           <Route path="/experiencias" element={<ExperienciasPage />} />
           <Route path="/gastronomia" element={<GastronomiaPage />} />
-          <Route path="/tarifas" element={<TarifasPage />} />
-          <Route path="/tarifas/:slug" element={<PacoteDetalhePage />} />
+          <Route path="/ofertas" element={<TarifasPage />} />
+          <Route path="/ofertas/:slug" element={<PacoteDetalhePage />} />
           <Route path="/regiao" element={<RegiaoPage />} />
           <Route path="/contato" element={<ContatoPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/privacidade" element={<PrivacidadePage />} />
           {/* Redirects from old routes */}
           <Route path="/chales" element={<Navigate to="/acomodacoes" replace />} />
-          <Route path="/pacotes" element={<Navigate to="/tarifas" replace />} />
-          <Route path="/pacotes/:slug" element={<Navigate to="/tarifas" replace />} />
+          <Route path="/tarifas" element={<Navigate to="/ofertas" replace />} />
+          <Route path="/tarifas/:slug" element={<Navigate to="/ofertas" replace />} />
+          <Route path="/pacotes" element={<Navigate to="/ofertas" replace />} />
+          <Route path="/pacotes/:slug" element={<Navigate to="/ofertas" replace />} />
           <Route path="/lazer" element={<Navigate to="/experiencias" replace />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

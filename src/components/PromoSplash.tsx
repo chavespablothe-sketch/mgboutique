@@ -35,7 +35,7 @@ const PromoSplash = () => {
     <div
       className="fixed z-40 bottom-[170px] inset-x-4 sm:inset-x-auto sm:bottom-[170px] sm:right-6 sm:max-w-sm animate-fade-in"
       role="complementary"
-      aria-label="Promoção em destaque"
+      aria-label="Oferta em destaque"
     >
       <Link
         to="/ofertas"
@@ -60,7 +60,7 @@ const PromoSplash = () => {
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-promo-foreground" />
               </span>
               <span className="text-[10px] font-semibold tracking-[0.2em] uppercase text-promo-foreground/80">
-                Promoção · Últimos quartos
+                Oferta · Últimos quartos
               </span>
             </div>
             <p className="font-display text-sm sm:text-base leading-snug truncate text-promo-foreground">

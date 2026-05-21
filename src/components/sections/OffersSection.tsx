@@ -526,7 +526,7 @@ function PackageCard({ pkg, i }: { pkg: (typeof packages)[0]; i: number }) {
           </p>
           <DiscountSeal />
           <span className="inline-flex items-center gap-1.5 text-cta font-body text-sm font-semibold group-hover:gap-2.5 transition-all border border-cta/30 rounded-full px-5 py-2 mt-1 hover:bg-cta/5">
-            Ver tarifas especiais <ArrowRight size={14} />
+            Ver oferta <ArrowRight size={14} />
           </span>
         </div>
       </Link>

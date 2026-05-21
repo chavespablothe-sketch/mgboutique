@@ -94,9 +94,9 @@ const TarifasPage = () => {
   return (
     <div className="min-h-screen">
       <SEO
-        title="Tarifas e Pacotes | Ofertas Especiais"
+        title="Ofertas e Pacotes | Minha Glória Hotel Boutique"
         description="Pacotes de fim de semana, feriados e datas especiais no Minha Glória Hotel Boutique. Pensão completa, 1 criança até 06 anos grátis. Parcele em até 10x."
-        canonical="/tarifas"
+        canonical="/ofertas"
         schemas={[
           {
             "@context": "https://schema.org",
@@ -107,10 +107,10 @@ const TarifasPage = () => {
               name: p.title,
               description: p.description,
               availability: "https://schema.org/InStock",
-              url: `https://www.minhagloria.com.br/tarifas/${p.slug}`,
+              url: `https://www.minhagloria.com.br/ofertas/${p.slug}`,
             })),
           },
-          breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Tarifas", url: "/tarifas" }]),
+          breadcrumbSchema([{ name: "Home", url: "/" }, { name: "Ofertas", url: "/ofertas" }]),
         ]}
       />
       <Header />
@@ -124,7 +124,7 @@ const TarifasPage = () => {
             <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
               <span className="text-secondary font-body text-[10px] tracking-[0.5em] uppercase mb-3 block">Temporada 2026</span>
               <h1 className="font-display text-3xl md:text-4xl lg:text-5xl text-primary-foreground font-semibold leading-[1.08] mb-4 hero-text-shadow drop-shadow-lg">
-                Tarifas & <span className="italic text-secondary drop-shadow-lg">Pacotes</span>
+                Ofertas & <span className="italic text-secondary drop-shadow-lg">Pacotes</span>
               </h1>
               <p className="text-primary-foreground/60 font-body text-base md:text-lg leading-relaxed max-w-xl mx-auto hero-text-shadow">
                 Experiências exclusivas para casais e famílias na serra fluminense.
@@ -280,7 +280,7 @@ const TarifasPage = () => {
                               {pkg.description.length > 100 ? pkg.description.slice(0, 100) + "…" : pkg.description}
                             </p>
                             <span className="inline-flex items-center gap-1.5 text-secondary font-body text-sm font-semibold group-hover:gap-2.5 transition-all border border-secondary/30 rounded-full px-5 py-2 mt-2 hover:bg-secondary/5">
-                              Ver tarifas especiais <ArrowRight size={14} />
+                              Ver oferta <ArrowRight size={14} />
                             </span>
                           </div>
                         </Link>
