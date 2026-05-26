@@ -227,11 +227,21 @@ const PacoteDetalhePage = () => {
               <div className="lg:col-span-1">
                 <div className="sticky top-28 space-y-5">
                   <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
-                    className="bg-card rounded-xl border border-border p-8 shadow-xl"
+                    className="bg-card rounded-xl border border-border p-8 shadow-xl relative overflow-hidden"
                   >
+                    {pkg.slug === "corpus-christi-2026" && (
+                      <div className="absolute -top-3 -right-3 z-10 flex flex-col items-center justify-center w-20 h-20 rounded-full bg-primary text-secondary shadow-2xl rotate-12 animate-pulse-soft border-2 border-secondary">
+                        <span className="font-display font-bold text-2xl leading-none">10%</span>
+                        <span className="font-body text-[9px] uppercase tracking-wider">OFF</span>
+                      </div>
+                    )}
                     <p className="font-display text-2xl font-semibold text-foreground mb-1">Oferta Especial</p>
                     <p className="text-muted-foreground font-body text-sm mb-1">{pkg.nights} · por casal</p>
-                    <p className="text-secondary font-body text-sm font-semibold mb-6">Consulte valores ao reservar</p>
+                    {pkg.slug === "corpus-christi-2026" ? (
+                      <p className="text-primary font-body text-sm font-bold mb-6 uppercase tracking-wider">⚡ Últimas unidades · 10% OFF</p>
+                    ) : (
+                      <p className="text-secondary font-body text-sm font-semibold mb-6">Consulte valores ao reservar</p>
+                    )}
 
                     <div className="space-y-3 mb-6 pb-6 border-b border-border">
                       <div className="flex items-center gap-3 text-muted-foreground font-body text-sm">
