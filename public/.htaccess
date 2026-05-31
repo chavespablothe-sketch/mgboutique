@@ -10,6 +10,7 @@
   RedirectMatch 301 ^/chales/?$             /acomodacoes
   RedirectMatch 301 ^/lazer/?$              /experiencias
   RedirectMatch 301 ^/acomodacoes/chale-master/?$ /acomodacoes/chale-romantico
+  RedirectMatch 301 ^/7-de-setembro/?$      /
 </IfModule>
 
 # Serve index.html for any route that does not match a real file or directory
