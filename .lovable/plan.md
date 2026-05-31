@@ -1,41 +1,64 @@
-## Objetivo
+## Diagnóstico
 
-1. Padronizar o nome da seção como **"Ofertas"** em todos os pontos de contato (botões, menus, títulos, links).
-2. Remover o lightbox flutuante **"Aviso importante"** (sobre mensagens fraudulentas).
+O site é um SPA Vite + React. Hoje o `index.html` servido tem só um `<div id="root"></div>` — Google até consegue renderizar JS, mas LLMs (ChatGPT, Perplexity, Claude) **não executam JavaScript** e veem uma página vazia. Por isso "as LLMs falam isso do site".
 
----
+Além disso há 2 problemas críticos de SEO:
 
-## 1. Renomear para "Ofertas"
+1. **Domínio errado no sitemap/robots**: `public/sitemap.xml` e `public/robots.txt` apontam para `mgboutique.lovable.app`, mas o domínio canônico (usado no `SEO.tsx`) é `www.minhagloria.com.br`. Google está recebendo sinais conflitantes.
+2. **Rotas antigas só redirecionam client-side** (`/tarifas`, `/pacotes`, `/chales`, `/lazer`, `/tarifas/:slug`, `/pacotes/:slug`). O Google ainda indexa essas URLs porque o servidor responde **200 OK** em vez de **301 Moved Permanently**. O link juice das URLs antigas não é transferido.
 
-### Rota
-- Adicionar nova rota `/ofertas` apontando para `TarifasPage`.
-- Manter `/tarifas` e `/tarifas/:slug` como **redirects** para `/ofertas` e `/ofertas/:slug` (preserva SEO e links antigos).
-- Detalhe de pacote passa a ser `/ofertas/:slug`.
+## Solução
 
-### Textos visíveis (label "Promoções" / "Tarifas" → "Ofertas")
-- **Header desktop e mobile** (`src/components/Header.tsx`): item de menu "Promoções" → "Ofertas", link aponta para `/ofertas`.
-- **Footer** (`src/components/Footer.tsx`): item "Promoções" → "Ofertas".
-- **PromoSplash** (`src/components/PromoSplash.tsx`): `aria-label` e badge "Promoção · Últimos quartos" → "Oferta · Últimos quartos"; link para `/ofertas`.
-- **TarifasPage** (`src/pages/TarifasPage.tsx`): título "Tarifas & Pacotes" → "Ofertas & Pacotes"; SEO title/canonical/breadcrumb atualizados para "Ofertas" e `/ofertas`; CTA "Ver tarifas especiais" → "Ver oferta".
-- **PacoteDetalhePage** (`src/pages/PacoteDetalhePage.tsx`): breadcrumb, link "Voltar às tarifas" → "Voltar às ofertas", canonical `/ofertas/:slug`, bloco "Tarifas Especiais" → "Oferta Especial".
-- **OffersSection** (`src/components/sections/OffersSection.tsx`): todos os `to="/tarifas/..."` → `/ofertas/...`; CTA "Ver tarifas especiais" → "Ver oferta".
-- **HeroSection** (`src/components/sections/HeroSection.tsx`): link `/tarifas/corpus-christi-2026` → `/ofertas/corpus-christi-2026`.
-- **ExperienciasPage** (`src/pages/ExperienciasPage.tsx`): link `/tarifas` → `/ofertas`.
+### 1. Pré-renderização estática (resolve LLMs + melhora SEO)
 
-### O que NÃO muda
-- Pasta/arquivo `TarifasPage.tsx` permanece (renomear arquivo é opcional e não traz benefício ao usuário). Apenas o conteúdo visual e as rotas mudam.
-- Texto em `PrivacidadePage.tsx` ("promoções e pacotes") permanece — é genérico, não é label de navegação.
-- Texto "Tarifas variam por temporada" em `ChalePage.tsx` permanece — refere-se a preço, não à seção.
+Adicionar `vite-plugin-prerender` (ou `react-snap`) para gerar HTML estático de cada rota no `vite build`. Cada rota (`/`, `/sobre`, `/acomodacoes`, `/ofertas`, `/ofertas/corpus-christi-2026`, etc.) vira um arquivo `.html` real com conteúdo já renderizado. Hostinger serve esses HTMLs antes do JS hidratar.
 
----
+Resultado: LLMs e crawlers veem todo o texto, headings, meta tags e JSON-LD imediatamente. O SPA continua funcionando igual para o usuário (hidratação normal).
 
-## 2. Remover o lightbox "Aviso importante"
+Lista de rotas a pré-renderizar é derivada de `App.tsx` + `src/data/packages.ts` + `src/data/chalets.ts`.
 
-- Em `src/pages/Index.tsx`: remover import e uso de `<FakeMessageAlertLightbox />`.
-- Verificar se o componente é usado em outro lugar; se não, deletar `src/components/FakeMessageAlertLightbox.tsx`.
+### 2. Redirects 301 server-side no `.htaccess`
 
----
+Adicionar regras **antes** do fallback SPA em `public/.htaccess`:
 
-## Verificação final
-- `rg "tarifas|Promoç"` para garantir que não sobrou link/label antigo de navegação.
-- Conferir preview: header, footer, splash, página `/ofertas` e detalhe `/ofertas/:slug` carregando; `/tarifas` redirecionando.
+```
+Redirect 301 /tarifas /ofertas
+Redirect 301 /pacotes /ofertas
+Redirect 301 /chales /acomodacoes
+Redirect 301 /lazer /experiencias
+RedirectMatch 301 ^/tarifas/(.*)$ /ofertas/$1
+RedirectMatch 301 ^/pacotes/(.*)$ /ofertas/$1
+RedirectMatch 301 ^/acomodacoes/chale-master$ /acomodacoes/chale-romantico
+```
+
+Isso transfere o ranking das URLs antigas para as novas e remove as antigas do índice do Google ao longo de algumas semanas.
+
+### 3. Corrigir domínio em sitemap e robots
+
+- `public/sitemap.xml`: trocar todas as URLs `mgboutique.lovable.app` → `www.minhagloria.com.br` e **incluir uma URL por pacote** (`/ofertas/<slug>`) lendo de `src/data/packages.ts`.
+- `public/robots.txt`: atualizar `Sitemap:` para `https://www.minhagloria.com.br/sitemap.xml`.
+- Gerar o sitemap via `scripts/generate-sitemap.ts` rodado em `prebuild`, para nunca mais ficar desatualizado quando um pacote/chalé novo é adicionado.
+
+### 4. Submeter no Google Search Console
+
+Após publicar:
+- Reenviar `sitemap.xml` no Search Console.
+- Pedir reindexação das páginas principais (`/`, `/ofertas`, `/acomodacoes`).
+- O Google detecta os 301 nas próximas crawls e remove as URLs antigas naturalmente.
+
+## Detalhes técnicos
+
+- **Plugin**: `vite-plugin-prerender` usa Puppeteer headless durante o build. Adiciona ~30s ao `vite build`. Alternativa mais leve: `react-snap` (também via Puppeteer).
+- **HelmetProvider** já está configurado — meta tags por rota serão capturadas no HTML estático sem mudanças.
+- **Rotas dinâmicas**: o script de pré-render itera sobre `packages` e `chalets` (já exportados de `src/data/`) para gerar HTMLs de cada pacote/chalé.
+- **`.htaccess`**: regras `Redirect`/`RedirectMatch` rodam antes do `RewriteRule` SPA, então funcionam sem conflito. As `<Route Navigate>` no React Router viram redundância segura (caso alguém acesse via link interno).
+- **Sitemap dinâmico**: script TS lê `packages.ts`/`chalets.ts`, gera `<url>` para cada slug. Roda em `predev` + `prebuild`.
+
+## Arquivos afetados
+
+- `package.json` — adicionar `vite-plugin-prerender` + scripts `predev`/`prebuild`
+- `vite.config.ts` — registrar plugin de pré-render
+- `public/.htaccess` — adicionar 7 regras de redirect 301 no topo
+- `public/robots.txt` — corrigir URL do sitemap
+- `public/sitemap.xml` — passa a ser gerado por script (substituído)
+- `scripts/generate-sitemap.ts` — novo, gera sitemap com domínio correto + pacotes + chalés
