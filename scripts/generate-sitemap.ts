@@ -3,8 +3,8 @@
 
 import { writeFileSync } from "fs";
 import { resolve } from "path";
-import { packages } from "../src/data/packages";
-import { chalets } from "../src/data/chalets";
+import packages from "../src/data/packages";
+import chalets from "../src/data/chalets";
 
 const BASE_URL = "https://www.minhagloria.com.br";
 
