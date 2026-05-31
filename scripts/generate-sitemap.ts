@@ -25,6 +25,7 @@ const staticEntries: Entry[] = [
   { path: "/contato",          changefreq: "monthly", priority: "0.7" },
   { path: "/blog",             changefreq: "weekly",  priority: "0.6" },
   { path: "/privacidade",      changefreq: "yearly",  priority: "0.3" },
+  { path: "/7-de-setembro",    changefreq: "monthly", priority: "0.6" },
 ];
 
 const chaleEntries: Entry[] = chalets.map((c) => ({
