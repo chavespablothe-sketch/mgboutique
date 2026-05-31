@@ -14,10 +14,40 @@
     <meta property="og:type" content="website" />
     <meta property="og:image" content="https://www.minhagloria.com.br/images/carousel-new-1.jpg">
     <meta property="og:url" content="https://www.minhagloria.com.br" />
+    <link rel="canonical" href="https://www.minhagloria.com.br/" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    
     <meta name="twitter:image" content="https://www.minhagloria.com.br/images/carousel-new-1.jpg">
+
+    <!-- JSON-LD: Hotel + WebSite (lido por LLMs e crawlers sem JS) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Hotel",
+      "name": "Minha Glória Hotel Boutique",
+      "description": "Hotel boutique 5 estrelas em Bom Jardim, na serra fluminense (RJ). 20 chalés exclusivos em meio à Mata Atlântica, com pensão completa nos finais de semana, spa, piscina aquecida, fazendinha e experiências para casais e famílias.",
+      "url": "https://www.minhagloria.com.br",
+      "telephone": "+55-22-99779-2023",
+      "email": "contato@minhagloria.com.br",
+      "image": "https://www.minhagloria.com.br/images/carousel-new-1.jpg",
+      "starRating": { "@type": "Rating", "ratingValue": "5" },
+      "numberOfRooms": 20,
+      "petsAllowed": true,
+      "checkinTime": "15:00",
+      "checkoutTime": "12:00",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Estrada Rosário km 4,5",
+        "addressLocality": "Bom Jardim",
+        "addressRegion": "RJ",
+        "postalCode": "28660-000",
+        "addressCountry": "BR"
+      },
+      "geo": { "@type": "GeoCoordinates", "latitude": -22.1567, "longitude": -42.4253 },
+      "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.7", "bestRating": "5", "ratingCount": "320" }
+    }
+    </script>
+
 
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
