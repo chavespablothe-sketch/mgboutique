@@ -114,36 +114,7 @@ const genericProgramSections: ProgramSection[] = [
 
 const packages: HotelPackage[] = [
   {
-    slug: "fins-de-semana-maio-2026",
-    title: "Fins de Semana de Maio no Minha Glória Hotel Boutique",
-    shortTitle: "Fins de Semana de Maio",
-    period: "Todos os fins de semana de maio · 2026",
-    nights: "2 noites (sexta a domingo)",
-    price: "",
-    pricePerNight: "",
-    priceNote: "",
-    description: "Aproveite os fins de semana de maio no Minha Glória: pensão completa, recreação para crianças e momentos em família em meio à Mata Atlântica. Programação leve, gastronomia caprichada e tempo de qualidade.",
-    longDescription: "Os fins de semana de maio têm tudo para virar tradição: clima ameno na serra, mesas acolhedoras, espaço para as crianças correrem e adultos respirarem. Com pensão completa, atividades supervisionadas para os pequenos e momentos pensados para o casal e a família, é o convite perfeito para desacelerar sem precisar esperar feriado.",
-    highlights: ["Pensão completa", "Recreação infantil supervisionada", "Welcome drink", "Programação leve em família"],
-    included: ["Pensão completa (café, almoço e jantar)", "Welcome drink", "Atividades recreativas", "Acesso à piscina", "Wi-Fi gratuito", "Estacionamento privativo"],
-    kidsFeatures: ["Recreação monitorada", "Contato com animais da fazenda", "Oficinas e brincadeiras", "Menu infantil", "1 criança até 06 anos: grátis nos fins de semana"],
-    schedule: [
-      { day: "Sexta-feira", items: ["Check-in a partir das 14h", "Welcome drink", "Jantar de boas-vindas"] },
-      { day: "Sábado", items: ["Café da manhã estendido", "Recreação infantil", "Almoço", "Tarde livre", "Jantar especial"] },
-      { day: "Domingo", items: ["Café da manhã", "Atividades em família", "Check-out até 12h"] },
-    ],
-    image: "/images/pacote-primeiro-de-maio-2026.jpg",
-    gallery: buildGallery([
-      "/images/pacote-primeiro-de-maio-2026.jpg",
-      "/images/lazer-lhamas.jpg",
-      "/images/sobre-vista-pedra.jpg",
-    ]),
-    tag: "família",
-    tagColor: "bg-secondary",
-    recurringWeekends: { from: "01052026", to: "31052026" },
-    programSections: genericProgramSections,
-  },
-  {
+
     slug: "fim-de-semana",
     title: "Experiência de Fim de Semana — Minha Glória Hotel Boutique",
     shortTitle: "Fim de Semana",
