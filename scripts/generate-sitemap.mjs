@@ -1,20 +1,12 @@
-// Gera public/sitemap.xml com domínio canônico e todas as rotas dinâmicas.
+// Gera public/sitemap.xml em Node puro (sem Bun/tsx).
 // Roda em `predev` e `prebuild`.
 
-import { writeFileSync } from "fs";
-import { resolve } from "path";
-import packages from "../src/data/packages";
-import chalets from "../src/data/chalets";
+import { writeFileSync, readFileSync } from "node:fs";
+import { resolve } from "node:path";
 
 const BASE_URL = "https://www.minhagloria.com.br";
 
-interface Entry {
-  path: string;
-  changefreq?: "weekly" | "monthly" | "yearly";
-  priority?: string;
-}
-
-const staticEntries: Entry[] = [
+const staticEntries = [
   { path: "/",                 changefreq: "weekly",  priority: "1.0" },
   { path: "/sobre",            changefreq: "monthly", priority: "0.7" },
   { path: "/acomodacoes",      changefreq: "weekly",  priority: "0.9" },
@@ -28,14 +20,23 @@ const staticEntries: Entry[] = [
   { path: "/7-de-setembro",    changefreq: "monthly", priority: "0.6" },
 ];
 
-const chaleEntries: Entry[] = chalets.map((c) => ({
-  path: `/acomodacoes/${c.slug}`,
+function extractSlugs(filePath) {
+  const src = readFileSync(resolve(filePath), "utf8");
+  const slugs = [];
+  const re = /slug:\s*["']([^"']+)["']/g;
+  let m;
+  while ((m = re.exec(src)) !== null) slugs.push(m[1]);
+  return slugs;
+}
+
+const chaleEntries = extractSlugs("src/data/chalets.ts").map((slug) => ({
+  path: `/acomodacoes/${slug}`,
   changefreq: "monthly",
   priority: "0.8",
 }));
 
-const pacoteEntries: Entry[] = packages.map((p) => ({
-  path: `/ofertas/${p.slug}`,
+const pacoteEntries = extractSlugs("src/data/packages.ts").map((slug) => ({
+  path: `/ofertas/${slug}`,
   changefreq: "weekly",
   priority: "0.8",
 }));
