@@ -54,23 +54,35 @@ const HeroSection = () => {
             >
               <Link
                 to="/ofertas/corpus-christi-2026"
-                className="group inline-flex items-center gap-3 bg-gradient-to-r from-amber-500/20 via-secondary/20 to-amber-500/20 backdrop-blur-md border border-secondary/40 rounded-full pl-1 pr-5 py-1 shadow-lg shadow-secondary/10 hover:shadow-secondary/25 hover:border-secondary/60 transition-all duration-500"
+                className="group relative inline-flex items-stretch gap-0 overflow-hidden rounded-2xl bg-gradient-to-r from-secondary via-amber-400 to-secondary text-primary shadow-2xl shadow-secondary/40 hover:shadow-secondary/60 hover:scale-[1.02] transition-all duration-500 ring-1 ring-secondary/60"
               >
-                <span className="flex items-center justify-center h-9 w-9 rounded-full bg-secondary/90 text-primary shadow-inner">
-                  <Sparkles size={16} />
+                {/* shimmer */}
+                <span className="pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-[1400ms] ease-out bg-gradient-to-r from-transparent via-white/40 to-transparent" />
+
+                {/* OFF badge */}
+                <span className="relative flex flex-col items-center justify-center px-4 py-2 bg-primary text-secondary">
+                  <span className="font-display text-2xl leading-none font-bold">10%</span>
+                  <span className="text-[9px] font-body font-bold tracking-[0.2em] uppercase mt-0.5">OFF</span>
                 </span>
-                <div className="flex flex-col items-start">
-                  <span className="text-[10px] font-body font-semibold tracking-[0.15em] uppercase text-secondary">
-                    Próximo feriado
+
+                <span className="relative flex items-center gap-3 pl-4 pr-5 py-2">
+                  <span className="relative flex h-2 w-2">
+                    <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-75 animate-ping" />
+                    <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
                   </span>
-                  <span className="font-display text-sm text-primary-foreground group-hover:text-secondary transition-colors">
-                    Corpus Christi 2026 · 4 a 6 de junho
-                  </span>
-                </div>
-                <ArrowRight
-                  size={14}
-                  className="text-secondary/70 group-hover:text-secondary group-hover:translate-x-0.5 transition-all ml-1"
-                />
+                  <div className="flex flex-col items-start">
+                    <span className="text-[10px] font-body font-bold tracking-[0.18em] uppercase text-primary/80">
+                      Corpus Christi · Últimos quartos
+                    </span>
+                    <span className="font-display text-sm md:text-base text-primary font-semibold">
+                      4 a 6 de junho 2026
+                    </span>
+                  </div>
+                  <ArrowRight
+                    size={16}
+                    className="text-primary group-hover:translate-x-1 transition-transform"
+                  />
+                </span>
               </Link>
             </motion.div>
 
