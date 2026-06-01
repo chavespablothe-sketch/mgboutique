@@ -81,11 +81,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.minhagloria.com.br/ofertas/fins-de-semana-maio-2026</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://www.minhagloria.com.br/ofertas/fim-de-semana</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -97,16 +92,6 @@
   </url>
   <url>
     <loc>https://www.minhagloria.com.br/ofertas/tiradentes-2026</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.minhagloria.com.br/ofertas/primeiro-de-maio-2026</loc>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://www.minhagloria.com.br/ofertas/dia-das-maes-2026</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
