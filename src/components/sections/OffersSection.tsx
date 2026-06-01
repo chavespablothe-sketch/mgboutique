@@ -102,9 +102,6 @@ function getUrgencyBadge(days: number): { label: string; className: string; puls
 /** Override images for the home section cards */
 const homeImageOverrides: Record<string, string> = {
   "tiradentes-2026": "/images/pacotes-quadriciclo.png",
-  "fins-de-semana-maio-2026": "/images/pacote-primeiro-de-maio-2026.jpg",
-  "primeiro-de-maio-2026": "/images/pacote-primeiro-de-maio-2026.jpg",
-  "dia-das-maes-2026": "/images/pacote-dia-das-maes-2026.png",
   "corpus-christi-2026": "/images/pacote-corpus-christi-2026.png",
   "arraia-inverno-2026": "/images/pacote-arraia-inverno-2026.png",
   "dia-dos-namorados-2026": "/images/pacote-namorados-2026.png",
@@ -118,9 +115,8 @@ function getHomeImage(pkg: (typeof packages)[0]): string {
 const homeDisplayOverrides: Record<
   string,
   { linkSlug?: string }
-> = {
-  "fins-de-semana-maio-2026": { linkSlug: "fim-de-semana" },
-};
+> = {};
+
 
 function getNextPackages() {
   const now = new Date();
@@ -301,9 +297,6 @@ function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }
     </motion.div>
   );
 
-  if (pkg.slug === "dia-das-maes-2026") {
-    return <MothersDayFrame>{card}</MothersDayFrame>;
-  }
   if (pkg.slug === "dia-dos-namorados-2026") {
     return <ValentinesFrame>{card}</ValentinesFrame>;
   }
@@ -313,9 +306,7 @@ function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }
   if (pkg.slug === "corpus-christi-2026") {
     return <CorpusChristiFrame>{card}</CorpusChristiFrame>;
   }
-  if (pkg.slug === "fins-de-semana-maio-2026" || pkg.slug === "primeiro-de-maio-2026") {
-    return <KidsFamilyFrame>{card}</KidsFamilyFrame>;
-  }
+
   return <div className="mb-16">{card}</div>;
 }
 
@@ -542,7 +533,7 @@ const OffersSection = () => {
   if (upcoming.length === 0) return null;
 
   // Destaques fixos: Fim de Semana (recorrente) + Corpus Christi + Arraiá de Inverno.
-  const featuredSlugs = ["fins-de-semana-maio-2026", "corpus-christi-2026", "arraia-inverno-2026"];
+  const featuredSlugs = ["fim-de-semana", "corpus-christi-2026", "arraia-inverno-2026"];
   const explicitFeatured = featuredSlugs
     .map((slug) => upcoming.find((p) => p.slug === slug))
     .filter(Boolean) as typeof upcoming;
