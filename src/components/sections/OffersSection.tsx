@@ -102,7 +102,6 @@ function getUrgencyBadge(days: number): { label: string; className: string; puls
 /** Override images for the home section cards */
 const homeImageOverrides: Record<string, string> = {
   "tiradentes-2026": "/images/pacotes-quadriciclo.png",
-  "corpus-christi-2026": "/images/pacote-corpus-christi-2026.png",
   "arraia-inverno-2026": "/images/pacote-arraia-inverno-2026.png",
   "dia-dos-namorados-2026": "/images/pacote-namorados-2026.png",
 };
@@ -303,31 +302,7 @@ function FeaturedCard({ pkg, days }: { pkg: (typeof packages)[0]; days: number }
   if (pkg.slug === "arraia-inverno-2026") {
     return <ArraiaFrame>{card}</ArraiaFrame>;
   }
-  if (pkg.slug === "corpus-christi-2026") {
-    return <CorpusChristiFrame>{card}</CorpusChristiFrame>;
-  }
-
   return <div className="mb-16">{card}</div>;
-}
-
-/** Moldura Corpus Christi — acolhedora, tons quentes de lareira, recolhimento. */
-function CorpusChristiFrame({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="relative mb-16 pt-10 md:pt-12">
-      <div className="absolute -inset-3 md:-inset-5 rounded-[2rem] bg-gradient-to-br from-amber-200/30 via-secondary/20 to-orange-200/25 blur-2xl -z-10" aria-hidden />
-      <Sparkles className="absolute top-3 left-10 text-secondary animate-pulse" size={16} aria-hidden />
-      <Sparkles className="absolute top-8 right-14 text-amber-500/70 animate-pulse" size={14} aria-hidden style={{ animationDelay: "1.2s" }} />
-      <Sparkles className="absolute -top-1 left-1/2 text-secondary/80 animate-pulse" size={18} aria-hidden style={{ animationDelay: "0.6s" }} />
-      <div className="relative">
-        <div className="absolute top-3 left-1/2 -translate-x-1/2 z-20">
-          <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-primary via-secondary to-amber-600 text-primary-foreground font-display italic text-sm md:text-base px-5 py-1.5 rounded-full shadow-lg whitespace-nowrap border-2 border-white/40">
-            <Sparkles size={12} /> Corpus Christi · Refúgio na Serra
-          </span>
-        </div>
-        {children}
-      </div>
-    </div>
-  );
 }
 
 /** Moldura divertida — Família & Kids: balões coloridos, estrelas e faixa alegre. */
@@ -532,8 +507,8 @@ const OffersSection = () => {
   const scrollerRef = useRef<HTMLDivElement>(null);
   if (upcoming.length === 0) return null;
 
-  // Destaques fixos: Fim de Semana (recorrente) + Corpus Christi + Arraiá de Inverno.
-  const featuredSlugs = ["fim-de-semana", "corpus-christi-2026", "arraia-inverno-2026"];
+  // Destaques fixos: Fim de Semana (recorrente) + Arraiá de Inverno.
+  const featuredSlugs = ["fim-de-semana", "arraia-inverno-2026"];
   const explicitFeatured = featuredSlugs
     .map((slug) => upcoming.find((p) => p.slug === slug))
     .filter(Boolean) as typeof upcoming;

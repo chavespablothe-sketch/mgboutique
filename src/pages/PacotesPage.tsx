@@ -184,16 +184,6 @@ const PacotesPage = () => {
                       </div>
                     )}
 
-                    {pkg.slug === "corpus-christi-2026" && (
-                      <div className="absolute top-4 left-4 flex flex-col gap-1.5">
-                        <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-primary via-secondary to-amber-600 text-primary-foreground text-[11px] font-body font-bold uppercase tracking-[0.15em] px-3 py-1.5 rounded-full shadow-lg border border-white/30">
-                          <Sparkles size={12} /> Destaque · Corpus Christi
-                        </span>
-                        <span className="inline-flex items-center gap-1 bg-background/90 backdrop-blur-sm text-foreground text-[10px] font-body font-medium px-2.5 py-1 rounded-full shadow border border-border/50">
-                          Refúgio acolhedor na serra
-                        </span>
-                      </div>
-                    )}
 
                     <div className="absolute bottom-0 left-0 right-0 p-6">
                       <h3 className="font-display text-2xl md:text-3xl font-semibold text-primary-foreground mb-1">{pkg.shortTitle}</h3>
