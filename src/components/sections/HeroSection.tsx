@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import DateSearchBar from "@/components/DateSearchBar";
 
@@ -45,46 +45,6 @@ const HeroSection = () => {
             >
             </motion.p>
 
-            {/* Corpus Christi highlight */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.95 }}
-              className="mb-8"
-            >
-              <Link
-                to="/ofertas/corpus-christi-2026"
-                className="group relative inline-flex items-stretch gap-0 overflow-hidden rounded-2xl bg-gradient-to-r from-secondary via-amber-400 to-secondary text-primary shadow-2xl shadow-secondary/40 hover:shadow-secondary/60 hover:scale-[1.02] transition-all duration-500 ring-1 ring-secondary/60"
-              >
-                {/* shimmer */}
-                <span className="pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-[1400ms] ease-out bg-gradient-to-r from-transparent via-white/40 to-transparent" />
-
-                {/* OFF badge */}
-                <span className="relative flex flex-col items-center justify-center px-4 py-2 bg-primary text-secondary">
-                  <span className="font-display text-2xl leading-none font-bold">10%</span>
-                  <span className="text-[9px] font-body font-bold tracking-[0.2em] uppercase mt-0.5">OFF</span>
-                </span>
-
-                <span className="relative flex items-center gap-3 pl-4 pr-5 py-2">
-                  <span className="relative flex h-2 w-2">
-                    <span className="absolute inline-flex h-full w-full rounded-full bg-primary opacity-75 animate-ping" />
-                    <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
-                  </span>
-                  <div className="flex flex-col items-start">
-                    <span className="text-[10px] font-body font-bold tracking-[0.18em] uppercase text-primary/80">
-                      Corpus Christi · Últimos quartos
-                    </span>
-                    <span className="font-display text-sm md:text-base text-primary font-semibold">
-                      4 a 6 de junho 2026
-                    </span>
-                  </div>
-                  <ArrowRight
-                    size={16}
-                    className="text-primary group-hover:translate-x-1 transition-transform"
-                  />
-                </span>
-              </Link>
-            </motion.div>
 
             <motion.div
               initial={{ opacity: 0 }}

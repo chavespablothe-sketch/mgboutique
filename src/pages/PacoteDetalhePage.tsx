@@ -112,38 +112,6 @@ const PacoteDetalhePage = () => {
           </section>
         )}
 
-        {/* Corpus Christi 2026 discount splash */}
-        {pkg.slug === "corpus-christi-2026" && (
-          <section className="relative py-6 overflow-hidden" style={{ background: "linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary) / 0.85))" }}>
-            <div className="absolute inset-0 opacity-30 mix-blend-overlay" style={{ background: "radial-gradient(circle at 20% 50%, hsl(var(--secondary) / 0.55), transparent 60%), radial-gradient(circle at 80% 50%, hsl(var(--secondary) / 0.45), transparent 60%)" }} />
-            <div className="container mx-auto px-4 relative">
-              <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 text-center md:text-left">
-                <div className="relative shrink-0">
-                  <span className="absolute inset-0 rounded-full animate-ping bg-secondary/40" style={{ animationDuration: "1.6s" }} />
-                  <span className="relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-secondary text-primary font-display font-bold text-xl md:text-2xl shadow-2xl animate-pulse-soft">
-                    -10%
-                  </span>
-                </div>
-                <div className="flex-1 max-w-xl">
-                  <p className="text-secondary font-body text-[10px] md:text-xs uppercase tracking-[0.3em] mb-1 animate-pulse">
-                    ⚡ Últimas unidades
-                  </p>
-                  <h2 className="font-display text-2xl md:text-3xl lg:text-4xl text-primary-foreground font-bold leading-tight" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.3)" }}>
-                    10% OFF no feriado de <span className="italic">Corpus Christi</span>
-                  </h2>
-                  <p className="text-primary-foreground/85 font-body text-sm md:text-base mt-1">
-                    Restam poucos quartos — garanta o seu antes que esgote.
-                  </p>
-                </div>
-                <Button asChild size="lg" className="shrink-0 bg-secondary hover:bg-secondary/90 text-primary font-body uppercase tracking-[0.15em] gap-2 rounded-full shadow-2xl hover:scale-105 transition-transform font-bold text-xs md:text-sm px-6 py-5">
-                  <a href={pkg.checkIn && pkg.checkOut ? buildOmnibeesUrl({ checkIn: pkg.checkIn, checkOut: pkg.checkOut }) : OMNIBEES_URL} target="_blank" rel="noopener noreferrer">
-                    Reservar agora <ArrowRight size={16} />
-                  </a>
-                </Button>
-              </div>
-            </div>
-          </section>
-        )}
 
         {/* Photo Gallery Grid */}
         {allImages.length > 1 && (
@@ -229,19 +197,9 @@ const PacoteDetalhePage = () => {
                   <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}
                     className="bg-card rounded-xl border border-border p-8 shadow-xl relative overflow-hidden"
                   >
-                    {pkg.slug === "corpus-christi-2026" && (
-                      <div className="absolute -top-3 -right-3 z-10 flex flex-col items-center justify-center w-20 h-20 rounded-full bg-primary text-secondary shadow-2xl rotate-12 animate-pulse-soft border-2 border-secondary">
-                        <span className="font-display font-bold text-2xl leading-none">10%</span>
-                        <span className="font-body text-[9px] uppercase tracking-wider">OFF</span>
-                      </div>
-                    )}
                     <p className="font-display text-2xl font-semibold text-foreground mb-1">Oferta Especial</p>
                     <p className="text-muted-foreground font-body text-sm mb-1">{pkg.nights} · por casal</p>
-                    {pkg.slug === "corpus-christi-2026" ? (
-                      <p className="text-primary font-body text-sm font-bold mb-6 uppercase tracking-wider">⚡ Últimas unidades · 10% OFF</p>
-                    ) : (
-                      <p className="text-secondary font-body text-sm font-semibold mb-6">Consulte valores ao reservar</p>
-                    )}
+                    <p className="text-secondary font-body text-sm font-semibold mb-6">Consulte valores ao reservar</p>
 
                     <div className="space-y-3 mb-6 pb-6 border-b border-border">
                       <div className="flex items-center gap-3 text-muted-foreground font-body text-sm">

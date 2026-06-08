@@ -11,7 +11,7 @@ import OffersSection from "@/components/sections/OffersSection";
 import KidsSection from "@/components/sections/KidsSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import CTASection from "@/components/CTASection";
-import CorpusPromoLightbox from "@/components/CorpusPromoLightbox";
+
 
 
 const Index = () => {
@@ -35,7 +35,7 @@ const Index = () => {
       <TestimonialsSection />
       <CTASection />
       <Footer />
-      <CorpusPromoLightbox />
+      
       
     </div>
   );
