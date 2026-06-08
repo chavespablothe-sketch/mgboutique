@@ -13,9 +13,11 @@ const pkg = JSON.parse(
   readFileSync(resolve(__dirname, "../package.json"), "utf8"),
 );
 
+const execPath = await puppeteer.executablePath();
+
 const config = {
   ...pkg.reactSnap,
-  puppeteerExecutablePath: puppeteer.executablePath(),
+  puppeteerExecutablePath: execPath,
 };
 
 run(config).catch((err) => {
