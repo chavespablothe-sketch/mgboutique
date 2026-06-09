@@ -97,47 +97,48 @@ const NextPackageHighlight = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 16 }}
+      initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, delay: 1.6 }}
-      className="relative max-w-md mb-7"
+      className="relative max-w-xs mb-7"
     >
-      {/* Soft themed glow */}
-      <div className={`pointer-events-none absolute -inset-3 rounded-[1.75rem] bg-gradient-to-br ${theme.glow} blur-2xl opacity-60`} aria-hidden />
+      {/* Themed glow */}
+      <div className={`pointer-events-none absolute -inset-2 rounded-[1.5rem] bg-gradient-to-br ${theme.glow} blur-2xl opacity-70`} aria-hidden />
 
       <Link
         to={`/ofertas/${pkg.slug}`}
-        className={`relative block rounded-2xl border ${theme.border} bg-primary/40 backdrop-blur-xl px-5 py-4 shadow-lg overflow-hidden group hover:bg-primary/50 transition-colors`}
+        className={`relative block rounded-2xl border ${theme.border} bg-primary/40 backdrop-blur-xl pl-4 pr-4 py-3 shadow-lg overflow-hidden group hover:bg-primary/50 transition-colors`}
       >
-        {/* Single subtle decorative icon */}
-        <Icon className={`absolute -top-1 -right-1 ${theme.iconColor} opacity-50`} size={22} aria-hidden />
+        {/* Themed floating icons */}
+        <Icon className={`absolute -top-1 -right-1 ${theme.iconColor} opacity-70 animate-pulse`} size={20} aria-hidden />
+        <Icon className={`absolute bottom-1.5 right-8 ${theme.iconColor} opacity-30`} size={11} aria-hidden />
+        <Icon className={`absolute top-2 right-7 ${theme.iconColor} opacity-25 rotate-12`} size={9} aria-hidden />
 
-        {/* Ribbon */}
-        <div className="flex items-center gap-2 mb-3">
-          <span className="inline-flex items-center gap-1 text-secondary font-body text-[10px] uppercase tracking-[0.3em]">
-            <Sparkles size={10} /> Próximo pacote
-          </span>
-        </div>
+        <div className="flex items-start gap-3">
+          {/* Themed accent bar */}
+          <div className={`w-0.5 self-stretch rounded-full ${theme.ribbon} opacity-80`} aria-hidden />
 
-        <h3 className="font-display text-xl md:text-2xl text-primary-foreground font-semibold leading-tight mb-1.5">
-          {pkg.shortTitle} <span className="italic text-secondary">{theme.italicWord}</span>
-        </h3>
-        <p className="text-primary-foreground/65 font-body text-xs md:text-sm mb-4">
-          {period} · {pkg.nights}
-        </p>
+          <div className="flex-1 min-w-0">
+            <h3 className="font-display text-base md:text-lg text-primary-foreground font-semibold leading-tight mb-0.5">
+              {pkg.shortTitle} <span className="italic text-secondary">{theme.italicWord}</span>
+            </h3>
+            <p className="text-primary-foreground/60 font-body text-[11px] mb-2.5">
+              {period}
+            </p>
 
-        {showUrgency && (
-          <div className="flex items-center gap-2 mb-4">
-            <span className={`inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] px-2.5 py-1 rounded-full border ${theme.badge}`}>
-              <span className="w-1.5 h-1.5 rounded-full bg-current" />
-              {days < 15 ? "Últimas vagas" : "Últimos quartos"}
-            </span>
+            <div className="flex items-center gap-2 flex-wrap">
+              {showUrgency && (
+                <span className={`inline-flex items-center gap-1 text-[9px] font-semibold uppercase tracking-[0.18em] px-2 py-0.5 rounded-full border ${theme.badge}`}>
+                  <span className="w-1 h-1 rounded-full bg-current" />
+                  {days < 15 ? "Últimas vagas" : "Últimos quartos"}
+                </span>
+              )}
+              <span className="inline-flex items-center gap-1 text-secondary font-body text-[10px] font-semibold uppercase tracking-[0.18em] group-hover:gap-1.5 transition-all">
+                Ver detalhes <ArrowRight size={10} />
+              </span>
+            </div>
           </div>
-        )}
-
-        <span className="inline-flex items-center gap-1.5 text-secondary font-body text-[11px] font-semibold uppercase tracking-[0.18em] group-hover:gap-2.5 transition-all">
-          Ver detalhes <ArrowRight size={12} />
-        </span>
+        </div>
       </Link>
     </motion.div>
   );
