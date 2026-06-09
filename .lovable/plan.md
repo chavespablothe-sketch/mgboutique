@@ -1,40 +1,17 @@
-## Problema
+Vou corrigir os pontos exatamente assim:
 
-O GitHub Actions usa `npm` em Node 18 (sem Bun instalado), mas o `prebuild` chama `bun scripts/generate-sitemap.ts` → `bun: not found` → exit 127.
+1. Hero section
+- Deixar o destaque do próximo pacote mais suave/sofisticado.
+- Remover textos de contagem como “em 3 dias” / “Faltam X dias”.
+- Manter apenas uma urgência elegante, como “Últimos quartos”.
+- Remover o botão/link “Reservar”.
+- Deixar somente “Ver detalhes”, apontando para a página do pacote.
 
-## Solução
+2. Cupom BIEL
+- Garantir que o cupom BIEL apareça na página principal de ofertas (`/ofertas`), não na home.
+- Ajustar a posição para ficar mais evidente e elegante na página de ofertas.
+- Verificar se ele não está sendo renderizado indevidamente na home.
 
-Remover Bun do pipeline e rodar a geração do sitemap em Node puro, sem dependências extras (sem `tsx`, sem `ts-node`).
-
-### 1. Converter `scripts/generate-sitemap.ts` → `scripts/generate-sitemap.mjs`
-
-Node executa `.mjs` nativamente. O obstáculo é que hoje o script importa `src/data/packages.ts` e `src/data/chalets.ts` (TypeScript). Para evitar runtime de TS:
-
-- Ler os arquivos `.ts` como texto e extrair os `slug: "..."` via regex simples.
-- Funciona porque ambos arquivos seguem o padrão `slug: "x"` (um por item) e não precisamos de tipos, só da lista de slugs para montar URLs.
-
-Vantagem: zero dependências novas, zero Bun, zero TS no Node.
-
-### 2. Atualizar `package.json`
-
-- `predev`: `node scripts/generate-sitemap.mjs`
-- `prebuild`: `node scripts/generate-sitemap.mjs`
-- Remover `tsx` das devDependencies se ainda estiver lá.
-
-### 3. Apagar `scripts/generate-sitemap.ts`
-
-Substituído pelo `.mjs`.
-
-### 4. Workflow `.github/workflows/deploy.yml`
-
-Já usa `npm install` + `npm run build` em Node 18 — nenhuma mudança necessária. O `prebuild` agora roda com `node` que já existe no runner.
-
-## Arquivos alterados
-
-- **criar** `scripts/generate-sitemap.mjs`
-- **deletar** `scripts/generate-sitemap.ts`
-- **editar** `package.json` (scripts `predev`/`prebuild`)
-
-## Verificação
-
-Após implementar: rodar `node scripts/generate-sitemap.mjs` localmente (no sandbox) e conferir que `public/sitemap.xml` é gerado com o mesmo número de URLs de hoje (~31).
+3. Validação
+- Revisar os arquivos afetados para confirmar que a home não recebe o cupom e que `/ofertas` mostra o banner corretamente.
+- Corrigir qualquer causa óbvia de hidratação ligada ao uso de data atual no destaque, se estiver no mesmo componente afetado.
