@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO, { breadcrumbSchema } from "@/components/SEO";
 import CTASection from "@/components/CTASection";
+import CouponBanner from "@/components/CouponBanner";
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight, CalendarDays, CreditCard, Baby, Star, Check, UtensilsCrossed, Sun, Sparkles, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -212,6 +213,13 @@ const TarifasPage = () => {
               </h2>
               <p className="text-muted-foreground font-body text-sm">Selecione o mês e encontre a experiência ideal</p>
             </div>
+
+            {/* Cupom BIEL */}
+            <div className="max-w-4xl mx-auto mb-12">
+              <CouponBanner />
+            </div>
+
+            <div style={{display:'none'}}>
 
             <div className="flex flex-wrap items-center justify-center gap-2 mb-14">
               <button
