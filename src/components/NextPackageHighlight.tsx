@@ -92,33 +92,29 @@ const NextPackageHighlight = () => {
   const days = getDaysUntil(dates.checkIn!);
   const theme = getTheme(pkg.slug);
   const Icon = theme.icon;
-  const bookingUrl = buildOmnibeesUrl({ checkIn: dates.checkIn, checkOut: dates.checkOut });
   const period = dates.recurring ? dates.recurring.label : pkg.period;
+  const showUrgency = days < 30;
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 24 }}
+      initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 1.6 }}
+      transition={{ duration: 1, delay: 1.6 }}
       className="relative max-w-md mb-7"
     >
-      {/* Themed glow */}
-      <div className={`pointer-events-none absolute -inset-3 rounded-[1.75rem] bg-gradient-to-br ${theme.glow} blur-xl`} aria-hidden />
+      {/* Soft themed glow */}
+      <div className={`pointer-events-none absolute -inset-3 rounded-[1.75rem] bg-gradient-to-br ${theme.glow} blur-2xl opacity-60`} aria-hidden />
 
       <Link
         to={`/ofertas/${pkg.slug}`}
-        className={`relative block rounded-2xl border ${theme.border} bg-primary/55 backdrop-blur-xl px-5 py-4 shadow-xl overflow-hidden group`}
+        className={`relative block rounded-2xl border ${theme.border} bg-primary/40 backdrop-blur-xl px-5 py-4 shadow-lg overflow-hidden group hover:bg-primary/50 transition-colors`}
       >
-        {/* Floating decorative icons */}
-        <Icon className={`absolute -top-1.5 -right-1.5 ${theme.iconColor} rotate-12 opacity-80 animate-pulse`} size={26} aria-hidden />
-        <Icon className={`absolute bottom-1 right-10 ${theme.iconColor} opacity-40`} size={14} aria-hidden />
+        {/* Single subtle decorative icon */}
+        <Icon className={`absolute -top-1 -right-1 ${theme.iconColor} opacity-50`} size={22} aria-hidden />
 
         {/* Ribbon */}
         <div className="flex items-center gap-2 mb-3">
-          <span className={`inline-flex items-center gap-1.5 ${theme.ribbon} text-white font-display italic text-[11px] px-3 py-1 rounded-full shadow-md`}>
-            <Icon size={11} className="fill-white/60" /> {theme.ribbonText}
-          </span>
-          <span className="inline-flex items-center gap-1 text-secondary font-body text-[10px] uppercase tracking-[0.25em]">
+          <span className="inline-flex items-center gap-1 text-secondary font-body text-[10px] uppercase tracking-[0.3em]">
             <Sparkles size={10} /> Próximo pacote
           </span>
         </div>
@@ -126,37 +122,22 @@ const NextPackageHighlight = () => {
         <h3 className="font-display text-xl md:text-2xl text-primary-foreground font-semibold leading-tight mb-1.5">
           {pkg.shortTitle} <span className="italic text-secondary">{theme.italicWord}</span>
         </h3>
-        <p className="text-primary-foreground/70 font-body text-xs md:text-sm mb-3">
+        <p className="text-primary-foreground/65 font-body text-xs md:text-sm mb-4">
           {period} · {pkg.nights}
         </p>
 
-        <div className="flex flex-wrap items-center gap-2 mb-4">
-          <span className={`inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] px-2.5 py-1 rounded-full border ${theme.badge}`}>
-            <span className="w-1.5 h-1.5 rounded-full bg-current animate-pulse" />
-            {urgencyLabel(days)}
-          </span>
-          {days > 0 && (
-            <span className="inline-flex items-center gap-1 text-primary-foreground/60 font-body text-[11px]">
-              <Clock size={11} className="text-secondary" />
-              em <strong className="text-secondary mx-1">{days} dias</strong>
+        {showUrgency && (
+          <div className="flex items-center gap-2 mb-4">
+            <span className={`inline-flex items-center gap-1.5 text-[10px] font-semibold uppercase tracking-[0.18em] px-2.5 py-1 rounded-full border ${theme.badge}`}>
+              <span className="w-1.5 h-1.5 rounded-full bg-current" />
+              {days < 15 ? "Últimas vagas" : "Últimos quartos"}
             </span>
-          )}
-        </div>
+          </div>
+        )}
 
-        <div className="flex items-center gap-2.5">
-          <a
-            href={bookingUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            onClick={(e) => e.stopPropagation()}
-            className="inline-flex items-center gap-1.5 bg-cta text-cta-foreground font-body text-[11px] font-semibold uppercase tracking-[0.15em] px-4 py-2 rounded-full hover:brightness-110 transition-all shadow-md shadow-cta/30"
-          >
-            <Sparkles size={12} /> Reservar
-          </a>
-          <span className="inline-flex items-center gap-1 text-secondary font-body text-[11px] font-semibold uppercase tracking-[0.15em] group-hover:gap-2 transition-all">
-            Ver detalhes <ArrowRight size={12} />
-          </span>
-        </div>
+        <span className="inline-flex items-center gap-1.5 text-secondary font-body text-[11px] font-semibold uppercase tracking-[0.18em] group-hover:gap-2.5 transition-all">
+          Ver detalhes <ArrowRight size={12} />
+        </span>
       </Link>
     </motion.div>
   );
