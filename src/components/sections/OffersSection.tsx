@@ -429,20 +429,32 @@ function ArraiaFrame({ children }: { children: React.ReactNode }) {
 function ValentinesFrame({ children }: { children: React.ReactNode }) {
   return (
     <div className="relative mb-16">
-      {/* Soft red/rose glow envelope */}
-      <div className="absolute -inset-3 md:-inset-5 rounded-[2rem] bg-gradient-to-br from-rose-300/30 via-red-400/20 to-rose-200/30 blur-xl" aria-hidden />
-      <div className="absolute -inset-1 rounded-[2rem] bg-gradient-to-br from-rose-400/30 via-red-500/25 to-rose-300/30" aria-hidden />
+      {/* Soft pink/rose glow envelope */}
+      <div className="absolute -inset-3 md:-inset-5 rounded-[2rem] bg-gradient-to-br from-pink-300/35 via-rose-400/20 to-pink-200/35 blur-xl" aria-hidden />
+      <div className="absolute -inset-1 rounded-[2rem] bg-gradient-to-br from-pink-400/30 via-rose-500/25 to-pink-300/30" aria-hidden />
       {/* Floating hearts */}
-      <Heart className="absolute -top-4 -left-2 text-rose-500/70 fill-rose-400/50 rotate-[-15deg] animate-pulse" size={28} aria-hidden />
-      <Heart className="absolute -top-2 right-6 text-red-500/60 fill-rose-400/40 rotate-[12deg]" size={20} aria-hidden />
-      <Heart className="absolute -bottom-3 left-10 text-rose-500/60 fill-rose-400/40 rotate-[8deg]" size={22} aria-hidden />
+      <Heart className="absolute -top-4 -left-2 text-pink-500/70 fill-pink-400/50 rotate-[-15deg] animate-pulse" size={28} aria-hidden />
+      <Heart className="absolute -top-2 right-6 text-rose-500/60 fill-pink-400/40 rotate-[12deg]" size={20} aria-hidden />
+      <Heart className="absolute -bottom-3 left-10 text-pink-500/60 fill-pink-400/40 rotate-[8deg]" size={22} aria-hidden />
       <div className="relative">
         {/* Ribbon label */}
         <div className="absolute -top-4 left-1/2 -translate-x-1/2 z-20">
-          <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-rose-600 to-red-600 text-white font-display italic text-sm px-5 py-1.5 rounded-full shadow-lg">
+          <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-pink-600 to-rose-600 text-white font-display italic text-sm px-5 py-1.5 rounded-full shadow-lg">
             <Heart size={12} className="fill-white" /> Dia dos Namorados
           </span>
         </div>
+
+        {/* Blinking -10% splash */}
+        <div className="absolute -top-6 -right-3 md:-top-8 md:-right-6 z-30 pointer-events-none">
+          <div className="relative animate-pulse">
+            <span className="absolute inset-0 rounded-full bg-rose-500/60 blur-xl animate-ping" aria-hidden />
+            <div className="relative w-20 h-20 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-pink-500 to-rose-600 text-white shadow-2xl ring-4 ring-white/70 flex flex-col items-center justify-center rotate-[-12deg]">
+              <span className="font-display font-bold text-2xl md:text-3xl leading-none">-10%</span>
+              <span className="font-body uppercase tracking-[0.12em] text-[8px] md:text-[9px] mt-1">últimos quartos</span>
+            </div>
+          </div>
+        </div>
+
         {children}
       </div>
     </div>
