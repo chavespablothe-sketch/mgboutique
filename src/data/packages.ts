@@ -227,7 +227,7 @@ const packages: HotelPackage[] = [
     price: "R$ 2.268,00",
     pricePerNight: "R$ 567,00",
     priceNote: "em até 10x de R$ 226,80 sem juros",
-    description: "O Glória Hotel Boutique convida você a viver dias de descanso, cultura e experiências cuidadosamente pensadas para adultos e crianças — sempre com o conforto, a elegância e o atendimento personalizado.",
+    description: "O Minha Glória Hotel Boutique convida você a viver dias de descanso, cultura e experiências cuidadosamente pensadas para adultos e crianças — sempre com o conforto, a elegância e o atendimento personalizado.",
     longDescription: "O feriado de Tiradentes é a oportunidade perfeita para uma imersão prolongada na natureza. São 4 noites de pura tranquilidade, com atividades para todas as idades. Nossa programação foi criada para quem busca desacelerar, aproveitar e compartilhar momentos especiais, seja em casal ou em família. Passeios de quadriciclo, trilhas ecológicas, contato com os animais da fazenda e uma programação cultural especial.",
     highlights: ["Welcome drink para adultos", "Bebida especial para crianças", "Mimo de boas-vindas no quarto", "Café da manhã estendido"],
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink adulto e infantil", "Mimo de boas-vindas", "Atividades diárias programadas", "Passeio de quadriciclo", "Acesso à piscina", "Wi-Fi gratuito", "Estacionamento privativo"],
@@ -253,7 +253,7 @@ const packages: HotelPackage[] = [
   },
   {
     slug: "dia-dos-namorados-2026",
-    title: "Dia dos Namorados no Glória Hotel Boutique",
+    title: "Dia dos Namorados no Minha Glória Hotel Boutique",
     shortTitle: "Dia dos Namorados 2026",
     period: "12 a 14 de junho de 2026",
     nights: "2 noites",
@@ -285,7 +285,7 @@ const packages: HotelPackage[] = [
   },
   {
     slug: "arraia-inverno-2026",
-    title: "Arraiá de Inverno no Glória Hotel Boutique",
+    title: "Arraiá de Inverno no Minha Glória Hotel Boutique",
     shortTitle: "Arraiá de Inverno 2026",
     period: "19 de junho a 25 de julho de 2026",
     nights: "2 noites (por fim de semana)",
