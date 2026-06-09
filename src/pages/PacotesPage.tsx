@@ -1,6 +1,7 @@
 import { useEffect, useState, useMemo } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CouponBanner from "@/components/CouponBanner";
 import CTASection from "@/components/CTASection";
 import { motion } from "framer-motion";
 import { Calendar, ArrowRight, CalendarDays, CreditCard, Baby, Star, Users, Percent, Clock, Gift, Sparkles } from "lucide-react";
