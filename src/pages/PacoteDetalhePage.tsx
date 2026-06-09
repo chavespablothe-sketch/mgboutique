@@ -79,6 +79,39 @@ const PacoteDetalhePage = () => {
             </div>
           </div>
         </section>
+        {/* Dia dos Namorados discount splash */}
+        {pkg.slug === "dia-dos-namorados-2026" && (
+          <section className="relative py-6 overflow-hidden" style={{ background: "linear-gradient(135deg, hsl(330 82% 55%), hsl(345 75% 45%))" }}>
+            <div className="absolute inset-0 opacity-30 mix-blend-overlay" style={{ background: "radial-gradient(circle at 20% 50%, hsl(335 90% 78% / 0.6), transparent 60%), radial-gradient(circle at 80% 50%, hsl(345 90% 68% / 0.5), transparent 60%)" }} />
+            <div className="container mx-auto px-4 relative">
+              <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 text-center md:text-left">
+                <div className="relative shrink-0">
+                  <span className="absolute inset-0 rounded-full animate-ping bg-white/40" style={{ animationDuration: "1.6s" }} />
+                  <span className="relative flex items-center justify-center w-16 h-16 md:w-20 md:h-20 rounded-full bg-white text-rose-600 font-display font-bold text-xl md:text-2xl shadow-2xl animate-pulse-soft">
+                    -10%
+                  </span>
+                </div>
+                <div className="flex-1 max-w-xl">
+                  <p className="text-white/90 font-body text-[10px] md:text-xs uppercase tracking-[0.3em] mb-1 animate-pulse">
+                    💕 Oferta especial para casais
+                  </p>
+                  <h2 className="font-display text-2xl md:text-3xl lg:text-4xl text-white font-bold leading-tight" style={{ textShadow: "0 2px 12px rgba(0,0,0,0.25)" }}>
+                    10% de desconto nos <span className="italic">últimos quartos</span>
+                  </h2>
+                  <p className="text-white/85 font-body text-sm md:text-base mt-1">
+                    Dia dos Namorados — celebre a dois, vagas limitadas.
+                  </p>
+                </div>
+                <Button asChild size="lg" className="shrink-0 bg-white hover:bg-white/95 text-rose-600 font-body uppercase tracking-[0.15em] gap-2 rounded-full shadow-2xl hover:scale-105 transition-transform font-bold text-xs md:text-sm px-6 py-5">
+                  <a href={pkg.checkIn && pkg.checkOut ? buildOmnibeesUrl({ checkIn: pkg.checkIn, checkOut: pkg.checkOut }) : OMNIBEES_URL} target="_blank" rel="noopener noreferrer">
+                    Reservar agora <ArrowRight size={16} />
+                  </a>
+                </Button>
+              </div>
+            </div>
+          </section>
+        )}
+
 
         {/* Dia das Mães discount splash */}
         {pkg.slug === "dia-das-maes-2026" && (
