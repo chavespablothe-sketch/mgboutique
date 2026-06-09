@@ -60,6 +60,7 @@ import packages from "@/data/packages";
 import { buildOmnibeesUrl } from "@/lib/omnibees";
 import { monthPhrase } from "@/lib/monthPhrase";
 import { isPackageActive, resolvePackageDates } from "@/lib/packageStatus";
+import CouponBanner from "@/components/CouponBanner";
 
 /* ── helpers ─────────────────────────────────────────────── */
 
@@ -556,6 +557,11 @@ const OffersSection = () => {
             Cada feriado, uma experiência única. Pensão completa, recreação e momentos inesquecíveis.
           </p>
         </motion.div>
+
+        {/* Cupom BIEL */}
+        <div className="max-w-4xl mx-auto mb-14">
+          <CouponBanner />
+        </div>
 
         {/* Featured highlights — next 2 weekends/holidays */}
         {featuredList.map((pkg) => {

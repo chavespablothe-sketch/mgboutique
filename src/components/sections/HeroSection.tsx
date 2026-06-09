@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import DateSearchBar from "@/components/DateSearchBar";
+import NextPackageHighlight from "@/components/NextPackageHighlight";
 
 const VIDEO_URL = "https://minha-gloria.b-cdn.net/hotel_fazenda_minha_gl%C3%B3ria_-_apresenta%C3%A7%C3%A3o_fev%E2%A7%B82022_-_2_v3%20(1080p).mp4";
 
@@ -50,6 +51,7 @@ const HeroSection = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 1.2 }}
+              className="mb-7"
             >
               <Button asChild variant="outline" size="lg" className="border-secondary/50 text-secondary hover:bg-secondary/10 font-body uppercase tracking-[0.15em] px-8 py-5 text-xs rounded-full backdrop-blur-sm">
                 <Link to="/pacotes">
@@ -57,6 +59,8 @@ const HeroSection = () => {
                 </Link>
               </Button>
             </motion.div>
+
+            <NextPackageHighlight />
           </div>
         </div>
 
