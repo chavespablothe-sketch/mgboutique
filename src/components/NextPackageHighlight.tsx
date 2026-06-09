@@ -128,7 +128,12 @@ const NextPackageHighlight = () => {
             </p>
 
             <div className="flex items-center gap-2 flex-wrap">
-              {showUrgency && (
+              {isValentines && (
+                <span className="inline-flex items-center gap-1 text-[9px] font-bold uppercase tracking-[0.18em] px-2 py-0.5 rounded-full bg-gradient-to-r from-pink-500 to-rose-500 text-white shadow-md">
+                  <Heart size={8} className="fill-white" /> -10% últimos quartos
+                </span>
+              )}
+              {showUrgency && !isValentines && (
                 <span className={`inline-flex items-center gap-1 text-[9px] font-semibold uppercase tracking-[0.18em] px-2 py-0.5 rounded-full border ${theme.badge}`}>
                   <span className="w-1 h-1 rounded-full bg-current" />
                   {days < 15 ? "Últimas vagas" : "Últimos quartos"}
