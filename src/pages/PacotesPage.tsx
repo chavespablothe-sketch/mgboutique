@@ -126,6 +126,11 @@ const PacotesPage = () => {
         {/* Month Filter + Packages */}
         <section className="py-14 lg:py-20 bg-background">
           <div className="container mx-auto px-4">
+            {/* Coupon */}
+            <div className="max-w-5xl mx-auto mb-12">
+              <CouponBanner />
+            </div>
+
             {/* Month filter */}
             <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
               <button
