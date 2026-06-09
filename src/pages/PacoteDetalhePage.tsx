@@ -9,6 +9,7 @@ import ProgramSections from "@/components/sections/ProgramSections";
 import { Calendar, Clock, Check, Baby, ArrowRight, ArrowLeft, Shield, CreditCard, Users, ChevronLeft, ChevronRight, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import packages from "@/data/packages";
+import CouponBanner from "@/components/CouponBanner";
 
 import { buildOmnibeesUrl, OMNIBEES_URL } from "@/lib/omnibees";
 
