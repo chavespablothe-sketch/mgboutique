@@ -43,13 +43,13 @@ interface Theme {
 function getTheme(slug: string): Theme {
   if (slug === "dia-dos-namorados-2026") {
     return {
-      ribbon: "bg-gradient-to-r from-rose-600 via-rose-500 to-rose-700",
+      ribbon: "bg-gradient-to-r from-pink-500 via-rose-500 to-pink-600",
       ribbonText: "Dia dos Namorados",
       icon: Heart,
-      iconColor: "text-rose-300 fill-rose-400/60",
-      glow: "from-rose-500/25 via-rose-400/10 to-transparent",
-      border: "border-rose-300/40",
-      badge: "bg-rose-500/15 text-rose-100 border-rose-300/40",
+      iconColor: "text-pink-300 fill-pink-400/70",
+      glow: "from-pink-500/40 via-rose-400/20 to-transparent",
+      border: "border-pink-300/50",
+      badge: "bg-pink-500/20 text-pink-100 border-pink-300/50",
       italicWord: "romântico",
     };
   }
