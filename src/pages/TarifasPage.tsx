@@ -219,7 +219,6 @@ const TarifasPage = () => {
               <CouponBanner />
             </div>
 
-            <div style={{display:'none'}}>
 
             <div className="flex flex-wrap items-center justify-center gap-2 mb-14">
               <button
