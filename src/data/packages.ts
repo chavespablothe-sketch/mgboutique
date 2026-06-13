@@ -65,6 +65,18 @@ function buildGallery(own: string[]): string[] {
   return result;
 }
 
+export const servicosEPasseios: ProgramSection = {
+  icon: "🌄",
+  title: "Serviços & Passeios",
+  description: "Experiências opcionais disponíveis no hotel, contratadas à parte. Consulte a recepção para mais informações.",
+  items: [
+    "🛵 Quadriciclo — aventura e diversão",
+    "🚙 Passeio de Jeep — explore as belezas da fazenda",
+    "💆 Massagem — relaxamento e bem-estar",
+    "🐎 Cavalo & Charrete — experiência típica do campo",
+  ],
+};
+
 const genericProgramSections: ProgramSection[] = [
   {
     icon: "✨",
