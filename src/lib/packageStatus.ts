@@ -69,9 +69,8 @@ export function isPackageActive(pkg: HotelPackage, now: Date = new Date()): bool
   const checkIn = getPackageCheckInDate(pkg);
   if (!checkIn) return true;
   const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  // Stays active until 1 day after check-in (then next package takes over).
-  const cutoff = checkIn.getTime() + 24 * 60 * 60 * 1000;
-  return cutoff >= today.getTime();
+  // Stays active only up to the check-in day; from the day after, next package takes over.
+  return today.getTime() <= checkIn.getTime();
 }
 
 /** Returns only currently-active packages, preserving original order. */
