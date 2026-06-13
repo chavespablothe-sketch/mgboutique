@@ -121,6 +121,7 @@ const genericProgramSections: ProgramSection[] = [
       "Oportunidades de descanso e bem-estar",
     ],
   },
+  servicosEPasseios,
 ];
 
 
