@@ -198,6 +198,7 @@ const packages: HotelPackage[] = [
           "Oportunidades de descanso e bem-estar",
         ],
       },
+      servicosEPasseios,
     ],
   },
   {
@@ -444,6 +445,7 @@ const packages: HotelPackage[] = [
           "Momentos especiais pensados para a convivência em família",
         ],
       },
+      servicosEPasseios,
     ],
   },
   {
@@ -528,6 +530,7 @@ const packages: HotelPackage[] = [
         description: "Celebração especial de Dia das Crianças — uma experiência lúdica e afetiva preparada para surpreender os pequenos e emocionar toda a família.",
         items: [],
       },
+      servicosEPasseios,
     ],
   },
   {
@@ -603,6 +606,7 @@ const packages: HotelPackage[] = [
           "Atividades opcionais sob reserva",
         ],
       },
+      servicosEPasseios,
     ],
   },
   {
@@ -689,6 +693,7 @@ const packages: HotelPackage[] = [
           "Celebrações pensadas para convivência e afeto",
         ],
       },
+      servicosEPasseios,
     ],
   },
   {
@@ -806,6 +811,7 @@ const packages: HotelPackage[] = [
           "Hóspedes que valorizam boa gastronomia e experiências memoráveis",
         ],
       },
+      servicosEPasseios,
     ],
   },
 ];
