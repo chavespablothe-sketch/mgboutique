@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import { Tv, Users, Trophy } from "lucide-react";
+import jogosFoto1 from "@/assets/jogos-brasil-1.jpeg.asset.json";
+import jogosFoto2 from "@/assets/jogos-brasil-2.jpeg.asset.json";
 
 const JogosBrasilSection = () => {
   return (
@@ -10,10 +12,9 @@ const JogosBrasilSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7 }}
-          className="max-w-4xl mx-auto"
+          className="max-w-5xl mx-auto"
         >
           <div className="relative rounded-2xl border border-secondary/30 bg-card overflow-hidden shadow-sm">
-            {/* Subtle accent stripe */}
             <div
               className="absolute inset-x-0 top-0 h-0.5"
               style={{
@@ -23,22 +24,23 @@ const JogosBrasilSection = () => {
               aria-hidden
             />
 
-            <div className="p-8 md:p-10 lg:p-12 flex flex-col md:flex-row md:items-center gap-8">
-              <div className="shrink-0 flex md:flex-col items-center md:items-start gap-3 md:gap-2">
-                <div className="w-14 h-14 rounded-full bg-secondary/10 border border-secondary/30 flex items-center justify-center">
-                  <Trophy className="text-secondary" size={22} aria-hidden />
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              <div className="p-8 md:p-10 lg:p-12 flex flex-col justify-center gap-5">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 rounded-full bg-secondary/10 border border-secondary/30 flex items-center justify-center">
+                    <Trophy className="text-secondary" size={20} aria-hidden />
+                  </div>
+                  <span className="text-[10px] uppercase tracking-[0.22em] text-secondary font-body font-semibold">
+                    Especial · Seleção
+                  </span>
                 </div>
-                <span className="text-[10px] uppercase tracking-[0.22em] text-secondary font-body font-semibold">
-                  Especial · Seleção
-                </span>
-              </div>
 
-              <div className="flex-1">
-                <h2 className="font-display text-2xl md:text-3xl text-foreground font-semibold leading-tight mb-3">
+                <h2 className="font-display text-2xl md:text-3xl text-foreground font-semibold leading-tight">
                   Torça com a gente nos{" "}
                   <span className="italic text-secondary">jogos do Brasil</span>
                 </h2>
-                <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed mb-5">
+
+                <p className="font-body text-sm md:text-base text-muted-foreground leading-relaxed">
                   Preparamos um espaço reservado no salão para você assistir aos
                   jogos da seleção — com a gastronomia, o aconchego e o clima de
                   hotel boutique que você já conhece.
@@ -54,6 +56,21 @@ const JogosBrasilSection = () => {
                     Recepção atenta para receber você
                   </span>
                 </div>
+              </div>
+
+              <div className="relative grid grid-cols-2 gap-1 p-2 md:p-3">
+                <img
+                  src={jogosFoto1.url}
+                  alt="Salão decorado com bandeiras do Brasil para os jogos da seleção"
+                  className="w-full h-48 md:h-full object-cover rounded-lg"
+                  loading="lazy"
+                />
+                <img
+                  src={jogosFoto2.url}
+                  alt="Ambiente do hotel preparado para a torcida nos jogos do Brasil"
+                  className="w-full h-48 md:h-full object-cover rounded-lg"
+                  loading="lazy"
+                />
               </div>
             </div>
           </div>

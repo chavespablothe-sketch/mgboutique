@@ -115,7 +115,6 @@ const genericProgramSections: ProgramSection[] = [
     icon: "💆",
     title: "Para os adultos",
     items: [
-      "Sessão de massagem relaxante",
       "Ambiente tranquilo e acolhedor",
       "Tempo de qualidade sem pressa",
       "Oportunidades de descanso e bem-estar",
@@ -137,7 +136,7 @@ const packages: HotelPackage[] = [
     pricePerNight: "R$ 1.134,00",
     priceNote: "em até 10x de R$ 226,80 sem juros",
     description: "Um refúgio para desacelerar, respirar e aproveitar o melhor do descanso com charme, boa gastronomia e momentos agradáveis — perfeito para casais e famílias que desejam uma pausa da rotina.",
-    longDescription: "Um refúgio para desacelerar, respirar e aproveitar o melhor do descanso com charme, boa gastronomia e momentos agradáveis — perfeito para casais e famílias que desejam uma pausa da rotina. Para as crianças: recreação monitorada em horários dedicados, oficinas e brincadeiras, e espaço para diversão segura. Para os adultos: sessão de massagem relaxante, ambiente tranquilo e acolhedor, tempo de qualidade sem pressa e oportunidades de descanso e bem-estar. *Essa oferta não é válida para feriados ou datas que já temos outros pacotes em andamento.",
+    longDescription: "Um refúgio para desacelerar, respirar e aproveitar o melhor do descanso com charme, boa gastronomia e momentos agradáveis — perfeito para casais e famílias que desejam uma pausa da rotina. Para as crianças: recreação monitorada em horários dedicados, oficinas e brincadeiras, e espaço para diversão segura. Para os adultos: ambiente tranquilo e acolhedor, tempo de qualidade sem pressa e oportunidades de descanso e bem-estar. *Essa oferta não é válida para feriados ou datas que já temos outros pacotes em andamento.",
     highlights: ["Recreação monitorada", "Massagem relaxante", "Oficinas e brincadeiras", "Ambiente acolhedor"],
     included: ["Pensão completa (café, almoço e jantar)", "Welcome drink na chegada", "Acesso à piscina", "Recreação infantil", "Wi-Fi gratuito", "Estacionamento privativo"],
     kidsFeatures: ["Recreação monitorada em horários dedicados", "Oficinas e brincadeiras", "Espaço para diversão segura", "Menu infantil especial", "1 criança até 06 anos: grátis nos fins de semana"],
@@ -192,7 +191,6 @@ const packages: HotelPackage[] = [
         icon: "💆",
         title: "Para os adultos",
         items: [
-          "Sessão de massagem relaxante",
           "Ambiente tranquilo e acolhedor",
           "Tempo de qualidade sem pressa",
           "Oportunidades de descanso e bem-estar",
@@ -417,7 +415,6 @@ const packages: HotelPackage[] = [
         icon: "🌺",
         title: "Bem-estar & Slow Luxury",
         items: [
-          "Sessão de massagem relaxante para adultos",
           "Uso livre da piscina e áreas de lazer",
           "Experiências guiadas ao ar livre",
           "Tempo livre para spa e relaxamento",
@@ -665,7 +662,6 @@ const packages: HotelPackage[] = [
         icon: "🌺",
         title: "Bem-estar & Relaxamento",
         items: [
-          "Sessão de massagem relaxante para adultos",
           "Uso livre da piscina e áreas de lazer",
           "Momentos de descanso em ambientes acolhedores",
           "Tempo livre para relaxar e aproveitar o hotel",
@@ -715,7 +711,6 @@ const packages: HotelPackage[] = [
       "Ceia de Réveillon completa com brinde à meia-noite",
       "Coquetel pré-Réveillon (31/12)",
       "Almoço especial de Ano Novo (01/01)",
-      "Sessão de massagem relaxante para adultos",
       "Recreação monitorada diária para crianças",
       "Wi-Fi gratuito",
       "Estacionamento privativo",
@@ -773,7 +768,6 @@ const packages: HotelPackage[] = [
         icon: "🌺",
         title: "Bem-estar & Relaxamento",
         items: [
-          "Sessão de massagem relaxante para adultos",
           "Uso livre da piscina e áreas de lazer",
           "Momentos de descanso em ambientes acolhedores",
           "Tempo livre para aproveitar o hotel com tranquilidade",
