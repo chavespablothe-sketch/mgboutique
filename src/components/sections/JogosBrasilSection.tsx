@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import { Tv, Users, Trophy } from "lucide-react";
-import jogosFoto1 from "@/assets/jogos-brasil-1.jpeg.asset.json";
-import jogosFoto2 from "@/assets/jogos-brasil-2.jpeg.asset.json";
+import jogosFoto from "@/assets/jogos-brasil-1.jpeg.asset.json";
 
 const JogosBrasilSection = () => {
   return (
@@ -58,17 +57,11 @@ const JogosBrasilSection = () => {
                 </div>
               </div>
 
-              <div className="relative grid grid-cols-2 gap-1 p-2 md:p-3">
+              <div className="relative min-h-[260px] md:min-h-[340px]">
                 <img
-                  src={jogosFoto1.url}
-                  alt="Salão decorado com bandeiras do Brasil para os jogos da seleção"
-                  className="w-full h-48 md:h-full object-cover rounded-lg"
-                  loading="lazy"
-                />
-                <img
-                  src={jogosFoto2.url}
-                  alt="Ambiente do hotel preparado para a torcida nos jogos do Brasil"
-                  className="w-full h-48 md:h-full object-cover rounded-lg"
+                  src={jogosFoto.url}
+                  alt="Salão do Minha Glória Hotel Boutique decorado para os jogos da seleção brasileira"
+                  className="absolute inset-0 w-full h-full object-cover"
                   loading="lazy"
                 />
               </div>
