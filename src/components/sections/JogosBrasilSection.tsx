@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Tv, Users, Trophy } from "lucide-react";
-import jogosFoto from "@/assets/jogos-brasil-1.jpeg.asset.json";
+import jogosFoto from "@/assets/jogos-brasil.jpg";
 
 const JogosBrasilSection = () => {
   return (
