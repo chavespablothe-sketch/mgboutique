@@ -35,37 +35,59 @@ jobs:
       - name: Build project (with static prerender)
         run: npm run build
 
-      # Deploy incremental (sem dangerous-clean-slate) com timeout generoso
-      # e até 3 tentativas — tolera a instabilidade do FTP da Hostinger
-      # sem precisar re-rodar o workflow manualmente.
-      - name: Deploy via FTP (with retry)
-        uses: nick-fields/retry@v3
+      # Deploy incremental (sem dangerous-clean-slate) com timeout generoso —
+      # menos operações FTP = menos chance de Timeout (control socket) no
+      # servidor da Hostinger. Se ainda assim falhar, basta re-rodar o job
+      # no GitHub Actions; o próximo push sobe só os arquivos alterados.
+      - name: Deploy via FTP (1ª tentativa)
+        id: ftp1
+        continue-on-error: true
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          timeout_minutes: 12
-          max_attempts: 3
-          retry_wait_seconds: 30
-          command: |
-            cat > /tmp/ftp-deploy.yml <<'YML'
-            name: ftp-deploy
-            on: push
-            jobs:
-              x:
-                runs-on: ubuntu-latest
-                steps: []
-            YML
-            # Roda a action oficial via composição mínima usando 'uses' não é
-            # possível dentro de retry; então invocamos o binário publicado.
-            npx --yes @samkirkland/ftp-deploy@4.3.5 \
-              --server "$FTP_SERVER" \
-              --username "$FTP_USERNAME" \
-              --password "$FTP_PASSWORD" \
-              --protocol ftp \
-              --port 21 \
-              --local-dir ./dist/ \
-              --server-dir /public_html/ \
-              --timeout 300000 \
-              --log-level minimal
-        env:
-          FTP_SERVER: ${{ secrets.FTP_SERVER }}
-          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
-          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp
+          port: 21
+          local-dir: ./dist/
+          server-dir: /public_html/
+          timeout: 300000
+          log-level: minimal
+
+      - name: Aguardar antes de tentar novamente
+        if: steps.ftp1.outcome == 'failure'
+        run: sleep 30
+
+      - name: Deploy via FTP (2ª tentativa)
+        id: ftp2
+        if: steps.ftp1.outcome == 'failure'
+        continue-on-error: true
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp
+          port: 21
+          local-dir: ./dist/
+          server-dir: /public_html/
+          timeout: 300000
+          log-level: minimal
+
+      - name: Aguardar antes da última tentativa
+        if: steps.ftp1.outcome == 'failure' && steps.ftp2.outcome == 'failure'
+        run: sleep 60
+
+      - name: Deploy via FTP (3ª tentativa)
+        if: steps.ftp1.outcome == 'failure' && steps.ftp2.outcome == 'failure'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp
+          port: 21
+          local-dir: ./dist/
+          server-dir: /public_html/
+          timeout: 300000
+          log-level: minimal
