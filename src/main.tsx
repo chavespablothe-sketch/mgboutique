@@ -1,4 +1,4 @@
-import { createRoot, hydrateRoot } from "react-dom/client";
+import { createRoot } from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
 
 import App from "./App.tsx";
@@ -6,17 +6,13 @@ import "./index.css";
 
 const rootEl = document.getElementById("root")!;
 
-const tree = (
+// O HTML pré-renderizado dentro de #root é mantido para SEO/crawlers sem JS,
+// mas para usuários reais o limpamos antes de montar o React, evitando
+// erros de hidratação que deixavam DOM antigo "fantasma" sobre a página.
+rootEl.innerHTML = "";
+
+createRoot(rootEl).render(
   <HelmetProvider>
     <App />
-  </HelmetProvider>
+  </HelmetProvider>,
 );
-
-// react-snap injeta HTML pré-renderizado em #root.
-// Se já houver filhos, hidratamos (mantém SEO + interatividade).
-// Caso contrário (dev / primeiro load sem snapshot), montamos do zero.
-if (rootEl.hasChildNodes()) {
-  hydrateRoot(rootEl, tree);
-} else {
-  createRoot(rootEl).render(tree);
-}

@@ -8,6 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     steps:
       - name: Checkout
@@ -34,15 +35,26 @@ jobs:
       - name: Build project (with static prerender)
         run: npm run build
 
+      # Deploy incremental (sem dangerous-clean-slate) com retry automático
+      # para tolerar a instabilidade do FTP da Hostinger.
       - name: Deploy via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        uses: nick-fields/retry@v3
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp
-          port: 21
-          local-dir: ./dist/
-          server-dir: /public_html/
-          dangerous-clean-slate: true
-          timeout: 120000
+          timeout_minutes: 10
+          max_attempts: 3
+          retry_wait_seconds: 30
+          command: |
+            npx --yes @samkirkland/ftp-deploy@4.3.5 \
+              --server "$FTP_SERVER" \
+              --username "$FTP_USERNAME" \
+              --password "$FTP_PASSWORD" \
+              --protocol ftp \
+              --port 21 \
+              --local-dir ./dist/ \
+              --server-dir /public_html/ \
+              --timeout 300000 \
+              --log-level minimal
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
