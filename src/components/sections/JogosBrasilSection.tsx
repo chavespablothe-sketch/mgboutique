@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { Tv, Users, Trophy } from "lucide-react";
-import jogosFoto from "@/assets/jogos-brasil-1.jpeg.asset.json";
+import jogosFoto from "@/assets/jogos-brasil.jpg";
 
 const JogosBrasilSection = () => {
   return (
@@ -59,7 +59,7 @@ const JogosBrasilSection = () => {
 
               <div className="relative min-h-[260px] md:min-h-[340px]">
                 <img
-                  src={jogosFoto.url}
+                  src={jogosFoto}
                   alt="Salão do Minha Glória Hotel Boutique decorado para os jogos da seleção brasileira"
                   className="absolute inset-0 w-full h-full object-cover"
                   loading="lazy"
