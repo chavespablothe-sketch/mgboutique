@@ -8,6 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
 
     steps:
       - name: Checkout
@@ -34,7 +35,13 @@ jobs:
       - name: Build project (with static prerender)
         run: npm run build
 
-      - name: Deploy via FTP
+      # Deploy incremental (sem dangerous-clean-slate) com timeout generoso —
+      # menos operações FTP = menos chance de Timeout (control socket) no
+      # servidor da Hostinger. Se ainda assim falhar, basta re-rodar o job
+      # no GitHub Actions; o próximo push sobe só os arquivos alterados.
+      - name: Deploy via FTP (1ª tentativa)
+        id: ftp1
+        continue-on-error: true
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -44,5 +51,43 @@ jobs:
           port: 21
           local-dir: ./dist/
           server-dir: /public_html/
-          dangerous-clean-slate: true
-          timeout: 120000
+          timeout: 300000
+          log-level: minimal
+
+      - name: Aguardar antes de tentar novamente
+        if: steps.ftp1.outcome == 'failure'
+        run: sleep 30
+
+      - name: Deploy via FTP (2ª tentativa)
+        id: ftp2
+        if: steps.ftp1.outcome == 'failure'
+        continue-on-error: true
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp
+          port: 21
+          local-dir: ./dist/
+          server-dir: /public_html/
+          timeout: 300000
+          log-level: minimal
+
+      - name: Aguardar antes da última tentativa
+        if: steps.ftp1.outcome == 'failure' && steps.ftp2.outcome == 'failure'
+        run: sleep 60
+
+      - name: Deploy via FTP (3ª tentativa)
+        if: steps.ftp1.outcome == 'failure' && steps.ftp2.outcome == 'failure'
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp
+          port: 21
+          local-dir: ./dist/
+          server-dir: /public_html/
+          timeout: 300000
+          log-level: minimal
