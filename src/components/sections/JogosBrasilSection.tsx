@@ -57,7 +57,7 @@ const JogosBrasilSection = () => {
                 </div>
               </div>
 
-              <div className="relative min-h-[260px] md:min-h-[340px]">
+              <div className="relative w-full h-64 md:h-auto md:min-h-[340px] overflow-hidden">
                 <img
                   src={jogosFoto}
                   alt="Salão do Minha Glória Hotel Boutique decorado para os jogos da seleção brasileira"
