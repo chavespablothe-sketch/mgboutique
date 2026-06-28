@@ -378,9 +378,9 @@ const packages: HotelPackage[] = [
       { day: "Domingo (06/09)", items: ["Café da manhã", "Atividades em família", "Almoço especial", "Tarde livre", "Jantar de despedida"] },
       { day: "Segunda-feira (07/09)", items: ["Café da manhã", "Check-out até 12h"] },
     ],
-    image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/cw8phfks3mc-1771958977254.webp",
+    image: "/__l5e/assets-v1/6c3fc29a-fd28-40de-a5de-48f85504d969/setembro-2026.jpg",
     gallery: buildGallery([
-      "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/cw8phfks3mc-1771958977254.webp",
+      "/__l5e/assets-v1/6c3fc29a-fd28-40de-a5de-48f85504d969/setembro-2026.jpg",
       "/images/amenities-trilhas.png",
       "/images/lazer-piscina.webp",
     ]),
