@@ -38,19 +38,48 @@ jobs:
       # Normaliza o host do FTP_SERVER (remove ftp://, ftps://, sftp:// e
       # qualquer barra/porta) para que possamos tentar protocolos/portas
       # diferentes sem depender de como o secret foi cadastrado.
-      - name: Normalize FTP host
+      - name: Normalize FTP host + diagnose connectivity
         id: host
         env:
           RAW_SERVER: ${{ secrets.FTP_SERVER }}
         run: |
+          set +e
           host="$RAW_SERVER"
           host="${host#ftp://}"
           host="${host#ftps://}"
           host="${host#sftp://}"
           host="${host%%/*}"
           host="${host%%:*}"
+
+          if [ -z "$host" ]; then
+            echo "::error::Secret FTP_SERVER está VAZIO. Cadastre o host FTP da Hostinger (ex: ftp.minhagloria.com.br ou o host que aparece em hPanel → Arquivos → Contas FTP)."
+            exit 1
+          fi
+
+          echo "=========================================="
+          echo "Host normalizado a partir do secret: $host"
+          echo "=========================================="
+
+          echo "→ Tentando resolver DNS de $host ..."
+          getent hosts "$host" || echo "⚠️  DNS não resolveu para $host"
+
+          echo "→ Testando TCP 21 (FTPS explícito) ..."
+          timeout 10 bash -c "</dev/tcp/$host/21" && echo "✅ Porta 21 acessível" || echo "❌ Porta 21 inacessível"
+
+          echo "→ Testando TCP 990 (FTPS implícito) ..."
+          timeout 10 bash -c "</dev/tcp/$host/990" && echo "✅ Porta 990 acessível" || echo "❌ Porta 990 inacessível"
+
+          echo "→ Testando TCP 22 (SFTP/SSH) ..."
+          timeout 10 bash -c "</dev/tcp/$host/22" && echo "✅ Porta 22 acessível" || echo "❌ Porta 22 inacessível"
+
           echo "host=$host" >> "$GITHUB_OUTPUT"
-          echo "Host normalizado: $host"
+
+          # Se nenhuma porta FTP responde, aborta cedo com mensagem clara
+          if ! timeout 10 bash -c "</dev/tcp/$host/21" 2>/dev/null && \
+             ! timeout 10 bash -c "</dev/tcp/$host/990" 2>/dev/null; then
+            echo "::error::Nenhuma porta FTP (21/990) respondeu em '$host'. Verifique no hPanel da Hostinger → Arquivos → Contas FTP qual é o HOSTNAME correto (geralmente 'ftp.SEUDOMINIO.com.br' ou um IP específico). Atualize o secret FTP_SERVER no GitHub (Settings → Secrets and variables → Actions)."
+            exit 1
+          fi
 
       # Estratégia de fallback (sem precisar mexer em nada no GitHub):
       #   1) FTPS explícito porta 21  (preferido pela Hostinger)
