@@ -145,8 +145,8 @@ const NextPackageHighlight = () => {
                   {days < 15 ? "Últimas vagas" : "Últimos quartos"}
                 </span>
               )}
-              <span className="inline-flex items-center gap-1 text-secondary font-body text-[10px] font-semibold uppercase tracking-[0.18em] group-hover:gap-1.5 transition-all">
-                Ver detalhes <ArrowRight size={10} />
+              <span className="inline-flex items-center gap-1 text-secondary font-body text-[10px] font-semibold uppercase tracking-[0.18em] group-hover/card:gap-2 group-hover/card:text-secondary transition-all">
+                Ver detalhes <ArrowRight size={10} className="group-hover/card:translate-x-0.5 transition-transform" />
               </span>
             </div>
           </div>
