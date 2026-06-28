@@ -14,6 +14,7 @@ import PacoteDetalhePage from "./pages/PacoteDetalhePage";
 import ContatoPage from "./pages/ContatoPage";
 import RegiaoPage from "./pages/RegiaoPage";
 import BlogPage from "./pages/BlogPage";
+import FeriasJulhoPage from "./pages/FeriasJulhoPage";
 import PrivacidadePage from "./pages/PrivacidadePage";
 import NotFound from "./pages/NotFound";
 
@@ -40,6 +41,7 @@ const App = () => (
           <Route path="/regiao" element={<RegiaoPage />} />
           <Route path="/contato" element={<ContatoPage />} />
           <Route path="/blog" element={<BlogPage />} />
+          <Route path="/ferias-de-julho" element={<FeriasJulhoPage />} />
           <Route path="/privacidade" element={<PrivacidadePage />} />
           {/* Redirects from old routes */}
           <Route path="/chales" element={<Navigate to="/acomodacoes" replace />} />
