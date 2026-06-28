@@ -465,9 +465,9 @@ const packages: HotelPackage[] = [
       { day: "Domingo (11/10)", items: ["Café da manhã", "Atividades ao ar livre", "Almoço", "Celebração especial de Dia das Crianças", "Jantar de despedida"] },
       { day: "Segunda-feira (12/10)", items: ["Café da manhã", "Atividades finais", "Check-out até 12h"] },
     ],
-    image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/33uwsq6qfzf-1771959749328.webp",
+    image: "/__l5e/assets-v1/b2ffe552-da24-4342-80f1-5b48ab550d13/criancas-2026.jpg",
     gallery: buildGallery([
-      "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/33uwsq6qfzf-1771959749328.webp",
+      "/__l5e/assets-v1/b2ffe552-da24-4342-80f1-5b48ab550d13/criancas-2026.jpg",
       "/images/lazer-lhamas.jpg",
       "/images/sobre-vista-pedra.jpg",
     ]),
