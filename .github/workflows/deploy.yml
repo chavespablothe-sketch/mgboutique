@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 25
 
     steps:
       - name: Checkout
@@ -35,16 +35,35 @@ jobs:
       - name: Build project (with static prerender)
         run: npm run build
 
-      # Deploy incremental (sem dangerous-clean-slate) com timeout generoso —
-      # menos operações FTP = menos chance de Timeout (control socket) no
-      # servidor da Hostinger. Se ainda assim falhar, basta re-rodar o job
-      # no GitHub Actions; o próximo push sobe só os arquivos alterados.
-      - name: Deploy via FTPS (1ª tentativa)
-        id: ftp1
+      # Normaliza o host do FTP_SERVER (remove ftp://, ftps://, sftp:// e
+      # qualquer barra/porta) para que possamos tentar protocolos/portas
+      # diferentes sem depender de como o secret foi cadastrado.
+      - name: Normalize FTP host
+        id: host
+        env:
+          RAW_SERVER: ${{ secrets.FTP_SERVER }}
+        run: |
+          host="$RAW_SERVER"
+          host="${host#ftp://}"
+          host="${host#ftps://}"
+          host="${host#sftp://}"
+          host="${host%%/*}"
+          host="${host%%:*}"
+          echo "host=$host" >> "$GITHUB_OUTPUT"
+          echo "Host normalizado: $host"
+
+      # Estratégia de fallback (sem precisar mexer em nada no GitHub):
+      #   1) FTPS explícito porta 21  (preferido pela Hostinger)
+      #   2) FTPS implícito porta 990 (alguns hosts bloqueiam a 21)
+      #   3) FTP simples porta 21     (último recurso)
+      # Cada tentativa só roda se a anterior falhar.
+
+      - name: Deploy FTPS explícito :21 (tentativa 1)
+        id: t1
         continue-on-error: true
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}
+          server: ${{ steps.host.outputs.host }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
@@ -54,17 +73,37 @@ jobs:
           timeout: 300000
           log-level: minimal
 
-      - name: Aguardar antes de tentar novamente
-        if: steps.ftp1.outcome == 'failure'
+      - name: Aguardar antes da tentativa 2
+        if: steps.t1.outcome == 'failure'
+        run: sleep 20
+
+      - name: Deploy FTPS implícito :990 (tentativa 2)
+        id: t2
+        if: steps.t1.outcome == 'failure'
+        continue-on-error: true
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ steps.host.outputs.host }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 990
+          local-dir: ./dist/
+          server-dir: /public_html/
+          timeout: 300000
+          log-level: minimal
+
+      - name: Aguardar antes da tentativa 3
+        if: steps.t1.outcome == 'failure' && steps.t2.outcome == 'failure'
         run: sleep 30
 
-      - name: Deploy via FTPS (2ª tentativa)
-        id: ftp2
-        if: steps.ftp1.outcome == 'failure'
+      - name: Deploy FTPS explícito :21 (tentativa 3 — retry)
+        id: t3
+        if: steps.t1.outcome == 'failure' && steps.t2.outcome == 'failure'
         continue-on-error: true
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}
+          server: ${{ steps.host.outputs.host }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
@@ -74,21 +113,20 @@ jobs:
           timeout: 300000
           log-level: minimal
 
-      - name: Aguardar antes da última tentativa
-        if: steps.ftp1.outcome == 'failure' && steps.ftp2.outcome == 'failure'
+      - name: Aguardar antes do fallback final
+        if: steps.t1.outcome == 'failure' && steps.t2.outcome == 'failure' && steps.t3.outcome == 'failure'
         run: sleep 60
 
-      - name: Deploy via FTPS (3ª tentativa)
-        if: steps.ftp1.outcome == 'failure' && steps.ftp2.outcome == 'failure'
+      - name: Deploy FTP simples :21 (fallback final)
+        if: steps.t1.outcome == 'failure' && steps.t2.outcome == 'failure' && steps.t3.outcome == 'failure'
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}
+          server: ${{ steps.host.outputs.host }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
+          protocol: ftp
           port: 21
           local-dir: ./dist/
           server-dir: /public_html/
           timeout: 300000
           log-level: minimal
-
