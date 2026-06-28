@@ -1,49 +1,30 @@
 ## Diagnóstico
 
-O problema real parece ser duplo:
+As imagens existem e carregam corretamente no CDN do Lovable (`https://mgboutique.lovable.app/__l5e/assets-v1/...`). O problema é no site publicado em `minhagloria.com.br`: quando o navegador tenta abrir `https://minhagloria.com.br/__l5e/assets-v1/...`, o servidor da hospedagem devolve `index.html` com `content-type: text/html` em vez da imagem. Isso faz o navegador mostrar o ícone quebrado.
 
-1. **Seção quebrada:** não parece ser a foto em si. O app está tentando hidratar HTML pré-renderizado/estático dentro de `#root`, e há um aviso de hidratação no console. Isso pode deixar DOM antigo misturado com DOM novo, gerando exatamente o efeito da sua captura: texto “fantasma”/duplicado deslocado sobre a imagem.
-2. **Deploy:** o build terminou com sucesso; o erro está só no passo **Deploy via FTP**: `Timeout (control socket)`. Isso é conexão FTP/Hostinger instável/lenta, não erro do site.
+Mesmo com parte do código já convertendo as URLs para o domínio Lovable, o deploy/prerender/cache ainda está deixando referências relativas ou HTML antigo no domínio final.
 
-**Do I know what the issue is?** Sim: a seção precisa parar de depender de hidratação frágil + layout precisa ser simplificado; o deploy precisa parar de fazer uma publicação agressiva via FTP com timeout baixo.
+## Plano de correção definitiva
 
-## Plano de correção sem te onerar
+1. **Blindar a origem das imagens no código**
+   - Trocar o helper `assetUrl()` para nunca depender de caminho relativo quando a URL vier de `.asset.json`.
+   - Garantir que qualquer asset `"/__l5e/assets-v1/..."` vire sempre uma URL absoluta do CDN publicado.
+   - Adicionar tratamento seguro para URLs já absolutas e valores vazios.
 
-### 1. Corrigir a origem do bug visual sem mexer em asset nem gerar imagem
-- Alterar `src/main.tsx` para **não hidratar** o HTML antigo quando o JavaScript carrega.
-- Em vez disso, limpar o conteúdo pré-renderizado de `#root` e montar o React do zero.
-- Isso remove a chance de HTML antigo ficar “colado” por baixo/por cima do componente novo.
-- Mantém o HTML estático útil para SEO/no-JS, mas evita hidratação quebrada para usuários reais.
+2. **Corrigir o build/prerender para não “congelar” imagens erradas**
+   - Revisar os scripts de build/prerender para confirmar que o HTML gerado também sai com URLs absolutas.
+   - Se necessário, adicionar uma etapa pós-build que varre o `dist/` e substitui qualquer ocorrência restante de `src="/__l5e/assets-v1/` ou `url(/__l5e/assets-v1/` por `https://mgboutique.lovable.app/__l5e/assets-v1/`.
+   - Isso torna a solução resistente mesmo se alguma página futura esquecer de usar o helper.
 
-### 2. Blindar a seção “Jogos do Brasil” com layout mais simples
-- Reescrever apenas `src/components/sections/JogosBrasilSection.tsx` com estrutura estática e previsível:
-  - desktop: texto e imagem lado a lado, sem camadas absolutas;
-  - mobile: imagem e texto empilhados corretamente;
-  - `min-w-0`, `overflow-hidden`, largura controlada e proporção fixa da imagem;
-  - sem animações, sem efeitos de viewport e sem qualquer duplicação condicional.
-- Não trocar a foto, não subir arquivo novo e não usar geração de imagem.
+3. **Evitar fallback HTML para imagens no servidor Hostinger**
+   - Ajustar `.htaccess` para que requisições a `/__l5e/assets-v1/...` não caiam no fallback do React Router.
+   - Em vez de devolver `index.html`, o servidor deve redirecionar essas URLs para o CDN correto.
+   - Assim, mesmo links antigos ou cacheados passam a funcionar automaticamente.
 
-### 3. Corrigir deploy sem ficar gastando tentativas
-- Ajustar `.github/workflows/deploy.yml` para reduzir chance de timeout:
-  - aumentar timeout FTP para algo mais realista;
-  - adicionar `timeout-minutes` no job para não travar indefinidamente;
-  - remover `dangerous-clean-slate: true`, porque apagar tudo antes de subir força mais operações FTP e aumenta risco de falha;
-  - manter deploy incremental do `dist/`.
-- Não vou rodar deploy daqui; a validação local será visual/código. O próximo deploy acontece só quando você decidir publicar/rodar o workflow.
-
-### 4. Validação antes de encerrar
-- Conferir a seção no preview em desktop e mobile.
-- Confirmar no console que o erro de hidratação sumiu ou deixou de afetar a árvore principal.
-- Confirmar que o workflow ficou com deploy menos agressivo e mais tolerante.
+4. **Verificação técnica**
+   - Verificar no build final se não sobrou nenhuma referência quebrada para `/__l5e/assets-v1/` sem domínio.
+   - Testar a página `/ferias-de-julho` e confirmar que as imagens respondem como `image/jpeg`, não `text/html`.
 
 ## Resultado esperado
 
-A seção deve aparecer uma única vez, sem texto fantasma, sem corte no desktop e sem quebrar no mobile. O próximo deploy deve ter menos chance de falhar por timeout FTP, sem precisar ficar tentando várias vezes.
-
-<presentation-actions>
-  <presentation-open-history>View History</presentation-open-history>
-</presentation-actions>
-
-<presentation-actions>
-<presentation-link url="https://docs.lovable.dev/tips-tricks/troubleshooting">Troubleshooting docs</presentation-link>
-</presentation-actions>
+Depois do próximo deploy, as imagens da página de Férias de Julho devem abrir corretamente no domínio `minhagloria.com.br`, inclusive em cache, HTML prerenderizado e acessos diretos às URLs antigas de assets.

@@ -18,6 +18,11 @@
   RewriteEngine On
   RewriteBase /
 
+  # Lovable CDN assets must not fall through to React Router on Hostinger.
+  # Old/cacheable URLs like /__l5e/assets-v1/... are permanently redirected
+  # to the published Lovable CDN origin that serves the actual binary files.
+  RewriteRule ^__l5e/assets-v1/(.*)$ https://mgboutique.lovable.app/__l5e/assets-v1/$1 [R=301,L,NE]
+
   # If an existing asset or directory is requested, serve it directly
   RewriteCond %{REQUEST_FILENAME} -f [OR]
   RewriteCond %{REQUEST_FILENAME} -d
