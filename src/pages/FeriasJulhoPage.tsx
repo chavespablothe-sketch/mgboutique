@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Calendar, Sparkles, ArrowRight, Sun } from "lucide-react";
 import { OMNIBEES_URL } from "@/lib/omnibees";
+import { assetUrl } from "@/lib/assets";
 
 import bolhas from "@/assets/ferias-julho/ferias-bolhas.jpg.asset.json";
 import cozinha from "@/assets/ferias-julho/ferias-cozinha.jpg.asset.json";
@@ -29,13 +30,13 @@ import diaSabado from "@/assets/ferias-julho/dias/sabado.jpg.asset.json";
 import diaDomingo from "@/assets/ferias-julho/dias/domingo.jpg.asset.json";
 
 const galeria = [
-  { src: bolhas.url, alt: "Crianças brincando com bolhas de sabão no jardim" },
-  { src: recreacao.url, alt: "Recreação ao ar livre com os monitores" },
-  { src: cozinha.url, alt: "Oficina de confeitaria com chapéu de chef" },
-  { src: piscina.url, alt: "Crianças se divertindo na piscina" },
-  { src: pintura.url, alt: "Ateliê de pintura e desenho no gramado" },
-  { src: cisne.url, alt: "Encontro com o cisne negro no lago" },
-  { src: presente.url, alt: "Momento especial com a equipe de recreação" },
+  { src: assetUrl(bolhas.url), alt: "Crianças brincando com bolhas de sabão no jardim" },
+  { src: assetUrl(recreacao.url), alt: "Recreação ao ar livre com os monitores" },
+  { src: assetUrl(cozinha.url), alt: "Oficina de confeitaria com chapéu de chef" },
+  { src: assetUrl(piscina.url), alt: "Crianças se divertindo na piscina" },
+  { src: assetUrl(pintura.url), alt: "Ateliê de pintura e desenho no gramado" },
+  { src: assetUrl(cisne.url), alt: "Encontro com o cisne negro no lago" },
+  { src: assetUrl(presente.url), alt: "Momento especial com a equipe de recreação" },
 ];
 
 type Dia = {
@@ -120,13 +121,13 @@ const programacao: Dia[] = [
 ];
 
 const diasArte = [
-  { nome: "Segunda", img: diaSegunda.url, frase: "Pé na grama e bolhas no ar pra começar bem." },
-  { nome: "Terça",   img: diaTerca.url,   frase: "Tobogã, gincanas e muita risada solta." },
-  { nome: "Quarta",  img: diaQuarta.url,  frase: "Folhas, tintas e cabeça cheia de ideia." },
-  { nome: "Quinta",  img: diaQuinta.url,  frase: "Mão na terra e oi pro cisne negro." },
-  { nome: "Sexta",   img: diaSexta.url,   frase: "Skibunda gelado e futebol até cansar." },
-  { nome: "Sábado",  img: diaSabado.url,  frase: "Chapéu de chef de dia, arraiá à noite." },
-  { nome: "Domingo", img: diaDomingo.url, frase: "Mirante, pintura facial e abraço de tchau." },
+  { nome: "Segunda", img: assetUrl(diaSegunda.url), frase: "Pé na grama e bolhas no ar pra começar bem." },
+  { nome: "Terça",   img: assetUrl(diaTerca.url),   frase: "Tobogã, gincanas e muita risada solta." },
+  { nome: "Quarta",  img: assetUrl(diaQuarta.url),  frase: "Folhas, tintas e cabeça cheia de ideia." },
+  { nome: "Quinta",  img: assetUrl(diaQuinta.url),  frase: "Mão na terra e oi pro cisne negro." },
+  { nome: "Sexta",   img: assetUrl(diaSexta.url),   frase: "Skibunda gelado e futebol até cansar." },
+  { nome: "Sábado",  img: assetUrl(diaSabado.url),  frase: "Chapéu de chef de dia, arraiá à noite." },
+  { nome: "Domingo", img: assetUrl(diaDomingo.url), frase: "Mirante, pintura facial e abraço de tchau." },
 ];
 
 const FeriasJulhoPage = () => {
@@ -150,7 +151,7 @@ const FeriasJulhoPage = () => {
         title="Férias de Julho 2026 | Minha Glória Hotel Boutique"
         description="Programação recreativa infantil completa nas férias de julho em Bom Jardim, RJ. Fazendinha, oficinas, gincanas, skibunda e muito mais para as crianças amarem."
         canonical="/ferias-de-julho"
-        ogImage={feriasCover.url}
+        ogImage={assetUrl(feriasCover.url)}
         schemas={[breadcrumbSchema([
           { name: "Home", url: "/" },
           { name: "Férias de Julho", url: "/ferias-de-julho" },
@@ -163,7 +164,7 @@ const FeriasJulhoPage = () => {
         {/* Foto de fundo */}
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${heroFerias.url})` }}
+          style={{ backgroundImage: `url(${assetUrl(heroFerias.url)})` }}
           aria-hidden
         />
         {/* Camadas coloridas vivas, respeitando verde + dourado */}
@@ -227,7 +228,7 @@ const FeriasJulhoPage = () => {
             >
               <div className="absolute -inset-3 rounded-3xl bg-secondary/40 blur-2xl" aria-hidden />
               <img
-                src={feriasCover.url}
+                src={assetUrl(feriasCover.url)}
                 alt="Arte oficial Férias de Julho 2026 no Minha Glória Hotel Boutique"
                 className="relative rounded-2xl shadow-2xl ring-1 ring-secondary/40 w-full"
               />
@@ -249,7 +250,7 @@ const FeriasJulhoPage = () => {
           <div className="grid lg:grid-cols-12 gap-10 items-center max-w-6xl mx-auto">
             <div className="lg:col-span-5">
               <img
-                src={introSemana.url}
+                src={assetUrl(introSemana.url)}
                 alt="De segunda a domingo — programação variada"
                 className="rounded-2xl shadow-xl ring-1 ring-secondary/30 w-full"
               />
@@ -385,7 +386,7 @@ const FeriasJulhoPage = () => {
       <section className="relative py-20 lg:py-28 bg-primary overflow-hidden">
         <div
           className="absolute inset-0 opacity-20 bg-cover bg-center"
-          style={{ backgroundImage: `url(${recreacao.url})` }}
+          style={{ backgroundImage: `url(${assetUrl(recreacao.url)})` }}
           aria-hidden
         />
         <div className="absolute inset-0 bg-gradient-to-b from-primary/90 to-primary" aria-hidden />

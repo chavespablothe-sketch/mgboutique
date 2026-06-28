@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Sun } from "lucide-react";
 import bolhas from "@/assets/ferias-julho/ferias-bolhas.jpg.asset.json";
+import { assetUrl } from "@/lib/assets";
 
 const FeriasJulhoBanner = () => {
   return (
@@ -19,7 +20,7 @@ const FeriasJulhoBanner = () => {
           >
             <div
               className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
-              style={{ backgroundImage: `url(${bolhas.url})` }}
+              style={{ backgroundImage: `url(${assetUrl(bolhas.url)})` }}
               aria-hidden
             />
             <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/80 to-primary/40" aria-hidden />
