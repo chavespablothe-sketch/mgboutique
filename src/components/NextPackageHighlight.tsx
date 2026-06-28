@@ -104,16 +104,22 @@ const NextPackageHighlight = () => {
       className="relative max-w-xs mb-7"
     >
       {/* Themed glow */}
-      <div className={`pointer-events-none absolute -inset-2 rounded-[1.5rem] bg-gradient-to-br ${theme.glow} blur-2xl opacity-70`} aria-hidden />
+      <div className={`pointer-events-none absolute -inset-2 rounded-[1.5rem] bg-gradient-to-br ${theme.glow} blur-2xl opacity-70 group-hover/card:opacity-100 transition-opacity duration-500`} aria-hidden />
 
       <Link
         to={`/ofertas/${pkg.slug}`}
-        className={`relative block rounded-2xl border ${theme.border} bg-primary/40 backdrop-blur-xl pl-4 pr-4 py-3 shadow-lg overflow-hidden group hover:bg-primary/50 transition-colors`}
+        className={`group/card relative block rounded-2xl border ${theme.border} bg-primary/40 backdrop-blur-xl pl-4 pr-4 py-3 shadow-lg overflow-hidden hover:bg-primary/55 hover:border-secondary/70 hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.5)] hover:-translate-y-0.5 transition-all duration-300 ease-out`}
       >
+        {/* Shimmer sweep on hover */}
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-0 -translate-x-full group-hover/card:translate-x-full transition-transform duration-[1100ms] ease-out bg-gradient-to-r from-transparent via-secondary/20 to-transparent"
+        />
+
         {/* Themed floating icons */}
-        <Icon className={`absolute -top-1 -right-1 ${theme.iconColor} opacity-70 animate-pulse`} size={20} aria-hidden />
-        <Icon className={`absolute bottom-1.5 right-8 ${theme.iconColor} opacity-30`} size={11} aria-hidden />
-        <Icon className={`absolute top-2 right-7 ${theme.iconColor} opacity-25 rotate-12`} size={9} aria-hidden />
+        <Icon className={`absolute -top-1 -right-1 ${theme.iconColor} opacity-70 animate-pulse group-hover/card:scale-125 group-hover/card:rotate-12 transition-transform duration-300`} size={20} aria-hidden />
+        <Icon className={`absolute bottom-1.5 right-8 ${theme.iconColor} opacity-30 group-hover/card:opacity-60 transition-opacity`} size={11} aria-hidden />
+        <Icon className={`absolute top-2 right-7 ${theme.iconColor} opacity-25 rotate-12 group-hover/card:opacity-50 transition-opacity`} size={9} aria-hidden />
 
         <div className="flex items-start gap-3">
           {/* Themed accent bar */}
@@ -139,8 +145,8 @@ const NextPackageHighlight = () => {
                   {days < 15 ? "Últimas vagas" : "Últimos quartos"}
                 </span>
               )}
-              <span className="inline-flex items-center gap-1 text-secondary font-body text-[10px] font-semibold uppercase tracking-[0.18em] group-hover:gap-1.5 transition-all">
-                Ver detalhes <ArrowRight size={10} />
+              <span className="inline-flex items-center gap-1 text-secondary font-body text-[10px] font-semibold uppercase tracking-[0.18em] group-hover/card:gap-2 group-hover/card:text-secondary transition-all">
+                Ver detalhes <ArrowRight size={10} className="group-hover/card:translate-x-0.5 transition-transform" />
               </span>
             </div>
           </div>
