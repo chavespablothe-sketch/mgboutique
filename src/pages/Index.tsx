@@ -12,6 +12,7 @@ import JogosBrasilSection from "@/components/sections/JogosBrasilSection";
 import KidsSection from "@/components/sections/KidsSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import CTASection from "@/components/CTASection";
+import FeriasJulhoBanner from "@/components/sections/FeriasJulhoBanner";
 
 
 
@@ -26,6 +27,7 @@ const Index = () => {
       />
       <Header />
       <HeroSection />
+      <FeriasJulhoBanner />
       <OffersSection />
       <JogosBrasilSection />
       <KidsSection />
