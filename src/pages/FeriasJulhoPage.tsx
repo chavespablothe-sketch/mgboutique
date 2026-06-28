@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO, { breadcrumbSchema } from "@/components/SEO";
+import CouponBanner from "@/components/CouponBanner";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Calendar, Sparkles, ArrowRight, Image as ImageIcon, Sun } from "lucide-react";
+import { Calendar, Sparkles, ArrowRight, Sun } from "lucide-react";
 import { OMNIBEES_URL } from "@/lib/omnibees";
 
 import bolhas from "@/assets/ferias-julho/ferias-bolhas.jpg.asset.json";
@@ -15,6 +16,17 @@ import pintura from "@/assets/ferias-julho/ferias-pintura.jpg.asset.json";
 import cisne from "@/assets/ferias-julho/ferias-cisne.jpg.asset.json";
 import piscina from "@/assets/ferias-julho/ferias-piscina.jpg.asset.json";
 import recreacao from "@/assets/ferias-julho/ferias-recreacao.jpg.asset.json";
+
+import heroFerias from "@/assets/ferias-julho/dias/hero-ferias.jpg.asset.json";
+import feriasCover from "@/assets/ferias-julho/dias/ferias-cover.jpg.asset.json";
+import introSemana from "@/assets/ferias-julho/dias/intro-semana.jpg.asset.json";
+import diaSegunda from "@/assets/ferias-julho/dias/segunda.jpg.asset.json";
+import diaTerca from "@/assets/ferias-julho/dias/terca.jpg.asset.json";
+import diaQuarta from "@/assets/ferias-julho/dias/quarta.jpg.asset.json";
+import diaQuinta from "@/assets/ferias-julho/dias/quinta.jpg.asset.json";
+import diaSexta from "@/assets/ferias-julho/dias/sexta.jpg.asset.json";
+import diaSabado from "@/assets/ferias-julho/dias/sabado.jpg.asset.json";
+import diaDomingo from "@/assets/ferias-julho/dias/domingo.jpg.asset.json";
 
 const galeria = [
   { src: bolhas.url, alt: "Crianças brincando com bolhas de sabão no jardim" },
@@ -107,6 +119,16 @@ const programacao: Dia[] = [
   },
 ];
 
+const diasArte = [
+  { nome: "Segunda", img: diaSegunda.url, frase: "Pé na grama e bolhas no ar pra começar bem." },
+  { nome: "Terça",   img: diaTerca.url,   frase: "Tobogã, gincanas e muita risada solta." },
+  { nome: "Quarta",  img: diaQuarta.url,  frase: "Folhas, tintas e cabeça cheia de ideia." },
+  { nome: "Quinta",  img: diaQuinta.url,  frase: "Mão na terra e oi pro cisne negro." },
+  { nome: "Sexta",   img: diaSexta.url,   frase: "Skibunda gelado e futebol até cansar." },
+  { nome: "Sábado",  img: diaSabado.url,  frase: "Chapéu de chef de dia, arraiá à noite." },
+  { nome: "Domingo", img: diaDomingo.url, frase: "Mirante, pintura facial e abraço de tchau." },
+];
+
 const FeriasJulhoPage = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
 
@@ -128,7 +150,7 @@ const FeriasJulhoPage = () => {
         title="Férias de Julho 2026 | Minha Glória Hotel Boutique"
         description="Programação recreativa infantil completa nas férias de julho em Bom Jardim, RJ. Fazendinha, oficinas, gincanas, skibunda e muito mais para as crianças amarem."
         canonical="/ferias-de-julho"
-        ogImage={bolhas.url}
+        ogImage={feriasCover.url}
         schemas={[breadcrumbSchema([
           { name: "Home", url: "/" },
           { name: "Férias de Julho", url: "/ferias-de-julho" },
@@ -136,57 +158,113 @@ const FeriasJulhoPage = () => {
       />
       <Header />
 
-      {/* HERO */}
-      <section className="relative pt-32 pb-20 lg:pt-40 lg:pb-28 bg-primary overflow-hidden">
+      {/* HERO — colorido, com foto + arte oficial */}
+      <section className="relative pt-28 pb-16 lg:pt-32 lg:pb-20 overflow-hidden bg-primary">
+        {/* Foto de fundo */}
         <div
-          className="absolute inset-0 opacity-25 bg-cover bg-center"
-          style={{ backgroundImage: `url(${bolhas.url})` }}
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${heroFerias.url})` }}
           aria-hidden
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-primary/85 via-primary/75 to-primary" aria-hidden />
+        {/* Camadas coloridas vivas, respeitando verde + dourado */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              "linear-gradient(135deg, hsl(var(--primary) / 0.92) 0%, hsl(var(--primary) / 0.78) 40%, hsl(var(--primary) / 0.55) 100%)",
+          }}
+          aria-hidden
+        />
+        <div
+          className="absolute inset-0 opacity-70 mix-blend-soft-light"
+          style={{
+            background:
+              "radial-gradient(circle at 12% 20%, hsl(var(--secondary) / 0.55), transparent 45%), radial-gradient(circle at 88% 80%, hsl(var(--secondary) / 0.35), transparent 55%)",
+          }}
+          aria-hidden
+        />
+        {/* confetes decorativos */}
+        <div className="pointer-events-none absolute inset-0" aria-hidden>
+          <div className="absolute top-24 left-8 w-3 h-3 rounded-full bg-secondary/80 animate-pulse" />
+          <div className="absolute top-40 right-16 w-2 h-2 rounded-full bg-primary-foreground/70" />
+          <div className="absolute bottom-32 left-1/4 w-4 h-4 rounded-full bg-secondary/60" />
+          <div className="absolute bottom-20 right-1/3 w-2.5 h-2.5 rounded-full bg-primary-foreground/60 animate-pulse" />
+        </div>
 
         <div className="relative container mx-auto px-4 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <span className="inline-flex items-center gap-2 text-secondary font-body text-xs tracking-[0.4em] uppercase mb-5">
-              <Sun size={14} /> Férias de Julho 2026
-            </span>
-            <h1 className="font-display text-4xl md:text-6xl text-primary-foreground font-semibold leading-[1.05] mb-6">
-              Um julho inteiro para as <span className="italic text-secondary">crianças amarem</span> — e os pais respirarem.
-            </h1>
-            <p className="text-primary-foreground/80 font-body text-base md:text-lg leading-relaxed mb-10">
-              Na Minha Glória, as férias ganham um ritmo só nosso: manhãs na fazendinha, tardes de oficina,
-              gincanas no campo, skibunda, pintura, plantio na horta e encontros com a Eguinha Safira.
-              Uma programação pensada para encantar — com o cuidado, a sofisticação e o aconchego que só
-              um hotel boutique na Mata Atlântica pode oferecer.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <CTA />
-              <a href="#programacao" className="text-primary-foreground/80 hover:text-secondary font-body text-xs tracking-[0.3em] uppercase transition-colors">
-                Ver programação completa ↓
-              </a>
-            </div>
-          </motion.div>
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7 }}
+              className="text-center lg:text-left"
+            >
+              <span className="inline-flex items-center gap-2 text-secondary font-body text-xs tracking-[0.4em] uppercase mb-5">
+                <Sun size={14} /> 13 de Julho a 01 de Agosto · 2026
+              </span>
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-primary-foreground font-semibold leading-[1.05] mb-6">
+                Um julho inteiro para as <span className="italic text-secondary">crianças amarem</span> — e os pais respirarem.
+              </h1>
+              <p className="text-primary-foreground/85 font-body text-base md:text-lg leading-relaxed mb-8">
+                Manhãs na fazendinha, tardes de oficina, gincanas no campo, skibunda, pintura, plantio na horta
+                e encontros com a Eguinha Safira. Toda a sofisticação Minha Glória, com o coração mais
+                colorido do ano.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center">
+                <CTA />
+                <a href="#programacao" className="text-primary-foreground/80 hover:text-secondary font-body text-xs tracking-[0.3em] uppercase transition-colors">
+                  Ver programação completa ↓
+                </a>
+              </div>
+            </motion.div>
+
+            {/* Arte oficial Férias de Julho */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.94, rotate: -2 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0 }}
+              transition={{ duration: 0.8, delay: 0.15 }}
+              className="relative mx-auto max-w-md lg:max-w-none"
+            >
+              <div className="absolute -inset-3 rounded-3xl bg-secondary/40 blur-2xl" aria-hidden />
+              <img
+                src={feriasCover.url}
+                alt="Arte oficial Férias de Julho 2026 no Minha Glória Hotel Boutique"
+                className="relative rounded-2xl shadow-2xl ring-1 ring-secondary/40 w-full"
+              />
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* CUPOM BIEL — destaque */}
+      <section className="py-10 lg:py-14 bg-hotel-cream">
+        <div className="container mx-auto px-4 lg:px-8 max-w-5xl">
+          <CouponBanner />
         </div>
       </section>
 
       {/* ENCANTAMENTO */}
-      <section className="py-20 lg:py-24 bg-hotel-cream">
+      <section className="py-16 lg:py-20 bg-hotel-cream">
         <div className="container mx-auto px-4 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center">
-            <span className="text-secondary font-body text-xs tracking-[0.4em] uppercase mb-4 block">Por que aqui</span>
-            <h2 className="font-display text-3xl md:text-4xl text-foreground font-semibold mb-6 leading-[1.15]">
-              Sete dias diferentes. Uma única certeza: as crianças não vão querer ir embora.
-            </h2>
-            <p className="text-muted-foreground font-body text-base md:text-lg leading-relaxed">
-              Cada dia da semana tem sua própria pauta — da plantação na horta à grande gincana junina,
-              do passeio com a Eguinha Safira ao skibunda na descida do gramado. Tudo conduzido pela nossa
-              equipe de recreação, em meio à montanha e à Mata Atlântica de Bom Jardim.
-            </p>
+          <div className="grid lg:grid-cols-12 gap-10 items-center max-w-6xl mx-auto">
+            <div className="lg:col-span-5">
+              <img
+                src={introSemana.url}
+                alt="De segunda a domingo — programação variada"
+                className="rounded-2xl shadow-xl ring-1 ring-secondary/30 w-full"
+              />
+            </div>
+            <div className="lg:col-span-7 text-center lg:text-left">
+              <span className="text-secondary font-body text-xs tracking-[0.4em] uppercase mb-4 block">De segunda a domingo</span>
+              <h2 className="font-display text-3xl md:text-4xl text-foreground font-semibold mb-5 leading-[1.15]">
+                Sete dias diferentes. Uma única certeza: as crianças não vão querer ir embora.
+              </h2>
+              <p className="text-muted-foreground font-body text-base md:text-lg leading-relaxed">
+                Cada dia da semana tem a sua própria pauta — da plantação na horta à grande gincana junina,
+                do passeio com a Eguinha Safira ao skibunda na descida do gramado. Tudo conduzido pela nossa
+                equipe de recreação, em meio à montanha e à Mata Atlântica de Bom Jardim.
+              </p>
+            </div>
           </div>
 
           {/* Galeria destaques */}
@@ -207,29 +285,37 @@ const FeriasJulhoPage = () => {
         </div>
       </section>
 
-      {/* ARTES DIÁRIAS — placeholders */}
+      {/* ARTES DIÁRIAS */}
       <section className="py-20 lg:py-24 bg-background">
         <div className="container mx-auto px-4 lg:px-8">
           <div className="text-center mb-12 max-w-2xl mx-auto">
             <span className="text-secondary font-body text-xs tracking-[0.4em] uppercase mb-4 block">Programação visual</span>
             <h2 className="font-display text-3xl md:text-4xl text-foreground font-semibold leading-[1.15]">
-              Em breve: a arte oficial de cada dia da semana
+              Um dia. Um clima. Uma aventura nova.
             </h2>
-            <p className="text-muted-foreground font-body text-sm mt-3">
-              Espaço reservado para receber as artes da programação diária — segunda a domingo.
+            <p className="text-muted-foreground font-body text-sm md:text-base mt-3">
+              Passa o olho e já dá pra sentir o ritmo da semana — clica nas artes pra ver tudo detalhado lá embaixo.
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3 max-w-6xl mx-auto">
-            {programacao.map((d) => (
-              <div
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3 md:gap-4 max-w-6xl mx-auto">
+            {diasArte.map((d, i) => (
+              <motion.a
                 key={d.nome}
-                className="aspect-[3/4] rounded-xl border-2 border-dashed border-secondary/40 bg-hotel-cream/60 flex flex-col items-center justify-center gap-2 p-3 text-center"
+                href="#programacao"
+                initial={{ opacity: 0, y: 14 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.05 }}
+                className="group relative aspect-[3/4] rounded-xl overflow-hidden ring-1 ring-secondary/30 shadow-md hover:shadow-xl transition-all"
               >
-                <ImageIcon size={22} className="text-secondary/70" />
-                <p className="font-display text-sm text-foreground font-semibold leading-tight">{d.nome}</p>
-                <p className="text-[10px] font-body uppercase tracking-[0.2em] text-muted-foreground">arte em breve</p>
-              </div>
+                <img src={d.img} alt={`${d.nome} — programação`} loading="lazy" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/40 to-transparent" aria-hidden />
+                <div className="absolute inset-x-0 bottom-0 p-3 text-primary-foreground">
+                  <p className="font-display text-base md:text-lg font-semibold leading-tight">{d.nome}</p>
+                  <p className="text-[11px] md:text-xs font-body text-primary-foreground/85 leading-snug mt-1">{d.frase}</p>
+                </div>
+              </motion.a>
             ))}
           </div>
         </div>
