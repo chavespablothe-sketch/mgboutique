@@ -39,7 +39,7 @@ jobs:
       # menos operações FTP = menos chance de Timeout (control socket) no
       # servidor da Hostinger. Se ainda assim falhar, basta re-rodar o job
       # no GitHub Actions; o próximo push sobe só os arquivos alterados.
-      - name: Deploy via FTP (1ª tentativa)
+      - name: Deploy via FTPS (1ª tentativa)
         id: ftp1
         continue-on-error: true
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
@@ -47,7 +47,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp
+          protocol: ftps
           port: 21
           local-dir: ./dist/
           server-dir: /public_html/
@@ -58,7 +58,7 @@ jobs:
         if: steps.ftp1.outcome == 'failure'
         run: sleep 30
 
-      - name: Deploy via FTP (2ª tentativa)
+      - name: Deploy via FTPS (2ª tentativa)
         id: ftp2
         if: steps.ftp1.outcome == 'failure'
         continue-on-error: true
@@ -67,7 +67,7 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp
+          protocol: ftps
           port: 21
           local-dir: ./dist/
           server-dir: /public_html/
@@ -78,16 +78,17 @@ jobs:
         if: steps.ftp1.outcome == 'failure' && steps.ftp2.outcome == 'failure'
         run: sleep 60
 
-      - name: Deploy via FTP (3ª tentativa)
+      - name: Deploy via FTPS (3ª tentativa)
         if: steps.ftp1.outcome == 'failure' && steps.ftp2.outcome == 'failure'
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp
+          protocol: ftps
           port: 21
           local-dir: ./dist/
           server-dir: /public_html/
           timeout: 300000
           log-level: minimal
+
