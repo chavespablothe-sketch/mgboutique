@@ -399,15 +399,27 @@ const TarifasPage = () => {
                               </span>
                             ))}
                           </div>
-                          <Button
-                            asChild
-                            size="lg"
-                            className="bg-secondary hover:bg-secondary/90 text-primary font-body text-xs uppercase tracking-wider gap-2 rounded-full w-fit"
-                          >
-                            <a href={OMNIBEES_URL} target="_blank" rel="noopener noreferrer">
-                              <CalendarDays size={14} /> Garantir minhas datas
-                            </a>
-                          </Button>
+                          <div className="flex flex-wrap gap-3">
+                            <Button
+                              asChild
+                              size="lg"
+                              className="bg-secondary hover:bg-secondary/90 text-primary font-body text-xs uppercase tracking-wider gap-2 rounded-full w-fit"
+                            >
+                              <a href={OMNIBEES_URL} target="_blank" rel="noopener noreferrer">
+                                <CalendarDays size={14} /> Garantir minhas datas
+                              </a>
+                            </Button>
+                            <Button
+                              asChild
+                              size="lg"
+                              variant="outline"
+                              className="border-secondary/60 text-secondary hover:bg-secondary/10 font-body text-xs uppercase tracking-wider gap-2 rounded-full w-fit"
+                            >
+                              <Link to="/ferias-de-julho">
+                                Ver programação <ArrowRight size={14} />
+                              </Link>
+                            </Button>
+                          </div>
                         </div>
 
                         {/* Mosaico de fotos */}
