@@ -9,6 +9,8 @@ import NextPackageHighlight from "@/components/NextPackageHighlight";
 const VIDEO_URL = "https://minha-gloria.b-cdn.net/hotel_fazenda_minha_gl%C3%B3ria_-_apresenta%C3%A7%C3%A3o_fev%E2%A7%B82022_-_2_v3%20(1080p).mp4";
 
 const HeroSection = () => {
+  const [videoFailed, setVideoFailed] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
   return (
     <>
       <section className="relative min-h-screen flex items-center overflow-hidden">
