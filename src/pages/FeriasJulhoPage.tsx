@@ -8,35 +8,16 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Calendar, Sparkles, ArrowRight, Sun } from "lucide-react";
 import { OMNIBEES_URL } from "@/lib/omnibees";
-import { assetUrl } from "@/lib/assets";
-
-import bolhas from "@/assets/ferias-julho/ferias-bolhas.jpg.asset.json";
-import cozinha from "@/assets/ferias-julho/ferias-cozinha.jpg.asset.json";
-import presente from "@/assets/ferias-julho/ferias-presente.jpg.asset.json";
-import pintura from "@/assets/ferias-julho/ferias-pintura.jpg.asset.json";
-import cisne from "@/assets/ferias-julho/ferias-cisne.jpg.asset.json";
-import piscina from "@/assets/ferias-julho/ferias-piscina.jpg.asset.json";
-import recreacao from "@/assets/ferias-julho/ferias-recreacao.jpg.asset.json";
-
-import heroFerias from "@/assets/ferias-julho/dias/hero-ferias.jpg.asset.json";
-import feriasCover from "@/assets/ferias-julho/dias/ferias-cover.jpg.asset.json";
-import introSemana from "@/assets/ferias-julho/dias/intro-semana.jpg.asset.json";
-import diaSegunda from "@/assets/ferias-julho/dias/segunda.jpg.asset.json";
-import diaTerca from "@/assets/ferias-julho/dias/terca.jpg.asset.json";
-import diaQuarta from "@/assets/ferias-julho/dias/quarta.jpg.asset.json";
-import diaQuinta from "@/assets/ferias-julho/dias/quinta.jpg.asset.json";
-import diaSexta from "@/assets/ferias-julho/dias/sexta.jpg.asset.json";
-import diaSabado from "@/assets/ferias-julho/dias/sabado.jpg.asset.json";
-import diaDomingo from "@/assets/ferias-julho/dias/domingo.jpg.asset.json";
+import { feriasJulhoImages as IMG } from "@/lib/siteImages";
 
 const galeria = [
-  { src: assetUrl(bolhas.url), alt: "Crianças brincando com bolhas de sabão no jardim" },
-  { src: assetUrl(recreacao.url), alt: "Recreação ao ar livre com os monitores" },
-  { src: assetUrl(cozinha.url), alt: "Oficina de confeitaria com chapéu de chef" },
-  { src: assetUrl(piscina.url), alt: "Crianças se divertindo na piscina" },
-  { src: assetUrl(pintura.url), alt: "Ateliê de pintura e desenho no gramado" },
-  { src: assetUrl(cisne.url), alt: "Encontro com o cisne negro no lago" },
-  { src: assetUrl(presente.url), alt: "Momento especial com a equipe de recreação" },
+  { src: IMG.bolhas, alt: "Crianças brincando com bolhas de sabão no jardim" },
+  { src: IMG.recreacao, alt: "Recreação ao ar livre com os monitores" },
+  { src: IMG.cozinha, alt: "Oficina de confeitaria com chapéu de chef" },
+  { src: IMG.piscina, alt: "Crianças se divertindo na piscina" },
+  { src: IMG.pintura, alt: "Ateliê de pintura e desenho no gramado" },
+  { src: IMG.cisne, alt: "Encontro com o cisne negro no lago" },
+  { src: IMG.presente, alt: "Momento especial com a equipe de recreação" },
 ];
 
 type Dia = {
