@@ -1,30 +1,51 @@
-## Diagnóstico
+## Objetivo
 
-As imagens existem e carregam corretamente no CDN do Lovable (`https://mgboutique.lovable.app/__l5e/assets-v1/...`). O problema é no site publicado em `minhagloria.com.br`: quando o navegador tenta abrir `https://minhagloria.com.br/__l5e/assets-v1/...`, o servidor da hospedagem devolve `index.html` com `content-type: text/html` em vez da imagem. Isso faz o navegador mostrar o ícone quebrado.
+Acabar de vez com o problema de imagens quebradas no `minhagloria.com.br` movendo as fotos do CDN interno do Lovable (`/__l5e/assets-v1/...`) para o **Supabase Storage do Lovable Cloud**, que entrega URLs absolutas públicas que funcionam em qualquer domínio.
 
-Mesmo com parte do código já convertendo as URLs para o domínio Lovable, o deploy/prerender/cache ainda está deixando referências relativas ou HTML antigo no domínio final.
+## Por que isso resolve
 
-## Plano de correção definitiva
+- URLs do Supabase Storage são **absolutas e públicas** (`https://<projeto>.supabase.co/storage/v1/object/public/...`).
+- Não passam pelo Hostinger → não caem no fallback do React Router → não viram `index.html`.
+- Funcionam igual no preview, no domínio Lovable e no domínio próprio.
+- Some a necessidade do helper `assetUrl()`, do postbuild que reescreve o `dist/`, e do redirect no `.htaccess`.
 
-1. **Blindar a origem das imagens no código**
-   - Trocar o helper `assetUrl()` para nunca depender de caminho relativo quando a URL vier de `.asset.json`.
-   - Garantir que qualquer asset `"/__l5e/assets-v1/..."` vire sempre uma URL absoluta do CDN publicado.
-   - Adicionar tratamento seguro para URLs já absolutas e valores vazios.
+## Plano
 
-2. **Corrigir o build/prerender para não “congelar” imagens erradas**
-   - Revisar os scripts de build/prerender para confirmar que o HTML gerado também sai com URLs absolutas.
-   - Se necessário, adicionar uma etapa pós-build que varre o `dist/` e substitui qualquer ocorrência restante de `src="/__l5e/assets-v1/` ou `url(/__l5e/assets-v1/` por `https://mgboutique.lovable.app/__l5e/assets-v1/`.
-   - Isso torna a solução resistente mesmo se alguma página futura esquecer de usar o helper.
+1. **Criar bucket público no Lovable Cloud**
+   - Nome: `site-images`, público (leitura aberta para qualquer visitante).
+   - Política RLS: `SELECT` liberado para `anon` e `authenticated` no bucket; upload restrito a `service_role`.
 
-3. **Evitar fallback HTML para imagens no servidor Hostinger**
-   - Ajustar `.htaccess` para que requisições a `/__l5e/assets-v1/...` não caiam no fallback do React Router.
-   - Em vez de devolver `index.html`, o servidor deve redirecionar essas URLs para o CDN correto.
-   - Assim, mesmo links antigos ou cacheados passam a funcionar automaticamente.
+2. **Subir as 16 fotos de Férias de Julho para o bucket**
+   - Pasta `ferias-julho/` dentro do bucket, espelhando a estrutura atual de `src/assets/ferias-julho/`.
+   - Inclui: `ferias-bolhas.jpg`, `ferias-cisne.jpg`, `ferias-cozinha.jpg`, `ferias-pintura.jpg`, `ferias-piscina.jpg`, `ferias-presente.jpg`, `ferias-recreacao.jpg`, e os 9 arquivos da pasta `dias/`.
+   - As 3 imagens dos outros pacotes (`criancas-2026.jpg`, `finados-2026.jpg`, `setembro-2026.jpg`) entram junto, já que sofrem do mesmo problema.
 
-4. **Verificação técnica**
-   - Verificar no build final se não sobrou nenhuma referência quebrada para `/__l5e/assets-v1/` sem domínio.
-   - Testar a página `/ferias-de-julho` e confirmar que as imagens respondem como `image/jpeg`, não `text/html`.
+3. **Trocar as referências no código**
+   - Substituir os imports dos `.asset.json` por constantes com a URL pública do Supabase em:
+     - `src/components/sections/FeriasJulhoBanner.tsx`
+     - `src/pages/FeriasJulhoPage.tsx`
+     - `src/data/packages.ts`
+     - Qualquer outro componente que use essas 19 imagens.
+   - Remover os arquivos `.asset.json` correspondentes da pasta `src/assets/`.
 
-## Resultado esperado
+4. **Limpar a gambiarra**
+   - Remover a função `makeLovableAssetUrlsAbsolute()` do `scripts/prerender.mjs`.
+   - Remover a `RewriteRule` de `/__l5e/assets-v1/` do `public/.htaccess`.
+   - Simplificar `src/lib/assets.ts` (ou remover se ninguém mais usar).
 
-Depois do próximo deploy, as imagens da página de Férias de Julho devem abrir corretamente no domínio `minhagloria.com.br`, inclusive em cache, HTML prerenderizado e acessos diretos às URLs antigas de assets.
+5. **Verificação**
+   - Rodar o build local e confirmar que as imagens carregam direto da URL do Supabase.
+   - Após deploy, abrir `minhagloria.com.br/ferias-de-julho` e confirmar `200 OK` + `content-type: image/jpeg` nas requisições das fotos.
+
+## Observações técnicas
+
+- O bucket público do Lovable Cloud serve as imagens com cache CDN e CORS corretos — não há configuração extra no Hostinger.
+- A migração é reversível: se quiser voltar para `.asset.json` depois, é só desfazer.
+- Esta abordagem também blinda **futuras imagens**: basta subir no mesmo bucket e referenciar pela URL pública, sem nunca mais passar pelo `/__l5e/`.
+
+## Escopo NÃO incluído (a definir depois, se quiser)
+
+- Migrar **todas** as outras imagens do site (chalés, gastronomia, hero, etc.) para o Supabase. Posso fazer num segundo passo se você confirmar que ficou bom só com Férias de Julho primeiro.
+- Mexer no workflow do GitHub / FTP do Hostinger — isso é problema separado da hospedagem, não das imagens.
+
+Confirma que sigo por esse caminho?
