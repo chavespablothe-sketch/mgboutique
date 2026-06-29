@@ -1,12 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO, { breadcrumbSchema } from "@/components/SEO";
 import CouponBanner from "@/components/CouponBanner";
+import Lightbox from "@/components/Lightbox";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Calendar, Sparkles, ArrowRight, Sun } from "lucide-react";
+import { Calendar, Sparkles, ArrowRight, Sun, ZoomIn } from "lucide-react";
 import { OMNIBEES_URL } from "@/lib/omnibees";
 import { feriasJulhoImages as IMG } from "@/lib/siteImages";
 
