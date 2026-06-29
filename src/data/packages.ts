@@ -1,4 +1,4 @@
-import { assetUrl } from "@/lib/assets";
+import { pacoteImages } from "@/lib/siteImages";
 
 export interface ProgramSection {
   icon: string;
