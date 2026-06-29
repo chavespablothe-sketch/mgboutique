@@ -4,7 +4,7 @@
 // emitted by modern Vite/SWC bundles.
 import { run } from "react-snap";
 import puppeteer from "puppeteer";
-import { readFileSync, writeFileSync, existsSync, readdirSync, statSync } from "node:fs";
+import { readFileSync, existsSync, readdirSync, statSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve, join } from "node:path";
 
@@ -15,17 +15,6 @@ const pkg = JSON.parse(
 
 const execPath = await puppeteer.executablePath();
 const distDir = resolve(__dirname, "../dist");
-const assetOrigin = "https://mgboutique.lovable.app";
-const assetPathPrefix = "/__l5e/assets-v1/";
-const textFileExtensions = new Set([
-  ".html",
-  ".js",
-  ".css",
-  ".json",
-  ".xml",
-  ".txt",
-  ".webmanifest",
-]);
 
 const config = {
   ...pkg.reactSnap,
@@ -42,44 +31,6 @@ function countHtml(dir) {
     else if (entry.endsWith(".html")) n += 1;
   }
   return n;
-}
-
-function shouldPatchFile(file) {
-  return [...textFileExtensions].some((ext) => file.endsWith(ext));
-}
-
-function makeLovableAssetUrlsAbsolute(dir) {
-  let patched = 0;
-  if (!existsSync(dir)) return patched;
-
-  for (const entry of readdirSync(dir)) {
-    const full = join(dir, entry);
-    const st = statSync(full);
-
-    if (st.isDirectory()) {
-      patched += makeLovableAssetUrlsAbsolute(full);
-      continue;
-    }
-
-    if (!shouldPatchFile(full)) continue;
-
-    const before = readFileSync(full, "utf8");
-    const after = before
-      .replaceAll(`"${assetPathPrefix}`, `"${assetOrigin}${assetPathPrefix}`)
-      .replaceAll(`'${assetPathPrefix}`, `'${assetOrigin}${assetPathPrefix}`)
-      .replaceAll(`(${assetPathPrefix}`, `(${assetOrigin}${assetPathPrefix}`)
-      .replaceAll(`&quot;${assetPathPrefix}`, `&quot;${assetOrigin}${assetPathPrefix}`)
-      .replaceAll(`&#x27;${assetPathPrefix}`, `&#x27;${assetOrigin}${assetPathPrefix}`)
-      .replaceAll(`https://minhagloria.com.br${assetPathPrefix}`, `${assetOrigin}${assetPathPrefix}`)
-      .replaceAll(`https://www.minhagloria.com.br${assetPathPrefix}`, `${assetOrigin}${assetPathPrefix}`);
-
-    if (after !== before) {
-      writeFileSync(full, after);
-      patched += 1;
-    }
-  }
-
-  return patched;
 }
 
 try {
@@ -101,7 +52,3 @@ try {
   }
   console.log("[prerender] continuing build with partial prerender");
 }
-
-const patchedAssets = makeLovableAssetUrlsAbsolute(distDir);
-console.log(`[postbuild] normalized Lovable asset URLs in ${patchedAssets} file(s)`);
-
