@@ -8,35 +8,16 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { Calendar, Sparkles, ArrowRight, Sun } from "lucide-react";
 import { OMNIBEES_URL } from "@/lib/omnibees";
-import { assetUrl } from "@/lib/assets";
-
-import bolhas from "@/assets/ferias-julho/ferias-bolhas.jpg.asset.json";
-import cozinha from "@/assets/ferias-julho/ferias-cozinha.jpg.asset.json";
-import presente from "@/assets/ferias-julho/ferias-presente.jpg.asset.json";
-import pintura from "@/assets/ferias-julho/ferias-pintura.jpg.asset.json";
-import cisne from "@/assets/ferias-julho/ferias-cisne.jpg.asset.json";
-import piscina from "@/assets/ferias-julho/ferias-piscina.jpg.asset.json";
-import recreacao from "@/assets/ferias-julho/ferias-recreacao.jpg.asset.json";
-
-import heroFerias from "@/assets/ferias-julho/dias/hero-ferias.jpg.asset.json";
-import feriasCover from "@/assets/ferias-julho/dias/ferias-cover.jpg.asset.json";
-import introSemana from "@/assets/ferias-julho/dias/intro-semana.jpg.asset.json";
-import diaSegunda from "@/assets/ferias-julho/dias/segunda.jpg.asset.json";
-import diaTerca from "@/assets/ferias-julho/dias/terca.jpg.asset.json";
-import diaQuarta from "@/assets/ferias-julho/dias/quarta.jpg.asset.json";
-import diaQuinta from "@/assets/ferias-julho/dias/quinta.jpg.asset.json";
-import diaSexta from "@/assets/ferias-julho/dias/sexta.jpg.asset.json";
-import diaSabado from "@/assets/ferias-julho/dias/sabado.jpg.asset.json";
-import diaDomingo from "@/assets/ferias-julho/dias/domingo.jpg.asset.json";
+import { feriasJulhoImages as IMG } from "@/lib/siteImages";
 
 const galeria = [
-  { src: assetUrl(bolhas.url), alt: "Crianças brincando com bolhas de sabão no jardim" },
-  { src: assetUrl(recreacao.url), alt: "Recreação ao ar livre com os monitores" },
-  { src: assetUrl(cozinha.url), alt: "Oficina de confeitaria com chapéu de chef" },
-  { src: assetUrl(piscina.url), alt: "Crianças se divertindo na piscina" },
-  { src: assetUrl(pintura.url), alt: "Ateliê de pintura e desenho no gramado" },
-  { src: assetUrl(cisne.url), alt: "Encontro com o cisne negro no lago" },
-  { src: assetUrl(presente.url), alt: "Momento especial com a equipe de recreação" },
+  { src: IMG.bolhas, alt: "Crianças brincando com bolhas de sabão no jardim" },
+  { src: IMG.recreacao, alt: "Recreação ao ar livre com os monitores" },
+  { src: IMG.cozinha, alt: "Oficina de confeitaria com chapéu de chef" },
+  { src: IMG.piscina, alt: "Crianças se divertindo na piscina" },
+  { src: IMG.pintura, alt: "Ateliê de pintura e desenho no gramado" },
+  { src: IMG.cisne, alt: "Encontro com o cisne negro no lago" },
+  { src: IMG.presente, alt: "Momento especial com a equipe de recreação" },
 ];
 
 type Dia = {
@@ -121,13 +102,13 @@ const programacao: Dia[] = [
 ];
 
 const diasArte = [
-  { nome: "Segunda", img: assetUrl(diaSegunda.url), frase: "Pé na grama e bolhas no ar pra começar bem." },
-  { nome: "Terça",   img: assetUrl(diaTerca.url),   frase: "Tobogã, gincanas e muita risada solta." },
-  { nome: "Quarta",  img: assetUrl(diaQuarta.url),  frase: "Folhas, tintas e cabeça cheia de ideia." },
-  { nome: "Quinta",  img: assetUrl(diaQuinta.url),  frase: "Mão na terra e oi pro cisne negro." },
-  { nome: "Sexta",   img: assetUrl(diaSexta.url),   frase: "Skibunda gelado e futebol até cansar." },
-  { nome: "Sábado",  img: assetUrl(diaSabado.url),  frase: "Chapéu de chef de dia, arraiá à noite." },
-  { nome: "Domingo", img: assetUrl(diaDomingo.url), frase: "Mirante, pintura facial e abraço de tchau." },
+  { nome: "Segunda", img: IMG.segunda, frase: "Pé na grama e bolhas no ar pra começar bem." },
+  { nome: "Terça",   img: IMG.terca,   frase: "Tobogã, gincanas e muita risada solta." },
+  { nome: "Quarta",  img: IMG.quarta,  frase: "Folhas, tintas e cabeça cheia de ideia." },
+  { nome: "Quinta",  img: IMG.quinta,  frase: "Mão na terra e oi pro cisne negro." },
+  { nome: "Sexta",   img: IMG.sexta,   frase: "Skibunda gelado e futebol até cansar." },
+  { nome: "Sábado",  img: IMG.sabado,  frase: "Chapéu de chef de dia, arraiá à noite." },
+  { nome: "Domingo", img: IMG.domingo, frase: "Mirante, pintura facial e abraço de tchau." },
 ];
 
 const FeriasJulhoPage = () => {
@@ -151,7 +132,7 @@ const FeriasJulhoPage = () => {
         title="Férias de Julho 2026 | Minha Glória Hotel Boutique"
         description="Programação recreativa infantil completa nas férias de julho em Bom Jardim, RJ. Fazendinha, oficinas, gincanas, skibunda e muito mais para as crianças amarem."
         canonical="/ferias-de-julho"
-        ogImage={assetUrl(feriasCover.url)}
+        ogImage={IMG.feriasCover}
         schemas={[breadcrumbSchema([
           { name: "Home", url: "/" },
           { name: "Férias de Julho", url: "/ferias-de-julho" },
@@ -164,7 +145,7 @@ const FeriasJulhoPage = () => {
         {/* Foto de fundo */}
         <div
           className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${assetUrl(heroFerias.url)})` }}
+          style={{ backgroundImage: `url(${IMG.heroFerias})` }}
           aria-hidden
         />
         {/* Camadas coloridas vivas, respeitando verde + dourado */}
@@ -228,7 +209,7 @@ const FeriasJulhoPage = () => {
             >
               <div className="absolute -inset-3 rounded-3xl bg-secondary/40 blur-2xl" aria-hidden />
               <img
-                src={assetUrl(feriasCover.url)}
+                src={IMG.feriasCover}
                 alt="Arte oficial Férias de Julho 2026 no Minha Glória Hotel Boutique"
                 className="relative rounded-2xl shadow-2xl ring-1 ring-secondary/40 w-full"
               />
@@ -250,7 +231,7 @@ const FeriasJulhoPage = () => {
           <div className="grid lg:grid-cols-12 gap-10 items-center max-w-6xl mx-auto">
             <div className="lg:col-span-5">
               <img
-                src={assetUrl(introSemana.url)}
+                src={IMG.introSemana}
                 alt="De segunda a domingo — programação variada"
                 className="rounded-2xl shadow-xl ring-1 ring-secondary/30 w-full"
               />
@@ -386,7 +367,7 @@ const FeriasJulhoPage = () => {
       <section className="relative py-20 lg:py-28 bg-primary overflow-hidden">
         <div
           className="absolute inset-0 opacity-20 bg-cover bg-center"
-          style={{ backgroundImage: `url(${assetUrl(recreacao.url)})` }}
+          style={{ backgroundImage: `url(${IMG.recreacao})` }}
           aria-hidden
         />
         <div className="absolute inset-0 bg-gradient-to-b from-primary/90 to-primary" aria-hidden />

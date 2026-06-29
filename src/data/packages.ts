@@ -1,4 +1,4 @@
-import { assetUrl } from "@/lib/assets";
+import { pacoteImages } from "@/lib/siteImages";
 
 export interface ProgramSection {
   icon: string;
@@ -380,9 +380,9 @@ const packages: HotelPackage[] = [
       { day: "Domingo (06/09)", items: ["Café da manhã", "Atividades em família", "Almoço especial", "Tarde livre", "Jantar de despedida"] },
       { day: "Segunda-feira (07/09)", items: ["Café da manhã", "Check-out até 12h"] },
     ],
-    image: assetUrl("/__l5e/assets-v1/6c3fc29a-fd28-40de-a5de-48f85504d969/setembro-2026.jpg"),
+    image: pacoteImages.setembro2026,
     gallery: buildGallery([
-      assetUrl("/__l5e/assets-v1/6c3fc29a-fd28-40de-a5de-48f85504d969/setembro-2026.jpg"),
+      pacoteImages.setembro2026,
       "/images/amenities-trilhas.png",
       "/images/lazer-piscina.webp",
     ]),
@@ -467,9 +467,9 @@ const packages: HotelPackage[] = [
       { day: "Domingo (11/10)", items: ["Café da manhã", "Atividades ao ar livre", "Almoço", "Celebração especial de Dia das Crianças", "Jantar de despedida"] },
       { day: "Segunda-feira (12/10)", items: ["Café da manhã", "Atividades finais", "Check-out até 12h"] },
     ],
-    image: assetUrl("/__l5e/assets-v1/b2ffe552-da24-4342-80f1-5b48ab550d13/criancas-2026.jpg"),
+    image: pacoteImages.criancas2026,
     gallery: buildGallery([
-      assetUrl("/__l5e/assets-v1/b2ffe552-da24-4342-80f1-5b48ab550d13/criancas-2026.jpg"),
+      pacoteImages.criancas2026,
       "/images/lazer-lhamas.jpg",
       "/images/sobre-vista-pedra.jpg",
     ]),
@@ -552,9 +552,9 @@ const packages: HotelPackage[] = [
       { day: "Domingo (01/11)", items: ["Café da manhã", "Atividades leves ao ar livre", "Almoço especial", "Tarde livre", "Jantar de despedida"] },
       { day: "Segunda-feira (02/11)", items: ["Café da manhã", "Check-out até 12h"] },
     ],
-    image: assetUrl("/__l5e/assets-v1/e8eadf85-770c-48b2-8436-f6383721af4d/finados-2026.jpg"),
+    image: pacoteImages.finados2026,
     gallery: buildGallery([
-      assetUrl("/__l5e/assets-v1/e8eadf85-770c-48b2-8436-f6383721af4d/finados-2026.jpg"),
+      pacoteImages.finados2026,
       "/images/amenities-spa.jpg",
       "/images/amenities-trilhas.png",
     ]),
