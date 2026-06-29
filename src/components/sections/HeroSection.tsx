@@ -94,22 +94,33 @@ const HeroSection = () => {
             transition={{ duration: 0.8 }}
             className="max-w-5xl mx-auto"
           >
-            <div className="rounded-xl overflow-hidden shadow-2xl">
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full aspect-video object-cover"
-                poster="/images/welcome-aerial.webp"
-              >
-                <source src={VIDEO_URL} type="video/mp4" />
-                Seu navegador não suporta vídeos HTML5.
-              </video>
+            <div className="rounded-xl overflow-hidden shadow-2xl bg-primary/40">
+              {videoFailed ? (
+                <div
+                  className="w-full aspect-video bg-cover bg-center"
+                  style={{ backgroundImage: `url('/images/welcome-aerial.webp')` }}
+                  role="img"
+                  aria-label="Vista aérea do Minha Glória Hotel Boutique"
+                />
+              ) : (
+                <video
+                  ref={videoRef}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full aspect-video object-cover"
+                  poster="/images/welcome-aerial.webp"
+                  onError={() => setVideoFailed(true)}
+                >
+                  <source src={VIDEO_URL} type="video/mp4" onError={() => setVideoFailed(true)} />
+                </video>
+              )}
             </div>
           </motion.div>
         </div>
       </section>
+
     </>
   );
 };
