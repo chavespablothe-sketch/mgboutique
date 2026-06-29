@@ -114,6 +114,9 @@ const diasArte = [
 
 const FeriasJulhoPage = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const diasLightbox = diasArte.map((d) => ({ src: d.img, alt: `${d.nome} — ${d.frase}` }));
 
   const CTA = ({ size = "lg" as "lg" | "default" }) => (
     <Button
