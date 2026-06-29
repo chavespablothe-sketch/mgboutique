@@ -1,3 +1,4 @@
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -8,6 +9,8 @@ import NextPackageHighlight from "@/components/NextPackageHighlight";
 const VIDEO_URL = "https://minha-gloria.b-cdn.net/hotel_fazenda_minha_gl%C3%B3ria_-_apresenta%C3%A7%C3%A3o_fev%E2%A7%B82022_-_2_v3%20(1080p).mp4";
 
 const HeroSection = () => {
+  const [videoFailed, setVideoFailed] = useState(false);
+  const videoRef = useRef<HTMLVideoElement>(null);
   return (
     <>
       <section className="relative min-h-screen flex items-center overflow-hidden">
@@ -91,22 +94,33 @@ const HeroSection = () => {
             transition={{ duration: 0.8 }}
             className="max-w-5xl mx-auto"
           >
-            <div className="rounded-xl overflow-hidden shadow-2xl">
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="w-full aspect-video object-cover"
-                poster="/images/welcome-aerial.webp"
-              >
-                <source src={VIDEO_URL} type="video/mp4" />
-                Seu navegador não suporta vídeos HTML5.
-              </video>
+            <div className="rounded-xl overflow-hidden shadow-2xl bg-primary/40">
+              {videoFailed ? (
+                <div
+                  className="w-full aspect-video bg-cover bg-center"
+                  style={{ backgroundImage: `url('/images/welcome-aerial.webp')` }}
+                  role="img"
+                  aria-label="Vista aérea do Minha Glória Hotel Boutique"
+                />
+              ) : (
+                <video
+                  ref={videoRef}
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  className="w-full aspect-video object-cover"
+                  poster="/images/welcome-aerial.webp"
+                  onError={() => setVideoFailed(true)}
+                >
+                  <source src={VIDEO_URL} type="video/mp4" onError={() => setVideoFailed(true)} />
+                </video>
+              )}
             </div>
           </motion.div>
         </div>
       </section>
+
     </>
   );
 };

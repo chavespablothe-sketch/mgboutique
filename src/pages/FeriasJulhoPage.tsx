@@ -1,12 +1,13 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO, { breadcrumbSchema } from "@/components/SEO";
 import CouponBanner from "@/components/CouponBanner";
+import Lightbox from "@/components/Lightbox";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { Calendar, Sparkles, ArrowRight, Sun } from "lucide-react";
+import { Calendar, Sparkles, ArrowRight, Sun, ZoomIn } from "lucide-react";
 import { OMNIBEES_URL } from "@/lib/omnibees";
 import { feriasJulhoImages as IMG } from "@/lib/siteImages";
 
@@ -113,6 +114,9 @@ const diasArte = [
 
 const FeriasJulhoPage = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+  const diasLightbox = diasArte.map((d) => ({ src: d.img, alt: `${d.nome} — ${d.frase}` }));
 
   const CTA = ({ size = "lg" as "lg" | "default" }) => (
     <Button
@@ -280,28 +284,45 @@ const FeriasJulhoPage = () => {
             </p>
           </div>
 
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3 md:gap-4 max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 md:gap-6 max-w-6xl mx-auto">
             {diasArte.map((d, i) => (
-              <motion.a
+              <motion.button
                 key={d.nome}
-                href="#programacao"
+                type="button"
+                onClick={() => { setLightboxIndex(i); setLightboxOpen(true); }}
                 initial={{ opacity: 0, y: 14 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.05 }}
-                className="group relative aspect-[3/4] rounded-xl overflow-hidden ring-1 ring-secondary/30 shadow-md hover:shadow-xl transition-all"
+                className="group relative aspect-square rounded-2xl overflow-hidden ring-1 ring-secondary/30 shadow-md hover:shadow-2xl hover:ring-secondary/70 hover:-translate-y-1 transition-all duration-300 cursor-zoom-in bg-muted"
+                aria-label={`Ver arte de ${d.nome} em tela cheia`}
               >
-                <img src={d.img} alt={`${d.nome} — programação`} loading="lazy" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-primary/95 via-primary/40 to-transparent" aria-hidden />
-                <div className="absolute inset-x-0 bottom-0 p-3 text-primary-foreground">
-                  <p className="font-display text-base md:text-lg font-semibold leading-tight">{d.nome}</p>
-                  <p className="text-[11px] md:text-xs font-body text-primary-foreground/85 leading-snug mt-1">{d.frase}</p>
+                <img
+                  src={d.img}
+                  alt={`${d.nome} — programação`}
+                  loading="lazy"
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-700"
+                />
+                <div className="absolute top-3 right-3 w-9 h-9 rounded-full bg-primary/70 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity">
+                  <ZoomIn size={16} className="text-primary-foreground" />
                 </div>
-              </motion.a>
+                <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-primary/85 via-primary/30 to-transparent pointer-events-none">
+                  <p className="font-body text-[11px] md:text-xs text-primary-foreground/90 leading-snug text-left">{d.frase}</p>
+                </div>
+              </motion.button>
             ))}
           </div>
         </div>
       </section>
+
+      <Lightbox
+        images={diasLightbox}
+        open={lightboxOpen}
+        initialIndex={lightboxIndex}
+        onClose={() => setLightboxOpen(false)}
+        caption="Férias de Julho 2026"
+      />
+
 
       {/* PROGRAMAÇÃO COMPLETA */}
       <section id="programacao" className="py-20 lg:py-28 bg-hotel-cream">
