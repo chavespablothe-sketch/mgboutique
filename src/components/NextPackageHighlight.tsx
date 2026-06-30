@@ -101,6 +101,7 @@ const NextPackageHighlight = () => {
   const period = dates.recurring ? dates.recurring.label : pkg.period;
   const showUrgency = days < 30;
   const isValentines = pkg.slug === "dia-dos-namorados-2026";
+  const isRecurringWeekend = !!pkg.recurringWeekends;
 
   return (
     <motion.div
