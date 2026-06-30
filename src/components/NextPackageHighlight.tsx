@@ -21,9 +21,15 @@ function getDaysUntil(ddmmyyyy: string): number {
 
 function getNextPackage() {
   const now = new Date();
+  // Para pacotes recorrentes (fim-de-semana), pular o FDS imediato (esgotado)
+  // e mostrar o seguinte: somamos 7 dias ao "agora" só na resolução de datas.
+  const nowPlus7 = new Date(now.getTime() + 7 * 86400000);
   const list = packages
     .filter((p) => isPackageActive(p, now))
-    .map((p) => ({ pkg: p, dates: resolvePackageDates(p, now) }))
+    .map((p) => ({
+      pkg: p,
+      dates: resolvePackageDates(p, p.recurringWeekends ? nowPlus7 : now),
+    }))
     .filter((x) => !!x.dates.checkIn)
     .sort((a, b) => getDaysUntil(a.dates.checkIn!) - getDaysUntil(b.dates.checkIn!));
   return list[0] || null;
@@ -66,13 +72,13 @@ function getTheme(slug: string): Theme {
     };
   }
   return {
-    ribbon: "bg-gradient-to-r from-secondary to-secondary/80",
+    ribbon: "bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500",
     ribbonText: "Próximo pacote",
     icon: Sparkles,
-    iconColor: "text-secondary",
-    glow: "from-secondary/25 via-secondary/10 to-transparent",
-    border: "border-secondary/40",
-    badge: "bg-secondary/15 text-secondary border-secondary/40",
+    iconColor: "text-yellow-300",
+    glow: "from-yellow-400/50 via-amber-300/25 to-transparent",
+    border: "border-yellow-300/60",
+    badge: "bg-yellow-400/20 text-yellow-100 border-yellow-300/60",
     italicWord: "exclusivo",
   };
 }
@@ -95,6 +101,7 @@ const NextPackageHighlight = () => {
   const period = dates.recurring ? dates.recurring.label : pkg.period;
   const showUrgency = days < 30;
   const isValentines = pkg.slug === "dia-dos-namorados-2026";
+  const isRecurringWeekend = !!pkg.recurringWeekends;
 
   return (
     <motion.div
@@ -108,12 +115,12 @@ const NextPackageHighlight = () => {
 
       <Link
         to={`/ofertas/${pkg.slug}`}
-        className={`group/card relative block rounded-2xl border ${theme.border} bg-primary/40 backdrop-blur-xl pl-4 pr-4 py-3 shadow-lg overflow-hidden hover:bg-primary/55 hover:border-secondary/70 hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.5)] hover:-translate-y-0.5 transition-all duration-300 ease-out`}
+        className={`group/card relative block rounded-2xl border ${theme.border} bg-primary/40 backdrop-blur-xl pl-4 pr-4 py-3 shadow-lg overflow-hidden hover:bg-primary/55 hover:border-yellow-300 hover:shadow-[0_12px_40px_-12px_rgba(250,204,21,0.45)] hover:-translate-y-0.5 transition-all duration-300 ease-out`}
       >
         {/* Shimmer sweep on hover */}
         <span
           aria-hidden
-          className="pointer-events-none absolute inset-0 -translate-x-full group-hover/card:translate-x-full transition-transform duration-[1100ms] ease-out bg-gradient-to-r from-transparent via-secondary/20 to-transparent"
+          className="pointer-events-none absolute inset-0 -translate-x-full group-hover/card:translate-x-full transition-transform duration-[1100ms] ease-out bg-gradient-to-r from-transparent via-yellow-300/30 to-transparent"
         />
 
         {/* Themed floating icons */}
@@ -126,10 +133,16 @@ const NextPackageHighlight = () => {
           <div className={`w-0.5 self-stretch rounded-full ${theme.ribbon} opacity-80`} aria-hidden />
 
           <div className="flex-1 min-w-0">
+            {isRecurringWeekend && (
+              <span className="inline-flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-[0.18em] px-2 py-0.5 rounded-full bg-yellow-400 text-primary shadow-[0_0_18px_-2px_rgba(250,204,21,0.8)] mb-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                FDS atual esgotado · próximo
+              </span>
+            )}
             <h3 className="font-display text-base md:text-lg text-primary-foreground font-semibold leading-tight mb-0.5">
-              {pkg.shortTitle} <span className="italic text-secondary">{theme.italicWord}</span>
+              {pkg.shortTitle} <span className="italic text-yellow-300">{theme.italicWord}</span>
             </h3>
-            <p className="text-primary-foreground/60 font-body text-[11px] mb-2.5">
+            <p className="text-primary-foreground/70 font-body text-[11px] mb-2.5">
               {period}
             </p>
 
@@ -139,14 +152,14 @@ const NextPackageHighlight = () => {
                   <Heart size={8} className="fill-white" /> -10% últimos quartos
                 </span>
               )}
-              {showUrgency && !isValentines && (
+              {showUrgency && !isValentines && !isRecurringWeekend && (
                 <span className={`inline-flex items-center gap-1 text-[9px] font-semibold uppercase tracking-[0.18em] px-2 py-0.5 rounded-full border ${theme.badge}`}>
                   <span className="w-1 h-1 rounded-full bg-current" />
                   {days < 15 ? "Últimas vagas" : "Últimos quartos"}
                 </span>
               )}
-              <span className="inline-flex items-center gap-1 text-secondary font-body text-[10px] font-semibold uppercase tracking-[0.18em] group-hover/card:gap-2 group-hover/card:text-secondary transition-all">
-                Ver detalhes <ArrowRight size={10} className="group-hover/card:translate-x-0.5 transition-transform" />
+              <span className="inline-flex items-center gap-1 text-yellow-300 font-body text-[10px] font-semibold uppercase tracking-[0.18em] group-hover/card:gap-2 transition-all">
+                Garanta sua vaga <ArrowRight size={10} className="group-hover/card:translate-x-0.5 transition-transform" />
               </span>
             </div>
           </div>
