@@ -115,12 +115,12 @@ const NextPackageHighlight = () => {
 
       <Link
         to={`/ofertas/${pkg.slug}`}
-        className={`group/card relative block rounded-2xl border ${theme.border} bg-primary/40 backdrop-blur-xl pl-4 pr-4 py-3 shadow-lg overflow-hidden hover:bg-primary/55 hover:border-secondary/70 hover:shadow-[0_12px_40px_-12px_rgba(0,0,0,0.5)] hover:-translate-y-0.5 transition-all duration-300 ease-out`}
+        className={`group/card relative block rounded-2xl border ${theme.border} bg-primary/40 backdrop-blur-xl pl-4 pr-4 py-3 shadow-lg overflow-hidden hover:bg-primary/55 hover:border-yellow-300 hover:shadow-[0_12px_40px_-12px_rgba(250,204,21,0.45)] hover:-translate-y-0.5 transition-all duration-300 ease-out`}
       >
         {/* Shimmer sweep on hover */}
         <span
           aria-hidden
-          className="pointer-events-none absolute inset-0 -translate-x-full group-hover/card:translate-x-full transition-transform duration-[1100ms] ease-out bg-gradient-to-r from-transparent via-secondary/20 to-transparent"
+          className="pointer-events-none absolute inset-0 -translate-x-full group-hover/card:translate-x-full transition-transform duration-[1100ms] ease-out bg-gradient-to-r from-transparent via-yellow-300/30 to-transparent"
         />
 
         {/* Themed floating icons */}
