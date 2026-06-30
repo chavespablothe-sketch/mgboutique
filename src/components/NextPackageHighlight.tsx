@@ -72,13 +72,13 @@ function getTheme(slug: string): Theme {
     };
   }
   return {
-    ribbon: "bg-gradient-to-r from-secondary to-secondary/80",
+    ribbon: "bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500",
     ribbonText: "Próximo pacote",
     icon: Sparkles,
-    iconColor: "text-secondary",
-    glow: "from-secondary/25 via-secondary/10 to-transparent",
-    border: "border-secondary/40",
-    badge: "bg-secondary/15 text-secondary border-secondary/40",
+    iconColor: "text-yellow-300",
+    glow: "from-yellow-400/50 via-amber-300/25 to-transparent",
+    border: "border-yellow-300/60",
+    badge: "bg-yellow-400/20 text-yellow-100 border-yellow-300/60",
     italicWord: "exclusivo",
   };
 }
