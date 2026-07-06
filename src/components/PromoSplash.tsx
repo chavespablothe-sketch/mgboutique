@@ -73,44 +73,36 @@ const PromoSplash = () => {
 
   return (
     <div
-      className="fixed z-40 bottom-24 inset-x-4 sm:inset-x-auto sm:bottom-6 sm:left-6 sm:right-auto sm:max-w-xs animate-fade-in"
+      className="fixed z-40 bottom-24 inset-x-4 sm:inset-x-auto sm:bottom-6 sm:left-6 sm:right-auto sm:max-w-[340px] animate-fade-in"
       role="complementary"
       aria-label="Próximo fim de semana em destaque"
     >
       <Link
         to={href}
-        className="group relative block overflow-hidden rounded-xl bg-primary/90 backdrop-blur-md text-primary-foreground border border-yellow-300/30 shadow-xl hover:border-yellow-300/60 hover:shadow-yellow-300/20 transition-all duration-500"
+        className="group relative flex items-stretch overflow-hidden rounded-md bg-[#f6f1e6] text-primary border border-primary/10 shadow-[0_20px_50px_-24px_rgba(0,0,0,0.35)] hover:shadow-[0_24px_60px_-24px_rgba(0,0,0,0.45)] transition-all duration-500"
       >
-        {/* Subtle shimmer sweep */}
-        <span
-          aria-hidden
-          className="pointer-events-none absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-[1400ms] ease-out bg-gradient-to-r from-transparent via-yellow-200/10 to-transparent"
-        />
+        {/* Vertical yellow ribbon */}
+        <span aria-hidden className="w-[6px] shrink-0 bg-yellow-400" />
 
-        <div className="relative flex items-center gap-3 p-3.5 pr-9">
-          {/* Delicate pulsing dot */}
-          <span className="relative flex-shrink-0 mt-0.5">
-            <span className="absolute inset-0 rounded-full bg-yellow-300/50 animate-ping [animation-duration:2.4s]" />
-            <span className="relative flex h-2 w-2 rounded-full bg-yellow-300 shadow-[0_0_10px_rgba(253,224,71,0.7)]" />
+        <div className="flex-1 min-w-0 pl-4 pr-9 py-3.5">
+          <span className="block text-[9px] font-semibold tracking-[0.28em] uppercase text-primary/50 mb-1.5">
+            Próximo fim de semana
           </span>
-
-          <div className="flex-1 min-w-0">
-            <span className="block text-[9px] font-semibold tracking-[0.22em] uppercase text-yellow-300/90 mb-1">
-              Próximo fim de semana · {period}
-            </span>
-            <p className="font-display text-[13px] leading-snug text-primary-foreground/95 mb-2">
-              {pkg.shortTitle}
-            </p>
-            <span className="inline-flex items-center gap-1.5 text-yellow-300 font-body text-[10px] font-semibold uppercase tracking-[0.18em] group-hover:gap-2 transition-all">
-              Garantir minha vaga <ArrowRight size={11} className="group-hover:translate-x-0.5 transition-transform" />
-            </span>
-          </div>
+          <p className="font-display text-[15px] leading-snug text-primary mb-0.5">
+            {pkg.shortTitle}
+          </p>
+          <p className="font-body text-[11px] text-primary/60 italic mb-2.5">
+            {period}
+          </p>
+          <span className="inline-flex items-center gap-1.5 bg-yellow-400 hover:bg-yellow-300 text-primary font-body text-[10px] font-bold uppercase tracking-[0.16em] px-3 py-1.5 rounded-full shadow-sm transition-all group-hover:gap-2">
+            Garantir minha vaga <ArrowRight size={11} className="group-hover:translate-x-0.5 transition-transform" />
+          </span>
         </div>
 
         <button
           onClick={handleClose}
           aria-label="Fechar"
-          className="absolute top-1.5 right-1.5 z-10 rounded-full p-1 text-primary-foreground/40 hover:text-primary-foreground hover:bg-primary-foreground/10 transition-colors"
+          className="absolute top-1.5 right-1.5 z-10 rounded-full p-1 text-primary/35 hover:text-primary hover:bg-primary/10 transition-colors"
         >
           <X size={12} />
         </button>
