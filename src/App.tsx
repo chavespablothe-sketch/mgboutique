@@ -17,6 +17,7 @@ import BlogPage from "./pages/BlogPage";
 import FeriasJulhoPage from "./pages/FeriasJulhoPage";
 import PrivacidadePage from "./pages/PrivacidadePage";
 import NotFound from "./pages/NotFound";
+import PromoSplash from "./components/PromoSplash";
 
 
 const queryClient = new QueryClient();
@@ -52,6 +53,7 @@ const App = () => (
           <Route path="/lazer" element={<Navigate to="/experiencias" replace />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <PromoSplash />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
