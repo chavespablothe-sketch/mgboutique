@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Heart, ArrowRight, Sparkles, Clock, Flame } from "lucide-react";
+import { Heart, ArrowRight, Sparkles, Clock, Flame, Sun } from "lucide-react";
 import { Link } from "react-router-dom";
 import packages from "@/data/packages";
 import { isPackageActive, resolvePackageDates } from "@/lib/packageStatus";
@@ -21,18 +21,29 @@ function getDaysUntil(ddmmyyyy: string): number {
 
 function getNextPackage() {
   const now = new Date();
-  // Para pacotes recorrentes (fim-de-semana), pular o FDS imediato (esgotado)
-  // e mostrar o seguinte: somamos 7 dias ao "agora" só na resolução de datas.
-  const nowPlus7 = new Date(now.getTime() + 7 * 86400000);
   const list = packages
     .filter((p) => isPackageActive(p, now))
     .map((p) => ({
       pkg: p,
-      dates: resolvePackageDates(p, p.recurringWeekends ? nowPlus7 : now),
+      dates: resolvePackageDates(p, now),
     }))
     .filter((x) => !!x.dates.checkIn)
     .sort((a, b) => getDaysUntil(a.dates.checkIn!) - getDaysUntil(b.dates.checkIn!));
   return list[0] || null;
+}
+
+/**
+ * Após o domingo do FDS atual, durante o mês de julho/2026, trocamos o card
+ * para promover as Férias de Julho em vez do próximo FDS.
+ */
+function shouldShowFerias(now: Date = new Date()): boolean {
+  const y = now.getFullYear();
+  const m = now.getMonth(); // 0-based
+  if (y !== 2026 || m !== 6) return false; // julho
+  const dow = now.getDay(); // 0=Sun..6=Sat
+  // Sex(5), Sáb(6), Dom(0) = fim de semana em curso → ainda mostrar o FDS.
+  // Seg–Qui (1–4) durante julho → mostrar Férias.
+  return dow >= 1 && dow <= 4;
 }
 
 interface Theme {
