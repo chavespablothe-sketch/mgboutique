@@ -184,7 +184,7 @@ const NextPackageHighlight = () => {
             {isRecurringWeekend && (
               <span className="inline-flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-[0.18em] px-2 py-0.5 rounded-full bg-yellow-400 text-primary shadow-[0_0_18px_-2px_rgba(250,204,21,0.8)] mb-1.5">
                 <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-                FDS atual esgotado · próximo
+                Este fim de semana
               </span>
             )}
             <h3 className="font-display text-base md:text-lg text-primary-foreground font-semibold leading-tight mb-0.5">
