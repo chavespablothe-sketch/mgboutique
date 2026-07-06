@@ -8,7 +8,7 @@ import BoutiqueSection from "@/components/sections/BoutiqueSection";
 import AccommodationsSection from "@/components/sections/AccommodationsSection";
 import AmenitiesSection from "@/components/sections/AmenitiesSection";
 import OffersSection from "@/components/sections/OffersSection";
-import JogosBrasilSection from "@/components/sections/JogosBrasilSection";
+
 import KidsSection from "@/components/sections/KidsSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import CTASection from "@/components/CTASection";
@@ -29,7 +29,7 @@ const Index = () => {
       <HeroSection />
       <FeriasJulhoBanner />
       <OffersSection />
-      <JogosBrasilSection />
+      
       <KidsSection />
       <WelcomeSection />
       
