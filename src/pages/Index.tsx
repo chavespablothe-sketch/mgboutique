@@ -29,7 +29,7 @@ const Index = () => {
       <HeroSection />
       <FeriasJulhoBanner />
       <OffersSection />
-      <JogosBrasilSection />
+      
       <KidsSection />
       <WelcomeSection />
       
