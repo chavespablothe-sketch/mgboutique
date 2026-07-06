@@ -53,6 +53,7 @@ const App = () => (
           <Route path="/lazer" element={<Navigate to="/experiencias" replace />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <PromoSplash />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
