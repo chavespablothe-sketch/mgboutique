@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Sparkles, ArrowRight, X } from "lucide-react";
+import { ArrowRight, X } from "lucide-react";
 import packages from "@/data/packages";
 import { isPackageActive, resolvePackageDates } from "@/lib/packageStatus";
 
