@@ -77,6 +77,9 @@ const PromoSplash = () => {
   const { pkg, dates } = next;
   const period = dates.checkIn ? formatDateRange(dates.checkIn, dates.checkOut) : pkg.period;
   const href = `/ofertas/${pkg.slug}`;
+  const isPais = pkg.slug === "dia-dos-pais-2026";
+  const splashLabel = isPais ? "Dia dos Pais · 7 a 9 de agosto" : "Próximo fim de semana";
+
 
   return (
     <div
