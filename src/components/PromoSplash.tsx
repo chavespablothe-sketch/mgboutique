@@ -44,7 +44,8 @@ const PromoSplash = () => {
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(false);
 
-  const next = useMemo(() => getNextPackage(), []);
+  const next = useMemo(() => getPaisPackage() || getNextPackage(), []);
+
 
   useEffect(() => {
     if (sessionStorage.getItem(STORAGE_KEY) === "1") {
