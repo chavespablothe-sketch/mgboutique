@@ -33,17 +33,13 @@ function getNextPackage() {
 }
 
 /**
- * Após o domingo do FDS atual, durante o mês de julho/2026, trocamos o card
- * para promover as Férias de Julho em vez do próximo FDS.
+ * Durante o período de férias de julho/2026, o destaque da hero sempre
+ * promove a landing page de Férias de Julho.
  */
 function shouldShowFerias(now: Date = new Date()): boolean {
   const y = now.getFullYear();
   const m = now.getMonth(); // 0-based
-  if (y !== 2026 || m !== 6) return false; // julho
-  const dow = now.getDay(); // 0=Sun..6=Sat
-  // Sex(5), Sáb(6), Dom(0) = fim de semana em curso → ainda mostrar o FDS.
-  // Seg–Qui (1–4) durante julho → mostrar Férias.
-  return dow >= 1 && dow <= 4;
+  return y === 2026 && m === 6; // julho inteiro
 }
 
 interface Theme {
