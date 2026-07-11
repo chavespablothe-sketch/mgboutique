@@ -34,6 +34,12 @@ function getNextPackage() {
   return list[0] || null;
 }
 
+function getPaisPackage() {
+  const pkg = packages.find((p) => p.slug === "dia-dos-pais-2026");
+  if (!pkg) return null;
+  return { pkg, dates: resolvePackageDates(pkg, new Date()) };
+}
+
 const PromoSplash = () => {
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(false);
