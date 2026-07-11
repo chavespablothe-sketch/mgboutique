@@ -85,7 +85,7 @@ const PromoSplash = () => {
     <div
       className="fixed z-40 bottom-24 inset-x-4 sm:inset-x-auto sm:bottom-6 sm:left-6 sm:right-auto sm:max-w-[340px] animate-fade-in"
       role="complementary"
-      aria-label="Próximo fim de semana em destaque"
+      aria-label={isPais ? "Dia dos Pais em destaque" : "Próximo fim de semana em destaque"}
     >
       <Link
         to={href}
@@ -96,7 +96,7 @@ const PromoSplash = () => {
 
         <div className="flex-1 min-w-0 pl-4 pr-9 py-3.5">
           <span className="block text-[9px] font-semibold tracking-[0.28em] uppercase text-primary/50 mb-1.5">
-            Próximo fim de semana
+            {splashLabel}
           </span>
           <p className="font-display text-[15px] leading-snug text-primary mb-0.5">
             {pkg.shortTitle}
