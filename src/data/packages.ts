@@ -147,9 +147,9 @@ const packages: HotelPackage[] = [
       { day: "Sábado", items: ["Café da manhã estendido", "Atividades ao ar livre", "Almoço", "Recreação infantil", "Jantar especial"] },
       { day: "Domingo", items: ["Café da manhã", "Atividades em família", "Check-out até 12h"] },
     ],
-    image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/q6x9gulo6xm-1771961324364.webp",
+    image: "https://drjfkpgfqvtggxrhhuxp.supabase.co/storage/v1/object/public/site-images/pacotes/fim-de-semana.jpg",
     gallery: buildGallery([
-      "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/q6x9gulo6xm-1771961324364.webp",
+      "https://drjfkpgfqvtggxrhhuxp.supabase.co/storage/v1/object/public/site-images/pacotes/fim-de-semana.jpg",
       "/images/amenities-spa.jpg",
       "/images/amenities-trilhas.png",
     ]),
