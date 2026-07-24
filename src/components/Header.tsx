@@ -9,6 +9,7 @@ const navItems = [
   { label: "Experiências", href: "/experiencias" },
   { label: "Gastronomia", href: "/gastronomia" },
   { label: "Férias", href: "/ferias-de-julho", highlight: true },
+  { label: "Agosto", href: "/agosto", highlight: true },
   { label: "A Região", href: "/regiao" },
   { label: "Sobre", href: "/sobre" },
   { label: "Contato", href: "/contato" },
