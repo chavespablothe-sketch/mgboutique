@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, Sparkles, UtensilsCrossed, Leaf, Heart } from "lucide-react";
 import { buildOmnibeesUrl } from "@/lib/omnibees";
-import { agostoImages } from "@/lib/siteImages";
+import { agostoImages, feriasJulhoImages, pacoteImages } from "@/lib/siteImages";
 import packages from "@/data/packages";
 import { isPackageActive } from "@/lib/packageStatus";
 
