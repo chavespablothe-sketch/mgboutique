@@ -31,7 +31,7 @@ const AgostoPage = () => {
         title="Agosto no Minha Glória | Dia dos Pais & Fins de Semana na Serra"
         description="Descubra os pacotes de agosto: Dia dos Pais, fins de semana com pensão completa, experiências em meio à Mata Atlântica e gastronomia autoral no Minha Glória Hotel Boutique."
         canonical="/agosto"
-        schemas={[breadcrumbSchema([{ name: "Início", path: "/" }, { name: "Agosto", path: "/agosto" }])]}
+        schemas={[breadcrumbSchema([{ name: "Início", url: "/" }, { name: "Agosto", url: "/agosto" }])]}
       />
       <Header />
 
