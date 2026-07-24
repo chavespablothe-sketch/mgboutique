@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, Sparkles, UtensilsCrossed, Leaf, Heart } from "lucide-react";
 import { buildOmnibeesUrl } from "@/lib/omnibees";
-import { agostoImages } from "@/lib/siteImages";
+import { agostoImages, feriasJulhoImages, pacoteImages } from "@/lib/siteImages";
 import packages from "@/data/packages";
 import { isPackageActive } from "@/lib/packageStatus";
 
@@ -90,35 +90,75 @@ const AgostoPage = () => {
           </motion.div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-            {pacotesAgosto.filter((p) => isPackageActive(p)).map((pkg, i) => (
-              <motion.div
-                key={pkg.slug}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group bg-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 border border-primary/5"
-              >
-                <Link to={`/ofertas/${pkg.slug}`} className="block">
-                  <div className="relative h-64 overflow-hidden">
-                    <img src={pkg.image} alt={pkg.shortTitle} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-primary/70 to-transparent" />
-                    <span className="absolute top-4 left-4 bg-secondary text-secondary-foreground font-body text-[10px] tracking-[0.25em] uppercase px-3 py-1.5 rounded-full">
-                      {pkg.shortTitle}
-                    </span>
+            {pacotesAgosto.filter((p) => isPackageActive(p)).map((pkg, i) => {
+              const isPais = pkg.slug === "dia-dos-pais-2026";
+              const bookingUrl = isPais
+                ? buildOmnibeesUrl({ checkIn: "07082026", checkOut: "09082026" })
+                : buildOmnibeesUrl();
+              return (
+                <motion.div
+                  key={pkg.slug}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="group bg-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-500 hover:-translate-y-1 border border-primary/5 flex flex-col"
+                >
+                  <Link to={`/ofertas/${pkg.slug}`} className="block">
+                    <div className="relative h-64 overflow-hidden">
+                      <img src={pkg.image} alt={pkg.shortTitle} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-primary/70 to-transparent" />
+                      <span className="absolute top-4 left-4 bg-secondary text-secondary-foreground font-body text-[10px] tracking-[0.25em] uppercase px-3 py-1.5 rounded-full">
+                        {pkg.shortTitle}
+                      </span>
+                    </div>
+                    <div className="p-6 pb-4">
+                      <p className="font-body text-xs text-primary/50 uppercase tracking-widest mb-2">{pkg.period}</p>
+                      <h3 className="font-display text-2xl text-primary mb-3 leading-tight">{pkg.title}</h3>
+                      <p className="font-body text-primary/70 text-sm leading-relaxed line-clamp-3">{pkg.description}</p>
+                    </div>
+                  </Link>
+                  <div className="px-6 pb-6 mt-auto flex flex-wrap items-center gap-3">
+                    <Button asChild size="sm" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body uppercase tracking-[0.15em] text-xs">
+                      <a href={bookingUrl} target="_blank" rel="noopener noreferrer">Reservar agora <ArrowRight size={13} className="ml-1.5" /></a>
+                    </Button>
+                    <Link to={`/ofertas/${pkg.slug}`} className="inline-flex items-center gap-1.5 text-primary/70 hover:text-secondary font-body text-xs uppercase tracking-[0.15em] font-semibold transition-colors">
+                      Ver detalhes <ArrowRight size={13} />
+                    </Link>
                   </div>
-                  <div className="p-6">
-                    <p className="font-body text-xs text-primary/50 uppercase tracking-widest mb-2">{pkg.period}</p>
-                    <h3 className="font-display text-2xl text-primary mb-3 leading-tight">{pkg.title}</h3>
-                    <p className="font-body text-primary/70 text-sm leading-relaxed mb-5 line-clamp-3">{pkg.description}</p>
-                    <span className="inline-flex items-center gap-2 text-secondary font-body text-sm uppercase tracking-[0.15em] font-semibold group-hover:gap-3 transition-all">
-                      Ver detalhes <ArrowRight size={14} />
-                    </span>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
+                </motion.div>
+              );
+            })}
           </div>
+
+          {/* MOSAICO DE IMAGENS */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-6xl mx-auto mt-20"
+          >
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
+              {[
+                { src: feriasJulhoImages.piscina, alt: "Piscina aquecida" },
+                { src: feriasJulhoImages.cisne, alt: "Momentos em família" },
+                { src: pacoteImages.fimDeSemana, alt: "Chalé na serra" },
+                { src: feriasJulhoImages.cozinha, alt: "Gastronomia autoral" },
+              ].map((img, i) => (
+                <motion.div
+                  key={img.alt}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.08 }}
+                  className={`relative overflow-hidden rounded-lg group ${i === 0 ? "md:col-span-2 md:row-span-2 aspect-square md:aspect-auto" : "aspect-square"}`}
+                >
+                  <img src={img.src} alt={img.alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
