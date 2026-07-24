@@ -147,9 +147,9 @@ const packages: HotelPackage[] = [
       { day: "Sábado", items: ["Café da manhã estendido", "Atividades ao ar livre", "Almoço", "Recreação infantil", "Jantar especial"] },
       { day: "Domingo", items: ["Café da manhã", "Atividades em família", "Check-out até 12h"] },
     ],
-    image: "https://drjfkpgfqvtggxrhhuxp.supabase.co/storage/v1/object/public/site-images/pacotes/fim-de-semana.jpg",
+    image: pacoteImages.fimDeSemana,
     gallery: buildGallery([
-      "https://drjfkpgfqvtggxrhhuxp.supabase.co/storage/v1/object/public/site-images/pacotes/fim-de-semana.jpg",
+      pacoteImages.fimDeSemana,
       "/images/amenities-spa.jpg",
       "/images/amenities-trilhas.png",
     ]),
