@@ -44,6 +44,7 @@ const App = () => (
           <Route path="/contato" element={<ContatoPage />} />
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/ferias-de-julho" element={<FeriasJulhoPage />} />
+          <Route path="/agosto" element={<AgostoPage />} />
           <Route path="/privacidade" element={<PrivacidadePage />} />
           {/* Redirects from old routes */}
           <Route path="/chales" element={<Navigate to="/acomodacoes" replace />} />
