@@ -15,6 +15,7 @@ import ContatoPage from "./pages/ContatoPage";
 import RegiaoPage from "./pages/RegiaoPage";
 import BlogPage from "./pages/BlogPage";
 import FeriasJulhoPage from "./pages/FeriasJulhoPage";
+import AgostoPage from "./pages/AgostoPage";
 import PrivacidadePage from "./pages/PrivacidadePage";
 import NotFound from "./pages/NotFound";
 import PromoSplash from "./components/PromoSplash";
