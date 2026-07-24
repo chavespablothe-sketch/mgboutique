@@ -30,3 +30,8 @@ export const pacoteImages = {
   finados2026: `${BASE}/pacotes/finados-2026.jpg`,
   setembro2026: `${BASE}/pacotes/setembro-2026.jpg`,
 } as const;
+
+export const agostoImages = {
+  hero: `${BASE}/agosto/hero-agosto.jpg`,
+} as const;
+
