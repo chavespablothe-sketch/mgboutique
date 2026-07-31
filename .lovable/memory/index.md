@@ -25,3 +25,5 @@
 - [Seção de Ofertas (Home)](mem://features/offers-section) — Lógica da seção logo após o Welcome, contagem regressiva e badges dinâmicos.
 - [Asksuite](mem://integrations/asksuite) — Widget de chat carregado em todas as páginas via index.html.
 - [Categorias de Chalés](mem://features/chalets) — 5 categorias oficiais com slugs e regra de auto-expiração de pacotes.
+- [Agosto & Festival de Fondue](mem://features/agosto-fondue) — Pacotes de fondue aos sábados de agosto, banner da home, card da hero e página /agosto.
+

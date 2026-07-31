@@ -1,4 +1,4 @@
-import { pacoteImages } from "@/lib/siteImages";
+import { pacoteImages, agostoImages } from "@/lib/siteImages";
 
 export interface ProgramSection {
   icon: string;
@@ -812,4 +812,83 @@ const packages: HotelPackage[] = [
   },
 ];
 
+/* ── Festival de Fondue — sábados de agosto de 2026 ───────── */
+
+const fondueWeekends = [
+  { sabado: "08", checkIn: "07082026", checkOut: "09082026", label: "7 a 9 de agosto de 2026", noite: "8 de agosto" },
+  { sabado: "15", checkIn: "14082026", checkOut: "16082026", label: "14 a 16 de agosto de 2026", noite: "15 de agosto" },
+  { sabado: "22", checkIn: "21082026", checkOut: "23082026", label: "21 a 23 de agosto de 2026", noite: "22 de agosto" },
+  { sabado: "29", checkIn: "28082026", checkOut: "30082026", label: "28 a 30 de agosto de 2026", noite: "29 de agosto" },
+];
+
+const fonduePrograms: ProgramSection[] = [
+  {
+    icon: "🫕",
+    title: "A noite do fondue",
+    description: "Sábado à noite, o salão ganha luz baixa, lareira acesa e o aroma do queijo derretido.",
+    items: [
+      "Fondue de queijo com carnes selecionadas: bovina, frango, linguiça e cubos de filé suíno",
+      "Acompanhamentos: brócolis, couve-flor, cenoura, batata, ovo de codorna e torradas",
+      "Fondue de chocolate com morango, banana, uva, maçã, abacaxi, marshmallows e brownie",
+      "Carta de vinhos tintos e rosés selecionados (à parte)",
+    ],
+  },
+  ...genericProgramSections,
+];
+
+const fonduePackages: HotelPackage[] = fondueWeekends.map((w) => ({
+  slug: `festival-fondue-${w.sabado}-08-2026`,
+  title: `Festival de Fondue — noite de ${w.noite}`,
+  shortTitle: `Festival de Fondue · ${w.sabado}/08`,
+  period: w.label,
+  nights: "2 noites",
+  price: "Consulte",
+  pricePerNight: "Consulte",
+  priceNote: "Consulte condições no motor de reservas",
+  description: `O sabor mais esperado do inverno chega à serra: no sábado, ${w.noite}, a noite é de fondue de queijo, carnes selecionadas e fondue de chocolate, em um ambiente acolhedor cercado pela natureza.`,
+  longDescription: `As noites de agosto ficam ainda mais especiais com o nosso Festival de Fondue. Neste fim de semana (${w.label}), o sábado é dedicado a uma experiência irresistível: fondue de queijo com carnes selecionadas, acompanhamentos frescos e, para adoçar a noite, fondue de chocolate com frutas, marshmallows e brownie. Tudo isso com a lareira acesa, luz de velas e o silêncio da serra fluminense — acompanhado de uma carta de vinhos tintos e rosés cuidadosamente selecionada.`,
+  highlights: [
+    "Noite de Festival de Fondue no sábado",
+    "Fondue de queijo com carnes selecionadas",
+    "Fondue de chocolate com frutas, marshmallows e brownie",
+    "Carta de vinhos tintos e rosés (à parte)",
+  ],
+  included: [
+    "Pensão completa (café, almoço e jantar)",
+    "Noite do Festival de Fondue no sábado",
+    "Welcome drink adulto e infantil",
+    "Chá da tarde",
+    "Recreação infantil monitorada",
+    "Wi-Fi gratuito",
+    "Estacionamento privativo",
+  ],
+  kidsFeatures: [
+    "Fondue de chocolate — o preferido dos pequenos",
+    "Recreação monitorada",
+    "Menu infantil especial",
+    "1 criança até 06 anos: grátis nos fins de semana",
+  ],
+  schedule: [
+    { day: "Sexta-feira", items: ["Check-in a partir das 14h", "Welcome drink", "Jantar de boas-vindas"] },
+    { day: `Sábado (${w.sabado}/08)`, items: ["Café da manhã estendido", "Atividades ao ar livre", "Almoço", "Chá da tarde", "🫕 Noite do Festival de Fondue"] },
+    { day: "Domingo", items: ["Café da manhã", "Tempo livre", "Almoço", "Check-out até 15h"] },
+  ],
+  image: agostoImages.fondueCarne,
+  gallery: buildGallery([
+    agostoImages.fondueCarne,
+    agostoImages.fondueFrango,
+    agostoImages.fondueChocolate,
+  ]),
+  tag: "gastronomia",
+  tagColor: "bg-primary",
+  checkIn: w.checkIn,
+  checkOut: w.checkOut,
+  programSections: fonduePrograms,
+}));
+
+packages.push(...fonduePackages);
+
+export const fondueSlugs = fonduePackages.map((p) => p.slug);
+
 export default packages;
+

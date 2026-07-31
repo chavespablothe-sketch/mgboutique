@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Heart, ArrowRight, Sparkles, Clock, Flame, Sun } from "lucide-react";
+import { Heart, ArrowRight, Sparkles, Clock, Flame } from "lucide-react";
 import { Link } from "react-router-dom";
 import packages from "@/data/packages";
 import { isPackageActive, resolvePackageDates } from "@/lib/packageStatus";
@@ -33,14 +33,15 @@ function getNextPackage() {
 }
 
 /**
- * Durante o período de férias de julho/2026, o destaque da hero sempre
- * promove a landing page de Férias de Julho.
+ * Em julho e agosto de 2026 o destaque da hero promove a
+ * landing page dos pacotes de agosto (Festival de Fondue).
  */
-function shouldShowFerias(now: Date = new Date()): boolean {
+function shouldShowAgosto(now: Date = new Date()): boolean {
   const y = now.getFullYear();
   const m = now.getMonth(); // 0-based
-  return y === 2026 && m === 6; // julho inteiro
+  return y === 2026 && (m === 6 || m === 7); // julho e agosto
 }
+
 
 interface Theme {
   ribbon: string;
@@ -98,7 +99,7 @@ function urgencyLabel(days: number): string {
   return `Faltam ${days} dias`;
 }
 
-const FeriasCard = () => (
+const AgostoCard = () => (
   <motion.div
     initial={{ opacity: 0, y: 12 }}
     animate={{ opacity: 1, y: 0 }}
@@ -107,26 +108,26 @@ const FeriasCard = () => (
   >
     <div className="pointer-events-none absolute -inset-2 rounded-[1.5rem] bg-gradient-to-br from-yellow-400/50 via-amber-300/25 to-transparent blur-2xl opacity-70" aria-hidden />
     <Link
-      to="/ferias-de-julho"
+      to="/agosto"
       className="group/card relative block rounded-2xl border border-yellow-300/60 bg-primary/40 backdrop-blur-xl pl-4 pr-4 py-3 shadow-lg overflow-hidden hover:bg-primary/55 hover:border-yellow-300 hover:shadow-[0_12px_40px_-12px_rgba(250,204,21,0.45)] hover:-translate-y-0.5 transition-all duration-300 ease-out"
     >
       <span aria-hidden className="pointer-events-none absolute inset-0 -translate-x-full group-hover/card:translate-x-full transition-transform duration-[1100ms] ease-out bg-gradient-to-r from-transparent via-yellow-300/30 to-transparent" />
-      <Sun className="absolute -top-1 -right-1 text-yellow-300 opacity-70 animate-pulse group-hover/card:scale-125 group-hover/card:rotate-12 transition-transform duration-300" size={20} aria-hidden />
+      <Sparkles className="absolute -top-1 -right-1 text-yellow-300 opacity-70 animate-pulse group-hover/card:scale-125 group-hover/card:rotate-12 transition-transform duration-300" size={20} aria-hidden />
       <div className="flex items-start gap-3">
         <div className="w-0.5 self-stretch rounded-full bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500 opacity-80" aria-hidden />
         <div className="flex-1 min-w-0">
           <span className="inline-flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-[0.18em] px-2 py-0.5 rounded-full bg-yellow-400 text-primary shadow-[0_0_18px_-2px_rgba(250,204,21,0.8)] mb-1.5">
             <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-            Férias de Julho 2026
+            Pacotes de Agosto 2026
           </span>
           <h3 className="font-display text-base md:text-lg text-primary-foreground font-semibold leading-tight mb-0.5">
-            Um julho <span className="italic text-yellow-300">inesquecível</span> para as crianças
+            Festival de Fondue <span className="italic text-yellow-300">na serra</span>
           </h3>
           <p className="text-primary-foreground/70 font-body text-[11px] mb-2.5">
-            Programação recreativa completa, de segunda a domingo
+            Todos os sábados de agosto, a partir de 08/08
           </p>
           <span className="inline-flex items-center gap-1 text-yellow-300 font-body text-[10px] font-semibold uppercase tracking-[0.18em] group-hover/card:gap-2 transition-all">
-            Ver programação <ArrowRight size={10} className="group-hover/card:translate-x-0.5 transition-transform" />
+            Ver pacotes de agosto <ArrowRight size={10} className="group-hover/card:translate-x-0.5 transition-transform" />
           </span>
         </div>
       </div>
@@ -134,8 +135,9 @@ const FeriasCard = () => (
   </motion.div>
 );
 
+
 const NextPackageHighlight = () => {
-  if (shouldShowFerias()) return <FeriasCard />;
+  if (shouldShowAgosto()) return <AgostoCard />;
   const next = getNextPackage();
   if (!next) return null;
   const { pkg, dates } = next;

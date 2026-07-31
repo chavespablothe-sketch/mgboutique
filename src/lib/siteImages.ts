@@ -34,5 +34,9 @@ export const pacoteImages = {
 
 export const agostoImages = {
   hero: `${BASE}/agosto/hero-agosto.jpg`,
+  fondueCarne: `${BASE}/agosto/fondue-carne.jpg`,
+  fondueChocolate: `${BASE}/agosto/fondue-chocolate.jpg`,
+  fondueFrango: `${BASE}/agosto/fondue-frango.jpg`,
 } as const;
+
 
