@@ -836,7 +836,14 @@ const fonduePrograms: ProgramSection[] = [
   ...genericProgramSections,
 ];
 
-const fonduePackages: HotelPackage[] = fondueWeekends.map((w) => ({
+const fondueImages = [
+  agostoImages.fondueQueijo,
+  agostoImages.fondueCarne,
+  agostoImages.fondueFrango,
+  agostoImages.fondueChocolate,
+];
+
+const fonduePackages: HotelPackage[] = fondueWeekends.map((w, i) => ({
   slug: `festival-fondue-${w.sabado}-08-2026`,
   title: `Festival de Fondue — noite de ${w.noite}`,
   shortTitle: `Festival de Fondue · ${w.sabado}/08`,
@@ -873,11 +880,10 @@ const fonduePackages: HotelPackage[] = fondueWeekends.map((w) => ({
     { day: `Sábado (${w.sabado}/08)`, items: ["Café da manhã estendido", "Atividades ao ar livre", "Almoço", "Chá da tarde", "🫕 Noite do Festival de Fondue"] },
     { day: "Domingo", items: ["Café da manhã", "Tempo livre", "Almoço", "Check-out até 15h"] },
   ],
-  image: agostoImages.fondueCarne,
+  image: fondueImages[i % fondueImages.length],
   gallery: buildGallery([
-    agostoImages.fondueCarne,
-    agostoImages.fondueFrango,
-    agostoImages.fondueChocolate,
+    fondueImages[i % fondueImages.length],
+    ...fondueImages.filter((_, idx) => idx !== i % fondueImages.length),
   ]),
   tag: "gastronomia",
   tagColor: "bg-primary",
