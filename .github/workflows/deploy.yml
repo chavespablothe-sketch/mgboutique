@@ -35,9 +35,6 @@ jobs:
       - name: Build project (with static prerender)
         run: npm run build
 
-      # Normaliza o host do FTP_SERVER (remove ftp://, ftps://, sftp:// e
-      # qualquer barra/porta) para que possamos tentar protocolos/portas
-      # diferentes sem depender de como o secret foi cadastrado.
       # Descobre um host FTP acessível sem depender de ajustes manuais no GitHub.
       # Testa o secret FTP_SERVER e também candidatos padrão da Hostinger.
       - name: Descobrir host FTP acessível
