@@ -12,7 +12,7 @@ import OffersSection from "@/components/sections/OffersSection";
 import KidsSection from "@/components/sections/KidsSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import CTASection from "@/components/CTASection";
-import FeriasJulhoBanner from "@/components/sections/FeriasJulhoBanner";
+import AgostoBanner from "@/components/sections/AgostoBanner";
 
 
 
@@ -27,7 +27,7 @@ const Index = () => {
       />
       <Header />
       <HeroSection />
-      <FeriasJulhoBanner />
+      <AgostoBanner />
       <OffersSection />
       
       <KidsSection />

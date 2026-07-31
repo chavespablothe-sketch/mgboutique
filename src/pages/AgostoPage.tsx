@@ -3,6 +3,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import SEO, { breadcrumbSchema } from "@/components/SEO";
 import CouponBanner from "@/components/CouponBanner";
+import FondueSection from "@/components/sections/FondueSection";
+
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { ArrowRight, Calendar, Sparkles, UtensilsCrossed, Leaf, Heart } from "lucide-react";
@@ -13,8 +15,10 @@ import { isPackageActive } from "@/lib/packageStatus";
 
 const pacotesAgosto = [
   packages.find((p) => p.slug === "dia-dos-pais-2026"),
+  ...packages.filter((p) => p.slug.startsWith("festival-fondue-")),
   packages.find((p) => p.slug === "fim-de-semana"),
 ].filter(Boolean) as NonNullable<(typeof packages)[number]>[];
+
 
 const experiencias = [
   { icon: Leaf, titulo: "Natureza & Bem-estar", texto: "Trilhas leves, spa com massagens, piscinas aquecidas e áreas de descanso em meio à Mata Atlântica." },
@@ -28,8 +32,9 @@ const AgostoPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Agosto no Minha Glória | Dia dos Pais & Fins de Semana na Serra"
-        description="Descubra os pacotes de agosto: Dia dos Pais, fins de semana com pensão completa, experiências em meio à Mata Atlântica e gastronomia autoral no Minha Glória Hotel Boutique."
+        title="Agosto no Minha Glória | Festival de Fondue & Dia dos Pais"
+        description="Festival de Fondue aos sábados de agosto, pacote de Dia dos Pais e fins de semana com pensão completa na serra fluminense. Confira o cardápio e a carta de vinhos."
+
         canonical="/agosto"
         schemas={[breadcrumbSchema([{ name: "Início", url: "/" }, { name: "Agosto", url: "/agosto" }])]}
       />
@@ -59,16 +64,20 @@ const AgostoPage = () => {
               O refúgio que você <span className="text-secondary italic">merece</span> em agosto
             </h1>
             <p className="font-body text-primary-foreground/85 text-lg md:text-xl max-w-2xl leading-relaxed mb-8">
-              Mês de céu limpo na serra, lareira acesa e tempo bom pra desacelerar. Reunimos aqui os pacotes de agosto — do Dia dos Pais aos fins de semana comuns — para você escolher o seu.
+              Mês de céu limpo na serra, lareira acesa e tempo bom pra desacelerar. E, a partir de 08/08, todos os sábados têm <span className="text-secondary">Festival de Fondue</span> — fondue de queijo, carnes selecionadas e fondue de chocolate.
             </p>
             <div className="flex flex-wrap gap-3">
               <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body uppercase tracking-[0.15em] text-sm">
                 <a href={heroCta} target="_blank" rel="noopener noreferrer">Reservar agora <ArrowRight size={16} className="ml-2" /></a>
               </Button>
               <Button asChild size="lg" variant="outline" className="bg-transparent border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10 font-body uppercase tracking-[0.15em] text-sm">
+                <a href="#fondue">Festival de Fondue</a>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="bg-transparent border-primary-foreground/40 text-primary-foreground hover:bg-primary-foreground/10 font-body uppercase tracking-[0.15em] text-sm">
                 <a href="#pacotes">Ver pacotes</a>
               </Button>
             </div>
+
           </motion.div>
         </div>
       </section>
@@ -80,21 +89,24 @@ const AgostoPage = () => {
         </div>
       </section>
 
+      {/* FESTIVAL DE FONDUE */}
+      <FondueSection />
+
       {/* PACOTES */}
       <section id="pacotes" className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto text-center mb-12">
             <span className="text-secondary font-body text-xs tracking-[0.4em] uppercase mb-3 block">Escolha o seu</span>
             <h2 className="font-display text-3xl md:text-5xl text-primary font-semibold leading-tight">Pacotes de agosto</h2>
-            <p className="font-body text-primary/70 mt-4">Dois convites diferentes para o mesmo desejo: pausar, respirar e voltar leve.</p>
+            <p className="font-body text-primary/70 mt-4">Do Dia dos Pais às noites de Festival de Fondue — convites diferentes para o mesmo desejo: pausar, respirar e voltar leve.</p>
           </motion.div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {pacotesAgosto.filter((p) => isPackageActive(p)).map((pkg, i) => {
-              const isPais = pkg.slug === "dia-dos-pais-2026";
-              const bookingUrl = isPais
-                ? buildOmnibeesUrl({ checkIn: "07082026", checkOut: "09082026" })
+              const bookingUrl = pkg.checkIn && pkg.checkOut
+                ? buildOmnibeesUrl({ checkIn: pkg.checkIn, checkOut: pkg.checkOut })
                 : buildOmnibeesUrl();
+
               return (
                 <motion.div
                   key={pkg.slug}
