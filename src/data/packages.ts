@@ -348,9 +348,9 @@ const packages: HotelPackage[] = [
       { day: "Sábado (08/08)", items: ["Café da manhã estendido", "Atividades ao ar livre", "Almoço", "Chá da tarde especial", "Recreação infantil", "Jantar com música ao vivo"] },
       { day: "Domingo (09/08)", items: ["Café da manhã comemorativo", "Atividade leve em família", "Almoço Especial de Dia dos Pais", "Brinde de homenagem e lembrança", "Check-out até 15h"] },
     ],
-    image: "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/axr5ia5mtdv-1771961855273.webp",
+    image: agostoImages.hero,
     gallery: buildGallery([
-      "https://ncqfwshsbbathpddtrvk.supabase.co/storage/v1/object/public/minha-gloria-bucket/packages/principal/axr5ia5mtdv-1771961855273.webp",
+      agostoImages.hero,
       "/images/amenities-spa.jpg",
       "/images/amenities-trilhas.png",
     ]),
