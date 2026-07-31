@@ -98,7 +98,7 @@ const AgostoPage = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto text-center mb-12">
             <span className="text-secondary font-body text-xs tracking-[0.4em] uppercase mb-3 block">Escolha o seu</span>
             <h2 className="font-display text-3xl md:text-5xl text-primary font-semibold leading-tight">Pacotes de agosto</h2>
-            <p className="font-body text-primary/70 mt-4">Do Dia dos Pais às noites de Festival de Fondue — convites diferentes para o mesmo desejo: pausar, respirar e voltar leve.</p>
+            <p className="font-body text-primary/70 mt-4">Do Dia dos Pais — que já vem com o Festival de Fondue incluso — às noites de fondue dos sábados — convites diferentes para o mesmo desejo: pausar, respirar e voltar leve.</p>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
@@ -125,6 +125,11 @@ const AgostoPage = () => {
                       </span>
                     </div>
                     <div className="p-6 pb-4">
+                      {pkg.slug === "dia-dos-pais-2026" && (
+                        <span className="inline-flex items-center gap-1.5 bg-yellow-400 text-primary font-body text-[10px] font-bold uppercase tracking-[0.16em] px-2.5 py-1 rounded-full mb-3">
+                          <UtensilsCrossed size={11} /> Festival de Fondue incluso
+                        </span>
+                      )}
                       <p className="font-body text-xs text-primary/50 uppercase tracking-widest mb-2">{pkg.period}</p>
                       <h3 className="font-display text-2xl text-primary mb-3 leading-tight">{pkg.title}</h3>
                       <p className="font-body text-primary/70 text-sm leading-relaxed line-clamp-3">{pkg.description}</p>

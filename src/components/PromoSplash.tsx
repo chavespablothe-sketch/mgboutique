@@ -101,9 +101,14 @@ const PromoSplash = () => {
           <p className="font-display text-[15px] leading-snug text-primary mb-0.5">
             {pkg.shortTitle}
           </p>
-          <p className="font-body text-[11px] text-primary/60 italic mb-2.5">
+          <p className="font-body text-[11px] text-primary/60 italic mb-2">
             {period}
           </p>
+          {isPais && (
+            <p className="inline-flex items-center gap-1 bg-yellow-400/90 text-primary font-body text-[9px] font-bold uppercase tracking-[0.14em] px-2 py-1 rounded-full mb-2.5">
+              Festival de Fondue incluso
+            </p>
+          )}
           <span className="inline-flex items-center gap-1.5 bg-yellow-400 hover:bg-yellow-300 text-primary font-body text-[10px] font-bold uppercase tracking-[0.16em] px-3 py-1.5 rounded-full shadow-sm transition-all group-hover:gap-2">
             Garantir minha vaga <ArrowRight size={11} className="group-hover:translate-x-0.5 transition-transform" />
           </span>
