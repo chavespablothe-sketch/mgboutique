@@ -37,6 +37,7 @@ export const agostoImages = {
   fondueCarne: `${BASE}/agosto/fondue-carne.jpg`,
   fondueChocolate: `${BASE}/agosto/fondue-chocolate.jpg`,
   fondueFrango: `${BASE}/agosto/fondue-frango.jpg`,
+  fondueQueijo: `${BASE}/agosto/fondue-queijo.jpg`,
 } as const;
 
 
