@@ -33,7 +33,7 @@ const AgostoBanner = () => {
                   Festival de Fondue e um agosto para a <span className="italic text-secondary">família toda</span>.
                 </h2>
                 <p className="text-primary-foreground/80 font-body text-sm md:text-base mb-6 leading-relaxed">
-                  A partir de 08/08, todos os sábados têm fondue de queijo, carnes selecionadas e fondue de chocolate — enquanto as crianças aproveitam recreação monitorada, fazendinha e piscina aquecida.
+                  A partir de 08/08, todos os sábados têm fondue de queijo, carnes selecionadas e fondue de chocolate — enquanto as crianças aproveitam recreação monitorada e fazendinha.
                 </p>
                 <span className="inline-flex items-center gap-3 bg-secondary text-secondary-foreground font-body uppercase tracking-[0.15em] text-xs md:text-sm px-6 py-3 rounded-md shadow-lg group-hover:gap-4 transition-all">
                   Ver pacotes de agosto <ArrowRight size={16} />

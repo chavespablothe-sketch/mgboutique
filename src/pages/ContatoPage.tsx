@@ -26,7 +26,7 @@ const faqs = [
   { cat: "Alimentação", q: "Posso levar comida de fora?", a: "Oferecemos pensão completa nos pacotes, mas entendemos necessidades especiais. Consulte nossa equipe para combinar." },
   { cat: "Acesso", q: "Precisa de carro para chegar?", a: "Recomendamos carro próprio. A estrada é pavimentada e carros comuns acessam normalmente." },
   { cat: "Acesso", q: "Tem cobertura de celular?", a: "Cobertura limitada — Claro e Vivo funcionam melhor. Wi-Fi gratuito disponível em todo o hotel." },
-  { cat: "Estrutura", q: "A piscina é aquecida?", a: "A piscina é climatizada, mantendo temperatura agradável mesmo nos meses mais frios." },
+  { cat: "Estrutura", q: "A piscina é climatizada?", a: "A piscina é climatizada, mantendo temperatura agradável mesmo nos meses mais frios." },
 ];
 
 // Phone mask: (XX) XXXXX-XXXX
