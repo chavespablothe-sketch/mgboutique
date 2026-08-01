@@ -13,7 +13,7 @@ import inflavel02 from "@/assets/inflavel-02.jpg";
 const experiences = [
   { title: "Passeio a Cavalo e Charrete", description: "Cavalgadas guiadas pelas trilhas da propriedade, com paradas em mirantes panorâmicos.", image: "/images/cavalo.jpg", audience: "Famílias" },
   { title: "Quadriciclo & Jeep", description: "Adrenalina com paisagem de cinema pelas trilhas da fazenda. Experiências de 30 ou 60 minutos de quadriciclo ou jeep.", image: quadriJeepImg, audience: "Aventura" },
-  { title: "Piscina Aquecida", description: "Piscina climatizada com vista para a Pedra do Rosário, espreguiçadeiras e espaço infantil de 60cm.", image: "/images/piscina-pedra.webp", audience: "Todos" },
+  { title: "Piscina Climatizada", description: "Piscina climatizada com vista para a Pedra do Rosário, espreguiçadeiras e espaço infantil de 60cm.", image: "/images/piscina-pedra.webp", audience: "Todos" },
 ];
 
 const animals = [
@@ -115,7 +115,7 @@ const ExperienciasPage = () => {
     <div className="min-h-screen">
       <SEO
         title="Experiências | Aventura, Animais e Bem-estar na Serra"
-        description="Spa, cavalgadas, quadriciclo, fazendinha com araras, tucanos, lhamas, avestruzes e mais de 25 espécies. Trilhas, piscina aquecida e recreação na natureza. Bom Jardim, RJ."
+        description="Spa, cavalgadas, quadriciclo, fazendinha com araras, tucanos, lhamas, avestruzes e mais de 25 espécies. Trilhas, piscina climatizada e recreação na natureza. Bom Jardim, RJ."
         canonical="/experiencias"
         schemas={[
           { "@context": "https://schema.org", "@type": "TouristAttraction", name: "Experiências no Minha Glória", description: "Atividades de lazer e aventura em meio à Mata Atlântica com mais de 25 espécies de animais.", isAccessibleForFree: false, touristType: "Famílias com crianças" },
@@ -138,7 +138,7 @@ const ExperienciasPage = () => {
                 Aqui, o tempo se transforma em <span className="italic text-secondary drop-shadow-lg">memória</span>
               </h1>
               <p className="text-editorial text-primary-foreground/70 text-xl md:text-2xl leading-relaxed max-w-2xl mx-auto hero-text-shadow">
-                Mais de 25 espécies de animais, spa, trilhas na Mata Atlântica, piscina aquecida e recreação na natureza.
+                Mais de 25 espécies de animais, spa, trilhas na Mata Atlântica, piscina climatizada e recreação na natureza.
               </p>
             </motion.div>
           </div>

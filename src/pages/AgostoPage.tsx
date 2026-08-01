@@ -21,7 +21,7 @@ const pacotesAgosto = [
 
 
 const experiencias = [
-  { icon: Leaf, titulo: "Natureza & Bem-estar", texto: "Trilhas leves, spa com massagens, piscinas aquecidas e áreas de descanso em meio à Mata Atlântica." },
+  { icon: Leaf, titulo: "Natureza & Bem-estar", texto: "Trilhas leves, spa com massagens, piscinas climatizadas e áreas de descanso em meio à Mata Atlântica." },
   { icon: Sparkles, titulo: "Momentos em família", texto: "Recreação monitorada, fazendinha, oficinas criativas e brincadeiras ao ar livre para os pequenos." },
   { icon: Heart, titulo: "Refúgio para casais", texto: "Chalés reservados, chá da tarde, ofurô, jantar à luz de velas e o silêncio raro da serra fluminense." },
 ];
@@ -157,7 +157,7 @@ const AgostoPage = () => {
           >
             <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4">
               {[
-                { src: feriasJulhoImages.piscina, alt: "Piscina aquecida" },
+                { src: feriasJulhoImages.piscina, alt: "Piscina climatizada" },
                 { src: feriasJulhoImages.cisne, alt: "Momentos em família" },
                 { src: pacoteImages.fimDeSemana, alt: "Chalé na serra" },
                 { src: feriasJulhoImages.cozinha, alt: "Gastronomia autoral" },

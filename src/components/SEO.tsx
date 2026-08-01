@@ -75,7 +75,7 @@ export const hotelSchema = {
   checkinTime: "15:00",
   checkoutTime: "12:00",
   amenityFeature: [
-    { "@type": "LocationFeatureSpecification", name: "Piscina aquecida", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Piscina climatizada", value: true },
     { "@type": "LocationFeatureSpecification", name: "Spa", value: true },
     { "@type": "LocationFeatureSpecification", name: "Fazendinha", value: true },
     { "@type": "LocationFeatureSpecification", name: "Trilhas", value: true },
