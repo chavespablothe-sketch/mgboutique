@@ -31,6 +31,8 @@ const Header = () => {
               {/* Mobile menu toggle */}
               <button
                 className="lg:hidden text-primary-foreground shrink-0"
+                aria-label={isOpen ? "Fechar menu" : "Abrir menu"}
+                aria-expanded={isOpen}
                 onClick={() => setIsOpen(!isOpen)}
               >
                 {isOpen ? <X size={22} /> : <Menu size={22} />}
@@ -82,6 +84,8 @@ const Header = () => {
               {/* CTA buttons */}
               <div className="hidden lg:flex items-center gap-3 ml-6">
                 <button
+                  aria-label="Abrir busca de datas"
+                  aria-expanded={showSearch}
                   onClick={() => setShowSearch(!showSearch)}
                   className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors ${
                     showSearch

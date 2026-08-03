@@ -63,6 +63,14 @@ const AcomodacoesPage = () => {
         {/* Chalets Grid */}
         <section className="py-8 pb-20 bg-background">
           <div className="container mx-auto px-4">
+            <motion.h2
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="font-display text-3xl md:text-4xl text-foreground font-semibold text-center mb-10"
+            >
+              Nossos <span className="italic text-secondary">chalés</span>
+            </motion.h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
               {chalets.map((chalet, i) => (
                 <motion.div
