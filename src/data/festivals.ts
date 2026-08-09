@@ -35,8 +35,8 @@ export const festivals: Festival[] = [
     title: "Festival Fogo de Chão",
     description:
       "A essência da tradição brasileira em preparos lentos, cortes selecionados e o aroma de lenha que perfuma toda a propriedade. Harmonizado com vinhos escolhidos a dedo.",
-    image: pacoteImages.setembro2026,
-    imageAlt: "Churrasco e fogo de chão no hotel boutique",
+    image: feriasJulhoImages.cozinha,
+    imageAlt: "Cozinha e preparo de refeições especiais no hotel",
     ctaLabel: "Ver Detalhes",
     ctaUrl: "/ofertas",
   },
