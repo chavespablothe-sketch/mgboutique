@@ -85,8 +85,8 @@ export const festivals: Festival[] = [
     title: "Verão na Minha Glória",
     description:
       "Bebidas refrescantes, pratos leves e o melhor do sol em nossa área de lazer premium. Piscina climatizada, espreguiçadeiras e o verde da Mata Atlântica como cenário.",
-    image: feriasJulhoImages.piscina,
-    imageAlt: "Piscina climatizada e área de lazer no verão",
+    image: feriasJulhoImages.bolhas,
+    imageAlt: "Piscina com bolhas e área de lazer no verão",
     ctaLabel: "Reservar",
     ctaUrl: "/ofertas",
   },
@@ -97,8 +97,8 @@ export const festivals: Festival[] = [
     title: "Fevereiro em Festa",
     description:
       "A vibração do verão com o conforto e a exclusividade que definem nossa identidade boutique. Momentos de celebração, descontração e gastronomia em plena serra fluminense.",
-    image: pacoteImages.fimDeSemana,
-    imageAlt: "Clima festivo e celebrativo no hotel boutique",
+    image: feriasJulhoImages.heroFerias,
+    imageAlt: "Clima festivo de férias no hotel boutique",
     ctaLabel: "Reservar",
     ctaUrl: "/ofertas",
   },
