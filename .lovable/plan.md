@@ -1,22 +1,47 @@
 ## Objetivo
-Padronizar toda a comunicação da piscina para "climatizada" (nunca "aquecida") em todo o site.
+Criar uma página dedicada `/festivais` que apresente os 7 festivais do ano do Minha Glória Hotel Boutique com a direção visual "Sophisticated editorial timeline" escolhida pelo usuário. A página usará fotos já existentes no site, manterá o branding (verde, dourado, creme, Playfair Display + Lato) e não será linkada no menu principal nesta primeira etapa.
 
-## Mapeamento atual de "aquecida"
-1. `index.html` linha 28 — JSON-LD description: "piscina aquecida"
-2. `index.html` linha 106 — bloco de conteúdo SEO (noscript/prerender): "piscina aquecida"
-3. `src/components/SEO.tsx` linha 78 — amenity do schema: "Piscina aquecida"
-4. `src/components/sections/AgostoBanner.tsx` linha 36 (seção Agosto 2026 na home) — "...fazendinha e piscina aquecida"
-5. `src/pages/AgostoPage.tsx` linha 24 — "piscinas aquecidas"; linha 160 — alt "Piscina aquecida"
-6. `src/pages/ExperienciasPage.tsx` linha 16 — título do card "Piscina Aquecida"; linhas 118 e 141 — meta description e texto do hero
-7. `src/pages/ContatoPage.tsx` linha 29 — FAQ "A piscina é aquecida?" (a resposta já diz climatizada)
+## Festivais e conteúdo
+1. **Agosto — Festival de Fondue** ❤️
+2. **Setembro — Festival Fogo de Chão** 🔥
+3. **Outubro — Fazenda Encantada** 🎃
+4. **Novembro — Festival da Costela & Churrasco** 🍖
+5. **Dezembro — Dezembro Encantado** 🎄
+6. **Janeiro — Verão na Minha Glória** 🌴
+7. **Fevereiro — Fevereiro em Festa** 🎭
 
-Demais menções (`LazerPage`, `packages.ts`, `GallerySection`, `SobrePage`) falam só "piscina", sem "aquecida".
+## Estrutura da página (direção editorial timeline)
+- **Hero textual**: título "Calendário de Festivais", subtítulo curto sobre a curadoria de experiências, dividor dourado.
+- **Agosto + Setembro**: layout alternado — imagem à esquerda/texto à direita (Agosto), texto à esquerda/imagem à direita (Setembro). Ambos com moldura dourada sutil e hover de escala suave.
+- **Outubro**: seção destaque em largura total com fundo verde (primary) e texto claro, chamando atenho para a "Temporada Especial" de Fazenda Encantada.
+- **Novembro a Fevereiro**: grid de 2 colunas com cards que têm imagem quadrada, mês em itálico dourado, título e descrição curta. Cards em zigue-zague vertical (colunas deslocadas) para manter o ritmo editorial.
+- **CTA final**: botão para reserva via Omnibees (`buildOmnibeesUrl`).
 
-## Mudanças
-- Trocar "aquecida/aquecidas/Aquecida" por "climatizada/climatizadas/Climatizada" em todos os pontos acima (textos visíveis, alt de imagem, meta descriptions e schema).
-- `AgostoBanner` (home): remover a menção "piscina aquecida" conforme pedido — a frase fica "...recreação monitorada, fazendinha e piscina climatizada" apenas se você preferir manter; a instrução foi retirar da seção de agosto, então o item sai da enumeração, ficando "recreação monitorada e fazendinha".
-- FAQ do Contato: pergunta vira "A piscina é climatizada?", mantendo a resposta atual.
-- Em `LazerPage` e `ExperienciasPage`, onde a piscina é descrita, garantir que o texto deixe claro que é climatizada.
+## Fotos existentes a usar
+Todas as imagens já estão em `src/lib/siteImages.ts`:
+- **Agosto**: `agostoImages.fondueQueijo` (ou `fondueCarne`)
+- **Setembro**: `pacoteImages.setembro2026`
+- **Outubro**: `feriasJulhoImages.recreacao` (crianças/família)
+- **Novembro**: `pacoteImages.finados2026` (cenário de churrasco/costela)
+- **Dezembro**: `feriasJulhoImages.presente` (presente/celebração)
+- **Janeiro**: `feriasJulhoImages.piscina` (verão/piscina)
+- **Fevereiro**: `pacoteImages.fimDeSemana` (festa/fim de semana)
 
-## Técnico
-Apenas edições de texto em arquivos de apresentação (`.tsx`) e no `index.html`. Sem mudanças de dados, rotas ou backend. Verificação com typecheck ao final.
+## Mudanças técnicas
+1. **Nova página**: `src/pages/FestivaisPage.tsx`.
+2. **Rota**: adicionar `/festivais` em `src/App.tsx`.
+3. **SEO**: usar componente `SEO` com título, descrição, canonical `/festivais` e breadcrumb schema (`Início → Festivais`).
+4. **Componentes reutilizados**: `Header`, `Footer`, `Button` do shadcn, `motion` do framer-motion.
+5. **Design tokens**: usar variáveis semânticas (`bg-background`, `text-primary`, `text-secondary`, `font-display`, `font-body`) — nunca cores hardcoded como hex puros.
+6. **Responsivo**: stacks mobile, grids alternadas no desktop, touch-friendly.
+7. **Navegação**: **não** adicionar link no `Header` nem no `Footer` nesta etapa (página oculta por enquanto).
+
+## Verificação
+- Typecheck (`tsc --noEmit` / `tsgo`).
+- Preview em desktop e mobile para confirmar ritmo editorial, legibilidade e CTA.
+- Confirmar que todas as fotos carregam corretamente a partir do `site-images` Supabase Storage.
+
+## Escopo fora desta tarefa
+- Não gerar novas imagens.
+- Não criar links no menu principal.
+- Não alterar pacotes existentes ou a lógica de reserva — apenas usar `buildOmnibeesUrl` para CTAs.
