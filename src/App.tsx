@@ -16,6 +16,7 @@ import RegiaoPage from "./pages/RegiaoPage";
 import BlogPage from "./pages/BlogPage";
 import FeriasJulhoPage from "./pages/FeriasJulhoPage";
 import AgostoPage from "./pages/AgostoPage";
+import FestivaisPage from "./pages/FestivaisPage";
 import PrivacidadePage from "./pages/PrivacidadePage";
 import NotFound from "./pages/NotFound";
 import PromoSplash from "./components/PromoSplash";
@@ -45,6 +46,7 @@ const App = () => (
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/ferias-de-julho" element={<FeriasJulhoPage />} />
           <Route path="/agosto" element={<AgostoPage />} />
+          <Route path="/festivais" element={<FestivaisPage />} />
           <Route path="/privacidade" element={<PrivacidadePage />} />
           {/* Redirects from old routes */}
           <Route path="/chales" element={<Navigate to="/acomodacoes" replace />} />
