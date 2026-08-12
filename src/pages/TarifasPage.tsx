@@ -13,8 +13,6 @@ import { filterActivePackages, pickHoverMessage } from "@/lib/packageStatus";
 
 import { OMNIBEES_URL } from "@/lib/omnibees";
 
-const packages = filterActivePackages(allPackages);
-
 const allMonths = ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
 
 /** Images to use for the fim-de-semana package per month */
@@ -64,6 +62,7 @@ const monthOrder = ["Maio", "Agosto", "Setembro", "Outubro", "Novembro", "Dezemb
 const TarifasPage = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
   const [selectedMonth, setSelectedMonth] = useState("Todos");
+  const packages = useMemo(() => filterActivePackages(allPackages, new Date()), []);
 
   const packagesByMonth = useMemo(() => {
     const groups: Record<string, typeof packages> = {};

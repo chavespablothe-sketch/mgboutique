@@ -1,5 +1,5 @@
 import type { HotelPackage } from "@/data/packages";
-import { getNextWeekend, type RecurringWeekend } from "@/lib/recurringWeekend";
+import { getNextWeekend, toSaoPauloTime, type RecurringWeekend } from "@/lib/recurringWeekend";
 
 /**
  * Parse the optional checkOut field (DDMMYYYY) into a Date at end-of-day.
@@ -68,14 +68,33 @@ export function isPackageActive(pkg: HotelPackage, now: Date = new Date()): bool
 
   const checkIn = getPackageCheckInDate(pkg);
   if (!checkIn) return true;
-  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-  // Stays active only up to the check-in day; from the day after, next package takes over.
+  const saoPauloNow = toSaoPauloTime(now);
+  const today = new Date(saoPauloNow.getFullYear(), saoPauloNow.getMonth(), saoPauloNow.getDate());
+  // Fixed packages stop appearing as soon as their check-in date has passed.
   return today.getTime() <= checkIn.getTime();
 }
 
 /** Returns only currently-active packages, preserving original order. */
 export function filterActivePackages(packages: HotelPackage[], now: Date = new Date()): HotelPackage[] {
   return packages.filter((p) => isPackageActive(p, now));
+}
+
+function parseResolvedCheckIn(ddmmyyyy: string): number {
+  const day = Number(ddmmyyyy.slice(0, 2));
+  const month = Number(ddmmyyyy.slice(2, 4)) - 1;
+  const year = Number(ddmmyyyy.slice(4, 8));
+  return new Date(year, month, day).getTime();
+}
+
+/** Active packages with a resolvable date, ordered by their next check-in. */
+export function getUpcomingPackages(packages: HotelPackage[], now: Date = new Date()): HotelPackage[] {
+  return filterActivePackages(packages, now)
+    .map((pkg) => ({ pkg, dates: resolvePackageDates(pkg, now) }))
+    .filter((item) => Boolean(item.dates.checkIn))
+    .sort((a, b) =>
+      parseResolvedCheckIn(a.dates.checkIn ?? "") - parseResolvedCheckIn(b.dates.checkIn ?? ""),
+    )
+    .map((item) => item.pkg);
 }
 
 /** Light, rotating hover messages — gentle, inviting, never aggressive. */

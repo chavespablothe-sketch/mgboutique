@@ -29,6 +29,31 @@ function startOfDay(d: Date): Date {
   return x;
 }
 
+/** Convert an instant to the hotel's wall clock (America/Sao_Paulo). */
+export function toSaoPauloTime(now: Date = new Date()): Date {
+  const parts = new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/Sao_Paulo",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    hourCycle: "h23",
+  }).formatToParts(now);
+  const value = (type: Intl.DateTimeFormatPartTypes) =>
+    Number(parts.find((part) => part.type === type)?.value ?? 0);
+
+  return new Date(
+    value("year"),
+    value("month") - 1,
+    value("day"),
+    value("hour"),
+    value("minute"),
+    value("second"),
+  );
+}
+
 /** Returns the next Friday on or after the given date. */
 function nextFriday(from: Date): Date {
   const d = startOfDay(from);
@@ -57,13 +82,18 @@ export function getNextWeekend(
 ): RecurringWeekend | null {
   const rangeStart = startOfDay(parse(rangeStartDDMMYYYY));
   const rangeEnd = startOfDay(parse(rangeEndDDMMYYYY));
-  const today = startOfDay(now);
+  const saoPauloNow = toSaoPauloTime(now);
+  const today = startOfDay(saoPauloNow);
 
-  // Always look for the next upcoming Friday (a Sat/Sun today means this weekend
-  // is ending — so we jump to next week's weekend).
+  // Friday and Saturday before 11:00 still belong to the current campaign.
+  // At 11:00 on Saturday (Brasilia time), the following weekend takes over.
   const dow = today.getDay();
   let candidate: Date;
   if (dow === 5) candidate = today; // Friday: this weekend is starting today
+  else if (dow === 6 && saoPauloNow.getHours() < 11) {
+    candidate = new Date(today);
+    candidate.setDate(candidate.getDate() - 1);
+  }
   else candidate = nextFriday(new Date(today.getTime() + 86400000)); // tomorrow onward
 
   if (candidate < rangeStart) candidate = nextFriday(rangeStart);

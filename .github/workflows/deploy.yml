@@ -2,14 +2,12 @@ name: Build + Deploy Hostinger
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-    timeout-minutes: 25
-
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -18,143 +16,116 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: npm
 
-      - name: Install system dependencies for Chromium (react-snap)
+      - name: Install Chromium dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y \
             libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 \
             libxkbcommon0 libxcomposite1 libxdamage1 libxrandr2 \
             libgbm1 libpango-1.0-0 libcairo2 libasound2t64 libxshmfence1 \
-            fonts-liberation libgtk-3-0 || \
-          sudo apt-get install -y libasound2
+            fonts-liberation libgtk-3-0 || sudo apt-get install -y libasound2
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Build project (with static prerender)
+      - name: Build project
         run: npm run build
 
-      # Descobre um host FTP acessível sem depender de ajustes manuais no GitHub.
-      # Testa o secret FTP_SERVER e também candidatos padrão da Hostinger.
-      - name: Descobrir host FTP acessível
-        id: host
+      - name: Preserve build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-dist-${{ github.sha }}
+          path: dist/
+          if-no-files-found: error
+          retention-days: 7
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: site-dist-${{ github.sha }}
+          path: dist/
+
+      - name: Install secure transfer client
+        run: sudo apt-get update && sudo apt-get install -y lftp
+
+      - name: Detect reachable secure protocol
+        id: endpoint
         env:
           RAW_SERVER: ${{ secrets.FTP_SERVER }}
         run: |
-          set +e
+          set -eu
           norm() {
             h="$1"
             h="${h#ftp://}"; h="${h#ftps://}"; h="${h#sftp://}"
             h="${h%%/*}"; h="${h%%:*}"
-            echo "$h"
+            printf '%s' "$h"
           }
 
           primary="$(norm "$RAW_SERVER")"
-          domain="minhagloria.com.br"
+          candidates="$primary ftp.minhagloria.com.br minhagloria.com.br www.minhagloria.com.br"
+          chosen_host=""
+          chosen_protocol=""
 
-          candidates="$primary ftp.$domain $domain www.$domain"
-
-          chosen=""
-          chosen_port=""
-          for h in $candidates; do
-            [ -z "$h" ] && continue
-            echo "=== Testando host: $h ==="
-            getent hosts "$h" >/dev/null 2>&1 || { echo "  ⚠️  DNS não resolveu"; continue; }
-            for port in 21 990; do
-              if timeout 10 bash -c "</dev/tcp/$h/$port" 2>/dev/null; then
-                echo "  ✅ porta $port acessível"
-                if [ -z "$chosen" ]; then chosen="$h"; chosen_port="$port"; fi
-              else
-                echo "  ❌ porta $port inacessível"
-              fi
-            done
+          for host in $candidates; do
+            [ -n "$host" ] || continue
+            getent hosts "$host" >/dev/null 2>&1 || continue
+            echo "Testing secure transfer endpoints for $host"
+            if timeout 5 bash -c "</dev/tcp/$host/22" 2>/dev/null; then
+              chosen_host="$host"; chosen_protocol="sftp"; break
+            fi
+            if timeout 5 bash -c "</dev/tcp/$host/21" 2>/dev/null; then
+              chosen_host="$host"; chosen_protocol="ftps-explicit"; break
+            fi
+            if timeout 5 bash -c "</dev/tcp/$host/990" 2>/dev/null; then
+              chosen_host="$host"; chosen_protocol="ftps-implicit"; break
+            fi
           done
 
-          if [ -z "$chosen" ]; then
-            echo "⚠️  Nenhum candidato respondeu no pré-teste. Seguindo mesmo assim com '${primary:-ftp.$domain}' — o pré-teste TCP pode falhar por firewall do runner enquanto o deploy funciona."
-            chosen="${primary:-ftp.$domain}"
-            chosen_port="21"
+          if [ -z "$chosen_host" ]; then
+            echo "::error::Hostinger did not answer on SFTP 22, FTPS 21, or FTPS 990. The build artifact remains available for 7 days."
+            exit 1
           fi
 
-          echo "Host escolhido: $chosen (porta preferida $chosen_port)"
-          echo "host=$chosen" >> "$GITHUB_OUTPUT"
+          echo "Selected $chosen_protocol on $chosen_host"
+          echo "host=$chosen_host" >> "$GITHUB_OUTPUT"
+          echo "protocol=$chosen_protocol" >> "$GITHUB_OUTPUT"
 
-      # Estratégia de fallback (sem precisar mexer em nada no GitHub):
-      #   1) FTPS explícito porta 21  (preferido pela Hostinger)
-      #   2) FTPS implícito porta 990 (alguns hosts bloqueiam a 21)
-      #   3) FTP simples porta 21     (último recurso)
-      # Cada tentativa só roda se a anterior falhar.
+      - name: Deploy over available secure protocol
+        env:
+          DEPLOY_HOST: ${{ steps.endpoint.outputs.host }}
+          DEPLOY_PROTOCOL: ${{ steps.endpoint.outputs.protocol }}
+          DEPLOY_USER: ${{ secrets.FTP_USERNAME }}
+          DEPLOY_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          set -eu
+          deploy() {
+            case "$DEPLOY_PROTOCOL" in
+              sftp)
+                lftp -u "$DEPLOY_USER,$DEPLOY_PASSWORD" "sftp://$DEPLOY_HOST:22" -e \
+                  "set sftp:auto-confirm yes; mirror --reverse --delete --verbose --parallel=3 ./dist/ /public_html/; bye"
+                ;;
+              ftps-explicit)
+                lftp -u "$DEPLOY_USER,$DEPLOY_PASSWORD" "ftp://$DEPLOY_HOST:21" -e \
+                  "set ftp:ssl-force yes; set ftp:ssl-protect-data yes; set ftp:passive-mode yes; set ssl:verify-certificate yes; mirror --reverse --delete --verbose --parallel=3 ./dist/ /public_html/; bye"
+                ;;
+              ftps-implicit)
+                lftp -u "$DEPLOY_USER,$DEPLOY_PASSWORD" "ftps://$DEPLOY_HOST:990" -e \
+                  "set ftp:passive-mode yes; set ssl:verify-certificate yes; mirror --reverse --delete --verbose --parallel=3 ./dist/ /public_html/; bye"
+                ;;
+            esac
+          }
 
-      - name: Deploy FTPS explícito :21 (tentativa 1)
-        id: t1
-        continue-on-error: true
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ steps.host.outputs.host }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          port: 21
-          local-dir: ./dist/
-          server-dir: /public_html/
-          timeout: 300000
-          log-level: minimal
-
-      - name: Aguardar antes da tentativa 2
-        if: steps.t1.outcome == 'failure'
-        run: sleep 20
-
-      - name: Deploy FTPS implícito :990 (tentativa 2)
-        id: t2
-        if: steps.t1.outcome == 'failure'
-        continue-on-error: true
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ steps.host.outputs.host }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          port: 990
-          local-dir: ./dist/
-          server-dir: /public_html/
-          timeout: 300000
-          log-level: minimal
-
-      - name: Aguardar antes da tentativa 3
-        if: steps.t1.outcome == 'failure' && steps.t2.outcome == 'failure'
-        run: sleep 30
-
-      - name: Deploy FTPS explícito :21 (tentativa 3 — retry)
-        id: t3
-        if: steps.t1.outcome == 'failure' && steps.t2.outcome == 'failure'
-        continue-on-error: true
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ steps.host.outputs.host }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          port: 21
-          local-dir: ./dist/
-          server-dir: /public_html/
-          timeout: 300000
-          log-level: minimal
-
-      - name: Aguardar antes do fallback final
-        if: steps.t1.outcome == 'failure' && steps.t2.outcome == 'failure' && steps.t3.outcome == 'failure'
-        run: sleep 60
-
-      - name: Deploy FTP simples :21 (fallback final)
-        if: steps.t1.outcome == 'failure' && steps.t2.outcome == 'failure' && steps.t3.outcome == 'failure'
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ steps.host.outputs.host }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftp
-          port: 21
-          local-dir: ./dist/
-          server-dir: /public_html/
-          timeout: 300000
-          log-level: minimal
+          for attempt in 1 2; do
+            echo "Secure deploy attempt $attempt/2"
+            if deploy; then exit 0; fi
+            [ "$attempt" -eq 2 ] || sleep 10
+          done
+          echo "::error::Secure transfer failed after two attempts. The build artifact remains available for 7 days."
+          exit 1
