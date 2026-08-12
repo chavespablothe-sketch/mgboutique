@@ -2,9 +2,9 @@ import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, X } from "lucide-react";
 import packages from "@/data/packages";
-import { isPackageActive, resolvePackageDates } from "@/lib/packageStatus";
+import { getUpcomingPackages, resolvePackageDates } from "@/lib/packageStatus";
 
-const STORAGE_KEY = "promoSplashDismissed";
+const STORAGE_KEY_PREFIX = "promoSplashDismissed";
 
 function parseCheckIn(ddmmyyyy: string): Date {
   const d = parseInt(ddmmyyyy.slice(0, 2), 10);
@@ -24,31 +24,28 @@ function formatDateRange(checkIn: string, checkOut?: string): string {
   return `${ci.getDate()} ${meses[ci.getMonth()]} – ${co.getDate()} ${meses[co.getMonth()]}`;
 }
 
-function getNextPackage() {
-  const now = new Date();
-  const list = packages
-    .filter((p) => isPackageActive(p, now))
-    .map((p) => ({ pkg: p, dates: resolvePackageDates(p, now) }))
-    .filter((x) => !!x.dates.checkIn)
-    .sort((a, b) => parseCheckIn(a.dates.checkIn!).getTime() - parseCheckIn(b.dates.checkIn!).getTime());
-  return list[0] || null;
-}
-
-function getPaisPackage() {
-  const pkg = packages.find((p) => p.slug === "dia-dos-pais-2026");
-  if (!pkg) return null;
-  return { pkg, dates: resolvePackageDates(pkg, new Date()) };
+function getNextPackage(now: Date = new Date()) {
+  const pkg = getUpcomingPackages(packages, now)[0];
+  return pkg ? { pkg, dates: resolvePackageDates(pkg, now) } : null;
 }
 
 const PromoSplash = () => {
   const [visible, setVisible] = useState(false);
   const [dismissed, setDismissed] = useState(false);
+  const [clock, setClock] = useState(() => new Date());
 
-  const next = useMemo(() => getPaisPackage() || getNextPackage(), []);
+  const next = useMemo(() => getNextPackage(clock), [clock]);
+  const campaignKey = next?.dates.checkIn
+    ? `${STORAGE_KEY_PREFIX}:${next.pkg.slug}:${next.dates.checkIn}`
+    : STORAGE_KEY_PREFIX;
 
 
   useEffect(() => {
-    if (sessionStorage.getItem(STORAGE_KEY) === "1") {
+    setDismissed(sessionStorage.getItem(campaignKey) === "1");
+  }, [campaignKey]);
+
+  useEffect(() => {
+    if (sessionStorage.getItem(campaignKey) === "1") {
       setDismissed(true);
       return;
     }
@@ -63,12 +60,17 @@ const PromoSplash = () => {
       window.removeEventListener("scroll", onScroll);
       window.clearTimeout(timer);
     };
+  }, [campaignKey]);
+
+  useEffect(() => {
+    const interval = window.setInterval(() => setClock(new Date()), 30_000);
+    return () => window.clearInterval(interval);
   }, []);
 
   const handleClose = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    sessionStorage.setItem(STORAGE_KEY, "1");
+    sessionStorage.setItem(campaignKey, "1");
     setDismissed(true);
   };
 
@@ -78,14 +80,14 @@ const PromoSplash = () => {
   const period = dates.checkIn ? formatDateRange(dates.checkIn, dates.checkOut) : pkg.period;
   const href = `/ofertas/${pkg.slug}`;
   const isPais = pkg.slug === "dia-dos-pais-2026";
-  const splashLabel = isPais ? "Dia dos Pais · 7 a 9 de agosto" : "Próximo fim de semana";
+  const splashLabel = "Próximo fim de semana";
 
 
   return (
     <div
       className="fixed z-40 bottom-24 inset-x-4 sm:inset-x-auto sm:bottom-6 sm:left-6 sm:right-auto sm:max-w-[340px] animate-fade-in"
       role="complementary"
-      aria-label={isPais ? "Dia dos Pais em destaque" : "Próximo fim de semana em destaque"}
+       aria-label="Próximo fim de semana em destaque"
     >
       <Link
         to={href}

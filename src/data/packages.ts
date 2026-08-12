@@ -155,6 +155,7 @@ const packages: HotelPackage[] = [
     ]),
     tag: "família",
     tagColor: "bg-secondary",
+    recurringWeekends: { from: "05062026", to: "20122026" },
     programSections: [
       {
         icon: "✨",

@@ -59,7 +59,7 @@ function useAutoScroll(
 import packages from "@/data/packages";
 import { buildOmnibeesUrl } from "@/lib/omnibees";
 import { monthPhrase } from "@/lib/monthPhrase";
-import { isPackageActive, resolvePackageDates } from "@/lib/packageStatus";
+import { getUpcomingPackages, resolvePackageDates } from "@/lib/packageStatus";
 
 
 /* ── helpers ─────────────────────────────────────────────── */
@@ -120,12 +120,7 @@ const homeDisplayOverrides: Record<
 
 function getNextPackages() {
   const now = new Date();
-  return packages
-    .filter((p) => isPackageActive(p, now))
-    .map((p) => ({ pkg: p, dates: resolvePackageDates(p, now) }))
-    .filter((x) => !!x.dates.checkIn)
-    .sort((a, b) => getDaysUntil(a.dates.checkIn!) - getDaysUntil(b.dates.checkIn!))
-    .map((x) => x.pkg);
+  return getUpcomingPackages(packages, now);
 }
 
 /* ── sub-components ──────────────────────────────────────── */
@@ -520,12 +515,7 @@ const OffersSection = () => {
   const scrollerRef = useRef<HTMLDivElement>(null);
   if (upcoming.length === 0) return null;
 
-  // Destaques fixos: Fim de Semana (recorrente) + Arraiá de Inverno.
-  const featuredSlugs = ["fim-de-semana", "arraia-inverno-2026"];
-  const explicitFeatured = featuredSlugs
-    .map((slug) => upcoming.find((p) => p.slug === slug))
-    .filter(Boolean) as typeof upcoming;
-  const featuredList = explicitFeatured.length > 0 ? explicitFeatured : upcoming.slice(0, 2);
+  const featuredList = upcoming.slice(0, 2);
   // Banner de urgência sempre aponta para o pacote ATIVO mais próximo (não o destaque fixo).
   const nearest = upcoming[0];
   const nearestDates = resolvePackageDates(nearest);
