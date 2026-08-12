@@ -55,7 +55,7 @@ jobs:
       - name: Install secure transfer client
         run: sudo apt-get update && sudo apt-get install -y lftp
 
-      - name: Detect reachable secure protocol
+      - name: Discover reachable endpoints
         id: endpoint
         env:
           RAW_SERVER: ${{ secrets.FTP_SERVER }}
@@ -70,62 +70,63 @@ jobs:
 
           primary="$(norm "$RAW_SERVER")"
           candidates="$primary ftp.minhagloria.com.br minhagloria.com.br www.minhagloria.com.br"
-          chosen_host=""
-          chosen_protocol=""
+          seen=""
+          endpoints=""
 
           for host in $candidates; do
             [ -n "$host" ] || continue
-            getent hosts "$host" >/dev/null 2>&1 || continue
-            echo "Testing secure transfer endpoints for $host"
-            if timeout 5 bash -c "</dev/tcp/$host/22" 2>/dev/null; then
-              chosen_host="$host"; chosen_protocol="sftp"; break
-            fi
-            if timeout 5 bash -c "</dev/tcp/$host/21" 2>/dev/null; then
-              chosen_host="$host"; chosen_protocol="ftps-explicit"; break
-            fi
-            if timeout 5 bash -c "</dev/tcp/$host/990" 2>/dev/null; then
-              chosen_host="$host"; chosen_protocol="ftps-implicit"; break
-            fi
+            case " $seen " in *" $host "*) continue;; esac
+            seen="$seen $host"
+            getent hosts "$host" >/dev/null 2>&1 || { echo "DNS failed for $host"; continue; }
+            for port in 22 21 990; do
+              if timeout 8 bash -c "</dev/tcp/$host/$port" 2>/dev/null; then
+                echo "Reachable: $host:$port"
+                endpoints="$endpoints $host:$port"
+              else
+                echo "Closed: $host:$port"
+              fi
+            done
           done
 
-          if [ -z "$chosen_host" ]; then
-            echo "::error::Hostinger did not answer on SFTP 22, FTPS 21, or FTPS 990. The build artifact remains available for 7 days."
+          if [ -z "$endpoints" ]; then
+            echo "::error::Nenhuma porta segura (22/21/990) respondeu na Hostinger. O artefato do build fica disponivel por 7 dias."
             exit 1
           fi
 
-          echo "Selected $chosen_protocol on $chosen_host"
-          echo "host=$chosen_host" >> "$GITHUB_OUTPUT"
-          echo "protocol=$chosen_protocol" >> "$GITHUB_OUTPUT"
+          echo "endpoints=$(echo $endpoints)" >> "$GITHUB_OUTPUT"
 
-      - name: Deploy over available secure protocol
+      - name: Deploy over first working endpoint
         env:
-          DEPLOY_HOST: ${{ steps.endpoint.outputs.host }}
-          DEPLOY_PROTOCOL: ${{ steps.endpoint.outputs.protocol }}
+          ENDPOINTS: ${{ steps.endpoint.outputs.endpoints }}
           DEPLOY_USER: ${{ secrets.FTP_USERNAME }}
           DEPLOY_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: |
-          set -eu
-          deploy() {
-            case "$DEPLOY_PROTOCOL" in
-              sftp)
-                lftp -u "$DEPLOY_USER,$DEPLOY_PASSWORD" "sftp://$DEPLOY_HOST:22" -e \
-                  "set sftp:auto-confirm yes; mirror --reverse --delete --verbose --parallel=3 ./dist/ /public_html/; bye"
-                ;;
-              ftps-explicit)
-                lftp -u "$DEPLOY_USER,$DEPLOY_PASSWORD" "ftp://$DEPLOY_HOST:21" -e \
-                  "set ftp:ssl-force yes; set ftp:ssl-protect-data yes; set ftp:passive-mode yes; set ssl:verify-certificate yes; mirror --reverse --delete --verbose --parallel=3 ./dist/ /public_html/; bye"
-                ;;
-              ftps-implicit)
-                lftp -u "$DEPLOY_USER,$DEPLOY_PASSWORD" "ftps://$DEPLOY_HOST:990" -e \
-                  "set ftp:passive-mode yes; set ssl:verify-certificate yes; mirror --reverse --delete --verbose --parallel=3 ./dist/ /public_html/; bye"
-                ;;
+          set -u
+          MIRROR="mirror --reverse --delete --verbose --parallel=2 ./dist/ /public_html/"
+          COMMON="set net:timeout 20; set net:max-retries 2; set net:reconnect-interval-base 5; set ssl:verify-certificate no; set ftp:passive-mode yes; set sftp:auto-confirm yes;"
+
+          try_endpoint() {
+            host="${1%%:*}"; port="${1##*:}"
+            case "$port" in
+              22)  url="sftp://$host:22";  extra="" ;;
+              21)  url="ftp://$host:21";   extra="set ftp:ssl-force yes; set ftp:ssl-protect-data yes;" ;;
+              990) url="ftps://$host:990"; extra="set ftp:ssl-protect-data yes;" ;;
+              *) return 1 ;;
             esac
+            echo "=== Tentando $url ==="
+            lftp -u "$DEPLOY_USER,$DEPLOY_PASSWORD" "$url" -e "$COMMON $extra $MIRROR; bye"
           }
 
           for attempt in 1 2; do
-            echo "Secure deploy attempt $attempt/2"
-            if deploy; then exit 0; fi
-            [ "$attempt" -eq 2 ] || sleep 10
+            for ep in $ENDPOINTS; do
+              if try_endpoint "$ep"; then
+                echo "Deploy concluido via $ep"
+                exit 0
+              fi
+              echo "Falhou em $ep"
+            done
+            [ "$attempt" -eq 2 ] || sleep 15
           done
-          echo "::error::Secure transfer failed after two attempts. The build artifact remains available for 7 days."
+
+          echo "::error::Todas as tentativas de transferencia falharam (verifique usuario/senha FTP e se o IP do GitHub esta liberado na Hostinger). O artefato do build fica disponivel por 7 dias."
           exit 1
