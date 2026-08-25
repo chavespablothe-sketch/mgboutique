@@ -44,7 +44,7 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Download build artifact
         uses: actions/download-artifact@v4
@@ -76,42 +76,37 @@ jobs:
           }
 
           primary="$(norm "$RAW_SERVER")"
-          candidates="$primary ftp.minhagloria.com.br minhagloria.com.br www.minhagloria.com.br"
+          # O domínio principal responde em FTP explícito/TLS. O antigo
+          # ftp.minhagloria.com.br não possui DNS e as portas 22/990 expiram,
+          # consumindo todo o tempo do job antes do deploy real começar.
+          candidates="minhagloria.com.br $primary www.minhagloria.com.br"
           MIRROR="mirror --reverse --delete --verbose --parallel=2 ./dist/ /public_html/"
-          COMMON="set cmd:fail-exit yes; set net:timeout 25; set net:max-retries 1; set net:reconnect-interval-base 3; set ssl:verify-certificate no; set ftp:passive-mode yes; set sftp:auto-confirm yes;"
+          COMMON="set cmd:fail-exit yes; set net:timeout 20; set net:max-retries 2; set net:reconnect-interval-base 5; set ssl:verify-certificate no; set ftp:passive-mode yes; set ftp:ssl-force yes; set ftp:ssl-protect-data yes;"
 
           try_transfer() {
-            host="$1"; mode="$2"
-            case "$mode" in
-              sftp)         url="sftp://$host:22"; extra="" ;;
-              ftps-explicit) url="ftp://$host:21"; extra="set ftp:ssl-force yes; set ftp:ssl-protect-data yes;" ;;
-              ftps-implicit) url="ftps://$host:990"; extra="set ftp:ssl-protect-data yes;" ;;
-              ftp)           url="ftp://$host:21"; extra="set ftp:ssl-force no; set ftp:ssl-allow no;" ;;
-              *) return 1 ;;
-            esac
-            echo "=== Tentando $url ==="
-            lftp -u "$DEPLOY_USER,$DEPLOY_PASSWORD" "$url" -e "$COMMON $extra $MIRROR; bye"
+            host="$1"
+            echo "=== Enviando por FTPS explícito para $host:21 ==="
+            lftp -u "$DEPLOY_USER,$DEPLOY_PASSWORD" "ftp://$host:21" \
+              -e "$COMMON $MIRROR; bye"
           }
 
           seen=""
-          for attempt in 1 2; do
+          for attempt in 1 2 3; do
             for host in $candidates; do
               [ -n "$host" ] || continue
               case " $seen " in *" $host "*) [ "$attempt" -eq 1 ] && continue;; esac
-              [ "$attempt" -eq 2 ] || seen="$seen $host"
-              for mode in sftp ftps-explicit ftps-implicit ftp; do
-                if try_transfer "$host" "$mode"; then
-                  echo "Deploy concluido em $host via $mode"
-                  exit 0
-                fi
-                echo "Falhou: $host via $mode"
-              done
+              [ "$attempt" -ne 1 ] || seen="$seen $host"
+              if try_transfer "$host"; then
+                echo "Deploy concluido em $host via FTPS explícito"
+                exit 0
+              fi
+              echo "Falhou: $host via FTPS explícito (tentativa $attempt/3)"
             done
-            if [ "$attempt" -eq 1 ]; then
-              echo "Aguardando antes da tentativa final..."
-              sleep 15
+            if [ "$attempt" -lt 3 ]; then
+              echo "Aguardando 10 segundos antes da próxima tentativa..."
+              sleep 10
             fi
           done
 
-          echo "::error::A Hostinger recusou ou não respondeu a SFTP/FTPS/FTP em todos os endereços. O build foi preservado como artefato por 7 dias."
+          echo "::error::A Hostinger recusou o FTPS explícito na porta 21. Confira no log se houve timeout ou erro 530 de credenciais. O build foi preservado como artefato por 7 dias."
           exit 1
