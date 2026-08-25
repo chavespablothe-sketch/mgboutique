@@ -6,9 +6,9 @@ import CouponBanner from "@/components/CouponBanner";
 
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar, Sparkles, UtensilsCrossed, Leaf, Heart, Flame } from "lucide-react";
+import { ArrowRight, Calendar, Sparkles, UtensilsCrossed, Leaf, Heart, Flame, Music, Tractor, Trees } from "lucide-react";
 import { buildOmnibeesUrl } from "@/lib/omnibees";
-import { feriasJulhoImages, pacoteImages, agostoImages } from "@/lib/siteImages";
+import { feriasJulhoImages, pacoteImages, agostoImages, setembroImages } from "@/lib/siteImages";
 import packages from "@/data/packages";
 import { isPackageActive } from "@/lib/packageStatus";
 
@@ -18,17 +18,50 @@ const pacotesSetembro = [
 ].filter(Boolean) as NonNullable<(typeof packages)[number]>[];
 
 const experiencias = [
-  { icon: Leaf, titulo: "Natureza & Bem-estar", texto: "Trilhas leves, spa com massagens, piscina climatizada e cantos de descanso em meio à Mata Atlântica." },
-  { icon: Sparkles, titulo: "Momentos em família", texto: "Recreação monitorada, fazendinha, oficinas criativas e brincadeiras ao ar livre para os pequenos." },
-  { icon: Heart, titulo: "Refúgio para casais", texto: "Chalés reservados, chá da tarde, ofurô, jantar à luz de velas e o silêncio raro da serra fluminense." },
+  { icon: Music, titulo: "Música ao vivo aos sábados", texto: "O melhor da música sertaneja embalando a noite da fazenda, com o cheiro de brasa no ar." },
+  { icon: Tractor, titulo: "Colheita & Fazendinha", texto: "Colheita na horta, contato com os animais e experiências inesquecíveis para crianças e adultos." },
+  { icon: Trees, titulo: "Lazer em meio à natureza", texto: "Piscinas (a principal climatizada), trilhas, cantos de descanso e 165 mil m² de natureza preservada." },
+  { icon: Leaf, titulo: "Passeios pela propriedade", texto: "Charrete, quadriciclo e jeep — atividades opcionais contratadas à parte para explorar a paisagem." },
+  { icon: Sparkles, titulo: "Momentos em família", texto: "Recreação monitorada, oficinas criativas e brincadeiras ao ar livre para os pequenos." },
+  { icon: Heart, titulo: "Refúgio para casais", texto: "Apenas 20 chalés reservados, chá da tarde, ofurô e o silêncio raro da serra fluminense." },
 ];
 
 const fogoDeChao = [
-  "Cortes nobres assados lentamente na brasa, no ritmo da lenha",
-  "Costela de fogo de chão servida na tábua, com farofas e molhos da casa",
-  "Acompanhamentos da roça: legumes na brasa, pães quentes e queijos da serra",
-  "Harmonização com carta de vinhos selecionada pela nossa equipe",
+  "Feijoada Mega Especial aos sábados, completa e com todos os acompanhamentos",
+  "Costela das 12 Horas aos domingos, assada lentamente no fogo de chão",
+  "Costelinha suína na brasa e linguiças artesanais assadas devagar",
+  "Legumes na brasa: batatas, milho, cebolas e o clássico arroz carreteiro",
+  "Buffet especial de comidas caseiras nos fins de semana",
+  "Pastel quentinho com caldo de cana, no melhor estilo rural",
 ];
+
+const destaquesGastronomia = [
+  {
+    src: setembroImages.culinariaFazenda,
+    alt: "Buffet de culinária de fazenda com acompanhamentos servidos em travessas",
+    titulo: "O melhor da culinária de fazenda na mesa",
+    texto: "Costela das 12 Horas aos domingos e Feijoada Mega Especial aos sábados — as duas grandes estrelas do fim de semana.",
+  },
+  {
+    src: setembroImages.tradicaoSabor,
+    alt: "Buffet com pratos caseiros quentes servidos no restaurante do hotel fazenda",
+    titulo: "Tradição e sabor em cada detalhe",
+    texto: "Costelinha suína e linguiças artesanais na brasa, legumes assados lentamente, arroz carreteiro e pastel com caldo de cana.",
+  },
+  {
+    src: setembroImages.pavaoNatureza,
+    alt: "Pavão na área verde do Hotel Fazenda Minha Glória",
+    titulo: "Muito mais que boa comida",
+    texto: "Música ao vivo aos sábados, contato direto com os animais, passeios opcionais e trilhas em 165 mil m² preservados.",
+  },
+  {
+    src: setembroImages.refugioFamilia,
+    alt: "Cavalo pastando no gramado com a Pedra Riscada ao fundo",
+    titulo: "O refúgio perfeito para toda a família",
+    texto: "Recreação monitorada diária, apenas 20 chalés exclusivos e 1 criança até 6 anos cortesia nos fins de semana.",
+  },
+];
+
 
 const SetembroPage = () => {
   const heroCta = buildOmnibeesUrl({ checkIn: "04092026", checkOut: "07092026" });
