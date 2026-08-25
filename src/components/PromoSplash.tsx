@@ -24,7 +24,15 @@ function formatDateRange(checkIn: string, checkOut?: string): string {
   return `${ci.getDate()} ${meses[ci.getMonth()]} – ${co.getDate()} ${meses[co.getMonth()]}`;
 }
 
+const FERIADAO_SLUG = "sete-de-setembro-2026";
+const FERIADAO_END = new Date(2026, 8, 7, 23, 59, 59);
+
 function getNextPackage(now: Date = new Date()) {
+  // Enquanto o feriadão da Independência não passar, ele é o destaque do splash.
+  if (now.getTime() <= FERIADAO_END.getTime()) {
+    const feriadao = packages.find((p) => p.slug === FERIADAO_SLUG);
+    if (feriadao) return { pkg: feriadao, dates: resolvePackageDates(feriadao, now) };
+  }
   const pkg = getUpcomingPackages(packages, now)[0];
   return pkg ? { pkg, dates: resolvePackageDates(pkg, now) } : null;
 }
