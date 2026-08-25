@@ -24,7 +24,15 @@ function formatDateRange(checkIn: string, checkOut?: string): string {
   return `${ci.getDate()} ${meses[ci.getMonth()]} – ${co.getDate()} ${meses[co.getMonth()]}`;
 }
 
+const FERIADAO_SLUG = "sete-de-setembro-2026";
+const FERIADAO_END = new Date(2026, 8, 7, 23, 59, 59);
+
 function getNextPackage(now: Date = new Date()) {
+  // Enquanto o feriadão da Independência não passar, ele é o destaque do splash.
+  if (now.getTime() <= FERIADAO_END.getTime()) {
+    const feriadao = packages.find((p) => p.slug === FERIADAO_SLUG);
+    if (feriadao) return { pkg: feriadao, dates: resolvePackageDates(feriadao, now) };
+  }
   const pkg = getUpcomingPackages(packages, now)[0];
   return pkg ? { pkg, dates: resolvePackageDates(pkg, now) } : null;
 }
@@ -78,48 +86,66 @@ const PromoSplash = () => {
 
   const { pkg, dates } = next;
   const period = dates.checkIn ? formatDateRange(dates.checkIn, dates.checkOut) : pkg.period;
-  const href = `/ofertas/${pkg.slug}`;
+  const isFeriadao = pkg.slug === FERIADAO_SLUG;
+  const href = isFeriadao ? "/setembro" : `/ofertas/${pkg.slug}`;
   const isPais = pkg.slug === "dia-dos-pais-2026";
-  const splashLabel = "Próximo fim de semana";
+  const splashLabel = isFeriadao ? "Feriadão da Independência" : "Próximo fim de semana";
 
 
   return (
     <div
       className="fixed z-40 bottom-24 inset-x-4 sm:inset-x-auto sm:bottom-6 sm:left-6 sm:right-auto sm:max-w-[340px] animate-fade-in"
       role="complementary"
-       aria-label="Próximo fim de semana em destaque"
+       aria-label={isFeriadao ? "Feriadão de 7 de Setembro em destaque" : "Próximo fim de semana em destaque"}
     >
       <Link
         to={href}
-        className="group relative flex items-stretch overflow-hidden rounded-md bg-[#f6f1e6] text-primary border border-primary/10 shadow-[0_20px_50px_-24px_rgba(0,0,0,0.35)] hover:shadow-[0_24px_60px_-24px_rgba(0,0,0,0.45)] transition-all duration-500"
+        className={`group relative flex items-stretch overflow-hidden rounded-md shadow-[0_20px_50px_-24px_rgba(0,0,0,0.35)] hover:shadow-[0_24px_60px_-24px_rgba(0,0,0,0.45)] transition-all duration-500 ${
+          isFeriadao
+            ? "bg-primary text-primary-foreground border border-yellow-300/30"
+            : "bg-[#f6f1e6] text-primary border border-primary/10"
+        }`}
       >
-        {/* Vertical yellow ribbon */}
-        <span aria-hidden className="w-[6px] shrink-0 bg-yellow-400" />
+        {isFeriadao ? (
+          <span
+            aria-hidden
+            className="w-[92px] shrink-0 bg-cover bg-center"
+            style={{ backgroundImage: `url('${pkg.image}')` }}
+          />
+        ) : (
+          /* Vertical yellow ribbon */
+          <span aria-hidden className="w-[6px] shrink-0 bg-yellow-400" />
+        )}
 
         <div className="flex-1 min-w-0 pl-4 pr-9 py-3.5">
-          <span className="block text-[9px] font-semibold tracking-[0.28em] uppercase text-primary/50 mb-1.5">
+          <span className={`block text-[9px] font-semibold tracking-[0.28em] uppercase mb-1.5 ${isFeriadao ? "text-yellow-300" : "text-primary/50"}`}>
             {splashLabel}
           </span>
-          <p className="font-display text-[15px] leading-snug text-primary mb-0.5">
-            {pkg.shortTitle}
+          <p className={`font-display text-[15px] leading-snug mb-0.5 ${isFeriadao ? "text-primary-foreground" : "text-primary"}`}>
+            {isFeriadao ? "3 noites na serra" : pkg.shortTitle}
           </p>
-          <p className="font-body text-[11px] text-primary/60 italic mb-2">
-            {period}
+          <p className={`font-body text-[11px] italic mb-2 ${isFeriadao ? "text-primary-foreground/65" : "text-primary/60"}`}>
+            {isFeriadao ? "4 a 7 de setembro · pensão completa" : period}
           </p>
+          {isFeriadao && (
+            <p className="inline-flex items-center gap-1 bg-yellow-400/90 text-primary font-body text-[9px] font-bold uppercase tracking-[0.14em] px-2 py-1 rounded-full mb-2.5">
+              Festival Fogo de Chão
+            </p>
+          )}
           {isPais && (
             <p className="inline-flex items-center gap-1 bg-yellow-400/90 text-primary font-body text-[9px] font-bold uppercase tracking-[0.14em] px-2 py-1 rounded-full mb-2.5">
               Festival de Fondue incluso
             </p>
           )}
           <span className="inline-flex items-center gap-1.5 bg-yellow-400 hover:bg-yellow-300 text-primary font-body text-[10px] font-bold uppercase tracking-[0.16em] px-3 py-1.5 rounded-full shadow-sm transition-all group-hover:gap-2">
-            Garantir minha vaga <ArrowRight size={11} className="group-hover:translate-x-0.5 transition-transform" />
+            {isFeriadao ? "Quero o feriadão" : "Garantir minha vaga"} <ArrowRight size={11} className="group-hover:translate-x-0.5 transition-transform" />
           </span>
         </div>
 
         <button
           onClick={handleClose}
           aria-label="Fechar"
-          className="absolute top-1.5 right-1.5 z-10 rounded-full p-1 text-primary/35 hover:text-primary hover:bg-primary/10 transition-colors"
+          className={`absolute top-1.5 right-1.5 z-10 rounded-full p-1 transition-colors ${isFeriadao ? "text-primary-foreground/50 hover:text-primary-foreground hover:bg-primary-foreground/10" : "text-primary/35 hover:text-primary hover:bg-primary/10"}`}
         >
           <X size={12} />
         </button>

@@ -33,13 +33,20 @@ function getNextPackage() {
 }
 
 /**
- * Em julho e agosto de 2026 o destaque da hero promove a
- * landing page dos pacotes de agosto (Festival de Fondue).
+ * Até o fim do feriado da Independência (07/09/2026), o destaque
+ * da hero promove a landing page do feriadão de setembro.
  */
-function shouldShowAgosto(now: Date = new Date()): boolean {
-  const y = now.getFullYear();
-  const m = now.getMonth(); // 0-based
-  return y === 2026 && (m === 6 || m === 7); // julho e agosto
+const FERIADAO_END = new Date(2026, 8, 7, 23, 59, 59);
+
+function shouldShowFeriadao(now: Date = new Date()): boolean {
+  return now.getTime() <= FERIADAO_END.getTime();
+}
+
+function daysUntilFeriadao(now: Date = new Date()): number {
+  const target = new Date(2026, 8, 4);
+  const today = new Date(now);
+  today.setHours(0, 0, 0, 0);
+  return Math.ceil((target.getTime() - today.getTime()) / 86_400_000);
 }
 
 
@@ -99,45 +106,65 @@ function urgencyLabel(days: number): string {
   return `Faltam ${days} dias`;
 }
 
-const AgostoCard = () => (
-  <motion.div
-    initial={{ opacity: 0, y: 12 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{ duration: 1, delay: 1.6 }}
-    className="relative max-w-xs mb-7"
-  >
-    <div className="pointer-events-none absolute -inset-2 rounded-[1.5rem] bg-gradient-to-br from-yellow-400/50 via-amber-300/25 to-transparent blur-2xl opacity-70" aria-hidden />
-    <Link
-      to="/agosto"
-      className="group/card relative block rounded-2xl border border-yellow-300/60 bg-primary/40 backdrop-blur-xl pl-4 pr-4 py-3 shadow-lg overflow-hidden hover:bg-primary/55 hover:border-yellow-300 hover:shadow-[0_12px_40px_-12px_rgba(250,204,21,0.45)] hover:-translate-y-0.5 transition-all duration-300 ease-out"
+/** Hero: "bilhete" do feriadão — contagem regressiva + noites. */
+const FeriadaoCard = () => {
+  const dias = daysUntilFeriadao();
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, delay: 1.6 }}
+      className="relative max-w-sm mb-7"
     >
-      <span aria-hidden className="pointer-events-none absolute inset-0 -translate-x-full group-hover/card:translate-x-full transition-transform duration-[1100ms] ease-out bg-gradient-to-r from-transparent via-yellow-300/30 to-transparent" />
-      <Sparkles className="absolute -top-1 -right-1 text-yellow-300 opacity-70 animate-pulse group-hover/card:scale-125 group-hover/card:rotate-12 transition-transform duration-300" size={20} aria-hidden />
-      <div className="flex items-start gap-3">
-        <div className="w-0.5 self-stretch rounded-full bg-gradient-to-r from-yellow-300 via-amber-400 to-yellow-500 opacity-80" aria-hidden />
-        <div className="flex-1 min-w-0">
-          <span className="inline-flex items-center gap-1.5 text-[9px] font-bold uppercase tracking-[0.18em] px-2 py-0.5 rounded-full bg-yellow-400 text-primary shadow-[0_0_18px_-2px_rgba(250,204,21,0.8)] mb-1.5">
-            <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-            Pacotes de Agosto 2026
+      <div className="pointer-events-none absolute -inset-2 rounded-[1.5rem] bg-gradient-to-br from-yellow-400/45 via-amber-300/20 to-transparent blur-2xl opacity-70" aria-hidden />
+      <Link
+        to="/setembro"
+        className="group/card relative flex items-stretch rounded-2xl border border-yellow-300/60 bg-primary/40 backdrop-blur-xl shadow-lg overflow-hidden hover:bg-primary/55 hover:border-yellow-300 hover:shadow-[0_12px_40px_-12px_rgba(250,204,21,0.45)] hover:-translate-y-0.5 transition-all duration-300 ease-out"
+      >
+        <span aria-hidden className="pointer-events-none absolute inset-0 -translate-x-full group-hover/card:translate-x-full transition-transform duration-[1100ms] ease-out bg-gradient-to-r from-transparent via-yellow-300/25 to-transparent" />
+
+        {/* Coluna "canhoto" do bilhete */}
+        <div className="shrink-0 w-[74px] bg-yellow-400 text-primary flex flex-col items-center justify-center py-3 px-2">
+          {dias > 0 ? (
+            <>
+              <span className="font-display text-2xl leading-none font-bold">{dias}</span>
+              <span className="text-[8px] font-bold uppercase tracking-[0.16em] mt-1 text-center leading-tight">
+                {dias === 1 ? "dia" : "dias"} p/ o feriadão
+              </span>
+            </>
+          ) : (
+            <>
+              <span className="font-display text-base leading-none font-bold text-center">Agora</span>
+              <span className="text-[8px] font-bold uppercase tracking-[0.16em] mt-1 text-center leading-tight">feriadão</span>
+            </>
+          )}
+        </div>
+
+        {/* Picote */}
+        <span aria-hidden className="w-px my-3 border-l border-dashed border-yellow-300/50" />
+
+        <div className="flex-1 min-w-0 px-4 py-3">
+          <span className="inline-flex items-center gap-1.5 text-[9px] font-semibold uppercase tracking-[0.2em] text-yellow-300 mb-1">
+            <Sparkles size={10} className="animate-pulse" /> 7 de Setembro 2026
           </span>
           <h3 className="font-display text-base md:text-lg text-primary-foreground font-semibold leading-tight mb-0.5">
-            Festival de Fondue <span className="italic text-yellow-300">na serra</span>
+            Feriadão da <span className="italic text-yellow-300">Independência</span>
           </h3>
           <p className="text-primary-foreground/70 font-body text-[11px] mb-2.5">
-            Todos os sábados de agosto, a partir de 08/08
+            4 a 7 de setembro · 3 noites com pensão completa
           </p>
           <span className="inline-flex items-center gap-1 text-yellow-300 font-body text-[10px] font-semibold uppercase tracking-[0.18em] group-hover/card:gap-2 transition-all">
-            Ver pacotes de agosto <ArrowRight size={10} className="group-hover/card:translate-x-0.5 transition-transform" />
+            Ver o feriadão <ArrowRight size={10} className="group-hover/card:translate-x-0.5 transition-transform" />
           </span>
         </div>
-      </div>
-    </Link>
-  </motion.div>
-);
+      </Link>
+    </motion.div>
+  );
+};
 
 
 const NextPackageHighlight = () => {
-  if (shouldShowAgosto()) return <AgostoCard />;
+  if (shouldShowFeriadao()) return <FeriadaoCard />;
   const next = getNextPackage();
   if (!next) return null;
   const { pkg, dates } = next;
