@@ -271,14 +271,15 @@ const SetembroPage = () => {
               <UtensilsCrossed className="text-secondary mx-auto mb-5" size={36} />
               <span className="text-secondary font-body text-xs tracking-[0.4em] uppercase mb-3 block">Gastronomia</span>
               <h2 className="font-display text-3xl md:text-5xl text-primary-foreground font-semibold leading-tight mb-6">
-                Pensão completa no feriadão
+                Pensão completa, do café à última brasa
               </h2>
               <p className="font-body text-primary-foreground/80 text-base md:text-lg leading-relaxed mb-4">
-                Café da manhã farto com pães e bolos saídos do forno. Almoço com receitas regionais e ingredientes frescos da serra. Chá da tarde e jantar à luz de velas.
+                Café da manhã farto com pães e bolos saídos do forno, almoço com receitas regionais, chá da tarde e jantar. Nos fins de semana, o buffet especial de comidas caseiras ganha o reforço da brasa.
               </p>
               <p className="font-body text-primary-foreground/70 text-base leading-relaxed mb-8">
-                Em setembro, o fogo de chão assume o protagonismo — brasa lenta, cortes nobres e acompanhamentos da roça.
+                Em setembro, o fogo de chão assume o protagonismo — Feijoada Mega Especial aos sábados, Costela das 12 Horas aos domingos e o pastel com caldo de cana para fechar a tarde.
               </p>
+
               <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body uppercase tracking-[0.15em] text-sm">
                 <Link to="/gastronomia">Ver nossa gastronomia <ArrowRight size={16} className="ml-2" /></Link>
               </Button>
