@@ -6,9 +6,9 @@ import CouponBanner from "@/components/CouponBanner";
 
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight, Calendar, Sparkles, UtensilsCrossed, Leaf, Heart, Flame } from "lucide-react";
+import { ArrowRight, Calendar, Sparkles, UtensilsCrossed, Leaf, Heart, Flame, Music, Tractor, Trees } from "lucide-react";
 import { buildOmnibeesUrl } from "@/lib/omnibees";
-import { feriasJulhoImages, pacoteImages, agostoImages } from "@/lib/siteImages";
+import { feriasJulhoImages, pacoteImages, agostoImages, setembroImages } from "@/lib/siteImages";
 import packages from "@/data/packages";
 import { isPackageActive } from "@/lib/packageStatus";
 
@@ -18,17 +18,50 @@ const pacotesSetembro = [
 ].filter(Boolean) as NonNullable<(typeof packages)[number]>[];
 
 const experiencias = [
-  { icon: Leaf, titulo: "Natureza & Bem-estar", texto: "Trilhas leves, spa com massagens, piscina climatizada e cantos de descanso em meio à Mata Atlântica." },
-  { icon: Sparkles, titulo: "Momentos em família", texto: "Recreação monitorada, fazendinha, oficinas criativas e brincadeiras ao ar livre para os pequenos." },
-  { icon: Heart, titulo: "Refúgio para casais", texto: "Chalés reservados, chá da tarde, ofurô, jantar à luz de velas e o silêncio raro da serra fluminense." },
+  { icon: Music, titulo: "Música ao vivo aos sábados", texto: "O melhor da música sertaneja embalando a noite da fazenda, com o cheiro de brasa no ar." },
+  { icon: Tractor, titulo: "Colheita & Fazendinha", texto: "Colheita na horta, contato com os animais e experiências inesquecíveis para crianças e adultos." },
+  { icon: Trees, titulo: "Lazer em meio à natureza", texto: "Piscinas (a principal climatizada), trilhas, cantos de descanso e 165 mil m² de natureza preservada." },
+  { icon: Leaf, titulo: "Passeios pela propriedade", texto: "Charrete, quadriciclo e jeep — atividades opcionais contratadas à parte para explorar a paisagem." },
+  { icon: Sparkles, titulo: "Momentos em família", texto: "Recreação monitorada, oficinas criativas e brincadeiras ao ar livre para os pequenos." },
+  { icon: Heart, titulo: "Refúgio para casais", texto: "Apenas 20 chalés reservados, chá da tarde, ofurô e o silêncio raro da serra fluminense." },
 ];
 
 const fogoDeChao = [
-  "Cortes nobres assados lentamente na brasa, no ritmo da lenha",
-  "Costela de fogo de chão servida na tábua, com farofas e molhos da casa",
-  "Acompanhamentos da roça: legumes na brasa, pães quentes e queijos da serra",
-  "Harmonização com carta de vinhos selecionada pela nossa equipe",
+  "Feijoada Mega Especial aos sábados, completa e com todos os acompanhamentos",
+  "Costela das 12 Horas aos domingos, assada lentamente no fogo de chão",
+  "Costelinha suína na brasa e linguiças artesanais assadas devagar",
+  "Legumes na brasa: batatas, milho, cebolas e o clássico arroz carreteiro",
+  "Buffet especial de comidas caseiras nos fins de semana",
+  "Pastel quentinho com caldo de cana, no melhor estilo rural",
 ];
+
+const destaquesGastronomia = [
+  {
+    src: setembroImages.culinariaFazenda,
+    alt: "Buffet de culinária de fazenda com acompanhamentos servidos em travessas",
+    titulo: "O melhor da culinária de fazenda na mesa",
+    texto: "Costela das 12 Horas aos domingos e Feijoada Mega Especial aos sábados — as duas grandes estrelas do fim de semana.",
+  },
+  {
+    src: setembroImages.tradicaoSabor,
+    alt: "Buffet com pratos caseiros quentes servidos no restaurante do hotel fazenda",
+    titulo: "Tradição e sabor em cada detalhe",
+    texto: "Costelinha suína e linguiças artesanais na brasa, legumes assados lentamente, arroz carreteiro e pastel com caldo de cana.",
+  },
+  {
+    src: setembroImages.pavaoNatureza,
+    alt: "Pavão na área verde do Hotel Fazenda Minha Glória",
+    titulo: "Muito mais que boa comida",
+    texto: "Música ao vivo aos sábados, contato direto com os animais, passeios opcionais e trilhas em 165 mil m² preservados.",
+  },
+  {
+    src: setembroImages.refugioFamilia,
+    alt: "Cavalo pastando no gramado com a Pedra Riscada ao fundo",
+    titulo: "O refúgio perfeito para toda a família",
+    texto: "Recreação monitorada diária, apenas 20 chalés exclusivos e 1 criança até 6 anos cortesia nos fins de semana.",
+  },
+];
+
 
 const SetembroPage = () => {
   const heroCta = buildOmnibeesUrl({ checkIn: "04092026", checkOut: "07092026" });
@@ -36,8 +69,9 @@ const SetembroPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Setembro no Minha Glória | Feriadão da Independência & Fogo de Chão"
-        description="Feriadão de 7 de Setembro com pensão completa, Festival Fogo de Chão e experiências para casais e famílias na serra fluminense. Reserve pelo motor oficial."
+        title="Setembro na Brasa | Festival Fogo de Chão no Minha Glória"
+        description="Fogo de chão o mês inteiro: feijoada aos sábados, costela das 12 horas aos domingos, música ao vivo, fazendinha e o feriadão de 7 de Setembro com pensão completa."
+
         canonical="/setembro"
         schemas={[breadcrumbSchema([{ name: "Início", url: "/" }, { name: "Setembro", url: "/setembro" }])]}
       />
@@ -64,11 +98,12 @@ const SetembroPage = () => {
               <Calendar size={13} /> Setembro de 2026
             </span>
             <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-primary-foreground font-semibold leading-[1.05] mb-6">
-              O feriadão que pede <span className="text-secondary italic">serra e lareira</span>
+              Setembro na <span className="text-secondary italic">brasa</span>
             </h1>
             <p className="font-body text-primary-foreground/85 text-lg md:text-xl max-w-2xl leading-relaxed mb-8">
-              De 4 a 7 de setembro, três noites de pensão completa, ar puro e tempo lento. E, ao longo do mês, o <span className="text-secondary">Festival Fogo de Chão</span> perfuma a propriedade com brasa, lenha e cortes nobres.
+              Um mês inteiro de sabores no Hotel Fazenda Minha Glória: <span className="text-secondary">Festival Fogo de Chão</span>, Feijoada Mega Especial aos sábados, Costela das 12 Horas aos domingos e o feriadão da Independência de 4 a 7 de setembro com pensão completa.
             </p>
+
             <div className="flex flex-wrap gap-3">
               <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body uppercase tracking-[0.15em] text-sm">
                 <a href={heroCta} target="_blank" rel="noopener noreferrer">Reservar agora <ArrowRight size={16} className="ml-2" /></a>
@@ -138,6 +173,48 @@ const SetembroPage = () => {
         </div>
       </section>
 
+      {/* SETEMBRO NA BRASA — DESTAQUES COM FOTOS */}
+      <section id="setembro-na-brasa" className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto text-center mb-12">
+            <span className="text-secondary font-body text-xs tracking-[0.4em] uppercase mb-3 block">Setembro na brasa</span>
+            <h2 className="font-display text-3xl md:text-5xl text-primary font-semibold leading-tight">Um mês inteiro de sabores</h2>
+            <p className="font-body text-primary/70 mt-4">
+              Reunimos o melhor da gastronomia típica, do lazer e do clima acolhedor da fazenda — para que cada fim de semana seja um convite a celebrar a boa comida, a natureza e a vida no campo.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {destaquesGastronomia.map((d, i) => (
+              <motion.article
+                key={d.titulo}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="group bg-card rounded-lg overflow-hidden border border-primary/10 shadow-sm hover:shadow-xl transition-all duration-500"
+              >
+                <div className="relative aspect-[4/5] overflow-hidden">
+                  <img src={d.src} alt={d.alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-display text-xl md:text-2xl text-primary mb-2 leading-tight">{d.titulo}</h3>
+                  <p className="font-body text-primary/70 text-sm leading-relaxed">{d.texto}</p>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body uppercase tracking-[0.15em] text-sm">
+              <a href={heroCta} target="_blank" rel="noopener noreferrer">Reservar meu fim de semana <ArrowRight size={16} className="ml-2" /></a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+
+
       {/* PACOTES */}
       <section id="pacotes" className="py-20 bg-background">
         <div className="container mx-auto px-4">
@@ -201,8 +278,9 @@ const SetembroPage = () => {
         <div className="container mx-auto px-4">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto text-center mb-12">
             <span className="text-secondary font-body text-xs tracking-[0.4em] uppercase mb-3 block">Experiências</span>
-            <h2 className="font-display text-3xl md:text-5xl text-primary font-semibold leading-tight">Um setembro para viver devagar</h2>
-            <p className="font-body text-primary/70 mt-4">Nossos dias são feitos de pequenos rituais — um chá quente, uma trilha curta, uma conversa longa.</p>
+            <h2 className="font-display text-3xl md:text-5xl text-primary font-semibold leading-tight">Muito mais que boa comida</h2>
+            <p className="font-body text-primary/70 mt-4">Música ao vivo, colheita na fazenda, animais, trilhas e piscinas — setembro convida a desacelerar e respirar o ar puro da serra.</p>
+
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-10">
@@ -238,14 +316,15 @@ const SetembroPage = () => {
               <UtensilsCrossed className="text-secondary mx-auto mb-5" size={36} />
               <span className="text-secondary font-body text-xs tracking-[0.4em] uppercase mb-3 block">Gastronomia</span>
               <h2 className="font-display text-3xl md:text-5xl text-primary-foreground font-semibold leading-tight mb-6">
-                Pensão completa no feriadão
+                Pensão completa, do café à última brasa
               </h2>
               <p className="font-body text-primary-foreground/80 text-base md:text-lg leading-relaxed mb-4">
-                Café da manhã farto com pães e bolos saídos do forno. Almoço com receitas regionais e ingredientes frescos da serra. Chá da tarde e jantar à luz de velas.
+                Café da manhã farto com pães e bolos saídos do forno, almoço com receitas regionais, chá da tarde e jantar. Nos fins de semana, o buffet especial de comidas caseiras ganha o reforço da brasa.
               </p>
               <p className="font-body text-primary-foreground/70 text-base leading-relaxed mb-8">
-                Em setembro, o fogo de chão assume o protagonismo — brasa lenta, cortes nobres e acompanhamentos da roça.
+                Em setembro, o fogo de chão assume o protagonismo — Feijoada Mega Especial aos sábados, Costela das 12 Horas aos domingos e o pastel com caldo de cana para fechar a tarde.
               </p>
+
               <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body uppercase tracking-[0.15em] text-sm">
                 <Link to="/gastronomia">Ver nossa gastronomia <ArrowRight size={16} className="ml-2" /></Link>
               </Button>

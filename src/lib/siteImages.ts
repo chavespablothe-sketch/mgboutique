@@ -40,4 +40,12 @@ export const agostoImages = {
   fondueQueijo: `${BASE}/agosto/fondue-queijo.jpg`,
 } as const;
 
+export const setembroImages = {
+  culinariaFazenda: `${BASE}/setembro/culinaria-fazenda.jpg`,
+  tradicaoSabor: `${BASE}/setembro/tradicao-sabor.jpg`,
+  pavaoNatureza: `${BASE}/setembro/pavao-natureza.jpg`,
+  refugioFamilia: `${BASE}/setembro/refugio-familia.jpg`,
+} as const;
+
+
 
