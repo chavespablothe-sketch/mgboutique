@@ -69,8 +69,9 @@ const SetembroPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <SEO
-        title="Setembro no Minha Glória | Feriadão da Independência & Fogo de Chão"
-        description="Feriadão de 7 de Setembro com pensão completa, Festival Fogo de Chão e experiências para casais e famílias na serra fluminense. Reserve pelo motor oficial."
+        title="Setembro na Brasa | Festival Fogo de Chão no Minha Glória"
+        description="Fogo de chão o mês inteiro: feijoada aos sábados, costela das 12 horas aos domingos, música ao vivo, fazendinha e o feriadão de 7 de Setembro com pensão completa."
+
         canonical="/setembro"
         schemas={[breadcrumbSchema([{ name: "Início", url: "/" }, { name: "Setembro", url: "/setembro" }])]}
       />
