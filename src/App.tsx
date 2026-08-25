@@ -16,6 +16,7 @@ import RegiaoPage from "./pages/RegiaoPage";
 import BlogPage from "./pages/BlogPage";
 import FeriasJulhoPage from "./pages/FeriasJulhoPage";
 import AgostoPage from "./pages/AgostoPage";
+import SetembroPage from "./pages/SetembroPage";
 import FestivaisPage from "./pages/FestivaisPage";
 import PrivacidadePage from "./pages/PrivacidadePage";
 import NotFound from "./pages/NotFound";
@@ -32,7 +33,7 @@ const App = () => (
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/7-de-setembro" element={<Index />} />
+          <Route path="/7-de-setembro" element={<Navigate to="/setembro" replace />} />
           <Route path="/sobre" element={<SobrePage />} />
           <Route path="/acomodacoes" element={<AcomodacoesPage />} />
           <Route path="/acomodacoes/chale-master" element={<Navigate to="/acomodacoes/chale-romantico" replace />} />
@@ -46,6 +47,7 @@ const App = () => (
           <Route path="/blog" element={<BlogPage />} />
           <Route path="/ferias-de-julho" element={<FeriasJulhoPage />} />
           <Route path="/agosto" element={<AgostoPage />} />
+          <Route path="/setembro" element={<SetembroPage />} />
           <Route path="/festivais" element={<FestivaisPage />} />
           <Route path="/privacidade" element={<PrivacidadePage />} />
           {/* Redirects from old routes */}
