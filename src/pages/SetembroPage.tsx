@@ -97,11 +97,12 @@ const SetembroPage = () => {
               <Calendar size={13} /> Setembro de 2026
             </span>
             <h1 className="font-display text-4xl md:text-6xl lg:text-7xl text-primary-foreground font-semibold leading-[1.05] mb-6">
-              O feriadão que pede <span className="text-secondary italic">serra e lareira</span>
+              Setembro na <span className="text-secondary italic">brasa</span>
             </h1>
             <p className="font-body text-primary-foreground/85 text-lg md:text-xl max-w-2xl leading-relaxed mb-8">
-              De 4 a 7 de setembro, três noites de pensão completa, ar puro e tempo lento. E, ao longo do mês, o <span className="text-secondary">Festival Fogo de Chão</span> perfuma a propriedade com brasa, lenha e cortes nobres.
+              Um mês inteiro de sabores no Hotel Fazenda Minha Glória: <span className="text-secondary">Festival Fogo de Chão</span>, Feijoada Mega Especial aos sábados, Costela das 12 Horas aos domingos e o feriadão da Independência de 4 a 7 de setembro com pensão completa.
             </p>
+
             <div className="flex flex-wrap gap-3">
               <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body uppercase tracking-[0.15em] text-sm">
                 <a href={heroCta} target="_blank" rel="noopener noreferrer">Reservar agora <ArrowRight size={16} className="ml-2" /></a>
