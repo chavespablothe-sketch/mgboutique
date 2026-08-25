@@ -234,8 +234,9 @@ const SetembroPage = () => {
         <div className="container mx-auto px-4">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto text-center mb-12">
             <span className="text-secondary font-body text-xs tracking-[0.4em] uppercase mb-3 block">Experiências</span>
-            <h2 className="font-display text-3xl md:text-5xl text-primary font-semibold leading-tight">Um setembro para viver devagar</h2>
-            <p className="font-body text-primary/70 mt-4">Nossos dias são feitos de pequenos rituais — um chá quente, uma trilha curta, uma conversa longa.</p>
+            <h2 className="font-display text-3xl md:text-5xl text-primary font-semibold leading-tight">Muito mais que boa comida</h2>
+            <p className="font-body text-primary/70 mt-4">Música ao vivo, colheita na fazenda, animais, trilhas e piscinas — setembro convida a desacelerar e respirar o ar puro da serra.</p>
+
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-10">
