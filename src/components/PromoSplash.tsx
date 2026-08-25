@@ -145,7 +145,7 @@ const PromoSplash = () => {
         <button
           onClick={handleClose}
           aria-label="Fechar"
-          className="absolute top-1.5 right-1.5 z-10 rounded-full p-1 text-primary/35 hover:text-primary hover:bg-primary/10 transition-colors"
+          className={`absolute top-1.5 right-1.5 z-10 rounded-full p-1 transition-colors ${isFeriadao ? "text-primary-foreground/50 hover:text-primary-foreground hover:bg-primary-foreground/10" : "text-primary/35 hover:text-primary hover:bg-primary/10"}`}
         >
           <X size={12} />
         </button>
