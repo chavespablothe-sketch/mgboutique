@@ -33,13 +33,20 @@ function getNextPackage() {
 }
 
 /**
- * Em julho e agosto de 2026 o destaque da hero promove a
- * landing page dos pacotes de agosto (Festival de Fondue).
+ * Até o fim do feriado da Independência (07/09/2026), o destaque
+ * da hero promove a landing page do feriadão de setembro.
  */
-function shouldShowAgosto(now: Date = new Date()): boolean {
-  const y = now.getFullYear();
-  const m = now.getMonth(); // 0-based
-  return y === 2026 && (m === 6 || m === 7); // julho e agosto
+const FERIADAO_END = new Date(2026, 8, 7, 23, 59, 59);
+
+function shouldShowFeriadao(now: Date = new Date()): boolean {
+  return now.getTime() <= FERIADAO_END.getTime();
+}
+
+function daysUntilFeriadao(now: Date = new Date()): number {
+  const target = new Date(2026, 8, 4);
+  const today = new Date(now);
+  today.setHours(0, 0, 0, 0);
+  return Math.ceil((target.getTime() - today.getTime()) / 86_400_000);
 }
 
 
