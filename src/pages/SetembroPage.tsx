@@ -171,6 +171,48 @@ const SetembroPage = () => {
         </div>
       </section>
 
+      {/* SETEMBRO NA BRASA — DESTAQUES COM FOTOS */}
+      <section id="setembro-na-brasa" className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="max-w-2xl mx-auto text-center mb-12">
+            <span className="text-secondary font-body text-xs tracking-[0.4em] uppercase mb-3 block">Setembro na brasa</span>
+            <h2 className="font-display text-3xl md:text-5xl text-primary font-semibold leading-tight">Um mês inteiro de sabores</h2>
+            <p className="font-body text-primary/70 mt-4">
+              Reunimos o melhor da gastronomia típica, do lazer e do clima acolhedor da fazenda — para que cada fim de semana seja um convite a celebrar a boa comida, a natureza e a vida no campo.
+            </p>
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {destaquesGastronomia.map((d, i) => (
+              <motion.article
+                key={d.titulo}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="group bg-card rounded-lg overflow-hidden border border-primary/10 shadow-sm hover:shadow-xl transition-all duration-500"
+              >
+                <div className="relative aspect-[4/5] overflow-hidden">
+                  <img src={d.src} alt={d.alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
+                </div>
+                <div className="p-6">
+                  <h3 className="font-display text-xl md:text-2xl text-primary mb-2 leading-tight">{d.titulo}</h3>
+                  <p className="font-body text-primary/70 text-sm leading-relaxed">{d.texto}</p>
+                </div>
+              </motion.article>
+            ))}
+          </div>
+
+          <div className="text-center mt-10">
+            <Button asChild size="lg" className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-body uppercase tracking-[0.15em] text-sm">
+              <a href={heroCta} target="_blank" rel="noopener noreferrer">Reservar meu fim de semana <ArrowRight size={16} className="ml-2" /></a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+
+
       {/* PACOTES */}
       <section id="pacotes" className="py-20 bg-background">
         <div className="container mx-auto px-4">
