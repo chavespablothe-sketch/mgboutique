@@ -46,8 +46,8 @@ const SetembroPage = () => {
       {/* HERO */}
       <section className="relative min-h-[92vh] flex items-end overflow-hidden">
         <img
-          src={pacoteImages.setembro2026}
-          alt="Feriado de 7 de Setembro no Minha Glória Hotel Boutique"
+          src={pacoteImages.fimDeSemana}
+          alt="Chalé e serra no feriado de 7 de Setembro do Minha Glória Hotel Boutique"
           className="absolute inset-0 w-full h-full object-cover"
           loading="eager"
         />
@@ -127,7 +127,7 @@ const SetembroPage = () => {
                 { src: feriasJulhoImages.cozinha, alt: "Preparo na brasa pela nossa cozinha" },
                 { src: agostoImages.fondueCarne, alt: "Cortes nobres selecionados" },
                 { src: pacoteImages.finados2026, alt: "Mesa posta para o jantar" },
-                { src: pacoteImages.fimDeSemana, alt: "Chalé na serra fluminense" },
+                { src: pacoteImages.setembro2026, alt: "Feriadão em família no hotel" },
               ].map((img) => (
                 <div key={img.alt} className="relative overflow-hidden rounded-lg aspect-square group">
                   <img src={img.src} alt={img.alt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" loading="lazy" />
