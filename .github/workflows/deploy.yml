@@ -55,12 +55,19 @@ jobs:
       - name: Install secure transfer client
         run: sudo apt-get update && sudo apt-get install -y lftp
 
-      - name: Discover reachable endpoints
-        id: endpoint
+      - name: Deploy to Hostinger
         env:
           RAW_SERVER: ${{ secrets.FTP_SERVER }}
+          DEPLOY_USER: ${{ secrets.FTP_USERNAME }}
+          DEPLOY_PASSWORD: ${{ secrets.FTP_PASSWORD }}
         run: |
-          set -eu
+          set -uo pipefail
+
+          if [ -z "${RAW_SERVER:-}" ] || [ -z "${DEPLOY_USER:-}" ] || [ -z "${DEPLOY_PASSWORD:-}" ]; then
+            echo "::error::Os secrets FTP_SERVER, FTP_USERNAME e FTP_PASSWORD precisam estar preenchidos."
+            exit 1
+          fi
+
           norm() {
             h="$1"
             h="${h#ftp://}"; h="${h#ftps://}"; h="${h#sftp://}"
@@ -70,63 +77,41 @@ jobs:
 
           primary="$(norm "$RAW_SERVER")"
           candidates="$primary ftp.minhagloria.com.br minhagloria.com.br www.minhagloria.com.br"
-          seen=""
-          endpoints=""
-
-          for host in $candidates; do
-            [ -n "$host" ] || continue
-            case " $seen " in *" $host "*) continue;; esac
-            seen="$seen $host"
-            getent hosts "$host" >/dev/null 2>&1 || { echo "DNS failed for $host"; continue; }
-            for port in 22 21 990; do
-              if timeout 8 bash -c "</dev/tcp/$host/$port" 2>/dev/null; then
-                echo "Reachable: $host:$port"
-                endpoints="$endpoints $host:$port"
-              else
-                echo "Closed: $host:$port"
-              fi
-            done
-          done
-
-          if [ -z "$endpoints" ]; then
-            echo "::error::Nenhuma porta segura (22/21/990) respondeu na Hostinger. O artefato do build fica disponivel por 7 dias."
-            exit 1
-          fi
-
-          echo "endpoints=$(echo $endpoints)" >> "$GITHUB_OUTPUT"
-
-      - name: Deploy over first working endpoint
-        env:
-          ENDPOINTS: ${{ steps.endpoint.outputs.endpoints }}
-          DEPLOY_USER: ${{ secrets.FTP_USERNAME }}
-          DEPLOY_PASSWORD: ${{ secrets.FTP_PASSWORD }}
-        run: |
-          set -u
           MIRROR="mirror --reverse --delete --verbose --parallel=2 ./dist/ /public_html/"
-          COMMON="set net:timeout 20; set net:max-retries 2; set net:reconnect-interval-base 5; set ssl:verify-certificate no; set ftp:passive-mode yes; set sftp:auto-confirm yes;"
+          COMMON="set cmd:fail-exit yes; set net:timeout 25; set net:max-retries 1; set net:reconnect-interval-base 3; set ssl:verify-certificate no; set ftp:passive-mode yes; set sftp:auto-confirm yes;"
 
-          try_endpoint() {
-            host="${1%%:*}"; port="${1##*:}"
-            case "$port" in
-              22)  url="sftp://$host:22";  extra="" ;;
-              21)  url="ftp://$host:21";   extra="set ftp:ssl-force yes; set ftp:ssl-protect-data yes;" ;;
-              990) url="ftps://$host:990"; extra="set ftp:ssl-protect-data yes;" ;;
+          try_transfer() {
+            host="$1"; mode="$2"
+            case "$mode" in
+              sftp)         url="sftp://$host:22"; extra="" ;;
+              ftps-explicit) url="ftp://$host:21"; extra="set ftp:ssl-force yes; set ftp:ssl-protect-data yes;" ;;
+              ftps-implicit) url="ftps://$host:990"; extra="set ftp:ssl-protect-data yes;" ;;
+              ftp)           url="ftp://$host:21"; extra="set ftp:ssl-force no; set ftp:ssl-allow no;" ;;
               *) return 1 ;;
             esac
             echo "=== Tentando $url ==="
             lftp -u "$DEPLOY_USER,$DEPLOY_PASSWORD" "$url" -e "$COMMON $extra $MIRROR; bye"
           }
 
+          seen=""
           for attempt in 1 2; do
-            for ep in $ENDPOINTS; do
-              if try_endpoint "$ep"; then
-                echo "Deploy concluido via $ep"
-                exit 0
-              fi
-              echo "Falhou em $ep"
+            for host in $candidates; do
+              [ -n "$host" ] || continue
+              case " $seen " in *" $host "*) [ "$attempt" -eq 1 ] && continue;; esac
+              [ "$attempt" -eq 2 ] || seen="$seen $host"
+              for mode in sftp ftps-explicit ftps-implicit ftp; do
+                if try_transfer "$host" "$mode"; then
+                  echo "Deploy concluido em $host via $mode"
+                  exit 0
+                fi
+                echo "Falhou: $host via $mode"
+              done
             done
-            [ "$attempt" -eq 2 ] || sleep 15
+            if [ "$attempt" -eq 1 ]; then
+              echo "Aguardando antes da tentativa final..."
+              sleep 15
+            fi
           done
 
-          echo "::error::Todas as tentativas de transferencia falharam (verifique usuario/senha FTP e se o IP do GitHub esta liberado na Hostinger). O artefato do build fica disponivel por 7 dias."
+          echo "::error::A Hostinger recusou ou não respondeu a SFTP/FTPS/FTP em todos os endereços. O build foi preservado como artefato por 7 dias."
           exit 1
