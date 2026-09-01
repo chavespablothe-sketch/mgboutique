@@ -22,8 +22,8 @@ const fdsMonthImages: Record<string, string> = {
   "Julho": "/images/sobre-vista-pedra.jpg",
   "Agosto": "/images/amenities-trilhas.png",
   "Setembro": "/images/lazer-cavalos.jpg",
-  "Outubro": "/images/welcome-aerial.webp",
-  "Novembro": "/images/chale-banheira.jpg",
+  "Outubro": "/images/julho-familia-quadriciclo.jpg",
+  "Novembro": "/images/familia.jpg",
   "Dezembro": "/images/vista-hotel.jpg",
 };
 
@@ -71,7 +71,7 @@ const TarifasPage = () => {
       months.forEach(month => {
         if (!groups[month]) groups[month] = [];
         // For multi-month packages, override image per month (skip Arraiá — keep its own art)
-        if (months.length > 1 && fdsMonthImages[month] && pkg.slug !== "arraia-inverno-2026") {
+        if (pkg.slug === "fim-de-semana" && fdsMonthImages[month]) {
           groups[month].push({ ...pkg, image: fdsMonthImages[month] });
         } else {
           groups[month].push(pkg);
