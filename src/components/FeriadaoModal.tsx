@@ -83,7 +83,7 @@ const FeriadaoModal = () => {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 16, scale: 0.98 }}
             transition={{ duration: 0.45, ease: ELEGANT_EASE }}
-            className="relative w-full max-w-sm max-h-[85vh] overflow-y-auto rounded-xl bg-background shadow-[0_24px_80px_-20px_rgba(0,0,0,0.65)] border border-secondary/25"
+            className="feriadao-modal-card relative w-full max-w-sm max-h-[85vh] overflow-y-auto rounded-xl bg-background shadow-[0_24px_80px_-20px_rgba(0,0,0,0.65)] border border-secondary/25"
             onClick={(e) => e.stopPropagation()}
           >
             <button
