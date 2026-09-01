@@ -21,6 +21,7 @@ import FestivaisPage from "./pages/FestivaisPage";
 import PrivacidadePage from "./pages/PrivacidadePage";
 import NotFound from "./pages/NotFound";
 import PromoSplash from "./components/PromoSplash";
+import FeriadaoModal from "./components/FeriadaoModal";
 
 
 const queryClient = new QueryClient();
