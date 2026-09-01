@@ -95,7 +95,7 @@ const FeriadaoModal = () => {
 
             <div className="p-3.5 sm:p-4">
               <p className="font-body text-[9px] tracking-[0.26em] uppercase text-secondary mb-0.5">
-                4 a 7 de setembro · 3 noites
+                4 a 7 de setembro · 2 ou 3 noites
               </p>
               <h2 className="font-display text-lg sm:text-xl leading-tight text-primary mb-1">
                 Feriadão na serra
@@ -142,7 +142,7 @@ const FeriadaoModal = () => {
                   onClick={close}
                   className="font-body text-[10px] uppercase tracking-[0.14em] text-muted-foreground hover:text-foreground transition-colors py-0.5"
                 >
-                  Agora não
+                  Continuar no site
                 </button>
               </div>
             </div>
