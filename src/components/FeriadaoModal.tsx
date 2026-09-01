@@ -11,26 +11,10 @@ const FERIADAO_END = new Date(2026, 8, 7, 23, 59, 59);
 const ELEGANT_EASE = [0.22, 1, 0.36, 1] as const;
 
 const programacao = [
-  {
-    icon: Flame,
-    title: "Festival Fogo de Chão",
-    text: "Carnes nobres na brasa e buffet caipira completo durante todo o feriadão.",
-  },
-  {
-    icon: UtensilsCrossed,
-    title: "Feijoada & Costela das 12 Horas",
-    text: "Feijoada mega especial no sábado e costela assada por 12 horas no domingo.",
-  },
-  {
-    icon: Music,
-    title: "Música ao Vivo",
-    text: "Noites especiais com música ao vivo no sábado do feriado.",
-  },
-  {
-    icon: Leaf,
-    title: "Vida de Fazenda",
-    text: "Fazendinha, colheita, charrete e lazer completo em meio à natureza.",
-  },
+  { icon: Flame, title: "Fogo de Chão", text: "Carnes nobres na brasa." },
+  { icon: UtensilsCrossed, title: "Feijoada & Costela", text: "Sábado e domingo especiais." },
+  { icon: Music, title: "Música ao Vivo", text: "Noite animada no sábado." },
+  { icon: Leaf, title: "Vida de Fazenda", text: "Fazendinha e charrete." },
 ];
 
 const FeriadaoModal = () => {
@@ -71,98 +55,95 @@ const FeriadaoModal = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.4, ease: ELEGANT_EASE }}
-          className="fixed inset-0 z-[95] bg-[#0a0a0a]/80 backdrop-blur-sm flex items-center justify-center p-4"
+          transition={{ duration: 0.35, ease: ELEGANT_EASE }}
+          className="fixed inset-0 z-[95] bg-[#0a0a0a]/80 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4"
           onClick={close}
           role="dialog"
           aria-modal="true"
           aria-label="Feriadão de 7 de Setembro"
         >
           <motion.div
-            initial={{ opacity: 0, y: 28, scale: 0.97 }}
+            initial={{ opacity: 0, y: 24, scale: 0.96 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.98 }}
-            transition={{ duration: 0.55, ease: ELEGANT_EASE }}
-            className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-lg bg-background shadow-[0_40px_120px_-30px_rgba(0,0,0,0.7)] border border-secondary/25"
+            exit={{ opacity: 0, y: 16, scale: 0.98 }}
+            transition={{ duration: 0.45, ease: ELEGANT_EASE }}
+            className="feriadao-modal-card relative w-full max-w-[22rem] max-h-[82vh] overflow-y-auto rounded-xl bg-background shadow-[0_24px_80px_-20px_rgba(0,0,0,0.65)] border border-secondary/25"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={close}
               aria-label="Fechar"
-              className="absolute top-3 right-3 z-20 w-10 h-10 rounded-full bg-black/35 backdrop-blur-sm border border-white/15 flex items-center justify-center text-white/80 hover:text-white hover:bg-black/55 transition-all"
+              className="absolute top-2 right-2 z-20 w-7 h-7 rounded-full bg-black/40 backdrop-blur-sm border border-white/15 flex items-center justify-center text-white/90 hover:text-white hover:bg-black/60 transition-all"
             >
-              <X size={16} strokeWidth={1.5} />
+              <X size={13} strokeWidth={1.5} />
             </button>
 
-            <div className="grid md:grid-cols-[1fr_1.15fr]">
-              {/* Image side */}
-              <div className="relative h-52 md:h-auto md:min-h-full">
-                <img
-                  src={pacoteImages.setembro2026}
-                  alt="Feriadão de 7 de Setembro no Hotel Fazenda Minha Glória"
-                  className="absolute inset-0 w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-black/55 via-black/10 to-transparent" />
-                <div className="absolute bottom-4 left-4 right-4 md:bottom-6 md:left-6">
-                  <span className="inline-block bg-secondary text-primary font-body text-[9px] font-bold uppercase tracking-[0.24em] px-3 py-1.5 rounded-full shadow-md">
-                    Últimos quartos
-                  </span>
-                </div>
+            <div className="relative h-28 sm:h-32 shrink-0">
+              <img
+                src={pacoteImages.setembro2026}
+                alt="Feriadão de 7 de Setembro no Hotel Fazenda Minha Glória"
+                className="absolute inset-0 w-full h-full object-cover"
+                decoding="async"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/10 to-transparent" />
+              <div className="absolute top-2.5 left-2.5">
+                <span className="inline-block bg-secondary text-primary font-body text-[8px] font-bold uppercase tracking-[0.2em] px-2 py-1 rounded-full shadow-md">
+                  Últimos quartos
+                </span>
+              </div>
+            </div>
+
+            <div className="p-3.5 sm:p-4">
+              <p className="font-body text-[9px] tracking-[0.26em] uppercase text-secondary mb-0.5">
+                4 a 7 de setembro · 3 noites
+              </p>
+              <h2 className="font-display text-lg sm:text-xl leading-tight text-primary mb-1">
+                Feriadão na serra
+              </h2>
+              <p className="font-body text-[11px] text-muted-foreground italic mb-3">
+                Pensão completa e programação especial.
+              </p>
+
+              <ul className="grid grid-cols-2 gap-x-3 gap-y-2 mb-3">
+                {programacao.map(({ icon: Icon, title, text }) => (
+                  <li key={title} className="flex items-start gap-2">
+                    <span className="mt-0.5 w-6 h-6 shrink-0 rounded-full bg-secondary/15 text-secondary flex items-center justify-center">
+                      <Icon size={11} strokeWidth={1.75} />
+                    </span>
+                    <div>
+                      <p className="font-body text-[11px] font-semibold text-foreground leading-snug">
+                        {title}
+                      </p>
+                      <p className="font-body text-[10px] text-muted-foreground leading-relaxed">
+                        {text}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+
+              <div className="flex items-center gap-2 mb-3 rounded-md bg-muted/70 border border-border px-2.5 py-1.5">
+                <BedDouble size={12} className="text-primary shrink-0" strokeWidth={1.75} />
+                <p className="font-body text-[10px] text-foreground/80 leading-snug">
+                  Mínimo de <strong>2 diárias</strong> — poucos quartos.
+                </p>
               </div>
 
-              {/* Content side */}
-              <div className="p-6 md:p-8">
-                <p className="font-body text-[10px] tracking-[0.32em] uppercase text-secondary mb-2">
-                  4 a 7 de setembro · 3 noites
-                </p>
-                <h2 className="font-display text-2xl md:text-[28px] leading-tight text-primary mb-2">
-                  Feriadão da Independência na serra
-                </h2>
-                <p className="font-body text-sm text-muted-foreground italic mb-5">
-                  Pensão completa e uma programação inteira desenhada para o feriado mais saboroso do ano.
-                </p>
-
-                <ul className="space-y-3.5 mb-6">
-                  {programacao.map(({ icon: Icon, title, text }) => (
-                    <li key={title} className="flex items-start gap-3">
-                      <span className="mt-0.5 w-8 h-8 shrink-0 rounded-full bg-secondary/15 text-secondary flex items-center justify-center">
-                        <Icon size={15} strokeWidth={1.75} />
-                      </span>
-                      <div>
-                        <p className="font-body text-[13px] font-semibold text-foreground leading-snug">
-                          {title}
-                        </p>
-                        <p className="font-body text-xs text-muted-foreground leading-relaxed">
-                          {text}
-                        </p>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="flex items-center gap-2 mb-5 rounded-md bg-muted/70 border border-border px-3.5 py-2.5">
-                  <BedDouble size={15} className="text-primary shrink-0" strokeWidth={1.75} />
-                  <p className="font-body text-[11px] text-foreground/80 leading-snug">
-                    Pacote com <strong>mínimo de apenas 2 diárias</strong> — e restam poucos quartos disponíveis.
-                  </p>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <Link
-                    to="/setembro"
-                    onClick={close}
-                    className="group inline-flex items-center justify-center gap-2 bg-yellow-400 hover:bg-yellow-300 text-primary font-body text-[11px] font-bold uppercase tracking-[0.18em] px-6 py-3.5 rounded-full shadow-md transition-all"
-                  >
-                    Ver programação completa
-                    <ArrowRight size={13} className="group-hover:translate-x-0.5 transition-transform" />
-                  </Link>
-                  <button
-                    onClick={close}
-                    className="font-body text-[11px] uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground transition-colors py-2"
-                  >
-                    Agora não
-                  </button>
-                </div>
+              <div className="flex flex-col gap-2">
+                <Link
+                  to="/setembro"
+                  onClick={close}
+                  className="group inline-flex items-center justify-center gap-2 bg-yellow-400 hover:bg-yellow-300 text-primary font-body text-[10px] font-bold uppercase tracking-[0.14em] px-4 py-2.5 rounded-full shadow-md transition-all"
+                >
+                  Ver programação
+                  <ArrowRight size={11} className="group-hover:translate-x-0.5 transition-transform" />
+                </Link>
+                <button
+                  onClick={close}
+                  className="font-body text-[10px] uppercase tracking-[0.14em] text-muted-foreground hover:text-foreground transition-colors py-0.5"
+                >
+                  Agora não
+                </button>
               </div>
             </div>
           </motion.div>
