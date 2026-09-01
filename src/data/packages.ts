@@ -537,8 +537,8 @@ const packages: HotelPackage[] = [
   },
   {
     slug: "finados-2026",
-    title: "Pacote Especial — Feriado de Finados",
-    shortTitle: "Finados 2026",
+    title: "Pacote Feriadão de Finados",
+    shortTitle: "Feriadão de Finados",
     period: "30 de outubro a 2 de novembro de 2026",
     nights: "3 noites",
     price: "R$ 2.770,20",
