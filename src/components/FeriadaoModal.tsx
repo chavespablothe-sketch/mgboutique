@@ -142,7 +142,7 @@ const FeriadaoModal = () => {
                   onClick={close}
                   className="font-body text-[10px] uppercase tracking-[0.14em] text-muted-foreground hover:text-foreground transition-colors py-0.5"
                 >
-                  Agora não
+                  Continuar no site
                 </button>
               </div>
             </div>
