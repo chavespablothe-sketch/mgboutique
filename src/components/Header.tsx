@@ -47,7 +47,9 @@ const Header = () => {
                     className={`text-[13px] tracking-[0.18em] uppercase font-nav font-medium transition-colors whitespace-nowrap ${
                       location.pathname.startsWith(item.href)
                         ? "text-secondary font-bold"
-                        : "text-primary-foreground/80 hover:text-secondary"
+                        : item.highlight
+                          ? "text-secondary font-bold drop-shadow-[0_0_8px_hsl(var(--secondary)/0.6)] hover:text-secondary/80"
+                          : "text-primary-foreground/80 hover:text-secondary"
                     }`}
                   >
                     {item.label}
@@ -73,7 +75,9 @@ const Header = () => {
                     className={`text-[13px] tracking-[0.18em] uppercase font-nav font-medium transition-colors whitespace-nowrap ${
                       location.pathname.startsWith(item.href)
                         ? "text-secondary font-bold"
-                        : "text-primary-foreground/80 hover:text-secondary"
+                        : item.highlight
+                          ? "text-secondary font-bold drop-shadow-[0_0_8px_hsl(var(--secondary)/0.6)] hover:text-secondary/80"
+                          : "text-primary-foreground/80 hover:text-secondary"
                     }`}
                   >
                     {item.label}
@@ -145,7 +149,9 @@ const Header = () => {
                   className={`py-3 px-4 rounded-lg text-sm tracking-[0.2em] uppercase font-body transition-all ${
                     location.pathname.startsWith(item.href)
                       ? "text-secondary bg-secondary/10"
-                      : "text-primary-foreground/70 hover:text-secondary hover:bg-secondary/5"
+                      : item.highlight
+                        ? "text-secondary font-bold"
+                        : "text-primary-foreground/70 hover:text-secondary hover:bg-secondary/5"
                   }`}
                 >
                   {item.label}

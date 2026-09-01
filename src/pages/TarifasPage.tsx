@@ -281,6 +281,11 @@ const TarifasPage = () => {
                                 <Sparkles size={10} /> Novidade · junho e julho
                               </span>
                             )}
+                            {pkg.slug === "dia-das-criancas-2026" && (
+                              <span className="inline-flex items-center gap-1.5 bg-secondary/15 text-secondary border border-secondary/40 font-body text-[10px] font-semibold uppercase tracking-[0.18em] px-2.5 py-1 rounded-full">
+                                <Sparkles size={10} /> Dia das Crianças
+                              </span>
+                            )}
                             <p className="text-secondary font-body text-sm">{pkg.period}</p>
                             <p className="text-muted-foreground font-body text-sm leading-relaxed line-clamp-2">
                               {pkg.description.length > 100 ? pkg.description.slice(0, 100) + "…" : pkg.description}
