@@ -22,8 +22,8 @@ const fdsMonthImages: Record<string, string> = {
   "Julho": "/images/sobre-vista-pedra.jpg",
   "Agosto": "/images/amenities-trilhas.png",
   "Setembro": "/images/lazer-cavalos.jpg",
-  "Outubro": "/images/welcome-aerial.webp",
-  "Novembro": "/images/chale-banheira.jpg",
+  "Outubro": "/images/julho-familia-quadriciclo.jpg",
+  "Novembro": "/images/familia.jpg",
   "Dezembro": "/images/vista-hotel.jpg",
 };
 
@@ -71,7 +71,7 @@ const TarifasPage = () => {
       months.forEach(month => {
         if (!groups[month]) groups[month] = [];
         // For multi-month packages, override image per month (skip Arraiá — keep its own art)
-        if (months.length > 1 && fdsMonthImages[month] && pkg.slug !== "arraia-inverno-2026") {
+        if (pkg.slug === "fim-de-semana" && fdsMonthImages[month]) {
           groups[month].push({ ...pkg, image: fdsMonthImages[month] });
         } else {
           groups[month].push(pkg);
@@ -279,6 +279,11 @@ const TarifasPage = () => {
                             {pkg.slug === "arraia-inverno-2026" && (
                               <span className="inline-flex items-center gap-1.5 bg-secondary/15 text-secondary border border-secondary/40 font-body text-[10px] font-semibold uppercase tracking-[0.18em] px-2.5 py-1 rounded-full">
                                 <Sparkles size={10} /> Novidade · junho e julho
+                              </span>
+                            )}
+                            {pkg.slug === "dia-das-criancas-2026" && (
+                              <span className="inline-flex items-center gap-1.5 bg-secondary/15 text-secondary border border-secondary/40 font-body text-[10px] font-semibold uppercase tracking-[0.18em] px-2.5 py-1 rounded-full">
+                                <Sparkles size={10} /> Dia das Crianças
                               </span>
                             )}
                             <p className="text-secondary font-body text-sm">{pkg.period}</p>
