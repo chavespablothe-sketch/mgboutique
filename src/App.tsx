@@ -61,6 +61,7 @@ const App = () => (
           <Route path="*" element={<NotFound />} />
         </Routes>
         <PromoSplash />
+        <FeriadaoModal />
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>
