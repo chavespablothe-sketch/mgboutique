@@ -385,10 +385,12 @@ const packages: HotelPackage[] = [
     ],
     image: pacoteImages.setembro2026,
     gallery: buildGallery([
+      "/images/setembro-na-brasa.jpg",
       pacoteImages.setembro2026,
       "/images/amenities-trilhas.png",
       "/images/lazer-piscina.webp",
     ]),
+
     tag: "romântico",
     tagColor: "bg-primary",
     checkIn: "04092026",
@@ -907,12 +909,15 @@ const setembroWeekends = [
   { id: "25", checkIn: "25092026", checkOut: "27092026", label: "25 a 27 de setembro de 2026" },
 ];
 
+const setembroArte = "/images/setembro-na-brasa.jpg";
+
 const setembroCovers = [
   setembroImages.refugioFamilia,
   setembroImages.culinariaFazenda,
   setembroImages.pavaoNatureza,
   setembroImages.tradicaoSabor,
 ];
+
 
 const setembroPackages: HotelPackage[] = setembroWeekends.map((w, i) => ({
   slug: `fim-de-semana-${w.id}-09-2026`,
@@ -950,9 +955,11 @@ const setembroPackages: HotelPackage[] = setembroWeekends.map((w, i) => ({
   ],
   image: setembroCovers[i % setembroCovers.length],
   gallery: buildGallery([
+    setembroArte,
     setembroCovers[i % setembroCovers.length],
     ...setembroCovers.filter((_, idx) => idx !== i % setembroCovers.length),
   ]),
+
   tag: "família",
   tagColor: "bg-secondary",
   checkIn: w.checkIn,
