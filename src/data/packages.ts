@@ -907,12 +907,15 @@ const setembroWeekends = [
   { id: "25", checkIn: "25092026", checkOut: "27092026", label: "25 a 27 de setembro de 2026" },
 ];
 
+const setembroArte = "/images/setembro-na-brasa.jpg";
+
 const setembroCovers = [
   setembroImages.refugioFamilia,
   setembroImages.culinariaFazenda,
   setembroImages.pavaoNatureza,
   setembroImages.tradicaoSabor,
 ];
+
 
 const setembroPackages: HotelPackage[] = setembroWeekends.map((w, i) => ({
   slug: `fim-de-semana-${w.id}-09-2026`,
