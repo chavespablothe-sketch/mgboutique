@@ -119,12 +119,32 @@ const SetembroPage = () => {
         </div>
       </section>
 
+      {/* ARTE SETEMBRO NA BRASA */}
+      <section className="py-14 bg-[#f6f1e6]">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-md mx-auto"
+          >
+            <img
+              src="/images/setembro-na-brasa.jpg"
+              alt="Setembro na Brasa — programação do mês no Hotel Fazenda Minha Glória"
+              className="w-full rounded-xl shadow-xl border border-primary/10"
+              loading="lazy"
+            />
+          </motion.div>
+        </div>
+      </section>
+
       {/* CUPOM */}
       <section className="py-10 bg-[#f6f1e6]">
         <div className="container mx-auto px-4">
           <CouponBanner />
         </div>
       </section>
+
 
       {/* FESTIVAL FOGO DE CHÃO */}
       <section id="fogo-de-chao" className="py-20 bg-primary">
