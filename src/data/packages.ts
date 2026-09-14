@@ -385,10 +385,12 @@ const packages: HotelPackage[] = [
     ],
     image: pacoteImages.setembro2026,
     gallery: buildGallery([
+      "/images/setembro-na-brasa.jpg",
       pacoteImages.setembro2026,
       "/images/amenities-trilhas.png",
       "/images/lazer-piscina.webp",
     ]),
+
     tag: "romântico",
     tagColor: "bg-primary",
     checkIn: "04092026",
