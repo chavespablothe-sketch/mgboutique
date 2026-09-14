@@ -953,9 +953,11 @@ const setembroPackages: HotelPackage[] = setembroWeekends.map((w, i) => ({
   ],
   image: setembroCovers[i % setembroCovers.length],
   gallery: buildGallery([
+    setembroArte,
     setembroCovers[i % setembroCovers.length],
     ...setembroCovers.filter((_, idx) => idx !== i % setembroCovers.length),
   ]),
+
   tag: "família",
   tagColor: "bg-secondary",
   checkIn: w.checkIn,
