@@ -1,4 +1,4 @@
-import { pacoteImages, agostoImages } from "@/lib/siteImages";
+import { pacoteImages, agostoImages, setembroImages } from "@/lib/siteImages";
 
 export interface ProgramSection {
   icon: string;
@@ -155,7 +155,7 @@ const packages: HotelPackage[] = [
     ]),
     tag: "família",
     tagColor: "bg-secondary",
-    recurringWeekends: { from: "05062026", to: "20122026" },
+    recurringWeekends: { from: "02102026", to: "20122026" },
     programSections: [
       {
         icon: "✨",
@@ -898,6 +898,71 @@ const fonduePackages: HotelPackage[] = fondueWeekends.map((w, i) => ({
 packages.push(...fonduePackages);
 
 export const fondueSlugs = fonduePackages.map((p) => p.slug);
+
+/* ── Fins de semana de setembro de 2026 ───────────────────── */
+
+const setembroWeekends = [
+  { id: "11", checkIn: "11092026", checkOut: "13092026", label: "11 a 13 de setembro de 2026" },
+  { id: "18", checkIn: "18092026", checkOut: "20092026", label: "18 a 20 de setembro de 2026" },
+  { id: "25", checkIn: "25092026", checkOut: "27092026", label: "25 a 27 de setembro de 2026" },
+];
+
+const setembroCovers = [
+  setembroImages.refugioFamilia,
+  setembroImages.culinariaFazenda,
+  setembroImages.pavaoNatureza,
+  setembroImages.tradicaoSabor,
+];
+
+const setembroPackages: HotelPackage[] = setembroWeekends.map((w, i) => ({
+  slug: `fim-de-semana-${w.id}-09-2026`,
+  title: `Fim de Semana na Serra — ${w.label}`,
+  shortTitle: `Fim de Semana · ${w.id}/09`,
+  period: w.label,
+  nights: "2 noites",
+  price: "Consulte",
+  pricePerNight: "Consulte",
+  priceNote: "Consulte condições no motor de reservas",
+  description:
+    "Um refúgio para desacelerar, respirar e aproveitar o melhor do descanso com charme, boa gastronomia e momentos agradáveis — perfeito para casais e famílias que desejam uma pausa da rotina.",
+  longDescription:
+    "Um refúgio para desacelerar, respirar e aproveitar o melhor do descanso com charme, boa gastronomia e momentos agradáveis — perfeito para casais e famílias que desejam uma pausa da rotina. Para as crianças: recreação monitorada em horários dedicados, oficinas e brincadeiras, e espaço para diversão segura. Para os adultos: ambiente tranquilo e acolhedor, tempo de qualidade sem pressa e oportunidades de descanso e bem-estar.",
+  highlights: ["Recreação monitorada", "Massagem relaxante", "Oficinas e brincadeiras", "Ambiente acolhedor"],
+  included: [
+    "Pensão completa (café, almoço e jantar)",
+    "Welcome drink na chegada",
+    "Acesso à piscina climatizada",
+    "Recreação infantil",
+    "Wi-Fi gratuito",
+    "Estacionamento privativo",
+  ],
+  kidsFeatures: [
+    "Recreação monitorada em horários dedicados",
+    "Oficinas e brincadeiras",
+    "Espaço para diversão segura",
+    "Menu infantil especial",
+    "1 criança até 06 anos: grátis nos fins de semana",
+  ],
+  schedule: [
+    { day: "Sexta-feira", items: ["Check-in a partir das 14h", "Welcome drink", "Jantar de boas-vindas"] },
+    { day: "Sábado", items: ["Café da manhã estendido", "Atividades ao ar livre", "Almoço", "Recreação infantil", "Jantar especial"] },
+    { day: "Domingo", items: ["Café da manhã", "Atividades em família", "Check-out até 12h"] },
+  ],
+  image: setembroCovers[i % setembroCovers.length],
+  gallery: buildGallery([
+    setembroCovers[i % setembroCovers.length],
+    ...setembroCovers.filter((_, idx) => idx !== i % setembroCovers.length),
+  ]),
+  tag: "família",
+  tagColor: "bg-secondary",
+  checkIn: w.checkIn,
+  checkOut: w.checkOut,
+  programSections: genericProgramSections,
+}));
+
+packages.push(...setembroPackages);
+
+export const setembroWeekendSlugs = setembroPackages.map((p) => p.slug);
 
 export default packages;
 
