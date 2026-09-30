@@ -284,9 +284,16 @@ const TarifasPage = () => {
               {groupedFiltered.map(({ month, pkgs }) => (
                 <div key={month}>
                   {/* Month header */}
-                  <div className="mb-8">
-                    <h3 className="font-display text-2xl md:text-3xl text-foreground font-semibold">{month}</h3>
-                    <div className="w-full h-px bg-border mt-3" />
+                  <div className="mb-8 flex flex-wrap items-end justify-between gap-3">
+                    <div className="flex-1 min-w-[12rem]">
+                      <h3 className="font-display text-2xl md:text-3xl text-foreground font-semibold">{month}</h3>
+                      <div className={`w-full h-px mt-3 ${month === "Outubro" ? "bg-secondary/70" : "bg-border"}`} />
+                    </div>
+                    {month === "Outubro" && (
+                      <span className="inline-flex items-center gap-1.5 bg-secondary/15 text-secondary border border-secondary/40 font-body text-[10px] font-semibold uppercase tracking-[0.18em] px-3 py-1.5 rounded-full">
+                        <Sparkles size={11} /> Mês em destaque
+                      </span>
+                    )}
                   </div>
 
                   {/* Cards grid - clean like reference */}
