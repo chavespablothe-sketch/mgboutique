@@ -21,6 +21,7 @@ import OutubroPage from "./pages/OutubroPage";
 import FestivaisPage from "./pages/FestivaisPage";
 import PrivacidadePage from "./pages/PrivacidadePage";
 import NotFound from "./pages/NotFound";
+import PromoSplash from "./components/PromoSplash";
 
 
 const queryClient = new QueryClient();
