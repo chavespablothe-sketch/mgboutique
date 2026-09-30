@@ -132,7 +132,7 @@ const packages: HotelPackage[] = [
     slug: "fim-de-semana",
     title: "Experiência de Fim de Semana — Minha Glória Hotel Boutique",
     shortTitle: "Fim de Semana",
-    period: "Junho a dezembro de 2026",
+    period: "Outubro a dezembro de 2026",
     nights: "2 noites",
     price: "R$ 2.268,00",
     pricePerNight: "R$ 1.134,00",

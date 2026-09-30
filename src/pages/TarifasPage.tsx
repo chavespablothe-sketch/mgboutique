@@ -9,6 +9,7 @@ import { Calendar, ArrowRight, CalendarDays, CreditCard, Baby, Star, Check, Uten
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import allPackages from "@/data/packages";
+import { pacoteImages } from "@/lib/siteImages";
 import { filterActivePackages, pickHoverMessage } from "@/lib/packageStatus";
 
 import { OMNIBEES_URL } from "@/lib/omnibees";
@@ -20,8 +21,6 @@ const fdsMonthImages: Record<string, string> = {
   "Maio": "/images/amenities-spa.jpg",
   "Junho": "/images/lazer-piscina.webp",
   "Julho": "/images/sobre-vista-pedra.jpg",
-  "Agosto": "/images/amenities-trilhas.png",
-  "Setembro": "/images/lazer-cavalos.jpg",
   "Outubro": "/images/julho-familia-quadriciclo.jpg",
   "Novembro": "/images/familia.jpg",
   "Dezembro": "/images/vista-hotel.jpg",
@@ -57,7 +56,7 @@ function getMonths(period: string): string[] {
   return ["Outros"];
 }
 
-const monthOrder = ["Maio", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+const monthOrder = ["Outubro", "Novembro", "Dezembro"];
 
 const TarifasPage = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
