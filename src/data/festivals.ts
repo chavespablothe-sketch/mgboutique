@@ -51,7 +51,7 @@ export const festivals: Festival[] = [
     image: feriasJulhoImages.recreacao,
     imageAlt: "Recreação monitorada para crianças na fazendinha",
     ctaLabel: "Reservar",
-    ctaUrl: "/ofertas",
+    ctaUrl: "/outubro",
     featured: true,
   },
   {
