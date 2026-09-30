@@ -12,7 +12,6 @@ import OffersSection from "@/components/sections/OffersSection";
 import KidsSection from "@/components/sections/KidsSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import CTASection from "@/components/CTASection";
-import AgostoBanner from "@/components/sections/AgostoBanner";
 
 
 
@@ -27,8 +26,8 @@ const Index = () => {
       />
       <Header />
       <HeroSection />
-      <AgostoBanner />
       <OffersSection />
+
       
       <KidsSection />
       <WelcomeSection />
