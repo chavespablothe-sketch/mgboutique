@@ -9,6 +9,7 @@ import { Calendar, ArrowRight, CalendarDays, CreditCard, Baby, Star, Check, Uten
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import allPackages from "@/data/packages";
+import { pacoteImages } from "@/lib/siteImages";
 import { filterActivePackages, pickHoverMessage } from "@/lib/packageStatus";
 
 import { OMNIBEES_URL } from "@/lib/omnibees";
@@ -20,8 +21,6 @@ const fdsMonthImages: Record<string, string> = {
   "Maio": "/images/amenities-spa.jpg",
   "Junho": "/images/lazer-piscina.webp",
   "Julho": "/images/sobre-vista-pedra.jpg",
-  "Agosto": "/images/amenities-trilhas.png",
-  "Setembro": "/images/lazer-cavalos.jpg",
   "Outubro": "/images/julho-familia-quadriciclo.jpg",
   "Novembro": "/images/familia.jpg",
   "Dezembro": "/images/vista-hotel.jpg",
@@ -57,7 +56,7 @@ function getMonths(period: string): string[] {
   return ["Outros"];
 }
 
-const monthOrder = ["Maio", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"];
+const monthOrder = ["Outubro", "Novembro", "Dezembro"];
 
 const TarifasPage = () => {
   useEffect(() => { window.scrollTo(0, 0); }, []);
@@ -203,6 +202,46 @@ const TarifasPage = () => {
           </div>
         </section>
 
+        {/* Outubro em destaque */}
+        <section className="py-12 lg:py-16 bg-primary">
+          <div className="container mx-auto px-4 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <Link
+                to="/outubro"
+                className="group relative block overflow-hidden rounded-2xl border border-secondary/30 shadow-2xl"
+              >
+                <div
+                  className="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-105"
+                  style={{ backgroundImage: `url(${pacoteImages.criancas2026})` }}
+                  aria-hidden
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/95 via-primary/85 to-primary/40" aria-hidden />
+                <div className="relative grid md:grid-cols-[1.4fr_1fr] items-center gap-6 px-6 py-10 md:px-12 md:py-14">
+                  <div className="max-w-2xl">
+                    <span className="inline-flex items-center gap-2 text-secondary font-body text-[10px] md:text-xs tracking-[0.4em] uppercase mb-4">
+                      <Sparkles size={14} /> Outubro em destaque
+                    </span>
+                    <h2 className="font-display text-2xl md:text-4xl lg:text-5xl text-primary-foreground font-semibold leading-[1.1] mb-4">
+                      Outubro <span className="italic text-secondary">encantado</span> na fazenda.
+                    </h2>
+                    <p className="text-primary-foreground/80 font-body text-sm md:text-base mb-6 leading-relaxed">
+                      Festival Fazenda Encantada, Dia das Crianças e o feriadão de Finados — recreação monitorada, fazendinha e a serra fluminense no seu momento mais bonito.
+                    </p>
+                    <span className="inline-flex items-center gap-3 bg-secondary text-secondary-foreground font-body uppercase tracking-[0.15em] text-xs md:text-sm px-6 py-3 rounded-md shadow-lg group-hover:gap-4 transition-all">
+                      Ver pacotes de outubro <ArrowRight size={16} />
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+          </div>
+        </section>
+
         {/* Month Filter + Packages - Clean layout like reference */}
         <section className="py-14 lg:py-20 bg-background">
           <div className="container mx-auto px-4">
@@ -245,9 +284,16 @@ const TarifasPage = () => {
               {groupedFiltered.map(({ month, pkgs }) => (
                 <div key={month}>
                   {/* Month header */}
-                  <div className="mb-8">
-                    <h3 className="font-display text-2xl md:text-3xl text-foreground font-semibold">{month}</h3>
-                    <div className="w-full h-px bg-border mt-3" />
+                  <div className="mb-8 flex flex-wrap items-end justify-between gap-3">
+                    <div className="flex-1 min-w-[12rem]">
+                      <h3 className="font-display text-2xl md:text-3xl text-foreground font-semibold">{month}</h3>
+                      <div className={`w-full h-px mt-3 ${month === "Outubro" ? "bg-secondary/70" : "bg-border"}`} />
+                    </div>
+                    {month === "Outubro" && (
+                      <span className="inline-flex items-center gap-1.5 bg-secondary/15 text-secondary border border-secondary/40 font-body text-[10px] font-semibold uppercase tracking-[0.18em] px-3 py-1.5 rounded-full">
+                        <Sparkles size={11} /> Mês em destaque
+                      </span>
+                    )}
                   </div>
 
                   {/* Cards grid - clean like reference */}
