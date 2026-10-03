@@ -548,11 +548,11 @@ const packages: HotelPackage[] = [
     priceNote: "em até 10x de R$ 277,02 sem juros",
     description: "Um feriado para desacelerar, silenciar o ritmo e cuidar de si. Dias de introspecção leve, bem-estar e experiências sensoriais pensadas para restaurar corpo e mente.",
     longDescription: "Um feriado para desacelerar, silenciar o ritmo e cuidar de si. Dias de introspecção leve, bem-estar e experiências sensoriais pensadas para restaurar corpo e mente — com a elegância tranquila e o acolhimento característicos do Glória. Ideal para casais que desejam descanso profundo e reconexão, hóspedes que buscam silêncio, bem-estar e desaceleração, viajantes que preferem experiências intimistas, e famílias que valorizam tranquilidade e conforto.",
-    highlights: ["Welcome drink na chegada", "Chá calmante de boas-vindas no quarto", "Mimo especial com proposta relaxante", "Atendimento personalizado durante toda a estadia"],
-    included: ["Pensão completa (café, almoço e jantar)", "Welcome drink", "Chá calmante no quarto", "Mimo relaxante", "Atendimento personalizado", "Wi-Fi gratuito", "Estacionamento privativo"],
+    highlights: ["Welcome drink na chegada", "Mimo especial com proposta relaxante", "Atendimento personalizado durante toda a estadia"],
+    included: ["Pensão completa (café, almoço e jantar)", "Welcome drink", "Mimo relaxante", "Atendimento personalizado", "Wi-Fi gratuito", "Estacionamento privativo"],
     kidsFeatures: ["Recreação monitorada", "Atividades ao ar livre", "Menu infantil especial", "1 criança até 06 anos: grátis nos fins de semana"],
     schedule: [
-      { day: "Sexta-feira (30/10)", items: ["Check-in a partir das 14h", "Welcome drink", "Chá calmante e mimo no quarto", "Jantar de boas-vindas"] },
+      { day: "Sexta-feira (30/10)", items: ["Check-in a partir das 14h", "Welcome drink", "Mimo especial no quarto", "Jantar de boas-vindas"] },
       { day: "Sábado (31/10)", items: ["Café da manhã estendido", "Bem-estar e relaxamento", "Almoço", "Tarde de introspecção e descanso", "Jantar com música suave"] },
       { day: "Domingo (01/11)", items: ["Café da manhã", "Atividades leves ao ar livre", "Almoço especial", "Tarde livre", "Jantar de despedida"] },
       { day: "Segunda-feira (02/11)", items: ["Café da manhã", "Check-out até 12h"] },
@@ -573,7 +573,6 @@ const packages: HotelPackage[] = [
         title: "Boas-vindas acolhedoras",
         items: [
           "Welcome drink na chegada",
-          "Chá calmante de boas-vindas no quarto",
           "Mimo especial com proposta relaxante",
           "Atendimento personalizado durante toda a estadia",
         ],
